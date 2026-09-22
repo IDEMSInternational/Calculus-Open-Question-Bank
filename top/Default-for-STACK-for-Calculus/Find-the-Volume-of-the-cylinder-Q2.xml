@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Find the Volume of the cylinder-Q2</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Use the method of cylinders to determine the volume of the solid obtained by rotating the region bounded by \( \displaystyle y={@f_x@}, \, x={@lower_limit@}, \, x={@upper_limit@}\) and the \(\text{x-axis}\) about the \(\text{y-axis}\)</p>
+<p>Here is a sketch of the bounded region with the axis of rotation shown,</p>
+<p>
+[[jsxgraph]]
+        var board = JXG.JSXGraph.initBoard(divid, { 
+            boundingbox: [-1, 3, {#upper_limit+0.5#}, -1],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: true,
+            showNavigation: false
+        });
+    // Plot functions only up to the mutual intersections
+        var function1 = board.create('functiongraph', ['{#f_x#}', {#lower_limit#},{#upper_limit#}], { name: '\\({#simplify(y=f_x)#}\\)', withlabel: true, strokeColor: 'blue' });
+        //var function2 = board.create('functiongraph', ['x={#lower_limit#}'],{ name: '\\({#x=lower_limit#}\\)', withlabel: true, strokeColor: 'blue' });
+        // Note: This function goes backwards, i.e. from 3 to -3.
+        //var function4 = board.create('functiongraph', ['x={#upper_limit#}'],{ name: '\\({#x=upper_limit#}\\)', withlabel: true, strokeColor: 'blue' });
+
+        // You can copy this function and then use it like in the examples below.
+        // element_list is a list of elements defining the outline of the function.
+        // The elements can be FunctionGraphs or Pairs of coordinates (encoding points)
+        // properties is a dictionary of properties for the generated function.
+        function make_filled_curve(board, element_list, properties) {
+            var curve = board.create('curve', [[], []], properties);
+            curve.updateDataArray = function () {
+                this.dataX = [];
+                this.dataY = [];
+                for (const element of element_list) {
+                    if (Array.isArray(element)) {
+                        // Add the point to the curve
+                        this.dataX.push(element[0]);
+                        this.dataY.push(element[1]);
+                    } else {
+                        // Copy all points from function
+                        this.dataX = this.dataX.concat(element.points.map(p => p.usrCoords[1]));
+                        this.dataY = this.dataY.concat(element.points.map(p => p.usrCoords[2]));
+                    }
+                }
+                // Close the loop
+                this.dataX.push(this.dataX[0]);
+                this.dataY.push(this.dataY[0]);
+            };
+            board.update();
+        }
+
+        // Plot different filled functions
+        //make_filled_curve(board, [function1, function4, function2,[0, 0]], { strokeWidth: 3, fillColor: 'yellow', fillOpacity: 0.3 });
+        make_filled_curve(board, [ [{#lower_limit#},0],function1, [{#upper_limit#},0]], { strokeWidth: 1, fillColor: 'green', fillOpacity: 0.3 });
+        //make_filled_curve(board, [function1, [0, 3], [-2, 3]], { strokeWidth: 3, fillColor: 'red', fillOpacity: 0.3 });
+
+       
+    [[/jsxgraph]] </p>
+<br>
+<p>\( V=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Here is a sketch of the bounded region with the axis of rotation shown,</p>
+<p>
+[[jsxgraph]]
+        var board = JXG.JSXGraph.initBoard(divid, { 
+            boundingbox: [-1, 3, {#upper_limit+0.5#}, -1],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: true,
+            showNavigation: false
+        });
+    // Plot functions only up to the mutual intersections
+        var function1 = board.create('functiongraph', ['{#f_x#}', {#lower_limit#},{#upper_limit#}], { name: '\\({#simplify(y=f_x)#}\\)', withlabel: true, strokeColor: 'blue' });
+        //var function2 = board.create('functiongraph', ['x={#lower_limit#}'],{ name: '\\({#x=lower_limit#}\\)', withlabel: true, strokeColor: 'blue' });
+        // Note: This function goes backwards, i.e. from 3 to -3.
+        //var function4 = board.create('functiongraph', ['x={#upper_limit#}'],{ name: '\\({#x=upper_limit#}\\)', withlabel: true, strokeColor: 'blue' });
+
+        // You can copy this function and then use it like in the examples below.
+        // element_list is a list of elements defining the outline of the function.
+        // The elements can be FunctionGraphs or Pairs of coordinates (encoding points)
+        // properties is a dictionary of properties for the generated function.
+        function make_filled_curve(board, element_list, properties) {
+            var curve = board.create('curve', [[], []], properties);
+            curve.updateDataArray = function () {
+                this.dataX = [];
+                this.dataY = [];
+                for (const element of element_list) {
+                    if (Array.isArray(element)) {
+                        // Add the point to the curve
+                        this.dataX.push(element[0]);
+                        this.dataY.push(element[1]);
+                    } else {
+                        // Copy all points from function
+                        this.dataX = this.dataX.concat(element.points.map(p => p.usrCoords[1]));
+                        this.dataY = this.dataY.concat(element.points.map(p => p.usrCoords[2]));
+                    }
+                }
+                // Close the loop
+                this.dataX.push(this.dataX[0]);
+                this.dataY.push(this.dataY[0]);
+            };
+            board.update();
+        }
+
+        // Plot different filled functions
+        //make_filled_curve(board, [function1, function4, function2,[0, 0]], { strokeWidth: 3, fillColor: 'yellow', fillOpacity: 0.3 });
+        make_filled_curve(board, [ [{#lower_limit#},0],function1, [{#upper_limit#},0]], { strokeWidth: 1, fillColor: 'green', fillOpacity: 0.3 });
+        //make_filled_curve(board, [function1, [0, 3], [-2, 3]], { strokeWidth: 3, fillColor: 'red', fillOpacity: 0.3 });
+
+       
+    [[/jsxgraph]] </p>
+<p> Recall that, by using the method of cylinders, the volume of the solid generated by the vertical lines \(x=a\) and \(x=b\), which is revolved about the \(\text{y-axis}\) (vertical axis of revolution) is given by</p>
+<p>\(\displaystyle V= 2 \pi \int_{a}^{b}xf(x)dx\)</p>
+<p>For this problem, we have \( \displaystyle a={@lower_limit@}, \, b={@upper_limit@}, \, y=f(x)={@f_x@}\) and radius \(r = x\). 
+</p>
+<p>Therefore,</p>
+<p>
+\(\displaystyle
+\begin{align}
+\displaystyle V &= 2 \pi \int_{{@lower_limit@}}^{{@upper_limit@}}x({@f_x@})dx \\
+\displaystyle    &= 2 \pi \int_{{@lower_limit@}}^{{@upper_limit@}} {@x*f_x@}dx \\
+                        &= {@int((2*%pi*x*f_x),x)@} \left.\begin{matrix}
+ & \\ 
+ & 
+\end{matrix}\right|_{{@lower_limit@}}^{{@upper_limit@}} \\
+    &= {@ta@}
+
+
+\end{align}
+\)
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining the question variables*/ 
+coef_x:rand(3)+1;/*coefficient of x in the function*/
+f_x:1/(coef_x*x); /*the function*/
+lower_limit:1/(rand(4)+1);
+upper_limit:(rand(3)+1)+lower_limit;
+area_x:2*%pi*(x)*f_x; /*The area of the cylinder*/
+volume_x:int(area_x,x,lower_limit,upper_limit); /*The volume of the solid*/
+
+/*Model answer*/
+ta:volume_x;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Use the method of cylinders to determine the volume of the solid obtained by rotating the region bounded by \(y={@f_x@}, \, x={@lower_limit@}, \, x={@upper_limit@}\) and the \(\text{x-axis}\) about the \(\text{y-axis}={@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author"> Godfrey Wabwire </p>
+<p id="concept"> N/A </p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">The question focuses on finding the volume of a cylinder using a respective formula of finding it's volume</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*possible mistakes*/
+/*node 1 checks for correct answer*/
+/*node 2 mistake: integrating the indefinite integral without the limits */
+mistake_2:int(f_x,x);
+/*node 3 mistake: interchanging the limits of integration*/
+mistake_3:int(f_x,x,upper_limit,lower_limit);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description> integrating the indefinite integral without the limits</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have integrated the function correctly but did not input the limits. Take a look at the worked solution below.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Interchanging the limits of integration</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your computation looks okay for the definite integral, however it looks like you have interchanged the limits of integration.
+Take a look at the worked solution below.
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1488443208</deployedseed>
+    <deployedseed>486230902</deployedseed>
+    <deployedseed>1218857075</deployedseed>
+    <deployedseed>1313546482</deployedseed>
+    <deployedseed>1203740528</deployedseed>
+    <deployedseed>733448219</deployedseed>
+    <deployedseed>2010413665</deployedseed>
+    <deployedseed>68798046</deployedseed>
+    <deployedseed>1304152920</deployedseed>
+    <deployedseed>438323419</deployedseed>
+    <deployedseed>1862318986</deployedseed>
+    <deployedseed>1086721617</deployedseed>
+    <deployedseed>350064729</deployedseed>
+    <deployedseed>592559688</deployedseed>
+    <deployedseed>1520721673</deployedseed>
+    <deployedseed>896231725</deployedseed>
+    <deployedseed>1298960668</deployedseed>
+    <deployedseed>1678149179</deployedseed>
+    <deployedseed>1606256482</deployedseed>
+    <deployedseed>2111953712</deployedseed>
+    <deployedseed>676586914</deployedseed>
+    <deployedseed>1264558317</deployedseed>
+    <deployedseed>1626591674</deployedseed>
+    <deployedseed>1127005422</deployedseed>
+    <deployedseed>687740398</deployedseed>
+    <deployedseed>1758084742</deployedseed>
+    <deployedseed>1607193882</deployedseed>
+    <deployedseed>1798274325</deployedseed>
+    <deployedseed>1887011922</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

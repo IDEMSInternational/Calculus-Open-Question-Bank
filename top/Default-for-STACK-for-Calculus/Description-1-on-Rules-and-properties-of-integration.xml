@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="description">
+    <name>
+      <text>Description 1 on Rules and properties of integration</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<span style="color: red;">Rules of antidifferentiation:</span>
+<ul>
+<li>Constant Rule \(:\displaystyle \int kdx=kx+C\)</li>
+<li>Power Rule:\(\text{where}\,\, n \neq  -1: \displaystyle \int X^ndx=\displaystyle \frac{1}{n+1}X^{n+1}+C\))</li>
+<li>Natural Logarithmic Rule \(:\displaystyle \int \frac{1}{x}dx=lnx+C,x\gt 0\)</li>
+<li>Exponential Rule(base e) \(: \displaystyle \int e^{ax}dx=\frac{1}{a}e^{ax}+C,\,\, a \neq  0\)</li>
+</ul>
+<span style="color: red;">Properties of antidifferentiation</span>
+<ul>
+<li>A Constant factor can be moved to the front of an indefinite integral\(: \displaystyle \int Cf(x)dx = C \cdot \int f(x)dx\)</li>
+<li>The antiderivative of a sum or difference is the sum or difference of the antiderivatives\(:\displaystyle \int \displaystyle \left[ f(x) \pm g(x) \right]dx=X^ndx=\displaystyle \int f(x)dx \pm \int g(x)dx\)</li>
+</ul>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>0</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+  </question>
+</quiz>

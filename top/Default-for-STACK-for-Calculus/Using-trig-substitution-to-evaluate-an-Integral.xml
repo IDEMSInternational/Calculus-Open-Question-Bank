@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Using  trig substitution to evaluate an Integral</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Use trig substitution to evaluate \(\displaystyle\int{@func@}dt\) </p>
+<p>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p> \( \text{In order to carry out trig substitution integrals, let's take a look at the information in the table below.} \)<br></p>
+<div>
+    <table width="750" cellspacing="1" cellpadding="0" border="1">
+        <colgroup>
+            <col>
+            <col>
+            <col>
+            <col>
+        </colgroup>
+        <tbody>
+            <tr>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\( \text{If you see }\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\( \text{Use the following substitution}\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\text{Where}\)</p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\text{So that,}\)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{a^2-x^2}\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;"> \(x=a\sin(\theta)\)</p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(dx=a\cos(\theta)d(\theta)\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{a^2-x^2} = a\cos(\theta)\)<br></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{a^2+x^2}\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(x=a\tan(\theta)\)</p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(dx=a\sec^{2}(\theta)d(\theta)\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{a^2+x^2} = a\sec(\theta)\)<br></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{x^2-a^2}\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(x=a\sec(\theta)\)</p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(dx=a\sec(\theta)\tan(\theta)d(\theta)\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{x^2-a^2} = a\tan(\theta)\)<br></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p></p>
+<p>In this case, we’ll need the following trig substitution.</p>
+<p>\(t= {@coef@}\). Then \( dt={@dif_coef@} \,d(\Theta) \)</p>
+<p>Let's first use the substitution to eliminate the root, and considering the fact that we are doing an indefinite integral we will assume that the tangent is positive.</p>
+<p>
+    \(
+    \begin{align}
+    {@expr1@} &amp; = \left(\sqrt{{@coeff_tsquared*t^2-const@}} \right)^{@num@}\\
+    &amp; = \left( \sqrt{{@const@}\sec^{2}({@var_theta@})-{@const@}} \right)^{{@num@}}\\
+    &amp; = \left( {@sqrt(const)@}\sqrt{\tan^2{@var_theta@}} \right)^{@num@} &amp;&amp; \text{since, } \tan^{2}({@var_theta@}) = \sec^{2}({@var_theta@}) - 1 \\
+    &amp; ={@(sqrt(const))^num@}\tan^{{@num@}}({@var_theta@}) &amp;&amp; \text{since, } \tan({@var_theta@}) &gt; 0
+    \end{align}
+    \)
+</p>
+<p>Now let's do the actual substitution.</p>
+<p>
+    \(
+    \begin{align}
+    \displaystyle\int{@func@}dt &amp; = \displaystyle \int {@coeff_tcubed@} \left( {@coef@} \right)^{3} \cdot {@(sqrt(const))^num@}\tan^{{@num@}}({@var_theta@}) \cdot \left( {@ dif_coef@} \right) \, d(\Theta) \\
+    &amp; = \displaystyle \int {@expr7@} \, d(\Theta) \\
+    &amp; = \displaystyle \int {@expr8@} {\sec^{2}({@var_theta@})} \, d(\Theta) &amp;&amp; \text{since, } \sec^{2}({@var_theta@})= \tan^{2}({@var_theta@}) + 1.
+    \end{align}
+    \)
+</p>
+
+<p>Now, let \(u=\tan({@var_theta@})\). Then \(du =\sec^{2}({@var_theta@})d{@var_theta@}\), and so \( d{@var_theta@}=\frac{du}{\sec^{2}({@var_theta@})} \)</p>
+<p>Therefore: </p>
+<p>
+    \(
+    \begin{align}
+    \displaystyle\int{@func@}dt &amp; = \displaystyle \int {@expr8@} {\sec^{2}({@var_theta@})} \, d(\Theta) \\
+    &amp; = \displaystyle \int \left({@expr9@}\right) {\sec^{2}({@var_theta@})} \, \frac{du}{{\sec^{2}({@var_theta@})}} \\
+    &amp; = \displaystyle \int \left( {@expr9@} \right) \, du \\
+    &amp; = \displaystyle \int \left( {@expr10@} \right) \, du &amp;&amp; \text{since, } u=\tan({@var_theta@})\\
+    &amp; = \displaystyle {@expr11@} \\
+    &amp; = \displaystyle {@expr12@} &amp;&amp; \text{because, } u=\tan({@var_theta@})\\
+    &amp; = \displaystyle {@expr13@} &amp;&amp; \text{since, } \tan({@var_theta@})={@expr_tan@}\\
+    \end{align}
+    \)
+</p>
+
+<p>Therefore, </p>
+<p> \[\displaystyle\int{@func@}dt = \displaystyle {@expr13@} \]</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining the question*/
+var_theta:Theta;
+coeff_tcubed:rand(3)+1;/*first constant*/
+coeff_tsquared:rand_with_prohib(3,9,[0,1]); /*second constant*/
+aa:rand(3)+2;
+const:aa^2;/*third constant*/
+num:rand([3,5]);/*power of function in the bracket*/
+power:num/2;
+coef: (aa/sqrt(coeff_tsquared))*sec(Theta)
+dif_coef:diff(coef,Theta);
+func:(coeff_tcubed*t^3*(coeff_tsquared*t^2-const)^power); /*question expression*/
+
+
+/*worked solution*/
+expr1:(coeff_tsquared*t^2-const)^power;
+expr2:sqrt((coeff_tsquared*t^2-const))^num;
+expr3:sqrt(const*sec^2-const)^num;
+expr4: (coeff_tsquared*t^2-const)^(1/2);
+expr5: (sqrt(const)^num)*(tan(Theta)^num);
+expr6: ev(expr5^(1/num)),simp;
+expr7_a: coeff_tcubed*t^3*(sqrt(const)^num)*(tan(var_theta))^num*dif_coef;
+expr7: ev(expr7_a,t=coef),simp;
+expr7_b: ev(expr7/sec(Theta)^2),simp;
+expr8: subst(tan(Theta)^2+1,sec(Theta)^2,expr7_b);
+expr9: expand(expr8);
+expr10: subst(u,tan(Theta),expr9);
+expr11:int(expr10,u)+c;
+expr12: subst(tan(Theta),u,expr11);
+expr_tan: expr4/sqrt(const);
+expr13: subst(expr_tan,tan(Theta),expr12);
+
+
+
+/*model answer*/
+ta: expr13;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p> \(\displaystyle\int{@func@}dt={@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer"></p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">The question focuses on evaluating a integral Trig Functions by Trig substitution</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>20</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checking for correcting answers*/
+
+/*node 2:Failing to add a constant of integration*/
+mistake_1:int(func,t);
+
+/*node 3:Differentiating instead of integrating*/
+mistake_2:diff(func,t)+c;
+
+/*node 4:Not replacing back the value of u*/
+mistake_3:int((u^8-u^6),u)+c;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the corrrect answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have failed to add the constant after integration</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the second mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have differentiated the function instead of integrating.hint:go through the worked out solution below
+
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>checks for the third  mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem not have substituted back the value of u
+Hint:look at the worked solution
+
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1674399516</deployedseed>
+    <deployedseed>410763825</deployedseed>
+    <deployedseed>2091733544</deployedseed>
+    <deployedseed>900967245</deployedseed>
+    <deployedseed>1290834021</deployedseed>
+    <deployedseed>704277733</deployedseed>
+    <deployedseed>102297507</deployedseed>
+    <deployedseed>1720473075</deployedseed>
+    <deployedseed>1962334020</deployedseed>
+    <deployedseed>1698804169</deployedseed>
+    <deployedseed>1034111963</deployedseed>
+    <deployedseed>920345288</deployedseed>
+    <deployedseed>1009399645</deployedseed>
+    <deployedseed>1469092517</deployedseed>
+    <deployedseed>1680500744</deployedseed>
+    <deployedseed>171931765</deployedseed>
+    <deployedseed>529113527</deployedseed>
+    <deployedseed>361290670</deployedseed>
+    <deployedseed>1809986248</deployedseed>
+    <deployedseed>579654224</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

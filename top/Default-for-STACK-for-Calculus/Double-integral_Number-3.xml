@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Double integral_Number 3</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Evaluate the double integral below </p>
+<p>\(\displaystyle \int_{D} \int {@func_1@}dA\)
+where \(D\) is the portion of \(x^{2}+y^{2}= {@radius^2@}\) in the \(1^{st}\) quadrant by following the computational steps and filling in the missing information:</p>
+
+<p> Here is a quick sketch of the region \(D\) defined above. </p>
+[[jsxgraph]]
+ var aa = {#radius#};
+    // creating the board
+    JXG.Options.text.useMathJax=true;
+    var board = JXG.JSXGraph.initBoard(divid, {
+      boundingbox: [-1, aa+1, aa+1, -1],
+      axis: true, 
+      showCopyright: false,
+      showNavigation: false,
+      keepaspectratio: true
+    });
+    
+
+    // setting display styles for objects
+    var circleStyle = {
+      fixed: true,
+      highlight: false,
+      strokeWidth:2,
+    };
+
+    var fillStyle = {
+      fixed: true,
+      highlight: false,
+      color:'lime',
+      opacity:0.4,
+      layer:1    };
+
+    var textStyle = {
+      parse:false,
+      useMathJax:true    };
+
+    // creating the two circular functions
+    circleStyle.strokeColor = 'red';
+    var function1 = board.create('circle', [[0,0], aa], circleStyle);
+ 
+// labels for the curves and region
+    var label1 = board.create('text', [aa,aa,"\\(x^2 + y^2 = {#radius^2#} \\)"], textStyle);
+    textStyle.strokeColor = 'blue';
+    var label2 = board.create('text', [0.5,0.5,"\\(D\\)"], textStyle);
+    
+
+    // filling the region in the 3rd quadrant between the circles
+    var quadrant = board.create('polygon', [[0,0],[0,aa+1],[aa+1,aa+1],[aa+1,0]], {visible:false});
+    var shading_1 = board.create('curveintersection', [quadrant, function1], fillStyle,{visible:true});
+
+[[/jsxgraph]]
+
+<p><b>Step 1: </b>From the sketch above write the limits of integration by filling in the missing values.</p>
+<p>  Limits of the first integral  \(\theta_{1}=\)[[input:ans1]] [[validation:ans1]][[feedback:prt1]] \(\quad\) \(\theta_{2}=\) [[input:ans2]]   [[validation:ans2]][[feedback:prt2]]</p>
+<p> Limits of the second integral  \(r_{1}=\)[[input:ans3]] [[validation:ans3]][[feedback:prt3]] \(\quad\) \(r_{2}=\)[[input:ans4]] [[validation:ans4]][[feedback:prt4]]</p>  
+
+<p><b>Step 2: </b>Writting the question function interms of polar coordinates.</p>
+<p>Recall that, \(y= r \sin \theta , x=r \cos \theta\) and \(dA= rdr \theta\). 
+<p>Therefore, \({@func_1@}  =\) [[input:ans5]] [[validation:ans5]][[feedback:prt5]]</p>
+
+<p><b>Step 3:</b> Write the integral in polar form and calculate the area of the shaded region.</p>
+<p>Recall that : \(\displaystyle \int_{D} \int f(x,y)dA =\displaystyle \int_{\theta_{1}}^{\theta_{2}} \int_{r_{1}}^{r_{2}} f(r\cdot \cos(\theta),r\cdot \sin(\theta)) r\cdot d \theta \) in polar form. </p>
+<p>Therefore, the area of the integral will be,<p>
+<p>  \(\displaystyle \int_{D} \int {@func_1@}dA  = \) [[input:ans6]][[validation:ans6]] [[feedback:prt6]]. </p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<p><b>Worked solution</b></p>
+<p>The limits of the integral will be as follows.</p>
+<p>  Limits of the first integral  \(\theta_{1}= {@theta_1@} \quad \theta_{2}= {@theta_2@}\)</p>
+<p> Limits of the second integral  \(r_{1}={@r_1@} \quad r_{2}={@r_2@}\)</p>  
+<p><b>Note:</b> The range of \(\theta\) lies between \(0\) and \(90^o\),  which is the shaded region in the first quadrant. The limits of \(r\) are derived from the circle's radius as shown in the sketch. </p>
+
+
+<p>Writting the integral in terms of polar coordinates, we'll have.</p>
+ <p> \( 
+\begin{align}
+\displaystyle \int_{D} \int {@func_1@}dA  = \displaystyle \int_{@theta_1@}^{@theta_2@} \int_{@r_1@}^{@r_2@} \left ( {@coef_xy@}{@(r*cos(theta))@}{@(r*sin(theta))@}+{@constant@}\right ) r\cdot dr d \theta \\
+\end{align}
+\) </p>
+<p>Also, don’t forget that \(dA=r\cdot dr d\theta \) and so we’ll pick up an extra \(r\) in the integrand. Forgetting the extra \(r\) is one of the most common mistakes with these kinds of problems.</p>
+
+<p> Here is the r integration.</p>
+ <p> \( 
+\begin{align}
+\displaystyle \int_{@theta_1@}^{@theta_2@} \int_{@r_1@}^{@r_2@} ( {@coef_xy@}{@(r*cos(theta))@}{@(r*sin(theta))@}+{@constant@})  r\cdot dr d \theta = \displaystyle \int_{@theta_1@}^{@theta_2@}  ({@int(eqn_1, r)@}) \left.\begin{matrix}&\\&\end{matrix}\right|_{@r_1@}^{@r_2@} \\
+
+ = \displaystyle \int_{@theta_1@}^{@theta_2@} ({@eqn_2@})   d \theta\\
+\end{align}
+\) </p>
+
+
+<p> Finally, here is the θ integration.</p>
+\( \displaystyle \int_{@theta_1@}^{@theta_2@} ({@eqn_2@})   d \theta =  {@ta6@}\)
+<p>Which is the area of the shaded region </p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2022071300</text>
+    </stackversion>
+    <questionvariables>
+      <text>aa: 4+rand(7);
+bb: max(2, aa-2) + rand(aa - max(2, aa-2));
+
+coef_xy:rand(5)+2;
+constant:rand(7)+7;
+radius:rand(5)+1;
+func_1:coef_xy*xy+constant;
+func_2:x^2+y^2=radius^2;
+theta_1:0;
+theta_2:(1/2)*pi;
+r_1:0;
+r_2:radius;
+dA:r*dr*dtheta;
+x:r*cos(theta);
+y:r*sin(theta);
+expr:coef_xy*x*y+constant;
+eqn_1:r*coef_xy*(r *cos(theta))*(r *sin(theta))+constant*r;
+eqn_2:integrate (eqn_1, r, r_1, r_2); /*Here is the r integration.*/
+eqn_3:integrate (eqn_2, theta, theta_1,theta_2); /*Here is the theta integration.*/
+
+ta6:eqn_3;
+
+/*possible mistakes*/
+mistake_4:radius;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>{@func_1@}
+{@expr@}
+{@eqn_3@}
+[[jsxgraph]]
+
+    // creating the board
+    JXG.Options.text.useMathJax=true;
+    var board = JXG.JSXGraph.initBoard(divid, {
+      boundingbox: [-4, 4, 4, -4],
+      axis: true, 
+      showCopyright: false,
+      showNavigation: false,
+      keepaspectratio: true
+    });
+    
+    var aa = {#radius#};
+
+    // setting display styles for objects
+    var circleStyle = {
+      fixed: true,
+      highlight: false,
+      strokeWidth:2,
+    };
+
+    var fillStyle = {
+      fixed: true,
+      highlight: false,
+      color:'lime',
+      opacity:0.4,
+      layer:1
+    };
+
+    var textStyle = {
+      parse:false,
+      useMathJax:true
+    };
+
+    // creating the two circular functions
+    circleStyle.strokeColor = 'red';
+    var function1 = board.create('circle', [[0,0], aa], circleStyle);
+    
+
+    // filling the region in the 3rd quadrant between the circles
+    var quadrant = board.create('polygon', [[0,0],[0,aa+1],[aa+1,aa+1],[aa+1,0]], {visible:false});
+    var shading_1 = board.create('curveintersection', [quadrant, function1], fillStyle,{visible:true});
+
+[[/jsxgraph]]</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>theta_1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>theta_2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>r_1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>r_2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>expr</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>ta6</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>theta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>theta_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>r_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Possible Mistakes*/
+/*node1:checks for the correct answer*/
+/*node2:Failing to find the square root of the radius*/
+mistake_2:mistake_4;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>r_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have failed to find the square root of the radius which should not be the case. Try again!!!</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>expr</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>ta6</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>658906443</deployedseed>
+    <deployedseed>2142577894</deployedseed>
+    <deployedseed>248754806</deployedseed>
+    <deployedseed>12866958</deployedseed>
+    <deployedseed>176200733</deployedseed>
+    <deployedseed>904370963</deployedseed>
+    <deployedseed>1621984530</deployedseed>
+    <deployedseed>729004038</deployedseed>
+    <deployedseed>1199534264</deployedseed>
+    <deployedseed>368092794</deployedseed>
+    <deployedseed>261188597</deployedseed>
+    <deployedseed>2070985109</deployedseed>
+    <deployedseed>1902689902</deployedseed>
+    <deployedseed>1704336091</deployedseed>
+    <deployedseed>1725874602</deployedseed>
+    <deployedseed>98140496</deployedseed>
+    <deployedseed>1451660193</deployedseed>
+    <deployedseed>1991033922</deployedseed>
+    <deployedseed>1168780858</deployedseed>
+    <deployedseed>1709151072</deployedseed>
+    <deployedseed>1497017037</deployedseed>
+    <deployedseed>1009848228</deployedseed>
+    <deployedseed>468220658</deployedseed>
+    <deployedseed>959862101</deployedseed>
+    <deployedseed>1943553989</deployedseed>
+    <deployedseed>706695238</deployedseed>
+    <deployedseed>702509676</deployedseed>
+    <deployedseed>503866798</deployedseed>
+    <deployedseed>1821619094</deployedseed>
+    <deployedseed>1178784528</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>theta_1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>theta_2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>r_1</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>r_2</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>expr</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>eqn_3</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-2-F</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt6</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt6-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

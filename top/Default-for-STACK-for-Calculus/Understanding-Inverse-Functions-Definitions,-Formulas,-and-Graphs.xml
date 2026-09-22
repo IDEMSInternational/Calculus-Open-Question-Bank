@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Understanding Inverse Functions: Definitions, Formulas, and Graphs</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>a) Suppose \(f\) is a one-to-one function with domain \(A\) and range \(B\) </p>
+<p>i) How is the inverse function \(f^{-1}\) defined? [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>ii) What is the domain of \(f^{-1}\)? [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>
+<p>iii) What is the range of \(f^{-1}\)? [[input:ans3]] [[validation:ans3]][[feedback:prt3]]</p>
+<p>b) If you are given a formula for \(f\), how do you find a formula for \(f^{-1}\)? [[input:ans4]] [[validation:ans4]][[feedback:prt4]]</p>
+<p>c) If you are given the graph for \(f^{-1}\) how do you find the graph of \(f^{-1}\)? [[input:ans5]] [[validation:ans5]][[feedback:prt5]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>(a) Let \(f\) be a one-to-one function with dormain \(A\) and range \(B\). Then eits inverse function \(f^{-1}\) has dormain \(B\) and range \(A\) and is defined by </p>
+<p>\(f^{-1}(y)=x \Longleftrightarrow  f(x)=y \) </p>
+<p>for any \(y\) in \(B\).</p>
+<p>\(\bullet \) Domain of \(f^{-1}=\) range of \(f\).</p>
+<p>\(\bullet \) Range of  \(f^{-1}=\) domain of \(f\).</p>
+<p>(b) </p>
+<p>\(\bullet \) Write \(y=f(x)\);</p>
+<p>\(\bullet \) Solve this equation for \(x\) in terms of \(y\) (if possible). </p>
+<p>\(\bullet \) To express \(f^{-1}\) as a function of \(x\), interchange \(x\) and \(y\). The resulting equation is \(y=f^{-1}(x)\).</p>
+<p>(c) The graph of \(f^{-1}\) is obtained by reflecting the graph of \(f\) about the line \(y=x\). </p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[ta1:random_permutation([[1, true,sconcat("\\(f^{-1}\\) is defined as \\(f^{-1}(Y)=X, f(X)=Y\\)")],[2, false,sconcat("\\(f^{-1}\\) is defined as \\(f^{-1}(Y)=X, f(X)=Y^2\\)")],[3, false,sconcat("\\(f^{-1}\\) is defined as \\(f^{-1}(Y)=X^2, f^{-1}(X)=Y\\)")],[4, false,sconcat("\\(f^{-1}\\) is defined as \\(f^{-1}(Y)=X+1, f^{-1}(X)=Y\\)")]]);
+ta2:random_permutation([[1, true,sconcat("The domain of \\(f{-1}\\) is the range of \\(f: B\\)")],[2, false,sconcat("The domain of \\( f^{-1} \\) is the same as the domain of \\( f: A \\)")],[3, false,sconcat("The domain of \\( f^{-1} \\) is the union of the domain and range of \\( f: A \\cup B \\)")],[4, false,sconcat("The domain of \\( f^{-1} \\) is the range of \\( f \\) intersected with the domain of \\( f: B \\cap A \\)")]]);
+ta3:random_permutation([[1, true,sconcat("The range of \\(f^{-1}\\) is the domain of \\(f: A\\)")],[2, false,sconcat("The range of \\( f^{-1} \\) is the range of \\( f: B \\)")],[3, false,sconcat("The range of \\( f^{-1} \\) is the intersection of the domain and range of \\( f: A \\cap B \\)")],[4, false,sconcat("The range of \\( f^{-1} \\) is the complement of the domain of \\( f: A' \\)")]]);
+ta4:random_permutation([[1, true,sconcat("Solve the equation for \\(x\\) in terms of \\(y\\). Then we interchange \\(x\\) and \\(y\\).")],[2, false,sconcat("Plot the points from the inverse function on a graph, then find the equation of the line connecting these points.")],[3, false,sconcat("Differentiate the function with respect to \\(y\\) and solve for \\(x\\).")],[4, false,sconcat("Apply the quadratic formula to the equation to find \\(x\\) in terms of \\(y\\).")]]);
+ta5:random_permutation([[1, true,sconcat("We would reflect the original functions graph about the \\(y=x\\) line to get the graph of the inverse.")],[2, false,sconcat("The graph of the inverse function is obtained by shifting the original function vertically.")],[3, false,sconcat("The graph of the inverse function is obtained by taking the reciprocal of the original function's values.")],[4, false,sconcat("The graph of the inverse function is obtained by reflecting the original function's graph about the \\(x-axis\\).")]]);
+]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>There is no randomization for this question</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">https://docs.google.com/document/d/1DRwZ4wjbYn9XdnidJ4Gxc3OtdVOZhR6ngWFlAKtikLQ/edit#heading=h.4n0o8kgcl43p</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">This question explores the concept of inverse functions. It discusses how the inverse function \( f^{-1} \) is defined for a one-to-one function \( f \), along with its domain and range. Additionally, it outlines the process of finding the formula for \( f^{-1} \) given a formula for \( f \), as well as determining the graph of \( f^{-1} \) given the graph of \( f \).</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>radio</type>
+      <tans>ta2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>radio</type>
+      <tans>ta3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>radio</type>
+      <tans>ta4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>radio</type>
+      <tans>ta5</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mcq_correct(ta1)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mcq_correct(ta2)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mcq_correct(ta3)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mcq_correct(ta4)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>mcq_correct(ta5)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1503799371</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>first(mcq_correct(ta1))</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>first(mcq_correct(ta2))</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>first(mcq_correct(ta3))</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>first(mcq_correct(ta4))</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>first(mcq_correct(ta5))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

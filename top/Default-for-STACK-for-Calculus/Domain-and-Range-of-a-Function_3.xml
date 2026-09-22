@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Domain and Range of a Function</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p></p><p>Find the domain and range of \(f(t)={@fx@}\).</p><div>
+<p>Give your answer as interval of the real numbers.</p>
+<p><em>Note: To enter intervals of you real line, you should write the relevant text in the table below.</em></p>
+
+<table width="250" cellspacing="1" cellpadding="0" border="1" style="margin-left: 30px">
+  <tr>
+    <th style="text-align: center;">Intervals</th>
+    <th style="text-align: center;">Input Syntax</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( [a,b] \)</td>
+    <td style="text-align: center;"><code>cc(a,b)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( (a,b) \)</td>
+    <td style="text-align: center;"><code>oo(a,b)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( [a,b) \)</td>
+    <td style="text-align: center;"><code>co(a,b)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( (a,b] \)</td>
+    <td style="text-align: center;"><code>oc(a,b)</code></td>
+  </tr>
+ <tr>
+    <td style="text-align: center;">\( (a, \infty) \)</td>
+    <td style="text-align: center;"><code>oo(a,inf)</code></td>
+  </tr>
+ <tr>
+    <td style="text-align: center;">\( (-\infty, b] \)</td>
+    <td style="text-align: center;"><code>oc(-inf,b)</code></td>
+  </tr>
+ <tr>
+    <td style="text-align: center;">\( (-\infty, \infty) \)</td>
+    <td style="text-align: center;"><code>oo(-inf,inf)</code></td>
+  </tr>
+</table>
+
+<br>
+<p>(a) \(Dom(f) =\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>(b) \(Range(f) =\) [[input:ans2]] [[validation:ans2]]&nbsp;[[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+
+<p>(a) To determine the domain of the function, we need to identify any restrictions on the values of \(t\) that would make the expression undefined.</p>
+
+<p>For \(f(t) = \sqrt{{@aa@} - t} + \sqrt{{@bb@} t}\), we need both the terms inside the square roots to be non-negative since the square root of a negative number is undefined in the real numbers.</p>
+
+<p style="margin-left: 30px">From \({@bb@} t \geq 0\), we have \(t \geq 0\)</p>
+<p style="margin-left: 30px">From \(@aa@} - t} \geq 0\), we have \(t \leq {@aa@}\)</p>
+
+<p>So, the domain of the function \(f(t)\) is the set of value of \(t\) that satisfy both of these conditions,</p>
+<p style="margin-left: 30px">\(Dom(f) = \{ t \in mathbb{R} : \(0 \leq t \leq {@aa@} = {@ta1@}\)</p>
+
+<br>
+
+<p>(b) Next, we determine the range of the function. 
+<br>The range represents the set of all possible values that \(f(t)\) can attain as \(t\) varies.</p>
+
+<p>To determine the range, we'll analyze how the function behaves for extreme values of \(t\) within the domain.</p>
+<p>a) As \(t\) approaches 0 (the lower bound of the domain):</p>
+<p>\(f(0) = \sqrt{{@aa@} - 0} + \sqrt{{@bb@} \times 0} = \sqrt{{@aa@}} + \sqrt{0} = \sqrt{{@aa@}}\)</p>
+<p>b) As \(t\) approaches \( {@aa@} \) (the upper bound of the domain):</p>
+<p>\(f({@aa@}) = \sqrt{{@aa@} - {@aa@}} + \sqrt{{@bb@} \times {@aa@}} = \sqrt{0} + \sqrt{{@bb@} \cdot {@aa@}} = \sqrt{{@bb@} \times {@aa@}}\)</p>
+
+<p>Since the function \(f(x)\) is continuous and the domain is bounded from above and below, the range of the function will be the interval between the minimum and maximum values it can attain within the domain.</p>
+
+<p><em>Range (\(f(x)\)): \( \sqrt{{@aa@}} \leq f(x) \leq {@simplify(sqrt(bb*aa))@} \)</em></p>
+<p>Which can be written as: \( {@ta2@} \)</p>
+
+<p>So, the domain of \(y\) is \( {@ta1@} \), and the range is \( {@ta2@} \).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>simp:false;
+aa:ev(rand(10)+7,simp);
+bb:ev(rand(5)+2,simp);
+fx:sqrt(aa-t)+sqrt(bb*t);
+xmin:0;
+xmax:aa;
+ta1:cc(0,aa);
+xv:simplify(ev(fx,t=0));
+yv:simplify(ev(fx,t=aa));
+ta2:cc(xv,yv);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(f(t)={@fx@}\).</p>
+<p>Domain \(={@ta1@}\) </p>
+<p>Range \(={@ta2@}\) </p>
+]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">Dan Kelly</p>
+<p id="description">This STACK question requires students to determine the domain and range of a given function. They are asked to provide the domain in interval notation.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords>x</forbidwords>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer */</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions>t</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>When looking at the domain of a square root function we analyse when the expression inside it would be non-negative. Here we need to look at \(\sqrt{{@aa-t@}}\) first, and we see that \({@aa-t@}\) is non-negative when \(t\leq {@aa@}\). We then look at&nbsp;\(\sqrt{{@bb*t@}}\), and we see that \({@bb*t@}\) is non-negative when \(t\geq 0\). Since both conditions need to be true simultaneously the domain is the interval \([0,{@aa@}]\), which is entered as \(t \geq 0\) and \(t \leq {@aa@}\).</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer */</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1058803227</deployedseed>
+    <deployedseed>1693323064</deployedseed>
+    <deployedseed>1959354339</deployedseed>
+    <deployedseed>486937132</deployedseed>
+    <deployedseed>385162547</deployedseed>
+    <deployedseed>670324119</deployedseed>
+    <deployedseed>1336024328</deployedseed>
+    <deployedseed>200146764</deployedseed>
+    <deployedseed>1326960789</deployedseed>
+    <deployedseed>416372791</deployedseed>
+    <deployedseed>1763086224</deployedseed>
+    <deployedseed>1340474268</deployedseed>
+    <deployedseed>1082936932</deployedseed>
+    <deployedseed>805440805</deployedseed>
+    <deployedseed>24841474</deployedseed>
+    <deployedseed>1533178328</deployedseed>
+    <deployedseed>1601831234</deployedseed>
+    <deployedseed>1252654750</deployedseed>
+    <deployedseed>1252352648</deployedseed>
+    <deployedseed>1133324142</deployedseed>
+    <deployedseed>2143371282</deployedseed>
+    <deployedseed>1917694993</deployedseed>
+    <deployedseed>1066732139</deployedseed>
+    <deployedseed>1062233422</deployedseed>
+    <deployedseed>1909835792</deployedseed>
+    <deployedseed>1139894213</deployedseed>
+    <deployedseed>771681325</deployedseed>
+    <deployedseed>1585087535</deployedseed>
+    <deployedseed>1712294713</deployedseed>
+    <deployedseed>393961573</deployedseed>
+    <deployedseed>1522565536</deployedseed>
+    <deployedseed>980028875</deployedseed>
+    <deployedseed>713292417</deployedseed>
+    <deployedseed>834645082</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluate the Integrals involving trigonometric functions</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Evaluate</p>
+<p>\(\displaystyle \int_{@lower_limit@}^{@upper_limit@}{@func_w@}dw\)=[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>To answer this question we will first consider the indefinite integral\(\displaystyle \int{@func_w@}dw\) and calculate it using two substitutions.</p>
+<p>First, let \(u={@coef_w@}\cdot{w}\). Then, \(\frac{du}{dw}={@coef_w@}\) and so \(dw={@du/coef_w@}\).</p>
+<p>Therefore,</p>
+<p>
+    \(
+    \begin{align}
+    \displaystyle \int {@func_w@}dw &amp;= \displaystyle\int {@coef_func@}\cdot\cos^3(u)\cdot\sin^5(u)\,{@du/coef_w@}\\
+    &amp;={@1/coef_w@}\displaystyle\int {@coef_func@}\cdot\cos^3(u)\cdot\sin^5(u)\,du \\
+    &amp;={@1/coef_w@}\displaystyle\int {@coef_func@}\cdot\cos(u)\cdot\cos^2(u)\cdot\sin^5(u)\,du \\
+    &amp; ={@1/coef_w@} \displaystyle \int {@coef_func@} \cdot \cos(u) \cdot (1-\sin^2(u)) \cdot \sin^5(u)\,du, &amp;&amp;\text{since, } {@recal@}
+    \end{align}
+    \)
+</p>
+<p>Now, let \(v=\sin(u).\) Then, \(\frac{dv}{du}=\cos(u) \) and so \(du=\frac{1}{\cos(u)}dv\).</p>
+<p>Therefore,</p>
+<p></p>
+<p>
+    \(
+    \begin{align}
+    \displaystyle \int {@func_w@}dw &amp; ={@1/coef_w@} \displaystyle \int {@coef_func@} \cdot \cos(u) \cdot&nbsp; (1-\sin^2(u)) \cdot \sin^5(u)\,du \\
+    &amp; ={@1/coef_w@} \displaystyle \int {@coef_func@} \cdot \cos(u) \cdot&nbsp; (1-v^2) v^5\,\frac{1}{\cos(u)}dv \\
+    &amp; = {@(1/coef_w*coef_func)@}\displaystyle \int(1-v^2)v^5\,dv \\
+    &amp; ={@(1/coef_w*coef_func)@}\displaystyle \int v^5-v^7 \,dv \\
+    &amp; ={@(1/coef_w*coef_func)@}(\frac{v^6}{6}-\frac{v^8}{8}) \\
+    &amp; ={@(1/coef_w*coef_func)@} \cdot (\frac{v^6}{6})-{@(1/coef_w*coef_func)@} \cdot (\frac{v^8}{8})
+    \end{align}
+    \)
+</p>
+<p>Note that we did not include a constant of integration as this is part of a definite integral, where the constant is not needed.</p>
+<p>Substituting back \(v=\sin(u)\) we get</p>
+<p>\[\displaystyle \int {@func_w@}dw={@(1/coef_w*coef_func)@} \cdot \left( \frac{\sin^6(u)}{6} \right)-{@(1/coef_w*coef_func)@} \cdot \left(\frac{\sin^8(u)}{8} \right)\]</p>
+<p>Similarly, substituting back \(u={@coef_w@}\cdot w\) we get</p>
+<p>\[\displaystyle \int {@func_w@}dw={@(1/coef_w*coef_func)@} \cdot \left( \frac{\sin^6({@coef_w@}\cdot w)}{6} \right)-{@(1/coef_w*coef_func)@} \cdot \left( \frac{\sin^8({@coef_w@}\cdot w)}{8} \right)\]</p>
+<p>Therefore,</p>
+<p>
+    \(
+    \begin{align}
+    \displaystyle \int_{@lower_limit@}^{@upper_limit@}{@func_w@}dw &amp; = \left[ -{@(1/coef_w*coef_func)/8@}\cdot \sin^8({@coef_w@}\cdot w)+{@(1/coef_w*coef_func)/6@}\cdot\sin^6({@coef_w@}\cdot w)\right]_{@lower_limit@}^{@upper_limit@} \\
+    &amp; ={@ta@}
+    \end{align}
+    \)
+</p>
+Therefore,
+<p>\[\displaystyle \int_{@lower_limit@}^{@upper_limit@}{@func_w@}dw= {@ta@}\]</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*Defining the question variables*/
+coef_w:(rand_with_step(1,20,2))/2;
+coef_func:rand(10)+1;
+func_w:coef_func*((cos(coef_w*w))^3*(sin(coef_w*w))^5);
+lower_limit: rand([0, %pi, 2*%pi, 3*%pi, 4*%pi]); 
+upper: rand([%pi, 2*%pi, 3*%pi/2, (4/3*%pi), (4*%pi), 12*%pi]); 
+upper_limit: if lower_limit < upper then upper else rand([%pi, 2*%pi, 3*%pi/2, (4/3*%pi), (4*%pi),12*%pi]); 
+upper_limit:upper_limit+%pi;
+
+recal: cos(u)^2=1-sin(u)^2;
+/*model answer*/
+expr: -((1/coef_w*coef_func)/8)*sin((coef_w)*w)^8+((1/coef_w*coef_func)/6)*sin((coef_w)*w)^6+c;
+expr1: ev(expr,w=lower_limit),simp;
+expr2: ev(expr,w=upper_limit),simp;
+ta:ev(expr2-expr1),simp;
+
+
+
+/*Node 1 checks for correct answer*/
+/*Node 2: mistake_ computing indefinite integral and adding the constant after integration*/
+mistake_2: int(func_w,w)+c;
+/*Node 3: mistake_  Interchanging the limits of integration, with the correct integral */
+mistake_3: int(func_w,w,upper_limit,lower_limit); 
+/*Node 4: mistake_  computing definite integral correctly but adding a constant */
+mistake_4: int(func_w,w,lower_limit,upper_limit)+c;
+]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<br>{@coef_w@}
+<br>\(\displaystyle \int_{@lower_limit@}^{@upper_limit@}{@func_w@}\, dw={@ta@}\)]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">[Godfrey Wabwire]</p>
+<p id="concept">[]</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">[The question focuses on evaluating an Integral involving Trig functions by reduction formula]</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>computing indefinite integral and adding the constant after integration</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have computed the correct indefinite integral with the constant of  integration.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Interchanging the limits of integration, with the correct integral </description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have interchanged the limits of integration, with the use of the correct indefinite integral.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>computing definite integral correctly but adding a constant</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have computed the definite integral correctly but added a constant, which should not be the case.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1842867951</deployedseed>
+    <deployedseed>1620575756</deployedseed>
+    <deployedseed>835156296</deployedseed>
+    <deployedseed>1933917535</deployedseed>
+    <deployedseed>377078486</deployedseed>
+    <deployedseed>1622673648</deployedseed>
+    <deployedseed>646602703</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>mistake_2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>0.5000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>prt1-2-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>3</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>mistake_3</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>0.5000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>prt1-3-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>4</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>mistake_4</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>0.5000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>prt1-4-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

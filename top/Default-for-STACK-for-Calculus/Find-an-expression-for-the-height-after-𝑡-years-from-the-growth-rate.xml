@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Find an expression for the height after 𝑡 years from the growth rate</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p></p><p>An evergreen nursery usually sells a certain shrub after {@aa@} years of growth ofter its initial repotting. The growth rate during those {@aa@} years is approximated by&nbsp;</p><p>\[\frac{dh}{dt} = {@dispdp(bb,2)@}\cdot t + {@cc@}\]</p><p>where \(t\) is the time taken in years and \(h\) is the height in inches. The seedlings are {@dd@} inches tall when repotted (i.e. \(t = 0\)).&nbsp;</p><p>i. Find an expression for the height after \(t\) years.&nbsp;</p><p>\(h(t) = \) [[input:ans1]] [[validation:ans1]]&nbsp;[[feedback:prt1]]</p><p>ii. How tall are the shrubs when they are sold?</p><p>[[input:ans2]] inches [[validation:ans2]]&nbsp;[[feedback:prt2]]<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>If \(\frac{dh}{dt} = {@dispdp(bb,2)@}\cdot t + {@cc@}\) then&nbsp;</p><p>\(h(t) = \int {@dispdp(bb,2)@}\cdot t + {@cc@} dt = {@dispdp(bb/2,3)@}\cdot t^2 + {@cc@} \cdot t + c\).</p><p>Since, when \(t = 0\) \(h = {@dd@}\), we get \(c={@dd@}\) and \(h(t) = {@dispdp(bb/2,3)@}\cdot t^2 + {@cc@} \cdot t + {@dd@}\).</p><p>To find the height when they are sold, i.e. \(t = {@aa@}\), we find \(h({@aa@}) = {@dispdp(ta2,3)@}\).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>aa:rand([4,5,6,7]);
+bb:rand([1,2,3])/4;
+cc:rand([2,3,4,5]);
+dd:rand([2,3,4]);
+ta1:bb/2*t^2+cc*t+dd;
+ta2:ev(ta1,t=aa);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>i. An expression for the height after \(t\) years.</p><p>\(h(t) = {@ta1@}\)</p>
+<p>ii. The shrubs when they are sold are \({@ta2@}\) inches </p>
+]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">Find an expression for the height after 𝑡 years from the growth rate and how tall are the shrubs when they are sold</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1458389354</deployedseed>
+    <deployedseed>1895209279</deployedseed>
+    <deployedseed>868125245</deployedseed>
+    <deployedseed>2100266763</deployedseed>
+    <deployedseed>1026894191</deployedseed>
+    <deployedseed>1068508566</deployedseed>
+    <deployedseed>1271177601</deployedseed>
+    <deployedseed>125659099</deployedseed>
+    <deployedseed>165915063</deployedseed>
+    <deployedseed>582044719</deployedseed>
+    <deployedseed>1029652232</deployedseed>
+    <deployedseed>1534116099</deployedseed>
+    <deployedseed>1362789076</deployedseed>
+    <deployedseed>134304591</deployedseed>
+    <deployedseed>1334475390</deployedseed>
+    <deployedseed>6265510</deployedseed>
+    <deployedseed>51123276</deployedseed>
+    <deployedseed>1382293750</deployedseed>
+    <deployedseed>1057495483</deployedseed>
+    <deployedseed>1924087861</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

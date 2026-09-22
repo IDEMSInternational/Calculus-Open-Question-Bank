@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluate the Definite Integral of an exponential function</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Find the value of the integral </p>
+<p>\( \displaystyle \int_{{@lower@}}^{@higher@}{@f_x@}\, dx =\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><b>Worked Solution</b></p>
+<p>Recall that the definite integral of a real-valued function \(f(x)\) with respect to \(x\) on an interval \([a,b]\) is expressed as \(\displaystyle \int_{a}^b f(x)dx =\left[ F(x)\right]_a^b=F(b)-F(a)\), where \( F(x)=\displaystyle \int f(x)dx\).</p>
+<p>Therefore, \(\displaystyle \int_{{@lower@}}^{@higher@} {@f_x@} dx =\left[ {@(1/a)*f_x@}\right]_{@lower@}^{@higher@}={@ta_1@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*randomizing the static question variables*/
+lower:rand(4)+0; /* lower limit of the integration*/
+higher:rand(5)+lower+2; /* upper limit of integration*/
+a: rand_with_prohib(-5,5,[0]);
+b: rand_with_step(-5,5,1);
+f_x: e^(a*x+b); /* the function */
+ta_1:integrate(f_x,x,lower,higher);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\(\displaystyle \int_{x={@lower@}}^{@higher@} {@f_x@}\, dx={@ta_1@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">This question requires students to find the definite integral involving an exponential function</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1: checking for the correct answer*/
+
+/*node 2: mistake: Adding 1 to the power of e then dividing by the new power*/
+mistake_step_2_1:e^(x+1)/(x+1);
+mistake_step_2_2:ev(mistake_step_2_1,x=higher);
+mistake_step_2_3:ev(mistake_step_2_1,x=lower);
+mistake_2:mistake_step_2_2-mistake_step_2_3;
+
+/*node 4: mistake: Subtracting the higher limit from the lower limit*/
+mistake_step_4_1:e^x;
+mistake_step_4_2:ev(mistake_step_4_1,x=lower);
+mistake_step_4_3:ev(mistake_step_4_1,x=higher);
+mistake_4:mistake_step_4_2-mistake_step_4_3;
+
+/*node 5: mistake: Omitting the lower limit during evaluation*/
+mistake_step_5_1:e^x;
+mistake_step_5_2:ev(mistake_step_5_1,x=higher);
+mistake_step_5_3:ev(mistake_step_5_1,x=lower);
+mistake_5:mistake_step_5_2;
+
+/*node 6: mistake: Adding the values after replacing the limits of integration*/
+mistake_step_6_1:e^x;
+mistake_step_6_2:ev(mistake_step_6_1,x=higher);
+mistake_step_6_3:ev(mistake_step_6_1,x=lower);
+mistake_6:mistake_step_6_2+mistake_step_6_3;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions>x</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for first mistake of Adding 1 to the power of e then dividing by the new power</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have added 1 to the power of \(e\) then divided by the new power.</p>
+<p>Recall, \(\displaystyle \int_{a}^b e^x dx =\left[ e^x \right]_a^b=e^b- e^a\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>checks for the second mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have subtracted the higher limit from the lower limit.</p>
+<p>Recall,\(\displaystyle \int_{a}^b e^x dx =\left[ e^x \right]_a^b=e^b- e^a\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>checks for the third mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_5</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-5-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have omitted the lower limit during evaluation.</p>
+<p>Recall,\(\displaystyle \int_{a}^b e^x dx =\left[ e^x \right]_a^b=e^b- e^a\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>5</falsenextnode>
+        <falseanswernote>prt1-5-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>5</name>
+        <description>checks for the fourth mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_6</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-6-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have added the values after evaluating the integral with the limits of integration.</p>
+<p>Recall,\(\displaystyle \int_{a}^b e^x dx =\left[ e^x \right]_a^b=e^b- e^a\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-6-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>675116852</deployedseed>
+    <deployedseed>267902936</deployedseed>
+    <deployedseed>1804467623</deployedseed>
+    <deployedseed>845066013</deployedseed>
+    <deployedseed>998869847</deployedseed>
+    <deployedseed>972599917</deployedseed>
+    <deployedseed>956462787</deployedseed>
+    <deployedseed>1794262922</deployedseed>
+    <deployedseed>1564584503</deployedseed>
+    <deployedseed>785809148</deployedseed>
+    <deployedseed>816413612</deployedseed>
+    <deployedseed>2042230745</deployedseed>
+    <deployedseed>646069531</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_1</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

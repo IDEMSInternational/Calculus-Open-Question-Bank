@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Domain and Range of a Given Function</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Find the domain and range of \(f(x)={@fx@}\).</p>
+<p><em>You will write your answer as interval of the real numbers.</em></p>
+<p><em>Note: Simple real intervals may be represented when typing in the blanks as follows.</em><p>
+<p>
+<table width="250" cellspacing="1" cellpadding="0" border="1" style="margin-left: 30px">
+  <tr>
+    <th style="text-align: center;">Intervals</th>
+    <th style="text-align: center;">Input Syntax</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( [a,b] \)</td>
+    <td style="text-align: center;"><code>cc(a,b)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( (a,b) \)</td>
+    <td style="text-align: center;"><code>oo(a,b)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( [a,b) \)</td>
+    <td style="text-align: center;"><code>co(a,b)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( (a,b] \)</td>
+    <td style="text-align: center;"><code>oc(a,b)</code></td>
+  </tr>
+ <tr>
+    <td style="text-align: center;">\( (a, \infty) \)</td>
+    <td style="text-align: center;"><code>oo(a,inf)</code></td>
+  </tr>
+ <tr>
+    <td style="text-align: center;">\( (-\infty, b] \)</td>
+    <td style="text-align: center;"><code>oc(-inf,b)</code></td>
+  </tr>
+<tr>
+    <td style="text-align: center;">\( [b,\infty] \)</td>
+    <td style="text-align: center;"><code>co(b,inf)</code></td>
+  </tr>
+ <tr>
+    <td style="text-align: center;">\( (-\infty, \infty) \)</td>
+    <td style="text-align: center;"><code>oo(-inf,inf)</code></td>
+  </tr>
+</table>
+</p>
+<br>
+<p>Domain \(=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>Range \(=\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Given the function \(f(x)={@fx@}\) </p>
+<p><b>1. Domain:</b></p>
+<p>We recall that all polynomial functions are defined on \( \mathbb{R} \).</p>
+<p>The function \( f: x \mapsto {@fx@} \) is a polynomial function. Then \(Dom(f)=  \mathbb{R}  = {@oo(-inf, inf)@} \). 
+<p><b>2. Range:</b></p>
+<p>To find the range of this quadratic function, we will use the formula below (called canonical form) to achieve our goal.</p>
+<p>We recall that, \(ax^{2}+bx+c= \displaystyle a \left( x + \frac{b}{2a} \right)^{2} - \left( \frac{b}{2a} \right)^{2}+c  \). In this case, \( a = 1 \), \( b = {@-(pm1*aa + pm2*bb)@} \), and \( c = {@(pm1*aa*pm2*bb) + cc@} \).</p>
+<p>We have:</p>
+<p>\( \begin{align} 
+{@fx@} & = \displaystyle \left( x + \frac{{@-(pm1*aa + pm2*bb)@}}{2} \right)^{2} - \left( \frac{{@-(pm1*aa + pm2*bb)@}}{2} \right)^{2} + ({@(pm1*aa*pm2*bb) + cc@}) \quad (\text{By applying above formula})\\
+& = \displaystyle \left( {@x+val_b_2a@} \right)^{2} - {@abs(val_b_2a)^2@} {@if ((pm1*aa*pm2*bb) + cc)<0 then "-" else "+"@} {@abs((pm1*aa*pm2*bb) + cc)@} \\
+& = \displaystyle \left({@x+val_b_2a@} \right)^{2} {@if eval_discr<0 then "-" else "+"@} {@abs(eval_discr)@}
+\end{align} \)</p>
+<p>We know that; </p>
+<p>\( \begin{align} 
+\forall x \in \mathbb{R}, \; & \displaystyle \left({@x+val_b_2a@}\right)^{2} & \geq 0; \\
+\forall x \in \mathbb{R}, \; & \displaystyle \left({@x+val_b_2a@}\right)^{2} {@if eval_discr<0 then "-" else "+"@} {@abs(eval_discr)@} & \geq  {@if eval_discr<0 then "-" else "+"@} {@abs(eval_discr)@} 
+\end{align}\)</p>
+<p>Since \(f(x)=y\), \( Range(f)= \{y \in \mathbb{R}, y  \geq  {@if eval_discr<0 then "-" else "+"@} {@abs(eval_discr)@} \}= {@co(yv,inf)@} \).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>aa:rand(8)+1;
+pm1:rand_with_prohib(-1,1,[0]);
+bb:rand(8)+1;
+pm2:rand_with_prohib(-1,1,[0]);
+cc:rand(8)+1;
+fx:expand((x-pm1*aa)*(x-pm2*bb)+cc);
+xv:(pm1*aa+pm2*bb)/2;
+yv:ev(fx,x=xv);
+ta1:oo(-inf,inf);
+ta2:co(yv,inf);
+/*Worked solution*/
+val_b_2a: (-(pm1*aa + pm2*bb))/2;
+eval_discr: -val_b_2a^2+(pm1*aa*pm2*bb) + cc;
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Given the function \(f(x)={@fx@}\) </p>
+<p>Domain \(={@ta1@}\)</p>
+<p>Range \(={@ta2@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">In this STACK question, students are asked to determine the domain and range of a given function. They need to provide the correct intervals or values that define the domain and range of the function.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>7</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>7</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer */</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Since \(f\) is a polynomial function, thus its domain is \( \mathbb{R}\)</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer */</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>429681253</deployedseed>
+    <deployedseed>1042528935</deployedseed>
+    <deployedseed>1930355249</deployedseed>
+    <deployedseed>758337822</deployedseed>
+    <deployedseed>1301673710</deployedseed>
+    <deployedseed>864951471</deployedseed>
+    <deployedseed>1482348788</deployedseed>
+    <deployedseed>1260271493</deployedseed>
+    <deployedseed>614535420</deployedseed>
+    <deployedseed>770024467</deployedseed>
+    <deployedseed>202617538</deployedseed>
+    <deployedseed>501306669</deployedseed>
+    <deployedseed>885284050</deployedseed>
+    <deployedseed>976315597</deployedseed>
+    <deployedseed>2054326877</deployedseed>
+    <deployedseed>1530401188</deployedseed>
+    <deployedseed>527018629</deployedseed>
+    <deployedseed>1374362163</deployedseed>
+    <deployedseed>875179007</deployedseed>
+    <deployedseed>493012912</deployedseed>
+    <deployedseed>1196443529</deployedseed>
+    <deployedseed>462174145</deployedseed>
+    <deployedseed>1907292525</deployedseed>
+    <deployedseed>1450175389</deployedseed>
+    <deployedseed>399100759</deployedseed>
+    <deployedseed>17114380</deployedseed>
+    <deployedseed>1754316306</deployedseed>
+    <deployedseed>2032207542</deployedseed>
+    <deployedseed>914582442</deployedseed>
+    <deployedseed>1627133497</deployedseed>
+    <deployedseed>867946367</deployedseed>
+    <deployedseed>365274752</deployedseed>
+    <deployedseed>1705963191</deployedseed>
+    <deployedseed>942066860</deployedseed>
+    <deployedseed>387976556</deployedseed>
+    <deployedseed>584884614</deployedseed>
+    <deployedseed>71790821</deployedseed>
+    <deployedseed>786881691</deployedseed>
+    <deployedseed>1828187193</deployedseed>
+    <deployedseed>1501939893</deployedseed>
+    <deployedseed>1935322027</deployedseed>
+    <deployedseed>1701027533</deployedseed>
+    <deployedseed>700069981</deployedseed>
+    <deployedseed>952163632</deployedseed>
+    <deployedseed>752185184</deployedseed>
+    <deployedseed>1866233919</deployedseed>
+    <deployedseed>1940922553</deployedseed>
+    <deployedseed>2043367030</deployedseed>
+    <deployedseed>197243272</deployedseed>
+    <deployedseed>422056029</deployedseed>
+    <deployedseed>1493185879</deployedseed>
+    <deployedseed>91084196</deployedseed>
+    <deployedseed>545691282</deployedseed>
+    <deployedseed>1671517004</deployedseed>
+    <deployedseed>943228968</deployedseed>
+    <deployedseed>93926633</deployedseed>
+    <deployedseed>941177473</deployedseed>
+    <deployedseed>226769910</deployedseed>
+    <deployedseed>593699058</deployedseed>
+    <deployedseed>566521159</deployedseed>
+    <deployedseed>2100573298</deployedseed>
+    <deployedseed>1247900060</deployedseed>
+    <deployedseed>1380599708</deployedseed>
+    <deployedseed>1044420654</deployedseed>
+    <deployedseed>1957996726</deployedseed>
+    <deployedseed>1549161697</deployedseed>
+    <deployedseed>188248662</deployedseed>
+    <deployedseed>1553219054</deployedseed>
+    <deployedseed>2111352724</deployedseed>
+    <deployedseed>2140146552</deployedseed>
+    <deployedseed>1315610369</deployedseed>
+    <deployedseed>112311972</deployedseed>
+    <deployedseed>1013245636</deployedseed>
+    <deployedseed>1293100791</deployedseed>
+    <deployedseed>514919615</deployedseed>
+    <deployedseed>1811214912</deployedseed>
+    <deployedseed>1055739117</deployedseed>
+    <deployedseed>648584786</deployedseed>
+    <deployedseed>1404696522</deployedseed>
+    <deployedseed>1736053785</deployedseed>
+    <deployedseed>1738868776</deployedseed>
+    <deployedseed>1850925235</deployedseed>
+    <deployedseed>866387323</deployedseed>
+    <deployedseed>1064850713</deployedseed>
+    <deployedseed>78313956</deployedseed>
+    <deployedseed>1566072615</deployedseed>
+    <deployedseed>168570169</deployedseed>
+    <deployedseed>1129401197</deployedseed>
+    <deployedseed>2020637684</deployedseed>
+    <deployedseed>1221686357</deployedseed>
+    <deployedseed>703081402</deployedseed>
+    <deployedseed>1798311658</deployedseed>
+    <deployedseed>333889664</deployedseed>
+    <deployedseed>731548212</deployedseed>
+    <deployedseed>632236206</deployedseed>
+    <deployedseed>1689588919</deployedseed>
+    <deployedseed>1592181536</deployedseed>
+    <deployedseed>133292406</deployedseed>
+    <deployedseed>702976397</deployedseed>
+    <deployedseed>1628456183</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Natural log improper Integral</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Calculate the integral \(\displaystyle \int_{{@lower_lmt@}}^{{@upper_lmt@}}{@func@}\,dx\)</p>
+<p>\(\displaystyle \int_{{@lower_lmt@}}^{{@upper_lmt@}}{@func@}\,dx=\)[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>Therefore, the integral is [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Calculating the integral \(\displaystyle \int_{{@lower_lmt@}}^{{@upper_lmt@}}{@func@}\,dx\)</p>
+<p>Using Integration by parts;</p>
+<p>\(u={@expr_u@},du={@du@}\)</p>
+<p>\(dv={@expr_dv@}dx, v={@expr_v@}\)</p>
+<p>\(
+\begin{align}
+\displaystyle \int_{t}^{{@upper_lmt@}}{@func@}\,dx&={@part_uv@}-\displaystyle \int{@part_vdu@}\,dx\\
+&={@int_parts@}\displaystyle|_{t}^{@upper_lmt@}\\
+&=({@upper@})-({@lower@})\\
+&=\lim_{t \to 0} \,\left[ {@upper@}-{@lower@} \right]\\
+&={@upper@}-\displaystyle \lim_{t \to 0}\left( {@lower@} \right)\\
+\end{align}
+\)</p>
+<p>Using L-hopitals rule \(\displaystyle \lim_{t \to 0}\, t^2 ln(t)=0\) </p>
+<p>\(\displaystyle \int_{{@lower_lmt@}}^{{@upper_lmt@}}{@func@}\,dx={@ta1@}\)</p>
+<p>Therefore, the integral is {@mcq_correct(ta_4)[1]@}</p>
+<p></p>
+<p></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*new improper questions*/
+upper_lmt:rand(5)+1;
+lower_lmt:0;
+func:x*log(x);
+/*worked solution*/
+expr_u:log(x);
+du:diff(expr_u,x);
+expr_dv:x;
+expr_v:int(expr_dv,x);
+part_uv:expr_u*expr_v;
+part_vdu:expr_v*du;
+int_vdu:int(part_vdu,x);
+int_parts:part_uv-int_vdu;
+upper:subst(x=upper_lmt,int_parts);
+lower:subst(x=t, int_parts);
+ta1:upper;
+
+/*Model answers*/
+ta_2:if ta1=upper then "Convergent" else "Divergent";
+ta_3:if ta_2="Divergent" then "Convergent" else "Divergent";
+ta_4:random_permutation([[ta_2, true],[ta_3, false],["Divergent and convergent", false]]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle \int_{{@lower_lmt@}}^{{@upper_lmt@}}{@func@}\,dx={@ta1@}\)</p>
+<p>Therefore, the integral is {@mcq_correct(ta_4)[1]@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Mike</p>
+<p id="description">The question focuses on evaluating an improper Integral  by parts</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>dropdown</type>
+      <tans>ta_4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the antiderivative</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mcq_correct(ta_4)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1276415170</deployedseed>
+    <deployedseed>1940473086</deployedseed>
+    <deployedseed>1324912757</deployedseed>
+    <deployedseed>1976971798</deployedseed>
+    <deployedseed>690124662</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>first(mcq_correct(ta_4))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <hint format="html">
+      <text><![CDATA[<p>Use integration by part </p>
+<p>\(\displaystyle \int udv=uv-\int vdu\)</p>
+<p></p>
+<p></p>]]></text>
+    </hint>
+  </question>
+</quiz>

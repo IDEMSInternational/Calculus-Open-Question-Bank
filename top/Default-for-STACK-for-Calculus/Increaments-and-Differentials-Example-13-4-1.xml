@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Increaments and Differentials: Example 13.4.1</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Finding the total differential.</p>
+<p>Let \(z ={@f_xy@} \). Find \(dz\).</p>
+<br>We proceed in 2 steps.
+<br><b>Step 1: </b> We compute the partial derivatives: \(f_{x}\) and \(f_{y}\) such that \( z = f(x, y) \).
+<br>\(f_{x}=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]
+ <br>\(f_{y}=\) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]
+<br><b>Step 2: </b> Deduce the total differential of \(z\). 
+<br>\(dz=\) [[input:ans3]] [[validation:ans3]] [[feedback:prt3]]]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<p><h3>Worked solution</h3></p>
+<p>Finding the total differential.</p>
+<p><b>Recall (Definition): </b> Let \(z =f(x, y)\) be continuous on an open set \(S\). Let \(dx\) and \(dy\) represent changes in \(x\) and \(y\), respectively. </p>
+<p>Where the partial derivatives \(f_{x}\) and \(f_{y}\) exist, the total differential of \(z\) is</p>
+<p> \[ dz = f_{x} (x, y) \cdot dx + f_{y} (x, y) \cdot dy \] </p>
+<p>Let \(z ={@f_xy@} \). Finding \(dz\),</p>
+<p>We proceed in 2 steps.</p>
+<p>Step 1:  We compute the partial derivatives: \(f_{x}\) and \(f_{y}\) such that \( z = f(x, y) \).</p>
+<p>\( 
+\begin{align}
+f_{x} & = & \frac{\partial }{\partial x} \left( {@f_xy@} \right) \\
+ & = & {@ta_1@}\\
+\end{align}
+\)
+</p>
+ <and>
+<p>\( 
+\begin{align}
+f_{y} & = & \frac{\partial }{\partial y} \left( {@f_xy@} \right) \\
+ & = & {@ta_2@}\\
+\end{align}
+\)
+</p>
+<p>Step 2:  Deduce the total differential of \(z\).</p> 
+\(dz={@ta_1@} \cdot dx+{@ta_2@} \cdot dy \);]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining randomised coefficients for the functuon z*/
+aa: rand_with_prohib(-7,7,[0]);
+bb: rand_with_step(2,5,1);
+cc: rand(5)+2;
+/*Define the function z=f(x,y)*/
+f_xy: aa*x^bb*%e^(cc*y);
+
+/*Model answers*/
+ta_1: diff(f_xy,x); /*partial derivative of f wrt x */
+ta_2: diff(f_xy,y); /*partial derivative of f wrt y*/
+ta_3: ta_1*dx+ta_2*dy; /*total differential of z, dz*/
+
+
+/*possible mistakes*/
+ta_4: ta_1*dx-ta_2*dy; /*total differential of z, dz*/</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Let \(z ={@f_xy@} \). Find \(dz\)</p>
+<p>\(f_{x}={@ta_1@}\) </p>
+<p>\(f_{y}={@ta_2@}\) </p>
+<p>\(dz={@ta_3@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni<p>
+<p id="concept"></p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer"></p>
+<p id="description">The question focuses on finding the total differential of a given expression with outlined steps on how find it including partial differentiation of the two variables.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta_2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta_3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1 checks for correct answer*/
+/*node 2 mistake:computing the partial derivatives of fy instead of fx */
+mistake_1:ta2;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer of dx/dz</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>mistake_1</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have computed the partial derivatives fy instead of fx which should not be the case.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1 checks for correct answer*/
+/*node 2 mistake:computing the partial derivatives of fx instead of fy */
+mistake_2:ta1;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the second mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>mistake_2</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have computed the partial derivatives fx instead of fy which should not be the case.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1 checks for correct answer*/
+/*node 2 mistake:Subtracting  fx and fy  inorder to find dz*/
+mistake_3:ta_4;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer dz</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the third mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>mistake_3</sans>
+        <tans>ta_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1064334299</deployedseed>
+    <deployedseed>1057680035</deployedseed>
+    <deployedseed>760054438</deployedseed>
+    <deployedseed>692068215</deployedseed>
+    <deployedseed>52188676</deployedseed>
+    <deployedseed>1215593529</deployedseed>
+    <deployedseed>66849139</deployedseed>
+    <deployedseed>463727405</deployedseed>
+    <deployedseed>1608846291</deployedseed>
+    <deployedseed>1417089650</deployedseed>
+    <deployedseed>2045322931</deployedseed>
+    <deployedseed>1324884812</deployedseed>
+    <deployedseed>1234870382</deployedseed>
+    <deployedseed>1072764802</deployedseed>
+    <deployedseed>936906988</deployedseed>
+    <deployedseed>739405430</deployedseed>
+    <deployedseed>1636871640</deployedseed>
+    <deployedseed>1069600721</deployedseed>
+    <deployedseed>1606239137</deployedseed>
+    <deployedseed>1264181012</deployedseed>
+    <deployedseed>1646818692</deployedseed>
+    <deployedseed>1429600452</deployedseed>
+    <deployedseed>618787731</deployedseed>
+    <deployedseed>1858250755</deployedseed>
+    <deployedseed>453094573</deployedseed>
+    <deployedseed>1496335187</deployedseed>
+    <deployedseed>1023715513</deployedseed>
+    <deployedseed>562145982</deployedseed>
+    <deployedseed>772876798</deployedseed>
+    <deployedseed>788074697</deployedseed>
+    <deployedseed>2001092817</deployedseed>
+    <deployedseed>852595186</deployedseed>
+    <deployedseed>1996337640</deployedseed>
+    <deployedseed>1029908280</deployedseed>
+    <deployedseed>450352459</deployedseed>
+    <deployedseed>383185790</deployedseed>
+    <deployedseed>1964920663</deployedseed>
+    <deployedseed>839432594</deployedseed>
+    <deployedseed>1624421432</deployedseed>
+    <deployedseed>1224554281</deployedseed>
+    <deployedseed>884594626</deployedseed>
+    <deployedseed>320464380</deployedseed>
+    <deployedseed>197138013</deployedseed>
+    <deployedseed>1866711724</deployedseed>
+    <deployedseed>1292853874</deployedseed>
+    <deployedseed>1854677692</deployedseed>
+    <deployedseed>862771388</deployedseed>
+    <deployedseed>281669545</deployedseed>
+    <deployedseed>1612703724</deployedseed>
+    <deployedseed>1871186856</deployedseed>
+    <deployedseed>150700490</deployedseed>
+    <deployedseed>711304469</deployedseed>
+    <deployedseed>313813604</deployedseed>
+    <deployedseed>2075605170</deployedseed>
+    <deployedseed>721321982</deployedseed>
+    <deployedseed>124294604</deployedseed>
+    <deployedseed>1833906095</deployedseed>
+    <deployedseed>1225727171</deployedseed>
+    <deployedseed>1332745745</deployedseed>
+    <deployedseed>1452172124</deployedseed>
+    <deployedseed>1227089891</deployedseed>
+    <deployedseed>195367058</deployedseed>
+    <deployedseed>1115703135</deployedseed>
+    <deployedseed>643696150</deployedseed>
+    <deployedseed>2146521144</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta_2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta_3</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

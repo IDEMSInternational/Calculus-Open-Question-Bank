@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Using the chain rule, to find the dervative of an exponential function.</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the derivatives of the function given by:</p>
+<p>\(\quad \displaystyle f(x)= {@fx@}\) </p>
+<p>\(\quad \displaystyle f'(x)=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To find the derivative of the function \( \displaystyle f(x) = {@fx@}\), you can use the chain rule, as the exponent contains a function of \(x\) within it. The chain rule states that if you have a function \(u\) inside another function \(v\), then the derivative of \(v(u(x))\) with respect to \(x\) is \(v'(u(x)) \cdot u'(x)\).</p>
+
+<p>In this case, let \( \displaystyle u(x) = {@ux@}\) and \(v(u) = {@vx@}\). We'll find the derivatives of both \(u\) and \(v(u)\) and then apply the chain rule.</p>
+
+<p>1. Derivative of \(u(x)\):
+   \( \displaystyle u'(x) = {@diff_u@}\)</p>
+
+<p>2. Derivative of \(v(u)\):
+   \( \displaystyle v'(u) = \frac{d}{du}\left( {@vx@}\right)={@diff_v@}\)</p>
+
+<p>To find this derivative, we use the fact that the derivative of \(a^u\) with respect to \(u\) is \(\ln(a) \cdot a^u\). In this case, \( \displaystyle a = {@coef@}\):</p>
+  <p> \(\displaystyle v'(u) = {@diff_v@}\)</p>
+
+<p>Now, we can apply the chain rule:</p>
+
+<p>\(\displaystyle
+\begin{align*}
+f'(x) & = v'(u(x)) \cdot u'(x) \\
+& = {@diff_v@} \cdot {@diff_u@} \\
+& = {@ta@}
+\end{align*}
+\)</p>
+
+<p>So, the derivative of the function \( \displaystyle f(x) = {@fx@}\) is \( \displaystyle {@ta@}\).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>power:rand([(rand(30)+2),((rand(30)+1)/(rand(50)+2))]);
+ux:x^power;
+diff_u:diff(ux,x);
+coef:rand(100)+3;
+vx:coef^u;
+diff_v:diff(vx,u);
+fx : coef^(ux); 
+f_diff: diff(fx, x); 
+ta:f_diff;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Find the derivatives of the function given by:</p>
+<p>\(\quad \displaystyle f(x)= {@fx@}\) </p>
+<p>\(\quad \displaystyle f'(x)={@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="Concept doc">N/A</p>
+<p id="reviewer">Mary Sayuni</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">Using the chain rule, to find the dervative of an exponential function of the form \(a^{x^{p}}\)</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Chcekks. for correct answer</description>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>x</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>554443383</deployedseed>
+    <deployedseed>349155454</deployedseed>
+    <deployedseed>1315811414</deployedseed>
+    <deployedseed>2070158715</deployedseed>
+    <deployedseed>2110464037</deployedseed>
+    <deployedseed>288587233</deployedseed>
+    <deployedseed>1785580153</deployedseed>
+    <deployedseed>443937017</deployedseed>
+    <deployedseed>830754053</deployedseed>
+    <deployedseed>1050939343</deployedseed>
+    <deployedseed>1007641576</deployedseed>
+    <deployedseed>1081053716</deployedseed>
+    <deployedseed>1518028558</deployedseed>
+    <deployedseed>1836848163</deployedseed>
+    <deployedseed>645242184</deployedseed>
+    <deployedseed>1291716846</deployedseed>
+    <deployedseed>2143827374</deployedseed>
+    <deployedseed>1356964559</deployedseed>
+    <deployedseed>445525040</deployedseed>
+    <deployedseed>936245418</deployedseed>
+    <deployedseed>1361807294</deployedseed>
+    <deployedseed>1084558399</deployedseed>
+    <deployedseed>706410265</deployedseed>
+    <deployedseed>159556977</deployedseed>
+    <deployedseed>1073594823</deployedseed>
+    <deployedseed>645616253</deployedseed>
+    <deployedseed>1087377396</deployedseed>
+    <deployedseed>338272485</deployedseed>
+    <deployedseed>1485772000</deployedseed>
+    <deployedseed>976183885</deployedseed>
+    <deployedseed>20518043</deployedseed>
+    <deployedseed>737837389</deployedseed>
+    <deployedseed>155991702</deployedseed>
+    <deployedseed>1368585187</deployedseed>
+    <deployedseed>950951469</deployedseed>
+    <deployedseed>1601794265</deployedseed>
+    <deployedseed>1374094501</deployedseed>
+    <deployedseed>1312782486</deployedseed>
+    <deployedseed>1680281863</deployedseed>
+    <deployedseed>18540605</deployedseed>
+    <deployedseed>109640557</deployedseed>
+    <deployedseed>631559771</deployedseed>
+    <deployedseed>1718974369</deployedseed>
+    <deployedseed>1294948719</deployedseed>
+    <deployedseed>312676289</deployedseed>
+    <deployedseed>438788825</deployedseed>
+    <deployedseed>1409938943</deployedseed>
+    <deployedseed>1844806462</deployedseed>
+    <deployedseed>1375842490</deployedseed>
+    <deployedseed>1169885137</deployedseed>
+    <deployedseed>528525942</deployedseed>
+    <deployedseed>659751597</deployedseed>
+    <deployedseed>2101552575</deployedseed>
+    <deployedseed>2140393454</deployedseed>
+    <deployedseed>261533631</deployedseed>
+    <deployedseed>130677606</deployedseed>
+    <deployedseed>2110990756</deployedseed>
+    <deployedseed>1902131476</deployedseed>
+    <deployedseed>647535000</deployedseed>
+    <deployedseed>601410437</deployedseed>
+    <deployedseed>1100590086</deployedseed>
+    <deployedseed>1902647945</deployedseed>
+    <deployedseed>247035666</deployedseed>
+    <deployedseed>271767034</deployedseed>
+    <deployedseed>706646977</deployedseed>
+    <deployedseed>864902384</deployedseed>
+    <deployedseed>426214971</deployedseed>
+    <deployedseed>60872935</deployedseed>
+    <deployedseed>1556041639</deployedseed>
+    <deployedseed>449477195</deployedseed>
+    <deployedseed>42160258</deployedseed>
+    <deployedseed>895096174</deployedseed>
+    <deployedseed>745026814</deployedseed>
+    <deployedseed>449206346</deployedseed>
+    <deployedseed>1512697176</deployedseed>
+    <deployedseed>559281148</deployedseed>
+    <deployedseed>755637753</deployedseed>
+    <deployedseed>626956708</deployedseed>
+    <deployedseed>1260020928</deployedseed>
+    <deployedseed>1784790527</deployedseed>
+    <deployedseed>1007712389</deployedseed>
+    <deployedseed>610050794</deployedseed>
+    <deployedseed>1865738433</deployedseed>
+    <deployedseed>1131167031</deployedseed>
+    <deployedseed>144526555</deployedseed>
+    <deployedseed>1238404138</deployedseed>
+    <deployedseed>321722027</deployedseed>
+    <deployedseed>960681029</deployedseed>
+    <deployedseed>1950735421</deployedseed>
+    <deployedseed>918741752</deployedseed>
+    <deployedseed>867995907</deployedseed>
+    <deployedseed>282399369</deployedseed>
+    <deployedseed>1214962089</deployedseed>
+    <deployedseed>1175816087</deployedseed>
+    <deployedseed>101746266</deployedseed>
+    <deployedseed>463024543</deployedseed>
+    <deployedseed>1643365235</deployedseed>
+    <deployedseed>1517467287</deployedseed>
+    <deployedseed>93160424</deployedseed>
+    <deployedseed>1071656174</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluate the Definite integral using integration by parts</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p></p><p><span id="docs-internal-guid-c4ff917c-7fff-8de2-5e7a-5a7a32781122">Evaluate \( \displaystyle \int_{@lower_limit@}^{@upper_limit@} ({@func_var_u@})\cdot {@func_var_dv@} dx\)</span><br></p><p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p> This is a definite integral, but first, we need to compute it like any other indefinite integral. Then substitute the limits of integration later towards the end. <br></p><p>The first step here is to pick \(u\) and \(dv\) so that when we compute \(du\) and \(v\) <br></p>
+<p>\(\displaystyle u = {@func_var_u@}, \; dv ={@func_var_dv@} dx\).</p>
+<p>\(\displaystyle  du = {@diff_u@} dx, \; v= {@int_v@}\)</p>
+
+<p> We need to plug in the above and use the integration-by-parts formula as follows:</p>
+<p>\( \displaystyle \int udv = u \cdot v - \int vdu\)<br></p>
+
+<p>\( \begin{align}
+\displaystyle \int_{@lower_limit@}^{@upper_limit@}({@func_var_u@})\cdot {@func_var_dv@} dx & = \left [({@func_var_u@})\cdot({@int_v@}) \right ]_{@lower_limit@}^{@upper_limit@}-\int_{@lower_limit@}^{@upper_limit@}({@int_v@}){@diff_u@} dx \\
+& = \displaystyle  \left ({@func_subt_upper_limit@}-{@func_subt_lower_limit@}\right ) -\left [  {@int_v_du@} \right ]_{@lower_limit@}^{@upper_limit@} \\
+& = \displaystyle \left ({@func_subt_upper_limit@}-{@func_subt_lower_limit@}\right )-  \left ({@func_subt_upper_limit_1@}-{@func_subt_lower_limit_1@}\right) \\
+&  = \displaystyle  {@ta@}
+\end{align}\)</p>
+
+<p>Because \(\displaystyle \int_a^b e^{u}du=\left [  \frac{1}{u^{\prime}}e^{u}\right ]_a^b\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>aa: 1+rand(4); bb: 2+aa; cc:rand(4);
+func_var_u:rand([bb*cc+x*aa, aa+bb*x]); /*this is what will become  u in the question func*/
+
+func_var_dv:e^(aa*x/bb);  /*varible for dv in the question func*/
+diff_u2:diff((aa*x/bb),x);
+
+
+question_func:(func_var_u)*(func_var_dv);     /* questoin expression in terms of u \times dv*/
+lower_limit:rand(4);
+upper_limit:1+rand(3)+lower_limit;
+
+
+/*Model answers*/
+model_ta:int(question_func,x,lower_limit,upper_limit);   /*force simplification of model answer*/
+ta:ratsimp(model_ta);
+
+/*Worked out solution codes*/
+diff_u:diff(func_var_u)/del(x);    /* derivative of var_u */
+int_v: int(func_var_dv,x);    /* integral of dv to get v */
+v_du: int_v*diff_u;              /* porduct  (diff_u and int_v) */ 
+int_v_du: int(v_du,x);         /* integral of _ porduct  (diff_u and int_v) */
+func:func_var_u*int_v;
+func_subt_upper_limit:subst(upper_limit,x,func);
+func_subt_lower_limit:subst(lower_limit,x,func);
+func_substx:func_subt_upper_limit-func_subt_lower_limit;
+
+func_subt_upper_limit_1:subst(upper_limit,x,int_v_du);
+func_subt_lower_limit_1:subst(lower_limit,x,int_v_du);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\( \displaystyle \int_{@lower_limit@}^{@upper_limit@} ({@func_var_u@})\cdot {@func_var_dv@} dx\)= {@ta@}
+</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo </p>
+<p id="concept">N/A</p>
+<p id="reviewer"> Nixson Kiplagat</p>
+<p id="reviewer">Wastalas</p>
+<p id="description">The question focuses on evaluating a definite that involves exponential function by integration by parts</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node1- checking for correct answer*/
+
+/*Node 2: mistake_ computing indefinite integral and adding the constant after integration*/
+sans_1: int(question_func,x)+c;
+
+/*Node 3: mistake_  Interchanging the limits of integration, however, with the correct definite integral */
+sans_2: int(question_func,x,upper_limit,lower_limit); 
+
+/*Node 4: mistake_  computing indefinite integral without the constant */
+sans_3:  int(question_func,x)+c;
+
+/*Node 5: mistake_  computing definite integral correctly but with a constant */
+sans_4: int(question_func,x,lower_limit,upper_limit)+c;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>check for correct solution</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>x</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Adding the constant of intergration</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>sans_1</tans>
+        <testoptions>x</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> You seem to have added the constant after integration. However your answer looks okay. <br>Recall that for definite integrals you don't need to add a constant of integration. Take a look at the worked out solution below:</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Interchanging the limits of intergration</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>sans_2</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your computation looks okay for the definite integral, however, it looks like you have interchanged the limits of integration.</p>
+<br>
+<p>Recall that for definite integrals, </p>
+<p>\(\displaystyle\int_a^b f(x) = F(b)-F(a)\) </p>
+<p>Take a look at the worked out solution below</p><p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>Computing the definite integral</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>sans_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> Your answer is okay, but, it looks like you’ve computed the definite integral of this function. You needed to have computed the definite integral by substituting the limits of integration to find the final answer. </p> 
+<p>Take a look at the worked out solution below:</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>Adding the constant of intergration</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>sans_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-5-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> Your answer looks okay but you dont need to add the constant </p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-5-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>585548923</deployedseed>
+    <deployedseed>1520379609</deployedseed>
+    <deployedseed>350029630</deployedseed>
+    <deployedseed>1158225220</deployedseed>
+    <deployedseed>474390473</deployedseed>
+    <deployedseed>804715139</deployedseed>
+    <deployedseed>720655646</deployedseed>
+    <deployedseed>1237337411</deployedseed>
+    <deployedseed>1253965872</deployedseed>
+    <deployedseed>1242922233</deployedseed>
+    <deployedseed>1844703643</deployedseed>
+    <deployedseed>522721840</deployedseed>
+    <deployedseed>146402001</deployedseed>
+    <deployedseed>154189053</deployedseed>
+    <deployedseed>887665695</deployedseed>
+    <deployedseed>452962893</deployedseed>
+    <deployedseed>620396509</deployedseed>
+    <deployedseed>712810774</deployedseed>
+    <deployedseed>901393619</deployedseed>
+    <deployedseed>780683074</deployedseed>
+    <deployedseed>76321145</deployedseed>
+    <deployedseed>2106585835</deployedseed>
+    <deployedseed>1026103212</deployedseed>
+    <deployedseed>1622199264</deployedseed>
+    <deployedseed>1985864530</deployedseed>
+    <deployedseed>984704275</deployedseed>
+    <deployedseed>836885443</deployedseed>
+    <deployedseed>1566097560</deployedseed>
+    <deployedseed>1888332961</deployedseed>
+    <deployedseed>717296604</deployedseed>
+    <deployedseed>1722374206</deployedseed>
+    <deployedseed>624441665</deployedseed>
+    <deployedseed>1738625103</deployedseed>
+    <deployedseed>1696904934</deployedseed>
+    <deployedseed>1346215637</deployedseed>
+    <deployedseed>1484997660</deployedseed>
+    <deployedseed>1871117092</deployedseed>
+    <deployedseed>1986375780</deployedseed>
+    <deployedseed>4773082</deployedseed>
+    <deployedseed>1852782405</deployedseed>
+    <deployedseed>1095472800</deployedseed>
+    <deployedseed>452733756</deployedseed>
+    <deployedseed>1969452853</deployedseed>
+    <deployedseed>2115923040</deployedseed>
+    <deployedseed>2071873406</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

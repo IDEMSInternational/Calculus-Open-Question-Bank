@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Using the Fundamental Theorem of Calculus with Two Variable Limits of Integration</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Given \(F(x)=\displaystyle \int _{@lower_limit@}^{@upper_limit@}{@quest_expr@}\,dt\). Calculate \(F'(x)\). </p>
+
+<p>\(F'(x)=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>We have  \(F(x)=\displaystyle \int _{@lower_limit@}^{@upper_limit@}{@quest_expr@}\,dt\). Both limits of integration are variable, so we need to split this into two integrals. We get</p>
+<p>
+\( \begin{align}
+F(x) &= \displaystyle \int _{@lower_limit@}^{@upper_limit@}{@quest_expr@}\,dt \\
+&= \displaystyle \int _{@lower_limit@}^{0}{@quest_expr@}\,dt +\int _{0}^{@upper_limit@}{@quest_expr@}\,dt\\
+&=-\displaystyle \int _{@lower_limit@}^{0}{@quest_expr@}\,dt+\int _{0}^{@upper_limit@}{@quest_expr@}\,dt\\
+\end{align} \)
+</p>
+<p>Differentiating the first term, we obtain</p>
+<p>\(\frac{d}{dx} \left [ \displaystyle -\int_{0}^{@lower_limit@}{@quest_expr@} \right ]={@soln1@}\)</p>
+<p>Differentiating the second term, we first let \(u(x)=2x\). Then,</p>
+<p>\( \begin{align}
+\frac{d}{dx} \left [ \displaystyle \int _{0}^{@upper_limit@} {@quest_expr@}\,dt \right ] &= \frac{d}{dx} \left [ \displaystyle \int _{0}^{u(x)}{@quest_expr@}\,dt \right ]\\
+&=(u(x))^{@power@}.\frac{du}{dx}\\
+&=({@upper_limit@})^{@power@}.{2}\\
+&={@soln2@}\\
+\end{align} \)</p>
+<p>Thus,</p>
+<p>\( \begin{align}
+F'(x) &= \frac{d}{dx} \left [\displaystyle  -\int_{0}^{@lower_limit@}{@quest_expr@}\,dt +\right ]+\frac{d}{dx}\left [\displaystyle  -\int_{0}^{@upper_limit@}{@quest_expr@}\,dt   \right ]\displaystyle \\
+&= \displaystyle {@ta@}\\
+&={@soln1@}+{@soln2@}\\
+&={@ta@}\\
+\end{align} \)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*part 1 fundamental theorem*/
+power:rand(3)+3;
+lower_limit:x;
+upper_limit:2*x;
+quest_expr:t^power;
+/*working*/
+soln1:-x^power;
+soln2:(2*x)^power*2;
+ta:soln1+soln2;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Let \(F(x)=\displaystyle \int _{@lower_limit@}^{@upper_limit@}\). Find \(F'(x)\)</p>
+<p>{@ta@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Emmaculate odhiambo</p>
+<p id="reviewer">Juma Zevick</p>
+<p id="description">This question requires the student to Using the Fundamental Theorem of Calculus with Two Variable Limits of Integration</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1196299515</deployedseed>
+    <deployedseed>1955894725</deployedseed>
+    <deployedseed>1921005688</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

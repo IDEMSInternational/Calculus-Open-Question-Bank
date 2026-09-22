@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Finding the derivative of the function h(x) using the quotient rule.</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the derivative of \( \displaystyle h({@var@}) = {@hx@}\)</p>
+<p>\( \displaystyle h'({@var@}) = \) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To find the derivative of the function \( \displaystyle h({@var@}) = {@hx@}\), we will use the quotient rule. </p>
+<p>The quotient rule states that if you have a function \( \displaystyle h(x) = \frac{f(x)}{g(x)}\), then its derivative \(h'(x)\) is given by:</p>
+
+<p>\( \displaystyle h'(x) = \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}\)</p>
+
+<p>In our case, \( \displaystyle f({@var@}) = {@fx@}\) and \( \displaystyle g({@var@}) = {@gx@}\). Now, let's find the derivatives of \(f({@var@})\) and \(g({@var@}):\)</p>
+
+<p> \( \displaystyle f'({@var@}) = \frac{d}{dx}({@fx@}) = {@diff_fx@}\)</p>
+
+<p> \( \displaystyle g'({@var@}) = \frac{d}{dx}({@gx@}) = {@diff_gx@}\)</p>
+
+<p>Now, apply the quotient rule:</p>
+
+<p>\(
+\displaystyle
+\begin{align}
+h'({@var@}) &= \frac{({@diff_fx@})({@gx@}) - ({@fx@})({@diff_gx@})}{({@gx@})^2 }\\
+           &= \frac{{@expand(diff_fx*gx)@}-{@expand(fx*diff_gx)@}}{({@gx@})^2}  \\
+         &={@ta@}
+\end{align}
+\)</p>
+
+<p>So, the derivative of \( \displaystyle h({@var@}) = {@hx@}\) is \( \displaystyle h'({@var@}) = {@ta@}\).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/* Define the function h(x) */ 
+cf1:rand(100)+1;
+cf2:rand_with_prohib(-59,59,[cf1,0]);
+c1:rand_with_prohib(-190,190,[cf1,0,cf2]);
+c2:rand_with_prohib(-290,290,[cf1,0,cf2,c1]);
+var:rand([x,y,z,q,w,r,t,p]);
+fx:cf1*var+c1; diff_fx:diff(fx,var);
+gx:cf2*var+c2; diff_gx:diff(gx,var);
+hx :fx / gx; diff_hx :factor(diff(hx, var));  
+/*Models Answer*/
+ta:diff_hx;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p> \( \displaystyle h({@var@}) = {@hx@}\) </p>
+<p>\( \displaystyle h'({@var@}) = {@ta@} \) </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">To find the derivative of the function \(h(x)\), using the quotient rule. The quotient rule states that if you have a function \(f(x) = \frac{g(x)}{h(x)}\), then its derivative \(f'(x)\) is given by:  \[f'(x) = \frac{g'(x)h(x) - g(x)h'(x)}{(h(x))^2}\]</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>var</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>401335398</deployedseed>
+    <deployedseed>681652338</deployedseed>
+    <deployedseed>1786404233</deployedseed>
+    <deployedseed>1882393235</deployedseed>
+    <deployedseed>579737330</deployedseed>
+    <deployedseed>1002377041</deployedseed>
+    <deployedseed>440396092</deployedseed>
+    <deployedseed>515941585</deployedseed>
+    <deployedseed>1990447258</deployedseed>
+    <deployedseed>1347526284</deployedseed>
+    <deployedseed>147338567</deployedseed>
+    <deployedseed>1763892533</deployedseed>
+    <deployedseed>1533670239</deployedseed>
+    <deployedseed>30530227</deployedseed>
+    <deployedseed>1990137698</deployedseed>
+    <deployedseed>1938510250</deployedseed>
+    <deployedseed>74370479</deployedseed>
+    <deployedseed>662729267</deployedseed>
+    <deployedseed>679867249</deployedseed>
+    <deployedseed>1381140463</deployedseed>
+    <deployedseed>1212215520</deployedseed>
+    <deployedseed>711538957</deployedseed>
+    <deployedseed>221722725</deployedseed>
+    <deployedseed>743392131</deployedseed>
+    <deployedseed>2032094736</deployedseed>
+    <deployedseed>817443739</deployedseed>
+    <deployedseed>408569471</deployedseed>
+    <deployedseed>227779938</deployedseed>
+    <deployedseed>1971164655</deployedseed>
+    <deployedseed>906526233</deployedseed>
+    <deployedseed>147146239</deployedseed>
+    <deployedseed>604340725</deployedseed>
+    <deployedseed>783897959</deployedseed>
+    <deployedseed>673296217</deployedseed>
+    <deployedseed>1432219497</deployedseed>
+    <deployedseed>577561341</deployedseed>
+    <deployedseed>835264037</deployedseed>
+    <deployedseed>991742128</deployedseed>
+    <deployedseed>2074517597</deployedseed>
+    <deployedseed>278534211</deployedseed>
+    <deployedseed>956582450</deployedseed>
+    <deployedseed>1703021291</deployedseed>
+    <deployedseed>1395705512</deployedseed>
+    <deployedseed>1039265260</deployedseed>
+    <deployedseed>875367673</deployedseed>
+    <deployedseed>409860632</deployedseed>
+    <deployedseed>389982431</deployedseed>
+    <deployedseed>1649985699</deployedseed>
+    <deployedseed>2067790138</deployedseed>
+    <deployedseed>975993167</deployedseed>
+    <deployedseed>1862138888</deployedseed>
+    <deployedseed>2070173850</deployedseed>
+    <deployedseed>1782811980</deployedseed>
+    <deployedseed>757222115</deployedseed>
+    <deployedseed>1836165701</deployedseed>
+    <deployedseed>1932212968</deployedseed>
+    <deployedseed>1861412806</deployedseed>
+    <deployedseed>1401933386</deployedseed>
+    <deployedseed>725165403</deployedseed>
+    <deployedseed>683038797</deployedseed>
+    <deployedseed>1492058562</deployedseed>
+    <deployedseed>254719575</deployedseed>
+    <deployedseed>93503805</deployedseed>
+    <deployedseed>392315575</deployedseed>
+    <deployedseed>128834158</deployedseed>
+    <deployedseed>1161883404</deployedseed>
+    <deployedseed>1306706132</deployedseed>
+    <deployedseed>2034003957</deployedseed>
+    <deployedseed>180111055</deployedseed>
+    <deployedseed>1118288682</deployedseed>
+    <deployedseed>846249425</deployedseed>
+    <deployedseed>1280761921</deployedseed>
+    <deployedseed>726390851</deployedseed>
+    <deployedseed>1079762716</deployedseed>
+    <deployedseed>988938495</deployedseed>
+    <deployedseed>1938922205</deployedseed>
+    <deployedseed>448900216</deployedseed>
+    <deployedseed>1003651150</deployedseed>
+    <deployedseed>1218927765</deployedseed>
+    <deployedseed>993176685</deployedseed>
+    <deployedseed>1338210207</deployedseed>
+    <deployedseed>898776958</deployedseed>
+    <deployedseed>2127612464</deployedseed>
+    <deployedseed>1607040978</deployedseed>
+    <deployedseed>1565956924</deployedseed>
+    <deployedseed>1767124875</deployedseed>
+    <deployedseed>930203784</deployedseed>
+    <deployedseed>1429051370</deployedseed>
+    <deployedseed>705391773</deployedseed>
+    <deployedseed>1922694556</deployedseed>
+    <deployedseed>1146655558</deployedseed>
+    <deployedseed>955009567</deployedseed>
+    <deployedseed>1295175564</deployedseed>
+    <deployedseed>1284370608</deployedseed>
+    <deployedseed>1946556123</deployedseed>
+    <deployedseed>257381113</deployedseed>
+    <deployedseed>209764145</deployedseed>
+    <deployedseed>542485746</deployedseed>
+    <deployedseed>1268524144</deployedseed>
+    <deployedseed>31292846</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Integration of Trigonometric Function</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Find the antiderivative </p>
+<p>\(\displaystyle\int{@trig_func@}\,d{@bb@}\)</p>
+
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Worked Solution</p>
+<p>\(\displaystyle\int{@trig_func@}\,d{@bb@} \)   can be rewritten as    \(\displaystyle\int{@cos(bb)^2@}{@sin(bb)^2@}{@cos(bb)@}\,d{@bb@}\)</p>
+<p>Applying the trig rule \({@cos(bb)^2@}={@1-sin(bb)^2@}\) into the integral</p>
+<p>\(\displaystyle\int{@cos(bb)^2@}{@sin(bb)^2@}{@cos(bb)@}\,d{@bb@}\)=\(\displaystyle\int({@1-sin(bb)^2@}){@sin(bb)^2@}{@cos(bb)@}\,d{@bb@}\)</p>
+<p>expanding the bracket</p>
+<p>\(\displaystyle\int({@1-sin(bb)^2@}){@sin(bb)^2@}{@cos(bb)@}\,{@d(bb)@}\)=\(\displaystyle\int({@sin(bb)^2-sin(bb)^4@}){@cos(bb)@}\,d{@bb@}\)</p>
+<p>let \({@u@}={@sin(bb)@}\)</p>
+<p>\(du={@cos(bb)@}\,d{@bb@}\)</p>
+<p>\(d{@bb@}=du/{@cos(bb)@}\)</p>
+<p>substitute the expression into the integral</p>
+<p>\(\displaystyle\int{@sin(bb)^2-sin(bb)^4@}{@cos(bb)@}\,d{@bb@}\)=\(\displaystyle\int({@u^2-u^4@})\,du\)</p>
+<p>integrating</p>
+<p>\( \displaystyle \int({@u^2-u^4@})du = ( \frac{u^{3}}{3}-\frac{u^{5}}{5})+c\)</p>
+<p>substituting back \(u={@sin(bb)@}\)</p>
+<p>\(\displaystyle\int{@trig_func@}\,d{@bb@}={@sin(bb)^3/3@}-{@sin(bb)^5/5+c@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Random variables*/
+bb:rand([z,t,x,y]);/*variable of integration*/
+trig_func:cos(bb)^3*sin(bb)^2;/*the function*/
+
+/*Model answer*/
+ta:int(trig_func,bb)+c;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\( \int {@trig_func@}={@ta@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for correct answers*/
+
+/*node 2:Differentiating instead of integrating*/
+mistake_1:diff(trig_func);
+
+/*node 3:Failing to substitute back the value of U*/
+mistake_2:int((u^2-u^4),u)+c;
+
+/*node 4:Failing to add the constant of integration*/
+mistake_3:int(trig_func,bb);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answers</description>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>bb</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first potential mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have differentiated instead of integrating.
+Recall  \(\displaystyle\intx^n dx =  (\frac{x^n+1}}{(n + 1)} + c\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the second potential mistake</description>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions>u</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have failed to substitute back the value of \(u\) after successfully integrating. Otherwise upto this level your working is okay<br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>checks for the third potential mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have failed to add the constant after integration</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1064037414</deployedseed>
+    <deployedseed>2103817003</deployedseed>
+    <deployedseed>2012104699</deployedseed>
+    <deployedseed>1446270315</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

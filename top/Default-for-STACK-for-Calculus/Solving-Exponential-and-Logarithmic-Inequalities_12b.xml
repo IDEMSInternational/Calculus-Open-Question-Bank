@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Solving Exponential and Logarithmic Inequalities_12b</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Solve for \(x\) in the inequality \(\displaystyle {@func@} \)</p>
+<p><b>Note</b>: Leave your answer in exact form.<p>
+<p>Hint:</b> \(\infty \) can be typed as <code> inf </code></p> </p>
+<p>\(x>\) [[input:ans1]] or  In interval notation  \(x>\)[[input:ans2]] [[validation:ans1]] [[validation:ans2]] [[feedback:prt1]] [[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>\(
+\begin{align}
+\displaystyle {@func@}\\
+{@log@}(x)&>\displaystyle \frac{{@-coeff_rhs@}}{{@coeff_lhs@}}\\
+{@log@}(x)&>\displaystyle {@(-coeff_rhs/coeff_lhs)@}\\
+&x>e^{@(-coeff_rhs/coeff_lhs)@}\\
+&x>{@sol3@}\\
+\end{align}
+\)</p>
+<p>In interval notation, this is</p>
+<p>\(x>{@sol4@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*inequalities*/
+coeff_lhs:rand(8)+2;
+coeff_rhs:rand(4)+2+2;
+func:coeff_lhs*log(x)>-coeff_rhs;
+/*worked solution variables*/
+sol1:log(x)>(-coeff_rhs/coeff_lhs);
+sol2:x>%e^(-coeff_rhs/coeff_lhs);
+sol3:1/%e^(-coeff_rhs/coeff_lhs);
+sol4:[sol3, inf];]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle {@func@} \)</p>
+<p>\(x< {@sol3@}\) or \(x< {@sol4@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">https://docs.google.com/document/d/1-0V2TbnP7qT6tqepxe5DeFEbFqVlsvtz6d4VSfMik9s/edit</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">This question involves solving various inequalities involving exponential and logarithmic functions for the variable \( x \). The inequalities include both simple and compound expressions, requiring the application of properties of exponentials and logarithms to find the solution intervals for \( x \). </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>sol3</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>sol4</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint>[?,?]</syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>sol3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the interval</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>sol4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>In interval notation, infinity \((\infty )\) should always come after any real value.Check the worked solution on how to find the intervals</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>490485800</deployedseed>
+    <deployedseed>1562260563</deployedseed>
+    <deployedseed>1265215706</deployedseed>
+    <deployedseed>1907854222</deployedseed>
+    <deployedseed>1669076535</deployedseed>
+    <deployedseed>1094302595</deployedseed>
+    <deployedseed>95559893</deployedseed>
+    <deployedseed>1039631358</deployedseed>
+    <deployedseed>1713389167</deployedseed>
+    <deployedseed>152255883</deployedseed>
+    <deployedseed>1075756223</deployedseed>
+    <deployedseed>1725830921</deployedseed>
+    <deployedseed>1309854683</deployedseed>
+    <deployedseed>504537142</deployedseed>
+    <deployedseed>1198370114</deployedseed>
+    <deployedseed>902520653</deployedseed>
+    <deployedseed>2125089579</deployedseed>
+    <deployedseed>740128008</deployedseed>
+    <deployedseed>418987024</deployedseed>
+    <deployedseed>892187330</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>sol3</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

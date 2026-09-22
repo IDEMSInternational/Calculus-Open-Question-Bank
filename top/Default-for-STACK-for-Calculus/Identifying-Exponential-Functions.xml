@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Identifying Exponential Functions</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Which of the following statements represents an exponential function? Select all that apply.</p>
+<p>[[input:ans2]] [[validation:ans2]]</p>
+<p>[[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Let's evaluate each statement:</p>
+[[ if test="member(1, ta_index)" ]]
+<p><strong> A population of bacteria decreases by a factor of \(\displaystyle \frac{1}{{@element@}}  \) every \(24\) hours</strong>.</p>
+   <p>This represents an exponential decay function because the population is reduced by a constant multiplicative factor (\(\displaystyle \frac{1}{{@element@}} \)) over regular time intervals (every \(24\) hours).</p>
+[[/ if ]]
+
+[[ if test="member(2, ta_index)" ]]
+<p><strong>The value of a car decreases by \(10\%\) every year</strong>.</p>
+   <p>This represents an exponential decay function because the car's value is reduced by a constant percentage (\(10\%\)) every year. The factor \(b\) in this case is \(0.90\) (since \(100\% - 10\% = 90\%\)).</p>
+[[/ if ]]
+
+[[ if test="member(3, ta_index)" ]]
+<p> <strong>The number of attendees at a conference doubles every year</strong>.</p>
+   <p>This represents an exponential growth function because the number of attendees increases by a constant multiplicative factor (doubles, or \(b = 2\)) each year.
+</p>
+[[/ if ]]
+
+[[ if test="member(4, ta_index)" ]]
+<p> <strong>The intensity of a radioactive substance decreases by half every \(10\) years.</strong></p>
+   <p>This represents an exponential decay function because the intensity decreases by a constant multiplicative factor (\(\displaystyle \frac{1}{2}\)) over regular time intervals (every \(10\) years).</p>
+[[/ if ]]
+   </li>
+        </ol>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* Define the set A */ 
+element:rand_with_step(4,100,2);
+element1:rand(10)+3;
+
+
+/* correct answers */
+number_correct:rand(3)+1;
+corr_ans: rand_selection([
+[1, true, sconcat("A population of bacteria decreases by a factor of \\(\\displaystyle \\frac{1}{",element,"} \\) every \\(24\\) hours")],
+[2, true, "The value of a car decreases by \\(10\\%\\) every year"],
+[3, true, "The number of conference attendees doubles yearly"],
+[4, true, "The intensity of a radioactive substance decreases by half every \\(10\\) years"]], number_correct);
+
+/* incorrect answers */
+number_incorrect:5-number_correct;
+incorr_ans: rand_selection([
+[5, false, sconcat("For each training session, a personal trainer charges his clients \\(\\mbox{N}\\$",element1,"\\) less than the previous training session")],
+[6, false, "A plant grows by \\(3\\) \\(\\mbox{cm}\\) each week"],
+[7, false, "The temperature drops by \\(2\\) degrees Celsius every hour during the night"],
+[8, false, "The speed of a car increases by \\(5\\) \\(\\mbox{km/h}\\) every minute during acceleration"]], number_incorrect);
+
+
+ma: random_permutation(append(corr_ans, incorr_ans));
+/*Worked Soln*/
+ta_index: sort(makelist(x[1], x, ma));]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>{@mcq_correct(ma)@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">https://docs.google.com/document/d/1cFJfFS24jmYfb-i6dRe55NWd7WeIXYkHvbcF2G4_Yio/edit</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">2</p>
+<p id="description">In this question, students will examine two scenarios to determine if they represent exponential functions. They will then explore the defining characteristics of exponential growth or decay and apply them to each situation to ascertain whether they fit the exponential function model</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans2</name>
+      <type>checkbox</type>
+      <tans>ma</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/
+
+/*Node 2: Checks if option 5 (incorrect) was provided and selected*/
+true_opt_5:if member(5,ta_index) then ( if member(5,ans2) then 1 else 0 ) else 0;
+
+/*Node 3: Checks if option 6 (incorrect) was provided and selected*/
+true_opt_6:if member(6,ta_index) then ( if member(6,ans2) then 1 else 0 ) else 0;
+
+/*Node 4: Checks if option 7 (incorrect) was provided and selected*/
+true_opt_7:if member(7,ta_index) then ( if member(7,ans2) then 1 else 0 ) else 0;
+
+/*Node 5: Checks if option 8 (incorrect) was provided and selected*/
+true_opt_8:if member(8,ta_index) then ( if member(8,ans2) then 1 else 0 ) else 0;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mcq_correct(ma)</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks if option 5 (incorrect) was provided and selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>true_opt_5</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>2</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>This statement is not true. This represents a linear function, not an exponential function. The charge decreases by a fixed amount (\(N${@element1@}\)) per session, which is an additive change.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Checks if option 6 (incorrect) was provided and selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>true_opt_6</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>3</truenextnode>
+        <trueanswernote>prt2-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>This statement is not true. This represents a linear function, not an exponential function. The plant's height increases by a fixed amount (\(3\) cm) per week, which is an additive change.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt2-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>Checks if option 7 (incorrect) was provided and selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>true_opt_7</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>4</truenextnode>
+        <trueanswernote>prt2-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> This statement is not true. This represents a linear function, not an exponential function. The temperature decreases by a fixed amount (\(2\) degrees Celsius) each hour, which is an additive change.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt2-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>Checks if option 8 (incorrect) was provided and selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>true_opt_8</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-5-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> This statement is not true. This represents a linear function, not an exponential function. The speed increases by a fixed amount (\(5\) km/h) each minute, which is an additive change.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-5-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>228113464</deployedseed>
+    <deployedseed>749307610</deployedseed>
+    <deployedseed>1168591127</deployedseed>
+    <deployedseed>1346918256</deployedseed>
+    <deployedseed>189143433</deployedseed>
+    <deployedseed>1184501098</deployedseed>
+    <deployedseed>56887892</deployedseed>
+    <deployedseed>445807937</deployedseed>
+    <deployedseed>1107906690</deployedseed>
+    <deployedseed>1977652959</deployedseed>
+    <deployedseed>644351604</deployedseed>
+    <deployedseed>1373248242</deployedseed>
+    <deployedseed>1030762063</deployedseed>
+    <deployedseed>917690724</deployedseed>
+    <deployedseed>175714866</deployedseed>
+    <deployedseed>1005695651</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans2</name>
+        <value>mcq_correct(ma)</value>
+      </testinput>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

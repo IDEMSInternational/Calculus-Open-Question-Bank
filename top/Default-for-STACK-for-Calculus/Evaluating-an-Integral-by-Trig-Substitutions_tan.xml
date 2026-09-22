@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluating an Integral by Trig Substitutions_tan</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p></p>
+<p>Use a trig substitution to evaluate</p>
+<p>\(\displaystyle \int{@question_func@}dx=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>\( \text{Worked Solution}\)</p>
+<p></p>
+<p>
+</p>
+<p> \( \text{In order to carry out trig substitution integrals, let's take a look at the information in the table below.} \)<br></p>
+<div>
+    <table width="750" cellspacing="1" cellpadding="0" border="1">
+        <colgroup>
+            <col>
+            <col>
+            <col>
+            <col>
+        </colgroup>
+        <tbody>
+            <tr>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\( \text{If you see }\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\( \text{Use the following substitution}\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\text{Where}\)</p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\text{So that,}\)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{a^2-x^2}\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;"> \(x=a\sin(\theta)\)</p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(dx=a\cos(\theta)d\theta\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{a^2-x^2} = a\cos(\theta)\)<br></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{a^2+x^2}\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(x=a\tan(\theta)\)</p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(dx=a\sec^{2}(\theta)d\theta\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{a^2+x^2} = a\sec(\theta)\)<br></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{x^2-a^2}\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(x=a\sec(\theta)\)</p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(dx=a\sec(\theta)\tan(\theta)d\theta\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{x^2-a^2} = a\tan(\theta)\)<br></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p></p>
+<p></p>
+<p></p>
+
+<p>Looking at the numerator of the integrand&nbsp; \(\displaystyle {@num_func@}\),&nbsp; it seems we'll need the following trig substitution.</p>\(\displaystyle x= {@let_x@} \implies d(x)={@diff_letx@}d(\theta)\)
+<p></p>
+
+<p>Now let us substitute for \(x\) in the numerator as shown.&nbsp; </p>
+<p>\(\displaystyle {@num_func@}= \sqrt{{@var_num1^2@}({@let_x@})^{2}+{@var_num2^2@}} = {@subst_trig@}\)</p>
+<p>Recall that \(\displaystyle  \tan^{2}(\theta)+1= sec^{2}(\theta)\), therefore</p>
+<p>\( \displaystyle \sqrt{@subst_trig2@}= \sqrt{{@var_num2^2@}(sec^{2}(\theta)) } ={@soln_trig_subst_sec@}= {@soln_trig_subst_sec1*soln_trig_subst_sec2a@} \)<br></p>
+
+
+
+<p></p>
+
+<p>Now going back to the question and substituting everything, we'll have,</p>
+
+<p>    
+\(
+\begin{align}
+\displaystyle\int{@question_func@} d(x) &amp;= \displaystyle\int \frac{@num_new_trig_func@}{@denom_new_trig_func@}\cdot{@diff_letx@}d(\theta)  \\
+&amp;=\displaystyle\int {@new_trig_func@} \cdot {@diff_letx@} d(\theta) \\
+&amp;=\displaystyle\int {@new_trig_func*diff_letx@} d(\theta)
+\end{align}
+\)
+</p>
+<p></p>
+
+
+
+
+<p>Recall that \(\displaystyle \sec (\theta)= \frac{1}{\cos(\theta)}\) and \(\displaystyle \tan(\theta)= \frac{\sin(\theta)}{\cos (\theta)} \).</p>
+
+
+<p>We need to substitute for \(\sec (\theta)\) and \(\tan(\theta)\), then simplify the integral as shown below;</p>
+<p></p>
+<p>
+  \(
+  \begin{align}
+  \displaystyle \int {@new_trig_func*diff_letx@} d(\theta) &amp;= \displaystyle \int {@subst_trig2_expr@}d(\theta)
+
+  \end{align}
+\)
+</p>
+
+
+<p>We can solve the above integral as follows.</p>
+<p>We let \(\displaystyle u={@let_u@} \implies du={@diff_let_u@}d(\theta)\) and substitute it</p>
+
+<p>
+\(
+\begin{align}  
+  \displaystyle \int {@subst_trig2_expr@}d(\theta) &amp;=\displaystyle \int {@eqn_interms_u@}du \\
+ &amp;= {@int(eqn_interms_u,u)+c@} 
+\end{align}
+\)
+</p> 
+  
+<p>Replacing back \(u\) with {@let_u@} in the above integral, you'll get,</p> 
+<p>
+\(
+\begin{align}
+\displaystyle {@int(eqn_interms_u,u)+c@} &amp;={@eqn_interms_trig@}\\
+\end{align}
+\)
+</p>
+
+<p>Since \(\displaystyle x= {@let_x@} \implies {@tan_trig@}\) and \( \displaystyle {@tan_trig^2@} \)</p>
+
+<p> 
+Recall,
+\(
+\begin{align}
+\displaystyle \tan^{2}(\theta) &amp;=\frac{\sin^{2} (\theta)}{\cos^{2} (\theta)} \\
+                    &amp;= \frac{\sin^{2} (\theta)}{1-\sin^{2} (\theta)} \\ 
+ {@rhs_tan_trig@} &amp;= \frac{\sin^{2} (\theta)}{1-\sin^{2} (\theta)}  \\
+
+\end{align}
+\)
+</p>
+<p>\( \displaystyle {@expression@} \)</p>
+<p>\( \displaystyle {@sin_theta_solve_expression@} \)</p>
+<p>\(\displaystyle \sin (\theta)={@sin_theta_solve_expression_2@}\)</p>
+<be>
+<p>The final step will be to substitute \( \displaystyle{@sin_theta_solve_expression_2@} \) with \(\displaystyle \sin(\theta)\) in \( \displaystyle {@eqn_interms_trig@} \) to get the final answer. <br></p><p>\( \displaystyle {@eqn_interms_trig@}={@tta@}={@ta@} \)<br></p><p>Therefore,</p><p>\(\displaystyle \int{@question_func@}d(x)={@ta@}\)<br></p>
+<p><br></p></be>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Question variables*/
+var_num1:rand_with_step(2,4,1);
+var_num2:rand_with_step(5,7,1);
+num_func:sqrt(var_num1^2*x^2+var_num2^2);
+denom_func:x^4;
+question_func:num_func/denom_func;
+
+/*model answer*/
+ta:int(question_func,x)+c; 
+
+/*Worked out soln*/
+let_x:var_num2*tan(theta)/var_num1; /*Variable name for let x (simplified)*/
+diff_letx:diff(let_x)/del(theta); /*derivative of let_xx*/
+
+/*Lets focus on the numerator*/
+subst_trig:subst(let_x,x,num_func);
+subst_trig1:args(subst_trig)[1];
+subst_trig2:factor(subst_trig1);
+trig_subst_sec:subst((sec(theta))^2,(tan(theta))^2+1,subst_trig2);
+soln_trig_subst_sec:sqrt(trig_subst_sec);
+soln_trig_subst_sec1:args(soln_trig_subst_sec)[1];
+soln_trig_subst_sec2:args(soln_trig_subst_sec)[2];
+soln_trig_subst_sec2a:args(soln_trig_subst_sec2)[1];
+
+num_new_trig_func:soln_trig_subst_sec1*soln_trig_subst_sec2a;
+denom_new_trig_func:let_x^4;
+new_trig_func:num_new_trig_func/denom_new_trig_func;
+
+sec:1/cos(theta);
+tan:sin(theta)/cos(theta);
+expr_trig1_func:new_trig_func*diff_letx/del(theta);
+subst_trig1_expr:subst(sec,sec(theta),expr_trig1_func);
+subst_trig2_expr:(subst(tan,tan(theta),subst_trig1_expr))*del(theta);
+simp:true;
+let_u:sin(theta);
+diff_let_u:diff(let_u)/del(theta);
+eqn_interms_u:subst(u,sin(theta),subst_trig2_expr)*1/cos(theta);
+eqn_interms_trig:subst(sin(theta),u,int(eqn_interms_u,u))+c;
+var_sin_theta:(var_num1*x)/(sqrt((var_num1*x)^2+(var_num2)^2));
+var_tan_trig_theta:solve((x=let_x),tan(theta));
+tan_trig:var_tan_trig_theta[1];
+
+rhs_tan_trig:rhs(tan_trig^2);
+num_rhs_tan_trig:num(rhs_tan_trig);
+den_rhs_tan_trig:denom(rhs_tan_trig);
+expr1__tan_trig:expand(num_rhs_tan_trig*(1-(sin(theta)^2)));
+expr2__tan_trig:expand(den_rhs_tan_trig*(sin(theta))^2);
+expression:expr1__tan_trig=expr2__tan_trig;
+solve_expression_sin:solve(expression,(sin(theta))^2);
+sin_theta_solve_expression:solve_expression_sin[1];
+sin_theta_solve_expression_1:rhs(sin_theta_solve_expression);
+sin_theta_solve_expression_2:sqrt(sin_theta_solve_expression_1);
+
+tta:subst(sin_theta_solve_expression_2,sin(theta),eqn_interms_trig);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\(\displaystyle\int{@question_func@}=\){@ta@}</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Mary Sayuni</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">The question focuses on evaluating a integral Trig Functions by Trig substitution</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>20</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node1: checking for correct answer*/
+
+/*node2: checking if the student forgot to add constant of integration*/
+mistake2:int(question_func,xx);
+
+/*node3: checking if the student subtracted the constant of integration instead of adding*/
+mistake3:int(question_func,xx)-c;
+
+/*node4: checking if the student subtracted the constant of integration instead of adding*/
+mistake4:diff(question_func);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>x</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p dir="ltr" style="text-align: left;">For an indefinite integral, you need to add the constant of integration, which you haven't done. Otherwise your computation seems correct.<br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p dir="ltr" style="text-align: left;">Your computation looks okay, however you subtracted the constant of integration instead of adding it. Take a look at the worked out solution for more guidance.<br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[It looks like you have differentiated the function instead of finding its integral as pointed out in the question. <br>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1696961156</deployedseed>
+    <deployedseed>1221623069</deployedseed>
+    <deployedseed>982365501</deployedseed>
+    <deployedseed>250632610</deployedseed>
+    <deployedseed>2107446083</deployedseed>
+    <deployedseed>352231189</deployedseed>
+    <deployedseed>18682572</deployedseed>
+    <deployedseed>664745229</deployedseed>
+    <deployedseed>1104687802</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

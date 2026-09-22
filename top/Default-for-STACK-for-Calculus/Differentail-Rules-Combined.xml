@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Differentail Rules-Combined</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p></p><p>Find the derivative of \(f(x) = {@fx@}\) at \(x = {@ee@}\). Give your answer as a fraction in its simplest form.</p><p>\(f'({@ee@}) = \)[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[This question evaluates the use of all three basic differentiation rules combined. <p>We will start by differentiating the function inside the logarithm for simplicity. In order to do so we will need to use the quotient rule and, when differentiating the numerator, we will have to use the product rule and the chain rule. We will do so directly, if you need further help please post a question in the issues forum.</p>
+<p>If \(y = \displaystyle {@ins@}\) then </p>
+<p>\(y' = \displaystyle \frac{({@bot@})\cdot (1\cdot {@p2@} + x\cdot {@bb@}\cdot ({@x^2+aa@})^{@bb-1@}\cdot 2\cdot x) - {@top@}\cdot {@cc@} \cdot 3 \cdot x^2 }{({@bot@})^2}\)</p>
+<p>\( = \displaystyle \frac{({@bot@})\cdot ({@p2@} + {@bb*x*2*x*(x^2+aa)^(bb-1)@}) - {@top*cc*3*x^2@}}{({@bot@})^2}\)</p><p>Here, we could keep trying to expand and simplify but since we want the value of the derivative at a point, there is no need to do so as we will simply substitute \(x={@ee@}\) into this expression later.</p>We now differentiate the whole function using the chain rule as follows:<p>
+<p>\( 
+\begin {align}
+\displaystyle f'(x) &= \displaystyle \frac{1}{{@ins@}} \cdot \displaystyle \frac{({@bot@})\cdot ({@p2@} + {@bb*x*2*x*(x^2+aa)^(bb-1)@}) - {@top*cc*3*x^2@}}{({@bot@})^2}\\
+&=\displaystyle  \frac{{@bot@}}{{@top@}} \cdot \displaystyle \frac{({@bot@})\cdot ({@p2@} + {@bb*x*2*x*(x^2+aa)^(bb-1)@}) - {@top*cc*3*x^2@}}{({@bot@})^2}\\
+&=\displaystyle{@ratsimp(bot/top*(bot*(p2+bb*x*2*x*(x^2+aa)^(bb-1))-top*cc*3*x^2)/(bot^2))@}\\
+&=\displaystyle{@ratsimp(dfx)@}\\
+\end{align}\)</p>
+<p>Once again, we could attempt to simplify but instead we will evaluate and then simplify to get </p>
+<p>\(f'({@ee@}) = {@ta@}\).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>p1:x;
+aa:rand([-5,-4,-3,-2,-1,1,2,3,4,5]);
+bb:rand([2,3]);
+p2:(x^2+aa)^bb;
+top:p1*p2;
+dd:rand([-1,-2,-3]);
+cc:rand_with_prohib(2,8,[abs(dd)]);
+bot:cc*x^3+dd;
+ins:top/bot;
+fx:log(ins);
+dfx:diff(fx,x);
+ee:rand(3)+1;
+ta:ev(dfx,x=ee);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p> \(f(x) = {@fx@}\) at \(x = {@ee@}\)</p>
+<p>\(f'({@ee@}) = {@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Juma Zevick</p>
+<p id="description">Find the derivative using cominned rules of differentation of \(f(x) = {@fx@}\) at \(x = {@ee@}\).</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1742380053</deployedseed>
+    <deployedseed>391993436</deployedseed>
+    <deployedseed>1672777700</deployedseed>
+    <deployedseed>1104555640</deployedseed>
+    <deployedseed>1840058317</deployedseed>
+    <deployedseed>1250122643</deployedseed>
+    <deployedseed>559951550</deployedseed>
+    <deployedseed>1472723157</deployedseed>
+    <deployedseed>282070004</deployedseed>
+    <deployedseed>1953922086</deployedseed>
+    <deployedseed>422054282</deployedseed>
+    <deployedseed>1652753815</deployedseed>
+    <deployedseed>464164676</deployedseed>
+    <deployedseed>513678752</deployedseed>
+    <deployedseed>1750780127</deployedseed>
+    <deployedseed>1048467596</deployedseed>
+    <deployedseed>1886644849</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

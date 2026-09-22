@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Analyzing function behaviors</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Determine whether the functions below represent continuous growth, continuous decay, or neither. Explain.</p>
+<p>a). \(g(t) ={@expression1@}\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+<p>b). \(g(t) ={@expression2@}\) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>a). \(g(t) ={@expression1@}\) </p>
+<p>This represents continuous decay, the growth rate is less than \(0\).</p>
+<p>When the exponent in an exponential function is negative, the function represents continuous decay because the value of the exponential term decreases as \(\text{t}\) increases.</p>
+<br>
+<p>b). \(g(t) ={@expression2@}\)</p>
+<p>This represents continuous growth, the growth rate is greater than \(0\).</p>
+<p>When the exponent in an exponential function is positive, the function represents continuous growth because the value of the exponential term increases as \(\text{t}\) increases.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[const1:float((rand(200)+50)/100);
+const2:rand(4000)+const1;
+power1:-(rand(10)+1);
+power2:float(rand(100)/100);
+expression1:const1*%e^(power1*t);
+expression2:const2*%e^(power2*t);
+
+/*model answers*/
+ta1:random_permutation([["continous decay,the growth rate is less than 0", true],["continous growth,the growth rate is greater than 0", false],["neither",false]]);
+ta2:random_permutation([["continous decay the growth rate is less than 0", false],["continous growth,the growth rate is greater than 0", true],["neither",false]]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>a). \(g(t) ={@expression1@}\) </p>
+<p>This represents continuous decay, the growth rate is less than \(0\).</p>
+
+<p>b). \(g(t) ={@expression2@}\)</p>
+<p>This represents continuous growth, the growth rate is greater than \(0\).</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p><p>
+</p><p id="concept">https://docs.google.com/document/d/1xxFaAWHlnIUPOqcqFQI9dneirt5_xGsD6ZVLVPrEzpk/edit#heading=h.6lvo5jsbk3rv</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">2</p>
+<p id="description">Given functions, students are required to determine whether they represent continous growth, decay or neither. </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>radio</type>
+      <tans>ta2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the corrrect answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mcq_correct(ta1)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mcq_correct(ta2)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>346748536</deployedseed>
+    <deployedseed>54389838</deployedseed>
+    <deployedseed>766547961</deployedseed>
+    <deployedseed>249619213</deployedseed>
+    <deployedseed>979325623</deployedseed>
+    <deployedseed>1763225158</deployedseed>
+    <deployedseed>699294888</deployedseed>
+    <deployedseed>1458084633</deployedseed>
+    <deployedseed>1394602748</deployedseed>
+    <deployedseed>655361141</deployedseed>
+    <deployedseed>922219423</deployedseed>
+    <deployedseed>823624280</deployedseed>
+    <deployedseed>1058952226</deployedseed>
+    <deployedseed>1416758847</deployedseed>
+    <deployedseed>1059365004</deployedseed>
+    <deployedseed>443465252</deployedseed>
+    <deployedseed>101565244</deployedseed>
+    <deployedseed>1659270976</deployedseed>
+    <deployedseed>168308467</deployedseed>
+    <deployedseed>431255482</deployedseed>
+    <deployedseed>147990173</deployedseed>
+    <deployedseed>1742816904</deployedseed>
+    <deployedseed>722541854</deployedseed>
+    <deployedseed>628465672</deployedseed>
+    <deployedseed>874541441</deployedseed>
+    <deployedseed>204436574</deployedseed>
+    <deployedseed>1093730214</deployedseed>
+    <deployedseed>1347615408</deployedseed>
+    <deployedseed>1093773259</deployedseed>
+    <deployedseed>472574188</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>first(mcq_correct(ta1))</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>first(mcq_correct(ta2))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

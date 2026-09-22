@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Showing the Limit of Absolute Value Function</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p><strong>Consider the following statement and fill in the blanks for its proof</strong></p>
+<p>Show that \(\lim_{{x \to 0}} {@abs(x)@} = 0\)</p><br>
+
+<p><strong>Proof:</strong><br>
+<p><strong>Step 1: Understand the definition of the absolute value function</strong></p>
+<p>The absolute value of \(x\), denoted as \(|x|\), is defined as:</p>
+<p style="margin-left:120px">
+\(
+{@abs(x)@}  =
+\begin{cases}
+x & \text{if } x \geq 0 \\
+-x & \text{if } x < 0
+\end{cases}
+\)
+</p>
+</p>
+<br>
+<p><strong>Step 2: Apply the limit definition</strong></p>
+<p>To find \(\lim_{{x \to 0}} |x|\), we need to evaluate the behavior of \(|x|\) as \(x\) approaches \(0\) from both the left and the right.
+</p>
+<br>
+<p><strong>Step 3: Evaluate the left-hand limit</strong></p>
+<p style="margin-left:120px"> \(\lim_{{x \to 0^-}} |x| = \lim_{{x \to 0^-}} (-x) =\) [[input:ans1]] [[validation:ans1]]</p><p> [[feedback:prt1]]</p>
+<br>
+<p><strong>Step 4: Evaluate the right-hand limit</strong></p>
+<p style="margin-left:120px"> \(\lim_{{x \to 0^+}} |x| = \lim_{{x \to 0^+}} x = \) [[input:ans2]] [[validation:ans2]]</p><p> [[feedback:prt2]]</p>
+<br>
+<p><strong>Step 5: Combine the results</strong></p>
+<p>Since both the left-hand limit and the right-hand limit as \(x\) approaches \(0\) are [[input:ans3]], we can conclude:[[validation:ans3]][[feedback:prt3]]</p>
+<p style="margin-left:120px">  \(\lim_{{x \to 0}} |x|\) [[input:ans4]] [[validation:ans4]][[feedback:prt4]]</p>
+<hr>
+<p>Comprehension Question</p>
+<p>Why is it important to consider both the left-hand limit and the right-hand limit when evaluating the limit of a function as \(x\) approaches a particular value?</p>
+<p> [[input:ans5]] [[validation:ans5]]</p><p> [[feedback:prt5]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p><strong>Consider the following statement and its proof</strong></p>
+
+<p>Show that \(\lim_{{x \to 0}} {@abs(x)@} = 0\)</p><br>
+
+<p><strong>Proof:</strong><br>
+<p><strong>Step 1: Understand the definition of the absolute value function</strong></p>
+<p>The absolute value of \(x\), denoted as \(|x|\), is defined as:</p>
+<p style="margin-left:120px">
+\(
+{@abs(x)@}  =
+\begin{cases}
+x & \text{if } x \geq 0 \\
+-x & \text{if } x < 0
+\end{cases}
+\)
+</p>
+</p>
+<br>
+<p><strong>Step 2: Apply the limit definition</strong></p>
+<p>To find \(\lim_{{x \to 0}} |x|\), we need to evaluate the behavior of \(|x|\) as \(x\) approaches \(0\) from both the left and the right.
+</p>
+<br>
+<p><strong>Step 3: Evaluate the left-hand limit</strong></p>
+<p style="margin-left:120px"> \(\lim_{{x \to 0^-}} |x| = \lim_{{x \to 0^-}} (-x) = 0\)</p>
+<p>When \(x\) approaches 0 from the left (i.e., \(x\) is negative), \(|x| = -x\). As \(x\) gets closer to \(0\), \(-x\) also approaches \(0\).
+</p>
+<br>
+<p><strong>Step 4: Evaluate the right-hand limit</strong></p>
+<p style="margin-left:120px"> \(\lim_{{x \to 0^+}} |x| = \lim_{{x \to 0^+}} x = 0\)</p>
+<p>When \(x\) approaches \(0\) from the right (i.e., \(x\) is positive), \(|x| = x\). As \(x\) gets closer to \(0\), \(x\) also approaches \(0\).</p>
+<br>
+<p><strong>Step 5: Combine the results</strong></p>
+<p>Since both the left-hand limit and the right-hand limit as \(x\) approaches \(0\) are equal to \(0\), we can conclude:
+<p style="margin-left:120px">  \(\lim_{{x \to 0}} |x| = 0\) </p>
+<hr>
+<p>Comprehension Question</p>
+<p>Why is it important to consider both the left-hand limit and the right-hand limit when evaluating the limit of a function as \(x\) approaches a particular value?</p>
+<p><strong>Because the limit only exists if both the left-hand limit and the right-hand limit are equal.<p></strong></p>
+<p><strong>Explanation:</strong> It is important to consider both the left-hand limit and the right-hand limit when evaluating the limit of a function as \(x\) approaches a particular value because the limit only exists if both the left-hand limit and the right-hand limit are equal.</p>
+<p style="margin-left:95px"> If the limits from both sides are not equal, then the overall limit does not exist. This ensures that the function approaches the same value regardless of the direction from which \(x\) approaches the specified value.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[ta1:0;
+ta2:0; 
+ta3:random_permutation([["equal",true],["not equal",false]]);
+ta4:random_permutation([["= 0",true],["> 0",false],["< 0",false]]);
+
+/* correct answer */
+corr_ans:[[1, true, "Because the limit only exists if both the left-hand limit and the right-hand limit are equal."]];
+/* wrong answers */
+incorr_ans:[
+[2, false, "Because the left-hand limit and the right-hand limit are always equal"],
+[3, false, "Because the left-hand limit is usually different from the right-hand limit"],
+[4, false, "Because the function must approach different values from the left and right"]];
+ta5: random_permutation(append(corr_ans, incorr_ans));
+
+ta_index: (makelist(x[1], x, ta5));]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<br>{@ta_index@}]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">https://docs.google.com/document/d/1CF3tJ2dDEuSOmudgsssUVtdY1DxnKTEAtCADGW8n_fs/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">2</p>
+<p id="description">This task involves analyzing the limit to demonstrate why the absolute value function tends to a given value as x approaches a given point.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>dropdown</type>
+      <tans>ta3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>dropdown</type>
+      <tans>ta4</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>radio</type>
+      <tans>ta5</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mcq_correct(ta3)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mcq_correct(ta4)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>mcq_correct(ta5)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1235832442</deployedseed>
+    <deployedseed>1604347861</deployedseed>
+    <deployedseed>1765512983</deployedseed>
+    <deployedseed>398981498</deployedseed>
+    <deployedseed>1860003799</deployedseed>
+    <deployedseed>351016568</deployedseed>
+    <deployedseed>1721970623</deployedseed>
+    <deployedseed>525242647</deployedseed>
+    <deployedseed>360548983</deployedseed>
+    <deployedseed>2140506402</deployedseed>
+    <deployedseed>291657197</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>first(mcq_correct(ta3))</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>first(mcq_correct(ta4))</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>first(mcq_correct(ta5))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

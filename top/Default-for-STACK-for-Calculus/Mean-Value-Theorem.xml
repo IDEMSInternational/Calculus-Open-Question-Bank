@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Mean Value Theorem</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p></p><p>The polynomial function \(g(x) = {@gx@}\) is defined for \(0\leq x\leq p\).</p><p>Given that \(g(0) = 0\), find the value of \(p\) needed to justify that \(g(x)\) has a stationary point. Input your answer in exact form.</p><p>\(p\) = [[input:ans1]][[validation:ans1]][[feedback:prt1]]</p><p>What theorem are you using to justify this? Type in the name of the theorem.</p>
+<p>[[input:ans2]][[validation:ans2]][[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>To justify that the polynomial function \(g(x)={@gx@}\) has a stationary point, we can use the Mean Value Theorem. For \(g(x)\) to have a stationary point, it means that the derivative \(g′(x)\) must be equal to zero at some point within the interval \([0,p]\).
+
+<p>Recall: The Mean Value Theorem states that for a function \(f(x)\) that is continuous on the closed interval \([a,b]\) and differentiable on the open interval \((a,b)\) there exists a point \(c\) in \((a,b)\) such that:</p>
+<p>\(f'(c)=\displaystyle \frac{f(b)-f(a)}{b-a}\)</p>
+<p>In this case, \(a=0\) and \(b=p\), and we want to find \(p\) such that \(g′(c)=0\). First, we need to find \(g′(x)\):</p>
+<p>\(g(x)={@gx@}\)</p>
+<p>\(g'(x)={@diff(gx,x)@}\)</p>
+<p>Now, we want to find \(c\) such that \(g′(c)=0\) for some \(c\) in the interval \((0,p)\). So, we need to solve the equation:</p>
+<p>\({@sol2@}=0 \Leftrightarrow c={@pp@}\)</p>
+<p> The mean value theorem yieds to \(g(0)=g(p)\). Since \(g(0)=0\) and \(g(p)={@at(gx,[x=p])@}\), then, we get: </p>
+<p>\( {@at(gx,[x=p])@} = 0 \Leftrightarrow p = 0 \, \mbox{or} \, p = {@sqrt(aa/bb)@} \, \mbox{or} \, p= {@-sqrt(aa/bb)@}\). </p>
+<p> \(c\) must satisfy the condition \( 0 < c < p\), and \(c={@pp@}\), therefore \(p={@ratsimp(sqrt(aa/bb))@}\).
+<p>Therefore, \(p={@sqrt(aa/bb)@}\) is the value needed to justify that the curve representative of the function \(g\) has a stationary point.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[aa:rand([12,16,20]);
+bb:rand(4)+2;
+gx:bb*x^3-aa*x;
+ta_2:random_permutation([["Mean Value Theorem", true],["fundamental theorem", false]]);
+/*solution variables*/
+sol1:diff(gx,x);
+sol2:subst(c,x,sol1);
+s2:sol2=0;
+sol3:solve(s2)[1];
+s3:solve(s2)[2];
+pp:rhs(s3);
+ta:float(pp);
+
+ta1: sqrt(aa/bb);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>The polynomial function \(g(x) = {@gx@}\) is defined for \(0\leq x\leq p\).</p>
+<p>\(p={@ta1@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">NA</p>
+<p id="reviewer">Checks for correct answer</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">Determine the coordinates of the point of inflection of the graph of fx and Determine the intervals on which the graph of the function is concave up and concave down.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>radio</type>
+      <tans>ta_2</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the correct answer</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions>2</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the correct answer</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions>4</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mcq_correct(ta_2)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1181226172</deployedseed>
+    <deployedseed>1013992300</deployedseed>
+    <deployedseed>865905610</deployedseed>
+    <deployedseed>1140061205</deployedseed>
+    <deployedseed>242999196</deployedseed>
+    <deployedseed>2047969667</deployedseed>
+    <deployedseed>815187230</deployedseed>
+    <deployedseed>717417315</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>first(mcq_correct(ta_2))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,1045 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Directional derivatives-number 7</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the direction in which the maximum rate of change of the equation occurs and the maximum rate of change for the function:</p>
+<p>\(f(x,y,z)={@quiz_expr@}\) at \(({@point_x@},{@point_y@},{@point_z@})\)</p>
+<p><b>(give your answers in \(1\) decimal place)</b></p>
+<p><b>Step \(1\):</b> Differentiate partially \(f \)with respect to \(x, y\) and \(z\) respectively. </p>
+<br>
+<p>\(\nabla f_x=\)[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>\(\nabla f_y=\)[[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>
+<p>\(\nabla f_z=\)[[input:ans3]] [[validation:ans3]][[feedback:prt3]]</p>
+<br>
+<p><b>Step \(2\):</b>  Now, find the gradient  at the points \(({@point_x@},{@point_y@},{@point_z@})\) using the gradient functions you have found in Step 1 above</p></p>
+<p> (Hint: Substitute for \(x,y\) \(z\) in the gradient functions above)</p>
+<p>\(\nabla f_x=\)[[input:ans4]]<p>
+<p> [[validation:ans4]][[feedback:prt4]]</p>
+
+<p>\(\nabla f_y=\)[[input:ans5]]</p>
+<p> [[validation:ans5]][[feedback:prt5]]</p>
+
+<p>\(\nabla f_z=\)[[input:ans6]] </p>
+<p>[[validation:ans6]][[feedback:prt6]]</p>
+<br>
+<p><b>Step \(3\):</b>  Determine the direction in which the maximum rate of change of the function occurs.</p>
+<p>\(\nabla f_x(x-x_1)+\nabla f_y(y-y_1)+\nabla f_z(z-z_1)=\) \( ( \) [[input:ans7]] ,[[input:ans8]] ,[[input:ans9]] \( ) \) </p>
+<p> [[validation:ans7]][[feedback:prt7]]  [[validation:ans8]][[feedback:prt8]]  [[validation:ans9]][[feedback:prt9]]</p>
+<br>
+<p><b>Step \(4\):</b> Deduce the maximum rate of change  of \(f(x,y,z)\)</p>
+<p>\(\left \|   \nabla f({@point_x@},{@point_y@},{@point_z@}) \right \|=\sqrt{{x_1^2}+{y_1^2}+{z_1^2}}\) </p>
+<p>[[input:ans10]] [[validation:ans10]][[feedback:prt10]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p><p>Consider the following equation, we need to find the direction in which the maximum rate of change of the equation occurs and the maximum rate of change.</p>
+<p>\(f(x,y,z)={@quiz_expr@}\) at \(({@point_x@},{@point_y@},{@point_z@})\)</p>
+<p><b>Step \(1\):</b>  We need to compute \(\displaystyle\frac{d f(x,y,z)}{dx})=\nabla f_x, \frac{d f(x,y,z)}{dy})=\nabla f_y, \frac{d f(x,y,z)}{dz})=\nabla f_z\).</p>
+<br>
+<p>\(\nabla f_x={@function_1@}\)</p>
+<p>\(\nabla f_y={@function_2@}\)</p>
+<p>\(\nabla f_z={@function_2@}\)</p>
+<br>
+<p><b>Step \(2\):</b> Now, we can find the gradient  at the points \(({@point_x@},{@point_y@},{@point_z@})\) by substituting for the values of \(x,y,z\) respectively to the  above equation \(\displaystyle \nabla f_x,\nabla f_y,\nabla f_z\) b</p>
+<p></p>
+<p>\(\nabla f_x={@gradient1@}\)</p>
+<p>\(\nabla f_y={@gradient2@}\)</p>
+<p>\(\nabla f_z={@gradient3@}\)</p>
+<br>
+<p><b>Step \(3\):</b> The direction in which the maximum rate of change at the point in question is simply the gradient at  \(({@point_x@},{@point_y@},{@point_z@})\) which we found in the previous step. So, the direction in which the maximum rate of change of the function occurs is,</p>
+<p>\(\nabla f_x(x-x_1)+\nabla f_y(y-y_1)+\nabla f_z(z-z_1)={@ta7@},{@ta8@},{@ta9@}\)</p>
+<br>
+<p><b>Step \(4\):</b> The maximum rate of change is simply the magnitude of the gradient in the previous step. So, the maximum rate of change of the function is,</p>
+<p>\(\left \|   \nabla f({@point_x@},{@point_y@},{@point_z@}) \right \|=\sqrt{{x_1^2}+{y_1^2}+{z_1^2}}\)</p>
+<p>\({@magnitude@}\) </p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*defining question variables*/
+point_x: rand_with_step(1,3,1); point_y: rand_with_prohib(-2,2,[0]); 
+point_z: rand_with_step(-1,2,1);
+var_ex:rand(2)+1;
+var_z:rand(2)+1;
+var_cos:rand([cos,sin]);
+quiz_expr:(e^(var_ex*x))*var_cos((y-(var_z)*z));
+/*differentiation*/
+function_1:diff(quiz_expr,x);
+function_2:diff(quiz_expr,y);
+function_3:diff(quiz_expr,z);
+/*gradient point x */
+gradient1a:subst(point_x,x,function_1);
+gradient1b:subst(point_y,y,gradient1a);
+gradient1:subst(point_z,z,gradient1b);
+/*gradient point y */
+gradient2a:subst(point_x,x,function_2);
+gradient2b:subst(point_y,y,gradient2a);
+gradient2:subst(point_z,z,gradient2b);
+/*gradient point z */
+gradient3a:subst(point_x,x,function_3);
+gradient3b:subst(point_y,y,gradient3a);
+gradient3:subst(point_z,z,gradient3b);
+ta7:decimalplaces(float(gradient1),1);
+ta8:decimalplaces(float(gradient2),1);
+ta9:decimalplaces(float(gradient3),1);
+/*magnitude*/
+magnitude:decimalplaces((sqrt((ta7)^2+(ta8)^2+(ta9)^2)),1);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(f(x,y,z)={@quiz_expr@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire </p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">This question requires the student to determine the direction and maximum rate of change of a given equation \(f(x,y,z)\) at a specific point in three-dimensional space.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>function_1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans10</name>
+      <type>algebraic</type>
+      <tans>magnitude</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>function_2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>function_3</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>gradient1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>gradient2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>gradient3</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7</name>
+      <type>algebraic</type>
+      <tans>ta7</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans8</name>
+      <type>algebraic</type>
+      <tans>ta8</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans9</name>
+      <type>algebraic</type>
+      <tans>ta9</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for the correct answers*/
+/*node 2:Finding the integration instead of differentiation*/
+mistake_1:int(quiz_expr,x);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answers</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>function_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Finding the integration instead of differentiation</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The question requires you to find the differentiation not integration</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt10</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for the correct answers*/
+/*node 2:Failing to square the values Point_x ,Point_y and Point_z*/
+mistake_10:ratsimp(sqrt((gradient1)+(gradient2)+(gradient3)));</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answers</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans10</sans>
+        <tans>magnitude</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt10-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt10-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Failing to square the values Point_x ,Point_y and Point_z</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans10</sans>
+        <tans>mistake_10</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt10-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The question requires you to find the magnitude by the squaring the values  and finding their square root
+
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt10-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for the correct answers*/
+/*node 2:Finding the integration instead of differentiation*/
+mistake_2:int(quiz_expr,y);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answers</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>function_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Finding the integration instead of differentiation</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The question requires you to find the differentiation not integration</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for the correct answers*/
+/*node 2:Finding the integration instead of differentiation*/
+mistake_3:int(quiz_expr,y);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answers</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>function_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Finding the integration instead of differentiation</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The question requires you to find the differentiation not integration</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for the correct answers*/
+/*node 2:Interchanging the values x with that y*/
+mistake_4:subst(point_x,y,gradient1);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answers</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>gradient1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Interchanging the values x with that y</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Check that you have substituted  the correct value of \(x\) from the points given
+
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for the correct answers*/
+/*node 2:Interchanging the values y with that z*/
+mistake_5:subst(point_y,z,gradient2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answers</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>gradient2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Interchanging the values y with that z</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>mistake_5</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> Check that you have substituted  the correct You should the correct value of \(y\) from the points given></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for the correct answers*/
+/*node 2:Interchanging the values z with that y*/
+mistake_6:subst(point_z,y,gradient3);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answers</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>gradient3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt6-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Interchanging the values z with that y</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>mistake_6</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Check that you have substituted  the correct You should the correct value of \(z\) from the points given
+
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt7</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for the correct answers*/
+/*node 2:Giving the values of differentiation as the answer is instead of the values at the gradient x,*/
+mistake_7:diff(quiz_expr,x);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answers</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans7</sans>
+        <tans>ta7</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt7-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt7-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Giving the values of differentiation as the answer is instead of the values at the gradient x,</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans7</sans>
+        <tans>mistake_7</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt7-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The question requires you to find the gradient function at the points \(x\),
+
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt7-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt8</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for the correct answers*/
+/*node 2:Giving the vales of differentiation as the answer is instead of the values at the gradient y,*/
+mistake_8:diff(quiz_expr,y);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answers</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans8</sans>
+        <tans>ta8</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt8-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt8-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Giving the vales of differentiation as the answer is instead of the values at the gradient y,</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans8</sans>
+        <tans>mistake_8</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt8-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The question requires you to find the gradient function at the points \(y\)
+
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt8-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt9</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for the correct answers*/
+/*node 2:Giving the vales of differentiation as the answer is instead of the values at the gradient z,*/
+mistake_9:diff(quiz_expr,z);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answers</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans9</sans>
+        <tans>ta9</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt9-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt9-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Giving the vales of differentiation as the answer is instead of the values at the gradient z,</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans9</sans>
+        <tans>mistake_9</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt9-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The question requires you to find the gradient function at the points \(z\)
+
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt9-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>897892619</deployedseed>
+    <deployedseed>1437511671</deployedseed>
+    <deployedseed>1966119973</deployedseed>
+    <deployedseed>984286590</deployedseed>
+    <deployedseed>1694041332</deployedseed>
+    <deployedseed>1309332956</deployedseed>
+    <deployedseed>926537695</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>function_1</value>
+      </testinput>
+      <testinput>
+        <name>ans10</name>
+        <value>magnitude</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>function_2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>function_3</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>gradient1</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>gradient2</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>gradient3</value>
+      </testinput>
+      <testinput>
+        <name>ans7</name>
+        <value>ta7</value>
+      </testinput>
+      <testinput>
+        <name>ans8</name>
+        <value>ta8</value>
+      </testinput>
+      <testinput>
+        <name>ans9</name>
+        <value>ta9</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt10</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt10-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt6</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt6-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt7</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt7-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt8</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt8-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt9</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt9-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

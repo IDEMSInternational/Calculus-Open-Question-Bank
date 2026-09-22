@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Chain rule_ Question 3</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Given the following,</p>
+
+<p>\(\qquad \displaystyle z={@func_z@}\)</p>
+<p>\(\qquad  \displaystyle y={@func_y@} \)</p>
+
+<p> We can use Chain Rule to compute \(\displaystyle \frac{dz}{dx}\) from the following steps; </p>
+
+<p>Recall the formula for the Chain Rule \(\displaystyle \frac{dz}{dx} = \frac{\partial{z}}{\partial{x}} + \frac{\partial{z}}{\partial{y}}\frac{dy}{dx}, \)</p>
+
+<p> \(\displaystyle \frac{\partial{z}}{\partial{x}} = \) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]] </p>
+<p>\(\displaystyle \frac{\partial{z}}{\partial{y}}= \) [[input:ans3]] [[validation:ans3]] [[feedback:prt3]] </p>
+<p>\(\displaystyle \frac{dy}{dx}= \) [[input:ans4]] [[validation:ans4]] [[feedback:prt4]] </p>
+<p> \(\displaystyle \frac{dz}{dx} =  \) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]] </p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+
+<p>\(\displaystyle \frac{dz}{dx} = \frac{\partial{z}}{\partial{x}} + \frac{\partial{z}}{\partial{y}}\frac{dy}{dx} \)</p>
+<p> \(\displaystyle \frac{\partial{z}}{\partial{x}} = {@func1@}\) </p>
+<p>\(\displaystyle \frac{\partial{z}}{\partial{y}}={@func2a@} \) </p>
+<p>\(\displaystyle \frac{dy}{dx}={@func2b@}\) </p>
+<p>   \(\displaystyle \quad = {@func1@}+({@func2a*func2b@}) \)</p>
+<p>   \(\quad = {@ta@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Question variables*/
+aa:rand_with_prohib(1,5,[]);
+bb:rand_with_prohib(1,5,[]);
+cc:rand_with_prohib(1,5,[]);
+dd:rand_with_prohib(-5,5,[0]);
+ee:rand_with_prohib(-5,5,[0]);
+
+func_z:dd*x^(aa)+ee*y^(bb);
+func_y:sin(x^cc);
+
+/*Worked solution*/
+func1:diff(func_z,x); 
+func2a:diff(func_z,y);  
+func2b:diff(func_y,x);
+
+ta:func1+func2a*func2b;
+
+
+/*mistakes*/
+node_2_testx:diff(func_z,x);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\qquad \displaystyle z={@func_z@}\)</p>
+<p>\(\qquad  \displaystyle y={@func_y@} \)</p>
+<p>\(\displaystyle \frac{dz}{dx} =  {@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/Ap>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">Salvatore Mercuri</p>
+<p id="description">Compute \( \displaystyle \frac{dz}{dx} \) using the Chain Rule for the given functions \( z(x, y) \) and \( y(x) \), Utilize the Chain Rule formula: \[ \displaystyle \frac{dz}{dx} = \frac{\partial z}{\partial x} + \frac{\partial z}{\partial y} \frac{dy}{dx} \]</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>func1</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>func2a</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>func2b</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node1:checking for the correct answer*/
+
+/*node2:Computing the partial derivative of z wrt to x only and forgoing the other derivatives*/
+</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checking for the correct answer</description>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>x,y,z</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Computing the partial derivative of z wrt to x only and forgoing the other derivatives</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>node_2_testx</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.3</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have only computed the derivative of the function \(\displaystyle z={@func_z@}\), without considering \(\displaystyle y={@func_y@} \).</p>
+
+<p>Hint: Note that for this particular problem, the formula has already been provided in the initial step.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checking for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>func1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checking for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>func2a</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checking for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>func2b</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>891263031</deployedseed>
+    <deployedseed>701200033</deployedseed>
+    <deployedseed>1528114499</deployedseed>
+    <deployedseed>94508621</deployedseed>
+    <deployedseed>743797980</deployedseed>
+    <deployedseed>1591443443</deployedseed>
+    <deployedseed>2144979957</deployedseed>
+    <deployedseed>1869539872</deployedseed>
+    <deployedseed>155672559</deployedseed>
+    <deployedseed>1347323821</deployedseed>
+    <deployedseed>1838012413</deployedseed>
+    <deployedseed>1339169711</deployedseed>
+    <deployedseed>2061081250</deployedseed>
+    <deployedseed>293700336</deployedseed>
+    <deployedseed>1085000018</deployedseed>
+    <deployedseed>228357140</deployedseed>
+    <deployedseed>1097035929</deployedseed>
+    <deployedseed>844414682</deployedseed>
+    <deployedseed>1013272583</deployedseed>
+    <deployedseed>1248179710</deployedseed>
+    <deployedseed>981808451</deployedseed>
+    <deployedseed>1524302810</deployedseed>
+    <deployedseed>61729746</deployedseed>
+    <deployedseed>1774153036</deployedseed>
+    <deployedseed>1933235435</deployedseed>
+    <deployedseed>750371392</deployedseed>
+    <deployedseed>1165902294</deployedseed>
+    <deployedseed>777994921</deployedseed>
+    <deployedseed>894902298</deployedseed>
+    <deployedseed>256235869</deployedseed>
+    <deployedseed>1023752862</deployedseed>
+    <deployedseed>1249438361</deployedseed>
+    <deployedseed>1851253097</deployedseed>
+    <deployedseed>920362428</deployedseed>
+    <deployedseed>1445811531</deployedseed>
+    <deployedseed>1839008459</deployedseed>
+    <deployedseed>1548366148</deployedseed>
+    <deployedseed>650598364</deployedseed>
+    <deployedseed>1279670256</deployedseed>
+    <deployedseed>1363884082</deployedseed>
+    <deployedseed>112390614</deployedseed>
+    <deployedseed>2052431596</deployedseed>
+    <deployedseed>731596403</deployedseed>
+    <deployedseed>121346805</deployedseed>
+    <deployedseed>1056638073</deployedseed>
+    <deployedseed>609591492</deployedseed>
+    <deployedseed>430613994</deployedseed>
+    <deployedseed>1241466135</deployedseed>
+    <deployedseed>212879993</deployedseed>
+    <deployedseed>1324435326</deployedseed>
+    <deployedseed>1470472485</deployedseed>
+    <deployedseed>82415826</deployedseed>
+    <deployedseed>1340018912</deployedseed>
+    <deployedseed>1441928908</deployedseed>
+    <deployedseed>920974836</deployedseed>
+    <deployedseed>1433145409</deployedseed>
+    <deployedseed>1583211974</deployedseed>
+    <deployedseed>255686705</deployedseed>
+    <deployedseed>2129423881</deployedseed>
+    <deployedseed>502657780</deployedseed>
+    <deployedseed>1272687856</deployedseed>
+    <deployedseed>26845432</deployedseed>
+    <deployedseed>1382908307</deployedseed>
+    <deployedseed>1404542816</deployedseed>
+    <deployedseed>995924514</deployedseed>
+    <deployedseed>248239243</deployedseed>
+    <deployedseed>1255022580</deployedseed>
+    <deployedseed>302232331</deployedseed>
+    <deployedseed>2024774130</deployedseed>
+    <deployedseed>997352879</deployedseed>
+    <deployedseed>1934675630</deployedseed>
+    <deployedseed>179262567</deployedseed>
+    <deployedseed>992841928</deployedseed>
+    <deployedseed>342309580</deployedseed>
+    <deployedseed>678366313</deployedseed>
+    <deployedseed>1615258353</deployedseed>
+    <deployedseed>1208141445</deployedseed>
+    <deployedseed>221861050</deployedseed>
+    <deployedseed>1704138819</deployedseed>
+    <deployedseed>1008434904</deployedseed>
+    <deployedseed>2001819896</deployedseed>
+    <deployedseed>850770074</deployedseed>
+    <deployedseed>1566121940</deployedseed>
+    <deployedseed>2142481770</deployedseed>
+    <deployedseed>824714028</deployedseed>
+    <deployedseed>1530869845</deployedseed>
+    <deployedseed>2007498840</deployedseed>
+    <deployedseed>1902078183</deployedseed>
+    <deployedseed>1493139576</deployedseed>
+    <deployedseed>1853583395</deployedseed>
+    <deployedseed>1757453238</deployedseed>
+    <deployedseed>1330538051</deployedseed>
+    <deployedseed>1357384991</deployedseed>
+    <deployedseed>1360906547</deployedseed>
+    <deployedseed>1262235669</deployedseed>
+    <deployedseed>2059142908</deployedseed>
+    <deployedseed>855688507</deployedseed>
+    <deployedseed>1412693212</deployedseed>
+    <deployedseed>2012943903</deployedseed>
+    <deployedseed>2031416251</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>node_2_testx</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>0.3000000</expectedscore>
+        <expectedpenalty/>
+        <expectedanswernote>prt1-2-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>3</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>func1</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>func2a</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>func2b</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

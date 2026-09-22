@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Finding the Derivative of a Function at a Specific Point</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p></p><p>Find the derivative of \(f(x)= {@fx@}\) at \(x={@cc@}\) using limits, or otherwise.</p><p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+
+<p>To find the derivative of \(f(x) = {@fx@}\) at \(x = {@cc@}\) using limits, or otherwise.</p>
+
+<p>We'll use the limit definition of the derivative:</p>
+
+\[f'(x) = \lim_{{h \to 0}} \frac{f(x + h) - f(x)}{h}\]
+
+<p>Substitute \(x = {@cc@}\) into the formula:</p>
+
+\[f'({@cc@}) = \lim_{{h \to 0}} \frac{{{@aa@}({@cc@} + h) {@if bb<0 then "-" else "+"@} {@abs(bb)@} - ({@aa@} \times {@cc@} {@if bb<0 then "-" else "+"@} {@abs(bb)@})}}{h}\]
+
+Now, simplify the expression:
+
+\[f'({@cc@}) = \lim_{{h \to 0}} \frac{{({@aa*cc@} + {@aa@}h {@if bb<0 then "-" else "+"@} {@abs(bb)@}) - ({@aa*cc@} {@if bb<0 then "-" else "+"@} {@abs(bb)@})}}{{h}}\]
+
+Simplify further:
+
+\[f'({@cc@}) = \lim_{{h \to 0}} \frac{{@aa@}h }{h}\]
+
+Now, as \(h\) approaches 0, the limit simplifies to:
+
+\[f'({@cc@}) = \lim_{{h \to 0}} {@aa@}  = {@aa@} \]
+
+So, the derivative of \(f(x) = {@aa@}x {@sig@} {@bb@}\) at \(x = {@cc@}\) is \(f'({@cc@}) = {@aa@} \).]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[aa:rand(9)+2;
+pm1:rand_with_prohib(-1,1,[0]);
+bb:pm1*(rand(9)+1);
+sig:if pm1=1 then "+" else "-";
+cc:rand(5)+1;
+fx:aa*x+bb;]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>The derivative of {@fx@} at \(x={@cc@}\) using limits, or otherwise is</p><p>\({@aa@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">[Juma Zevick]</p>
+<p id="description"> This question asks students to find the derivative of a given function at a specific value of \(x\) using limits or other appropriate methods.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>aa</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer */</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>aa</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>\(\displaystyle f'(x) = \lim_{h\rightarrow 0} \frac{({@aa@}\cdot (x+h) {@sig@} {@abs(bb)@})-({@fx@})}{h} = \lim_{h\rightarrow 0} \frac{{@aa*x+aa*h+bb@} - ({@fx@})}{h} =&nbsp;\lim_{h\rightarrow 0} \frac{{@aa*x+aa*h+bb -fx@}}{h}\)&nbsp;</p><p>\(&nbsp;\displaystyle = \lim_{h\rightarrow 0} {@aa@} = {@aa@}\).<br></p><p>Therefore, regardless of the value of \(x\), the derivative is always {@aa@}.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1824919951</deployedseed>
+    <deployedseed>813894063</deployedseed>
+    <deployedseed>510978455</deployedseed>
+    <deployedseed>524502555</deployedseed>
+    <deployedseed>873533284</deployedseed>
+    <deployedseed>1618803494</deployedseed>
+    <deployedseed>251277380</deployedseed>
+    <deployedseed>521609914</deployedseed>
+    <deployedseed>1402853538</deployedseed>
+    <deployedseed>1653353801</deployedseed>
+    <deployedseed>1863189696</deployedseed>
+    <deployedseed>863658529</deployedseed>
+    <deployedseed>637161419</deployedseed>
+    <deployedseed>1943533021</deployedseed>
+    <deployedseed>1110342373</deployedseed>
+    <deployedseed>272356020</deployedseed>
+    <deployedseed>28041812</deployedseed>
+    <deployedseed>515583201</deployedseed>
+    <deployedseed>532086343</deployedseed>
+    <deployedseed>1387390516</deployedseed>
+    <deployedseed>1594242992</deployedseed>
+    <deployedseed>150001552</deployedseed>
+    <deployedseed>848937862</deployedseed>
+    <deployedseed>2059258051</deployedseed>
+    <deployedseed>779464992</deployedseed>
+    <deployedseed>2016557382</deployedseed>
+    <deployedseed>488259298</deployedseed>
+    <deployedseed>665406336</deployedseed>
+    <deployedseed>149301852</deployedseed>
+    <deployedseed>814397888</deployedseed>
+    <deployedseed>583901164</deployedseed>
+    <deployedseed>2054250614</deployedseed>
+    <deployedseed>996222003</deployedseed>
+    <deployedseed>938307378</deployedseed>
+    <deployedseed>143456950</deployedseed>
+    <deployedseed>1532778190</deployedseed>
+    <deployedseed>683003445</deployedseed>
+    <deployedseed>518231395</deployedseed>
+    <deployedseed>1158732881</deployedseed>
+    <deployedseed>1632127127</deployedseed>
+    <deployedseed>1384779132</deployedseed>
+    <deployedseed>1736035025</deployedseed>
+    <deployedseed>1405250689</deployedseed>
+    <deployedseed>645860483</deployedseed>
+    <deployedseed>775883886</deployedseed>
+    <deployedseed>2003238080</deployedseed>
+    <deployedseed>522917383</deployedseed>
+    <deployedseed>1425422441</deployedseed>
+    <deployedseed>960111671</deployedseed>
+    <deployedseed>1278201680</deployedseed>
+    <deployedseed>610556652</deployedseed>
+    <deployedseed>1917290525</deployedseed>
+    <deployedseed>1880314772</deployedseed>
+    <deployedseed>908308348</deployedseed>
+    <deployedseed>1354392690</deployedseed>
+    <deployedseed>859255550</deployedseed>
+    <deployedseed>500157900</deployedseed>
+    <deployedseed>1273145760</deployedseed>
+    <deployedseed>1640411172</deployedseed>
+    <deployedseed>1052468978</deployedseed>
+    <deployedseed>382726905</deployedseed>
+    <deployedseed>514637358</deployedseed>
+    <deployedseed>433288130</deployedseed>
+    <deployedseed>66309881</deployedseed>
+    <deployedseed>950776513</deployedseed>
+    <deployedseed>1835080485</deployedseed>
+    <deployedseed>748760223</deployedseed>
+    <deployedseed>57508805</deployedseed>
+    <deployedseed>2053768401</deployedseed>
+    <deployedseed>1074406626</deployedseed>
+    <deployedseed>530524776</deployedseed>
+    <deployedseed>588154143</deployedseed>
+    <deployedseed>1402193055</deployedseed>
+    <deployedseed>1950739630</deployedseed>
+    <deployedseed>81255969</deployedseed>
+    <deployedseed>1643539250</deployedseed>
+    <deployedseed>1464383493</deployedseed>
+    <deployedseed>860778638</deployedseed>
+    <deployedseed>839036860</deployedseed>
+    <deployedseed>515258612</deployedseed>
+    <deployedseed>1474739731</deployedseed>
+    <deployedseed>1266849691</deployedseed>
+    <deployedseed>677761949</deployedseed>
+    <deployedseed>298429039</deployedseed>
+    <deployedseed>1989669563</deployedseed>
+    <deployedseed>1619598194</deployedseed>
+    <deployedseed>1903759119</deployedseed>
+    <deployedseed>736730677</deployedseed>
+    <deployedseed>1776517244</deployedseed>
+    <deployedseed>1984275478</deployedseed>
+    <deployedseed>1088037451</deployedseed>
+    <deployedseed>1944110811</deployedseed>
+    <deployedseed>387837395</deployedseed>
+    <deployedseed>1885835308</deployedseed>
+    <deployedseed>2022073890</deployedseed>
+    <deployedseed>133634379</deployedseed>
+    <deployedseed>428835405</deployedseed>
+    <deployedseed>1112748182</deployedseed>
+    <deployedseed>981465123</deployedseed>
+    <deployedseed>786878104</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>aa</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

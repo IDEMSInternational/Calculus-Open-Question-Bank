@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Changes of Variables-number 4</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>If \(R\) is the region inside \(\displaystyle{@question_equation@}=\displaystyle{@radius_1@}\),determine the region we would get applying the transformation \(x={@x@}\),\(y={@y@}\) to \(R\)?</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>The outer boundary of \(R\) is an ellipse.</p>
+<p>To determine the transformation of this region all we need to do is plug the transformation boundary equation for \(R\) as follows;</p>
+<p>\(\displaystyle{@question_equation@}=\displaystyle{@radius_1@}\)</p>
+<p>\(\displaystyle\frac{{@x@}^2}{{@deno_4@}}+\frac{{@y@}^2}{{@deno_36@}}\)=\(\displaystyle{@radius_1@}\)</p>
+<p>\(\displaystyle{@ta1@}\)</p>
+<p>So, the boundary equation for \(R\) transforms into the equation for the unit circle and so, under this transformation, we can transform an ellipse into a circle.
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*question variables*/
+deno_4:rand([4,9,16,25,36]);
+deno_36:rand([36,49,64,81]);
+radius_1:rand(5)+1;
+question_equation:(x^2/deno_4)+(y^2/deno_36);
+a:rand(4)+2;
+b:rand(5)+1;
+x:a*u;
+y:b*v;
+expr1:((x)^2/deno_4)+((y)^2/deno_36)=radius_1;
+ta1:(expr1);
+x_1:(a^2)*u;
+y_1:(b^2)*v;
+mistake2:(x_1/deno_4)+(y_1/deno_36)=radius_1;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>If \(R\) is the region inside \({@question_equation@}\), with transformation \(x={@x@}\),\(y={@y@}\) to \(R\)?</p>={@ta1@}]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Salvatore Mercuri</p>
+<p id="description">Given a region  \(R\) inside \(\displaystyle{@question_equation@}\), the question requires you to find the region we would get applying the transformation \(x={@x@}\),\(y={@y@}\) to \(R\)</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for the correct answers*/
+/*node 2:Failing to square the value of x*/
+mistake_1:((x)/deno_4)+((y)/deno_36)=radius_1;
+/*node 3:Failing to square u and v in x and y respectively*/
+mistake_2:(x_1/deno_4)+(y_1/deno_36)=radius_1;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake </description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The values of x and y should be squared after substitution.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the second mistake </description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You have to square the whole vale of the variables \(x\) and \(y\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>734553473</deployedseed>
+    <deployedseed>313169133</deployedseed>
+    <deployedseed>1694905147</deployedseed>
+    <deployedseed>613334952</deployedseed>
+    <deployedseed>1304952881</deployedseed>
+    <deployedseed>1503695023</deployedseed>
+    <deployedseed>1010720930</deployedseed>
+    <deployedseed>750543072</deployedseed>
+    <deployedseed>1292805489</deployedseed>
+    <deployedseed>1562631794</deployedseed>
+    <deployedseed>2058515153</deployedseed>
+    <deployedseed>1950607038</deployedseed>
+    <deployedseed>2131474064</deployedseed>
+    <deployedseed>710595405</deployedseed>
+    <deployedseed>2023463674</deployedseed>
+    <deployedseed>858536999</deployedseed>
+    <deployedseed>1143466549</deployedseed>
+    <deployedseed>1061615622</deployedseed>
+    <deployedseed>1165209511</deployedseed>
+    <deployedseed>1792821399</deployedseed>
+    <deployedseed>388774892</deployedseed>
+    <deployedseed>1109371681</deployedseed>
+    <deployedseed>2041228572</deployedseed>
+    <deployedseed>1853858998</deployedseed>
+    <deployedseed>1935998753</deployedseed>
+    <deployedseed>831356532</deployedseed>
+    <deployedseed>799139518</deployedseed>
+    <deployedseed>670411579</deployedseed>
+    <deployedseed>372842221</deployedseed>
+    <deployedseed>1638253127</deployedseed>
+    <deployedseed>1672171644</deployedseed>
+    <deployedseed>905019212</deployedseed>
+    <deployedseed>801007503</deployedseed>
+    <deployedseed>878005258</deployedseed>
+    <deployedseed>667633492</deployedseed>
+    <deployedseed>1296088632</deployedseed>
+    <deployedseed>910878407</deployedseed>
+    <deployedseed>1027788265</deployedseed>
+    <deployedseed>445669135</deployedseed>
+    <deployedseed>173280862</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

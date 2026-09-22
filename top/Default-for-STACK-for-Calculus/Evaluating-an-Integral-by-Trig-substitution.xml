@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluating an Integral by Trig substitution</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Use trigonometric substitution to evaluate</p>
+<p>\(\displaystyle\int{@question_func@}dx=\) [[input:ans1]] [[validation:ans1]]</p>
+<p><em>Note: \(\displaystyle \tan^{-1}\left(\frac{a}{b}\right)\) can be typed as: <code>atan(a/b)</code> and \(\displaystyle\sqrt{a-b}\) can be typed as: <code>sqrt(a-b)</code></em>.</p>
+<p>[[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>\( \text{Worked Solution}\)</p>
+<p></p>
+<p>
+</p>
+<p> \( \text{In order to carry out trig substitution integrals, let's take a look at the information in the table below.} \)<br></p>
+<div>
+    <table width="750" cellspacing="1" cellpadding="0" border="1">
+        <colgroup>
+            <col>
+            <col>
+            <col>
+            <col>
+        </colgroup>
+        <tbody>
+            <tr>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\( \text{If you see }\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\( \text{Use the following substitution}\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\text{Where}\)</p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\text{So that,}\)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{a^2-x^2}\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;"> \(x=a\sin(\theta)\)</p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(dx=a\cos(\theta)d\theta\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{a^2-x^2} = a\cos(\theta)\)<br></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{a^2+x^2}\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(x=a\tan(\theta)\)</p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(dx=a\sec^{2}(\theta)d\theta\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{a^2+x^2} = a\sec(\theta)\)<br></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{x^2-a^2}\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(x=a\sec(\theta)\)</p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(dx=a\sec(\theta)\tan(\theta)d\theta\)<br></p>
+                </td>
+                <td>
+                    <p dir="ltr" style="text-align: left;">\(\sqrt{x^2-a^2} = a\tan(\theta)\)<br></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p></p>
+<p>Looking at the numerator of the integrand {@sqrt(num_func)@}, it seems we'll need the following trig substitution </p>
+<p>Let \( x= {@let_x@}\). Then&nbsp; \( dx={@diff_let_x@}d(\theta) \)</p>
+<p>Now let us substitute for \(x\) in the numerator as shown. </p>
+<p>
+    \(
+    \begin{align}
+    {@sqrt(num_func)@} &amp; =\displaystyle \sqrt {{@coef1^2@} \left({@let_x@}\right)^{2}-{@coef2^2@}} \\
+    &amp; = \displaystyle {@new_expr_subst_let_x@} \\
+    &amp; =\displaystyle {@factor_new_expr_subst_let_x@} \\
+    &amp; =\displaystyle  {@coef2@} \displaystyle \sqrt{ \tan^{2}(\theta)} &amp;&amp; \text{since, } \tan^{2}(\theta)=\sec^{2}(\theta)-1\\
+    &amp; =\displaystyle  {@expr_interms_of_tan@} \\
+    &amp; = \displaystyle {@expr_interms_of_tan_no_abs1@} &amp;&amp; \text{By assuming, } \tan(\theta) &gt; 0 
+    \end{align}
+    \)
+</p>
+<p>Now going back to the question and substituting everything, we'll have,</p>
+<p></p>
+<p> \(
+    \begin{align}
+    \displaystyle\int {@question_func@} dx &amp;= \displaystyle \int \frac{{@expr_interms_of_tan_no_abs1@}}{@coef3*let_x@}\cdot {@diff_let_x@}d(\theta)\\
+    &amp;= \displaystyle \int{@new_question_func_trig@}d(\theta) \\
+    &amp;= \displaystyle {@int_new_question_func_trig@}
+    \end{align}
+    \)
+</p>
+<p>But \(\displaystyle x= {@let_x@}\) and \(\displaystyle {@expression_sin_theta@}\). We need to compute \(\displaystyle  \tan(\theta)\) and \( (\theta)\), then substitute them.</p>
+<p>Recall that \(\displaystyle  \tan^{2}(\theta)+1=\sec^{2}(\theta)={@expression_sin_theta_rhs^2@}\)</p>
+<p>So, </p>
+<p>\(\displaystyle {@expression_tan_trig@} \)</p>
+<p>\( \displaystyle {@solve_tan_expression_tan_trig@} \)</p>
+<p>\( \displaystyle {@solve_tan_expression_tan_trig1@} \) and \( \displaystyle {@solve_theta_expression_tan_trig1@} \) (note that \( \displaystyle \text{atan(u)} =\tan^{-1}(u), u \in \mathbb{R}\) )</p>
+<p>Therefore,</p>
+<p> \(
+    \begin{align}
+    \displaystyle\int {@question_func@} dx &amp; = {@int_new_question_func_trig@}\\
+    &amp; = \displaystyle {@final_answer_subst@}
+    \end{align}
+    \)
+</p>
+<p> Where \(c\) is a constant of integration. </p>]]></text>
+<file name="image.png" path="/" encoding="base64">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</file>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Static Question variable*/
+coef1: rand(5)+2;
+coef2:rand_with_prohib(0,5,[0,coef1]);
+coef3:rand_with_prohib(0,5,[0,coef1,coef]);
+num_func:(coef1)^2*x^2-(coef2)^2;
+denom_func:coef3*x;
+question_func: sqrt(num_func)/denom_func;
+
+/*Model answer*/
+/*ta:int(question_func,x)+c;*/ 
+
+/*Worked soln*/
+let_x:coef2*sec(theta)/coef1;
+diff_let_x:diff(let_x)/del(theta);
+new_expr_subst_let_x:subst(let_x,x,sqrt(num_func));
+factor_new_expr_subst_let_x:factor(new_expr_subst_let_x);
+expr_interms_of_tan:subst((tan(theta))^2,(sec(theta))^2-1,factor_new_expr_subst_let_x);
+expr_interms_of_tan_no_abs:args(args(expr_interms_of_tan)[2])[1];
+expr_interms_of_tan_no_abs1:coef2*expr_interms_of_tan_no_abs;
+
+new_question_func_trig:new_question_func_trig:((expr_interms_of_tan_no_abs1)/(coef3*let_x))*diff_let_x;
+
+int_new_question_func_trig:int(new_question_func_trig,theta)+c;
+
+expression_sin_theta:args(solve(x=let_x,sec(theta)))[1];
+expression_sin_theta_rhs:rhs(expression_sin_theta);
+expression_tan_trig:(tan(theta))^2+1=expression_sin_theta_rhs^2;
+solve_tan_expression_tan_trig:args(solve(expression_tan_trig,(tan(theta))^2))[1];
+solve_tan_expression_tan_trig1:args(solve(solve_tan_expression_tan_trig,tan(theta)))[2];
+solve_theta_expression_tan_trig1:args(solve(solve_tan_expression_tan_trig1,theta))[1];
+
+solve_tan_expression_tan_trig1_rhs:rhs(solve_tan_expression_tan_trig1);
+subst_tan_theta_int_new_question_func_trig:subst(solve_tan_expression_tan_trig1_rhs,tan(theta),int_new_question_func_trig);
+solve_theta_expression_tan_trig1_rhs:rhs(solve_theta_expression_tan_trig1);
+final_answer_subst:subst(solve_theta_expression_tan_trig1_rhs,theta,subst_tan_theta_int_new_question_func_trig);
+ta:final_answer_subst;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\(\displaystyle\int {@question_func@}={@ta@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">The question focuses on evaluating a integral Trig Functions by Trig substitution</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>acos</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>30</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1: Checking for correct answer*/
+
+/*node 2: Checking if constant is added*/
+mistake_1:int(question_func,x);
+
+/*node 3: Differentiating instead of integration*/
+mistake_2:diff(question_func);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks  for the correct answer</description>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>x</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p dir="ltr" style="text-align: left;">You need to add the constant of integration when dealing with indefinite integrals. Otherwise your answer looks fine. <br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the second mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p dir="ltr" style="text-align: left;">You were not supposed to differentiate the function, rather you were to find its antidervative<br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>619726379</deployedseed>
+    <deployedseed>438992214</deployedseed>
+    <deployedseed>1612861581</deployedseed>
+    <deployedseed>1919756896</deployedseed>
+    <deployedseed>1254961733</deployedseed>
+    <deployedseed>320717830</deployedseed>
+    <deployedseed>562208055</deployedseed>
+    <deployedseed>1028735403</deployedseed>
+    <deployedseed>252294069</deployedseed>
+    <deployedseed>900930907</deployedseed>
+    <deployedseed>1923214066</deployedseed>
+    <deployedseed>504292856</deployedseed>
+    <deployedseed>1775570479</deployedseed>
+    <deployedseed>791672767</deployedseed>
+    <deployedseed>1181188856</deployedseed>
+    <deployedseed>318744296</deployedseed>
+    <deployedseed>320719782</deployedseed>
+    <deployedseed>2013928636</deployedseed>
+    <deployedseed>461498089</deployedseed>
+    <deployedseed>1153536111</deployedseed>
+    <deployedseed>1972059262</deployedseed>
+    <deployedseed>1601601739</deployedseed>
+    <deployedseed>159355718</deployedseed>
+    <deployedseed>130345135</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

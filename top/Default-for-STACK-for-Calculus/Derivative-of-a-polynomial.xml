@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Derivative of a polynomial</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Given the function \(f(x) = {@fx@}\). Evaluate; </p>
+<p style="margin-left: 30px">\(f'(x)=\) [[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:prt1]]</p>
+<p style="margin-left: 30px">\(f'({@pm2@})=\) [[input:ans2]] [[validation:ans2]]</p>
+<p>[[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To find the derivative of the function \(\displaystyle  f(x) \), we can apply the power rule. </p>
+<p>Given \(g(x) = ax^n\), where \(a\) and \(n \neq 0\) are constants, \( \displaystyle g'(x) = nax^{n-1}\)</p>
+<p>Therefore,</p>
+<p style="margin-left: 30px">\(
+\begin{align*}
+f'(x) &= \frac{d}{dx}\left({@fx@}\right) \\
+&= {@ p1@}x^{({@p1@}-1)}+{@c2*p2@}x^{({@p2@}-1)}+{@c3*p3@} x^{({@p3@}-1)}+{@c4*p4@} x^{({@p4@}-1)}  \\
+&= {@ta@}
+\end{align*}\)</p>
+<p>To find \(f'({@pm2@})\), substitute \(x\) with {@pm2@} in the derivative \(f'(x)\):</p>
+<p>   \(f'(x) = {@ta@}\)</p>
+<p>   \(f'({@pm2@}) = {@ta2@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>p1:rand(3)+11;
+p2:rand(3)+8;
+p3:rand(3)+5;
+p4:rand(3)+2;
+pm2:rand_with_prohib(-1,1,[0]);
+c2:pm2*(rand(6)+2);
+pm3:rand_with_prohib(-1,1,[0]);
+c3:pm3*(rand(6)+2);
+pm4:rand_with_prohib(-1,1,[0]);
+c4:pm4*(rand(6)+2);
+fx:x^(p1)+c2*x^(p2)+c3*x^(p3)+c4*x^(p4);
+ta:diff(fx,x);
+ta2:subst(pm2,x,ta);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(f(x) = {@fx@}\)</p>
+<p> \(f'(x)={@ta@}\)</p>
+<p>   \(f'({@pm2@}) = {@ta2@}\)</p>
+]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Juma Zevick</p>
+<p id="description">This question asks students to find the derivative of a given function. The function is provided as a placeholder, and students need to fill in the correct expression for the derivative..</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>20</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>20</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer */</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>To compute the derivative of this polynomial you need to use power rule which states that, where \(a\) and \(n \neq 0\) are constants,</p>
+<p style="margin-left: 30px">\(\frac{d}{dx} (ax^n) = a n  x^{n-1}\)</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1942448744</deployedseed>
+    <deployedseed>176715825</deployedseed>
+    <deployedseed>698843510</deployedseed>
+    <deployedseed>678441505</deployedseed>
+    <deployedseed>547683665</deployedseed>
+    <deployedseed>1341817370</deployedseed>
+    <deployedseed>1190300475</deployedseed>
+    <deployedseed>1235073678</deployedseed>
+    <deployedseed>1806261874</deployedseed>
+    <deployedseed>943855395</deployedseed>
+    <deployedseed>1170225635</deployedseed>
+    <deployedseed>956641397</deployedseed>
+    <deployedseed>886466910</deployedseed>
+    <deployedseed>24855271</deployedseed>
+    <deployedseed>972050524</deployedseed>
+    <deployedseed>1212985164</deployedseed>
+    <deployedseed>1898867156</deployedseed>
+    <deployedseed>1519314899</deployedseed>
+    <deployedseed>1309744272</deployedseed>
+    <deployedseed>1024626167</deployedseed>
+    <deployedseed>1254858708</deployedseed>
+    <deployedseed>334974301</deployedseed>
+    <deployedseed>1292822157</deployedseed>
+    <deployedseed>581507171</deployedseed>
+    <deployedseed>378008122</deployedseed>
+    <deployedseed>398209928</deployedseed>
+    <deployedseed>675866944</deployedseed>
+    <deployedseed>1742783844</deployedseed>
+    <deployedseed>1562427050</deployedseed>
+    <deployedseed>1484532200</deployedseed>
+    <deployedseed>772822048</deployedseed>
+    <deployedseed>1261251026</deployedseed>
+    <deployedseed>618832888</deployedseed>
+    <deployedseed>1147114604</deployedseed>
+    <deployedseed>193045345</deployedseed>
+    <deployedseed>754138292</deployedseed>
+    <deployedseed>1339887818</deployedseed>
+    <deployedseed>2090272721</deployedseed>
+    <deployedseed>650307481</deployedseed>
+    <deployedseed>341165754</deployedseed>
+    <deployedseed>2102431220</deployedseed>
+    <deployedseed>340676365</deployedseed>
+    <deployedseed>880237196</deployedseed>
+    <deployedseed>534731952</deployedseed>
+    <deployedseed>1782197212</deployedseed>
+    <deployedseed>1698517767</deployedseed>
+    <deployedseed>88690749</deployedseed>
+    <deployedseed>369221491</deployedseed>
+    <deployedseed>169881447</deployedseed>
+    <deployedseed>1509347462</deployedseed>
+    <deployedseed>1922743849</deployedseed>
+    <deployedseed>19196183</deployedseed>
+    <deployedseed>977847803</deployedseed>
+    <deployedseed>325849971</deployedseed>
+    <deployedseed>1621404665</deployedseed>
+    <deployedseed>1915549341</deployedseed>
+    <deployedseed>976815548</deployedseed>
+    <deployedseed>416340610</deployedseed>
+    <deployedseed>229426969</deployedseed>
+    <deployedseed>216318615</deployedseed>
+    <deployedseed>1293360157</deployedseed>
+    <deployedseed>23334218</deployedseed>
+    <deployedseed>1977037890</deployedseed>
+    <deployedseed>1141113112</deployedseed>
+    <deployedseed>272935495</deployedseed>
+    <deployedseed>29437443</deployedseed>
+    <deployedseed>729211891</deployedseed>
+    <deployedseed>180294336</deployedseed>
+    <deployedseed>605726357</deployedseed>
+    <deployedseed>469262044</deployedseed>
+    <deployedseed>342373800</deployedseed>
+    <deployedseed>288799751</deployedseed>
+    <deployedseed>1134474677</deployedseed>
+    <deployedseed>213786375</deployedseed>
+    <deployedseed>1717919223</deployedseed>
+    <deployedseed>474718540</deployedseed>
+    <deployedseed>667229412</deployedseed>
+    <deployedseed>743304946</deployedseed>
+    <deployedseed>974160528</deployedseed>
+    <deployedseed>1562557801</deployedseed>
+    <deployedseed>2113667757</deployedseed>
+    <deployedseed>391042522</deployedseed>
+    <deployedseed>6003244</deployedseed>
+    <deployedseed>305944345</deployedseed>
+    <deployedseed>1559570028</deployedseed>
+    <deployedseed>690365921</deployedseed>
+    <deployedseed>1785377748</deployedseed>
+    <deployedseed>1812264938</deployedseed>
+    <deployedseed>935254145</deployedseed>
+    <deployedseed>1307087865</deployedseed>
+    <deployedseed>306409213</deployedseed>
+    <deployedseed>1280013878</deployedseed>
+    <deployedseed>2104884819</deployedseed>
+    <deployedseed>1451952918</deployedseed>
+    <deployedseed>101573310</deployedseed>
+    <deployedseed>1234307043</deployedseed>
+    <deployedseed>889282534</deployedseed>
+    <deployedseed>123175313</deployedseed>
+    <deployedseed>1252320393</deployedseed>
+    <deployedseed>773606965</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

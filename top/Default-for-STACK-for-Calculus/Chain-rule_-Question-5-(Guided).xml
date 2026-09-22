@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Chain rule_ Question 5 (Guided)</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p></p>
+<p>Given the following information</p>
+
+<p>\(\displaystyle  y={@func_y@}\)</p>
+<p>\(\displaystyle  z={@func_z@}\)</p>
+<p>\(\displaystyle  x={@func_x@}\)</p>
+<p>\(\displaystyle  u={@func_u@}\)</p>
+
+<p> We can use Chain Rule to compute \( z_t\) and \( z_p\) using these two formulas, </p>
+
+<p>\( \displaystyle  z_t = \frac{\partial{z}}{\partial{t}} = \frac{\partial{z}}{\partial{x}} \frac{\partial{x}}{\partial{u}} \frac{d{u}}{d{t}} + \frac{\partial{z}}{\partial{y}} \frac{\partial{y}}{\partial{u}} \frac{d{u}}{d{t}} \)</p>
+
+<p>\( \displaystyle  z_p = \frac{\partial{z}}{\partial{p}} = \frac{\partial{z}}{\partial{x}} \frac{\partial{x}}{\partial{p}} + \frac{\partial{z}}{\partial{y}} \frac{\partial{y}}{\partial{p}}\)</p>
+
+<p>\(\displaystyle  z_t = \)  [[input:ans1]] [[validation:ans1]] [[feedback:prt1]] </p>
+
+<p>\( \displaystyle  z_p = \)  [[input:ans2]] [[validation:ans2]] [[feedback:prt2]] </p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>Here is how to compute the derivatives in this problem.</p>
+
+<p>\(\displaystyle  z_t  = \frac{\partial{z}}{\partial{x}} \frac{\partial{x}}{\partial{u}} \frac{d{u}}{d{t}} + \frac{\partial{z}}{\partial{y}} \frac{\partial{y}}{\partial{u}} \frac{d{u}}{d{t}} \)</p>
+
+<p>\( \displaystyle \quad= \left[ {@diff_1@} \right] \cdot \left[ {@diff_2@} \right] \cdot \left[ {@diff_3@} \right] + \left[ {@diff_4@} \right] \cdot \left[ {@diff_5@} \right] \cdot \left[ {@diff_6@} \right] \)  </p>
+<p>\( \displaystyle \quad= {@ta1@}\)  </p>
+
+<p>\( \displaystyle  z_p = \frac{\partial{z}}{\partial{x}} \frac{\partial{x}}{\partial{p}} + \frac{\partial{z}}{\partial{y}} \frac{\partial{y}}{\partial{p}}\)</p>
+<p>\(\displaystyle \quad = \left[ {@diff_1@} \right] \cdot \left[ {@diff_7@} \right] + \left[ {@diff_4@} \right] \cdot \left[ {@diff_8@} \right] \)   </p>
+<p>\(\displaystyle \quad = {@ta2@} \)   </p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Question variables*/
+aa:rand_with_prohib(-5,5,[0]);
+bb:rand_with_prohib(-5,5,[0]);
+cc:rand_with_prohib(-5,5,[0]);
+dd:rand_with_prohib(-5,5,[0]);
+
+/*Question func*/
+func_z:aa*y*sin(bb*x);
+func_x:cc*u-p;
+func_y:p^(bb)*u;
+func_u:expand((dd-t^cc)*(cc+t));
+
+/*Worked Soln variables*/
+diff_1:diff(func_z,x);diff_2:diff(func_x,u); diff_3:diff(func_u,t);
+diff_4:diff(func_z,y);diff_5:diff(func_y,u); diff_6:diff(func_u,t);
+diff_7:diff(func_x,p);diff_8:diff(func_y,p);
+
+ta1:diff_1*diff_2*diff_3+diff_4*diff_5*diff_6;
+
+ta2:diff_1*diff_7+diff_4*diff_8;
+
+/*Possible Mistakes Prt 1*/
+/*node2: checking if the student the derivative of func_z wrt to t and ignoring the others.*/
+node_21_test:diff(func_z,t);
+/*Possible Mistakes Prt 2*/
+/*node 2: checking if the student computed the derivative of  z=4y sin(2x) wrt to p and ignoring the others. */
+node_22_test:diff(func_z,p);
+
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle  y={@func_y@}\)</p>
+<p>\(\displaystyle  z={@func_z@}\)</p>
+<p>\(\displaystyle  x={@func_x@}\)</p>
+<p>\(\displaystyle  u={@func_u@}\)</p>
+
+<p>\(\displaystyle  z_t = {@ta1@}\) </p>
+
+<p>\( \displaystyle  z_p = {@ta2@} \) </p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire </p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">Compute the partial derivatives \( z_t \) and \( z_p \) using the Chain Rule for the given functions \( z(x, y) \) and \( y(x) \), utilizing the provided formulas.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node1: checking for correct computation of the derivative*/
+/*node2: checking if the student the derivative of func_z wrt to t and ignoring the others.*/
+mistake1:diff(func_z,t);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checking for correct computation of the derivative</description>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions>x,y,z,t,u</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checking if the student the derivative of func_z wrt to t and ignoring the others</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have computed the derivative of \(\displaystyle  z={@func_z@}\) wrt to \(t\) alone. Note that you need to use the formula given in the question text as a guide.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node1:checking for correct answer*/
+/*node 2: checking if the student computed the derivative of  z=4y sin(2x) wrt to p and ignoring the others. */
+mistake22:diff(func_z,p);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checking for correct answer</description>
+        <answertest>Diff</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions>x,y,z,p</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checking if the student computed the derivative of  z=4y sin(2x) wrt to p and ignoring the others.</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake22</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You need to refer to the formula given in the question text to guide you on how to compute the second derivative, just like the first one.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1372936606</deployedseed>
+    <deployedseed>1407226004</deployedseed>
+    <deployedseed>632660967</deployedseed>
+    <deployedseed>882484290</deployedseed>
+    <deployedseed>801733551</deployedseed>
+    <deployedseed>608018256</deployedseed>
+    <deployedseed>130010767</deployedseed>
+    <deployedseed>548692249</deployedseed>
+    <deployedseed>1512768542</deployedseed>
+    <deployedseed>2015431496</deployedseed>
+    <deployedseed>408880325</deployedseed>
+    <deployedseed>1776675054</deployedseed>
+    <deployedseed>1161368505</deployedseed>
+    <deployedseed>1074523337</deployedseed>
+    <deployedseed>1700211798</deployedseed>
+    <deployedseed>1800915784</deployedseed>
+    <deployedseed>1773949821</deployedseed>
+    <deployedseed>1959690764</deployedseed>
+    <deployedseed>134864914</deployedseed>
+    <deployedseed>1090381545</deployedseed>
+    <deployedseed>595963569</deployedseed>
+    <deployedseed>466516304</deployedseed>
+    <deployedseed>154175226</deployedseed>
+    <deployedseed>1833718297</deployedseed>
+    <deployedseed>419754841</deployedseed>
+    <deployedseed>8125419</deployedseed>
+    <deployedseed>2107000210</deployedseed>
+    <deployedseed>394783572</deployedseed>
+    <deployedseed>1947739211</deployedseed>
+    <deployedseed>1088957792</deployedseed>
+    <deployedseed>534471399</deployedseed>
+    <deployedseed>1215285548</deployedseed>
+    <deployedseed>2132515540</deployedseed>
+    <deployedseed>488789597</deployedseed>
+    <deployedseed>394524823</deployedseed>
+    <deployedseed>538845019</deployedseed>
+    <deployedseed>1580397151</deployedseed>
+    <deployedseed>1485249701</deployedseed>
+    <deployedseed>1464300243</deployedseed>
+    <deployedseed>1948684404</deployedseed>
+    <deployedseed>1627181021</deployedseed>
+    <deployedseed>61346585</deployedseed>
+    <deployedseed>403506894</deployedseed>
+    <deployedseed>558209663</deployedseed>
+    <deployedseed>1554049164</deployedseed>
+    <deployedseed>1970323229</deployedseed>
+    <deployedseed>791626736</deployedseed>
+    <deployedseed>1484391061</deployedseed>
+    <deployedseed>1964545495</deployedseed>
+    <deployedseed>1762936674</deployedseed>
+    <deployedseed>1798581399</deployedseed>
+    <deployedseed>854245528</deployedseed>
+    <deployedseed>1693768799</deployedseed>
+    <deployedseed>1584828769</deployedseed>
+    <deployedseed>1109985142</deployedseed>
+    <deployedseed>325898514</deployedseed>
+    <deployedseed>1072597605</deployedseed>
+    <deployedseed>871181109</deployedseed>
+    <deployedseed>1556118871</deployedseed>
+    <deployedseed>391010241</deployedseed>
+    <deployedseed>1379858469</deployedseed>
+    <deployedseed>1609658704</deployedseed>
+    <deployedseed>1613230703</deployedseed>
+    <deployedseed>1302979575</deployedseed>
+    <deployedseed>1910333455</deployedseed>
+    <deployedseed>2040022993</deployedseed>
+    <deployedseed>1431893241</deployedseed>
+    <deployedseed>61674524</deployedseed>
+    <deployedseed>846719155</deployedseed>
+    <deployedseed>241280882</deployedseed>
+    <deployedseed>510934187</deployedseed>
+    <deployedseed>2054983826</deployedseed>
+    <deployedseed>169225069</deployedseed>
+    <deployedseed>392795403</deployedseed>
+    <deployedseed>985595988</deployedseed>
+    <deployedseed>626531649</deployedseed>
+    <deployedseed>691881351</deployedseed>
+    <deployedseed>920416273</deployedseed>
+    <deployedseed>1975529499</deployedseed>
+    <deployedseed>1801197530</deployedseed>
+    <deployedseed>1883266698</deployedseed>
+    <deployedseed>474401777</deployedseed>
+    <deployedseed>662053606</deployedseed>
+    <deployedseed>646358370</deployedseed>
+    <deployedseed>1302094495</deployedseed>
+    <deployedseed>694638819</deployedseed>
+    <deployedseed>1414532102</deployedseed>
+    <deployedseed>1214525208</deployedseed>
+    <deployedseed>653850117</deployedseed>
+    <deployedseed>1719995357</deployedseed>
+    <deployedseed>56588577</deployedseed>
+    <deployedseed>1594192204</deployedseed>
+    <deployedseed>139848729</deployedseed>
+    <deployedseed>1497826927</deployedseed>
+    <deployedseed>746035638</deployedseed>
+    <deployedseed>268293575</deployedseed>
+    <deployedseed>2085847354</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>node_21_test</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>node_22_test</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty/>
+        <expectedanswernote>prt1-2-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty/>
+        <expectedanswernote>prt2-2-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Indefinite integral and rules of indices</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the antiderivative of the function \( \displaystyle \frac{{@numerator@}}{x^{{@power_x@}} \sqrt{x}} \).</p> <p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Worked solution:</p>
+<p>Suppose we have the function \(f(x)=x^{n}\), its antiderivative can be computed as follows:</p>
+<p>\(\int x^n dx=\frac{x^{n+1}}{n+1}+c\), where \(c\) is the constant of integration</p>
+<p>Therefore, the antiderivative of \(\frac{{@numerator@}}{x^{{@power_x@}} \sqrt{x}}\) will be: </p>
+<p>\( \displaystyle \int \frac{{@numerator@}}{x^{{@power_x@}} \sqrt{x}} dx = \int \frac{{@numerator@}}{x^{{@power_x@}} x^{\frac{1}{2}}} dx\) </p>
+<p>\( \displaystyle \quad = \int \frac{{@numerator@}}{x^{{@power_x+1/2@}}} dx \)</p>
+<p>\( \displaystyle \quad = \int {@numerator@}x^{{@-(power_x+1/2)@}} dx \)</p>
+<p>\( \displaystyle \quad = \frac{{@numerator@}x^{(-{@(power_x+1/2)@}+1)}}{-{@(power_x+1/2)@}+1}+c \)</p>
+<p>\( \displaystyle \quad = {@numerator/(-(power_x+1/2)+1)@}x^{@-(power_x+1/2)+1@}+c \)</p>
+<p>\( \displaystyle \quad = {@ta@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*randomizing the static question variables*/
+numerator: rand(9)+2;    /* the numerator is a random number between 2 and 10*/
+power_x: rand(5)+1;   /* the power of x is a random number between 1 and 5 */
+f_x: numerator/(x^(power_x)*sqrt(x));   /* the function */
+
+ta:int(f_x,x)+c;           /*model answer*/</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\(\int{@f_x@} dx={@ta@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1 checking for the correct answer*/
+
+/*node 2 checking if a student is missing the constant of integration*/
+mistake_2:int(f_x,x);
+
+/*node 3: mistake: not dividing x by n+1*/
+mistake_3:-1*f_x;    /*i dont know how to implement that, just tried*/
+
+/*node 4: mistake: Forgetting the negative sign*/
+mistake_4:-1*(int(f_x,x))+c;
+
+/*node 5: mistake: differentiating instead of integrating*/
+mistake_5:diff(f_x,x);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>x</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have forgotten the constant of integration.</p>
+<p>Recall, \(\int x^n dx=\frac{x^{n+1}}{n+1}+c\), where \(c\) is the constant of integration.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have forgotten to divide by \(n+1\)  \(\int x^n\, dx=x^{n+1}+c\), which is incorrect.</p>
+<p>Recall,  \(\int x^n\, dx=\frac{x^{n+1}}{n+1}+c\), where \(c\) is the constant of integration</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have left out the negative sign. If you divide a positive by a negative, your answer will be negative.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_5</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-5-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You differentiated instead of integrating. To find antiderivatives you need to integrate.</p>  
+<p>Recall,  \(\int x^n\, dx=\frac{x^{n+1}}{n+1}+c\), where \(c\) is the constant of integration</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-5-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>358256423</deployedseed>
+    <deployedseed>182881887</deployedseed>
+    <deployedseed>247536740</deployedseed>
+    <deployedseed>9668727</deployedseed>
+    <deployedseed>1028620341</deployedseed>
+    <deployedseed>683405907</deployedseed>
+    <deployedseed>277403614</deployedseed>
+    <deployedseed>632548694</deployedseed>
+    <deployedseed>1591597389</deployedseed>
+    <deployedseed>2133172866</deployedseed>
+    <deployedseed>1267915956</deployedseed>
+    <deployedseed>1883647721</deployedseed>
+    <deployedseed>109409568</deployedseed>
+    <deployedseed>32085320</deployedseed>
+    <deployedseed>2123323563</deployedseed>
+    <deployedseed>938126646</deployedseed>
+    <deployedseed>1777154411</deployedseed>
+    <deployedseed>591262866</deployedseed>
+    <deployedseed>2094968420</deployedseed>
+    <deployedseed>1325268752</deployedseed>
+    <deployedseed>299949769</deployedseed>
+    <deployedseed>1567885889</deployedseed>
+    <deployedseed>1159031440</deployedseed>
+    <deployedseed>1263678386</deployedseed>
+    <deployedseed>239522175</deployedseed>
+    <deployedseed>1073098011</deployedseed>
+    <deployedseed>1409242498</deployedseed>
+    <deployedseed>1735101288</deployedseed>
+    <deployedseed>1970119822</deployedseed>
+    <deployedseed>1370287291</deployedseed>
+    <deployedseed>1920036179</deployedseed>
+    <deployedseed>250295998</deployedseed>
+    <deployedseed>1751007648</deployedseed>
+    <deployedseed>361454145</deployedseed>
+    <deployedseed>1190974035</deployedseed>
+    <deployedseed>1074785327</deployedseed>
+    <deployedseed>1193184525</deployedseed>
+    <deployedseed>1857332113</deployedseed>
+    <deployedseed>196682006</deployedseed>
+    <deployedseed>1850950184</deployedseed>
+    <deployedseed>1617888178</deployedseed>
+    <deployedseed>941381649</deployedseed>
+    <deployedseed>1690917623</deployedseed>
+    <deployedseed>2127838460</deployedseed>
+    <deployedseed>1396284311</deployedseed>
+    <deployedseed>1426329066</deployedseed>
+    <deployedseed>2009695221</deployedseed>
+    <deployedseed>1482674613</deployedseed>
+    <deployedseed>1646910779</deployedseed>
+    <deployedseed>616324780</deployedseed>
+    <deployedseed>1020347049</deployedseed>
+    <deployedseed>2106834607</deployedseed>
+    <deployedseed>1981870244</deployedseed>
+    <deployedseed>1815458091</deployedseed>
+    <deployedseed>1985689564</deployedseed>
+    <deployedseed>1600550755</deployedseed>
+    <deployedseed>1518504334</deployedseed>
+    <deployedseed>1516659055</deployedseed>
+    <deployedseed>440436782</deployedseed>
+    <deployedseed>731521538</deployedseed>
+    <deployedseed>1598478076</deployedseed>
+    <deployedseed>28370616</deployedseed>
+    <deployedseed>1935613436</deployedseed>
+    <deployedseed>43428562</deployedseed>
+    <deployedseed>965872974</deployedseed>
+    <deployedseed>433831540</deployedseed>
+    <deployedseed>1532735743</deployedseed>
+    <deployedseed>987610754</deployedseed>
+    <deployedseed>516227262</deployedseed>
+    <deployedseed>28141556</deployedseed>
+    <deployedseed>438015503</deployedseed>
+    <deployedseed>1401213726</deployedseed>
+    <deployedseed>2027065895</deployedseed>
+    <deployedseed>852693763</deployedseed>
+    <deployedseed>253372515</deployedseed>
+    <deployedseed>628848175</deployedseed>
+    <deployedseed>1683445789</deployedseed>
+    <deployedseed>1462735738</deployedseed>
+    <deployedseed>1296227921</deployedseed>
+    <deployedseed>1847727101</deployedseed>
+    <deployedseed>633651299</deployedseed>
+    <deployedseed>985991469</deployedseed>
+    <deployedseed>1365000240</deployedseed>
+    <deployedseed>310194073</deployedseed>
+    <deployedseed>268316149</deployedseed>
+    <deployedseed>1339791930</deployedseed>
+  </question>
+</quiz>

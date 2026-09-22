@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>7.2.13 - Definite integral of 1 over x</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Compute the following integral.</p><p>\(\displaystyle \int_{@l_limit@}^{@u_limit@} {@f_x@}\,dx=\) [[input:ans1]](3 decimal places) [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><b>Worked solution</b></p>
+<p>Suppose we have a function of the form \( f(x)={@g_k@}\) (\(a \in \mathbb{R}\)), its integral can be computed as, \(\int_{b}^{c} {@g_k@} dx ={@int_g@}\). Therefore, the integral of {@f_x@} will be,</p>\(\int_{@l_limit@}^{@u_limit@} {@f_x@}\,dx\) =\( {@numer@} \cdot (ln({@u_limit@})-ln({@l_limit@}))\)
+={@ta@}<br>
+<p></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*Variables*/
+numer:rand(9)+1; /*random numerator*/
+l_limit:rand(10)+1; /*random lower limit */
+u_limit:rand(10)+1+l_limit;  /*random upper limit */
+f_x:numer/x;  /*the function*/
+
+
+/*model answer*/
+gg:int(f_x,x,l_limit,u_limit); /*model answer*/
+ta:decimalplaces(gg,3);
+
+/*Worked solution*/
+assume(b>0);
+assume(c>0);
+assume(a, constant);
+assume(c>b);
+g_k: a/x; 
+int_g: integrate(g_k,x,b,c);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\({@f_x@}\)
+\({@u_limit@}\)
+\({@l_limit@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checking for the correct answer*/
+
+/*node 2: Adding one to the power of s then dividing by the new power*/
+mistake_2:inf;
+/*node 3: Adding one to the power of s then dividing by the new power*/
+mistake_3:infinity;
+/*node 4: mistake: differentiating instead of integrating*/
+mistake_4:diff(f_x,x);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>x</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You integrated as \(\int x^r\, dx=\frac{x^{0}}{0}+c\)</p>
+<p>The formulae \(\int x^r\, dx=\frac{x^{r+1}}{r+1}+c\) where \(c\) is the constant of integration holds if \(r\neq -1\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You integrated as \(\int x^r\, dx=\frac{x^{0}}{0}+c\)</p>
+<p>The formulae \(\int x^r\, dx=\frac{x^{r+1}}{r+1}+c\) where \(c\) is the constant of integration holds if \(r\neq -1\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You differentiated instead of integrating. To find antiderivatives you need to integrate.</p>  
+<p>Recall,  \(\int x^n\, dx=\frac{x^{n+1}}{n+1}+c\), where \(c\) is the constant of integration</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1901149970</deployedseed>
+    <deployedseed>366315247</deployedseed>
+    <deployedseed>1126925496</deployedseed>
+    <deployedseed>1188824711</deployedseed>
+    <deployedseed>1200469802</deployedseed>
+    <deployedseed>374861903</deployedseed>
+    <deployedseed>1499034694</deployedseed>
+    <deployedseed>1057567058</deployedseed>
+    <deployedseed>1921564640</deployedseed>
+    <deployedseed>1590569042</deployedseed>
+    <deployedseed>1748684436</deployedseed>
+    <deployedseed>1329954420</deployedseed>
+    <deployedseed>501034105</deployedseed>
+    <deployedseed>1863441615</deployedseed>
+    <deployedseed>1833885477</deployedseed>
+    <deployedseed>1304388179</deployedseed>
+    <deployedseed>728907405</deployedseed>
+    <deployedseed>258689316</deployedseed>
+    <deployedseed>158109895</deployedseed>
+    <deployedseed>860462448</deployedseed>
+    <deployedseed>1065936703</deployedseed>
+    <deployedseed>345484577</deployedseed>
+    <deployedseed>1169618151</deployedseed>
+    <deployedseed>79467524</deployedseed>
+    <deployedseed>70120923</deployedseed>
+  </question>
+</quiz>

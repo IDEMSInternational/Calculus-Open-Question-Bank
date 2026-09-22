@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Integration by power of sine and cosine-substitution</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Find the antiderivative \( \displaystyle \int {@funct@}d{@xx@}\)  by substitution method </p> 
+<p> [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>\( \displaystyle \int {@aa@}\sin^{3}({@bb*xx@})\, d{@xx@}\) can be expressed as \( \displaystyle {@aa@}  \int \sin({@bb*xx@}) \sin^{2}({@bb*xx@}) d{@xx@}.\)</p>
+<p>Recall  that; \(\sin^{2}({@xx@})=1-\cos^{2}({@xx@})\)</p>
+<p>We rewrite \( \displaystyle {@aa@}\int \sin^{3}({@bb*xx@})\, d{@xx@} = {@aa@}\int (1-\cos^{2}({@bb*xx@}))\sin({@bb*xx@})\,d{@xx@}\)</p>
+<p>Let \(u = {@uu@}\)</p>
+<p>Let \(du={@du@}dw \hspace{1cm} d{@xx@}=\frac{du}{{@du@}}\)</p>
+<p>On substituting \(u\) and \(d{@xx@}\) in the original integral we get,</p>
+<p>\( \begin{align}
+ \displaystyle {@aa@}\int \sin^{3}({@bb*xx@})d{@xx@}& =\displaystyle {@aa@}\int (1-u^2)\sin ({@bb*xx@})\frac{du}{{@du@}}\\
+ & = \int {@aa*(1-u^2)*sin(bb*xx)/du@} \, du \\
+ & = {@int(aa*(1-u^2)*sin(bb*xx)/du,u)@}  + c\\
+\end{align}\) </p>
+ <hr>
+<p>Now substitute \(u={@uu@} \) in the previous expression</p>
+<p>\( {@int(aa*(1-u^2)*sin(bb*xx)/du,u)@}  + c = {@ta@}\)</p>
+<p>Therefore,</p>
+<p>\( \displaystyle \int {@funct@}d{@xx@}= {@ta@}\)</p>
+<p>Where \(c\) is a constant of integration.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining the question*/
+aa:rand(20)+1; /*coefficient of sine*/
+bb:rand(6)+1; /*coefficient of variable*/
+xx:rand([y,z,p,w,q]); /*variable for the function*/
+funct:aa*(sin(bb*xx))^3; /*function*/
+
+/*Model answer*/
+ta:int(funct,xx)+c;
+
+/*worked out soln code*/
+uu:cos(bb*xx);
+du:diff(uu)/del(xx);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\( \displaystyle \int {@funct@}d{@xx@}={@ta@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">[Mary Sayuni]</p>
+<p id="concept">[]</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">[The question focuses on Integrating a trig function involving sin and cosine by substitution]</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node1: checking the correct answer*/
+/*node2: missing the constant of integration*/
+mistake_1:int(funct,xx);
+/*node3: differentiating instead of integrating*/
+mistake_2: diff(f_x,xx);
+/*node4: not replacing the value of u  back*/
+mistake_3:u^3/3-u+c;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You have missed the constant of integration. This is an indefinite integral</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for second mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have differentiated the function instead of integrating</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>checks for the third mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You provided your answer in terms of u. Note that u was just a temporal value</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1505314584</deployedseed>
+    <deployedseed>979508057</deployedseed>
+    <deployedseed>1049526108</deployedseed>
+    <deployedseed>1852607078</deployedseed>
+    <deployedseed>607625639</deployedseed>
+    <deployedseed>1546550406</deployedseed>
+    <deployedseed>1029285947</deployedseed>
+    <deployedseed>135914893</deployedseed>
+    <deployedseed>495896779</deployedseed>
+    <deployedseed>472295358</deployedseed>
+    <deployedseed>648436149</deployedseed>
+    <deployedseed>985110832</deployedseed>
+    <deployedseed>397298794</deployedseed>
+    <deployedseed>1259660347</deployedseed>
+    <deployedseed>809153365</deployedseed>
+    <deployedseed>1018073628</deployedseed>
+    <deployedseed>1116208668</deployedseed>
+    <deployedseed>808577355</deployedseed>
+    <deployedseed>1521228431</deployedseed>
+    <deployedseed>1148633395</deployedseed>
+    <deployedseed>1750463682</deployedseed>
+    <deployedseed>189171064</deployedseed>
+    <deployedseed>922310384</deployedseed>
+    <deployedseed>1866323530</deployedseed>
+    <deployedseed>1244382899</deployedseed>
+    <deployedseed>1501640911</deployedseed>
+    <deployedseed>2000817886</deployedseed>
+    <deployedseed>1055516323</deployedseed>
+    <deployedseed>665791609</deployedseed>
+    <deployedseed>306774183</deployedseed>
+    <deployedseed>642802663</deployedseed>
+    <deployedseed>552092906</deployedseed>
+    <deployedseed>1993964845</deployedseed>
+    <deployedseed>188772122</deployedseed>
+    <deployedseed>2074008392</deployedseed>
+    <deployedseed>461257527</deployedseed>
+    <deployedseed>378690820</deployedseed>
+    <deployedseed>1365002814</deployedseed>
+    <deployedseed>212309943</deployedseed>
+    <deployedseed>939319251</deployedseed>
+    <deployedseed>1415890668</deployedseed>
+    <deployedseed>568703917</deployedseed>
+    <deployedseed>278008706</deployedseed>
+    <deployedseed>439815668</deployedseed>
+    <deployedseed>1319518948</deployedseed>
+    <deployedseed>44811967</deployedseed>
+    <deployedseed>623637921</deployedseed>
+    <deployedseed>1605004306</deployedseed>
+    <deployedseed>1391919627</deployedseed>
+    <deployedseed>598188028</deployedseed>
+    <deployedseed>1632085451</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>An improper integral on a finite interval.</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Consider the integral  \(\displaystyle \int_{0}^{{@upper_lmt@}}{@func@}\)</p>
+<p>\(\displaystyle \int_{0}^{{@upper_lmt@}}{@func@}=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>First, calculate the corresponding indefinite integral: </p>
+<p>\(\displaystyle \int_{0}^{{@upper_lmt@}}{@func@}={@antiderivative@}\)</p>
+<p>Evaluating the Definite Integral with a Limit: Since \(x=0\) is a point of divergence (the integrand goes to infinity as \(x\to 0\), this is an improper integral. We handle it by evaluating the integral from \(\in\) to {@upper_lmt@} and then taking the limit as \( \in \to 0^+\):</p>
+<p>\(\displaystyle \int_{0}^{{@upper_lmt@}}{@func@}=\displaystyle \lim_{\in \to 0^+} \left[ {@antiderivative@} \right]_0^{{@upper_lmt@}}\)</p>
+<p>Substitute the upper and lower limits into the antiderivative:</p>
+<p>\(\displaystyle \lim_{\in \to 0^+} \left( ({@upper_limit@})-({@lower_limit@}) \right)\)</p>
+<p>\(\quad \quad \quad= {@ta1@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* Define the integrand */
+num:rand(9)+9;
+coeff_x:x;
+aa:rand(6)+4;
+coeff_sqr:x*(aa*sqrt(x));
+func:num/(coeff_x*coeff_sqr);
+lower_lmt:0;
+upper_lmt:rand(3)+3;
+/* Step 1: Compute the antiderivative */
+antiderivative:int(func, x);
+/* Step 2: Set up the integral with limits from epsilon to 3 */
+upper_limit : subst(x=upper_lmt, antiderivative);
+lower_limit : subst(x=epsilon, antiderivative);
+
+/* Step 3: Define the improper integral using the limit */
+ta1: limit(upper_limit - lower_limit, epsilon, 0, plus);
+/*Model answers*/
+ta2:if ta1=inf then "Divergent" elseif ta1=minf then "Divergent" else"Convergent";
+ta3:if ta_2="Divergent" then "Convergent" else "Divergent";
+ta_4:random_permutation([[ta2, true],[ta3, false],["Divergent and convergent", false]]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p> \(\displaystyle \int_{0}^{{@upper_lmt@}}{@func@}={@ta1@}\)</p>
+<p></p>
+<p></p>
+<p></p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Mike</p>
+<p id="description">The question focuses on evaluating an improper Integral of a finite interval</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for integral value</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>261696221</deployedseed>
+    <deployedseed>896520337</deployedseed>
+    <deployedseed>544505715</deployedseed>
+    <deployedseed>1996640773</deployedseed>
+    <deployedseed>1864284516</deployedseed>
+    <deployedseed>1279499166</deployedseed>
+    <deployedseed>146533780</deployedseed>
+    <deployedseed>2121221966</deployedseed>
+    <deployedseed>282465055</deployedseed>
+    <deployedseed>230746272</deployedseed>
+    <deployedseed>1453274258</deployedseed>
+    <deployedseed>1351249017</deployedseed>
+    <deployedseed>1402804859</deployedseed>
+    <deployedseed>877468876</deployedseed>
+    <deployedseed>1590454555</deployedseed>
+    <deployedseed>2063829395</deployedseed>
+    <deployedseed>648117194</deployedseed>
+    <deployedseed>1662278200</deployedseed>
+    <deployedseed>1438972197</deployedseed>
+    <deployedseed>1528713942</deployedseed>
+    <deployedseed>212574774</deployedseed>
+    <deployedseed>1494834257</deployedseed>
+    <deployedseed>964784082</deployedseed>
+    <deployedseed>1612750093</deployedseed>
+    <deployedseed>48704821</deployedseed>
+    <deployedseed>181754057</deployedseed>
+    <deployedseed>415312834</deployedseed>
+    <deployedseed>362608530</deployedseed>
+    <deployedseed>1959537352</deployedseed>
+    <deployedseed>859826967</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

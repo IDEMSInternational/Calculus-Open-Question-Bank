@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Finding when the amount of money in the bank account is increasing</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Suppose that the amount of money in a bank account is given by</p>
+<p>\( \qquad P (t) = {@pt@}\) </p><p>where \(t\) is in years. During the first \({@time@}\) years in which the account is open when is the amount of money in the account increasing?</p>
+<p>Find the increasing values in the \([{@tpi@}, {@time@}]\) interval:(Give your answer in exact form or correct to \(4\)dp where necessary)</p>
+<p>For the interval  \([{@tpi@}, {@2*tpi@}]\) :</p>
+<p>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+<p>For the interval  \([{@3*tpi@}, {@time@}]\) :</p>
+<p>[[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+
+
+<p>To find when the amount of money in the account is increasing, we need to find when the derivative of the function \(P(t)\) is positive.</p>
+<p>The derivative of \(P(t)\) is: \(P'(t) = {@dpt@}\)</p>
+
+
+<p>Now, we need to find when \(P'(t) > 0\) over the first {@time@} years, which corresponds to the interval \(0 \leq t \leq {@time@} \). We'll analyze the sign of \(P'(t)\) in this interval.</p>
+
+<p>Let's start by finding when \(P'(t) = 0\):</p>
+<p>\(
+\displaystyle
+\begin{align}
+{@dpt@} &= 0 \\
+{@coeff(dpt,sin(t),1)@}\sin(t) &= {@-coeff(dpt,cos(t),1)@}\cos(t) \\
+   {@(lhs_sol/rhs_sol)*coef1@} &= {@coef1@} \\
+    \tan(t) &= {@coef1@}
+\end{align}
+\)</p>
+<br> To find solutions for \(t\), we consider that the tangent function is periodic with a period of {@tpi@}. So,  
+<p>\(
+\displaystyle
+\begin{align}
+t &= {@decimalplaces(t1,4)@}+2\pi n, \quad n=0,\pm1,\pm2,...\\
+ & and  \\
+t &= {@decimalplaces(t2,4)@} +2\pi n, \quad n=0,\pm1,\pm2,...\\
+\end{align}
+\)</p>
+
+<p>\(
+\displaystyle
+\begin{align}
+t_1 &= {@t1@} \approx {@decimalplaces(t1,4)@}\\
+t_2 &={@t2@} \approx {@decimalplaces(t2,4)@} \\
+t_3 &={@t3@} \approx  {@decimalplaces(t3,4)@} \\
+t_4 &= {@time@} 
+\end{align}
+\)</p>
+
+<p>So, it looks like the amount of money in the bank account will be increasing during the
+following intervals:</p>
+
+<p>\[{@decimalplaces(t1,4)@} < t < {@decimalplaces(t2,4)@} \quad \text{and} \quad {@decimalplaces(t3,4)@} < t < {@time@} \]</p>
+
+<p>Note that we can’t say anything about what is happening after \(t = {@time@}\) since we haven’t done any work for \(t\)’s after that point.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* Define the function P(t) */ 
+time:rand(10)+10;
+c1:(rand(5)+5)*100;
+c2:rand_with_step(100,500,50);
+c3:rand_with_step(100,500,50)+50;
+pt : c1 + c2*cos(t) - c3*sin(t);  
+dpt :diff(pt, t);  
+sol: solve(dpt =0, t); 
+lhs_sol:lhs(sol[1]);
+rhs_sol:rhs(sol[1]);
+coef1:coeff(rhs_sol,cos(t),1);
+sol_tan:atan(coef1);
+tpi:%pi;
+t1:tpi+sol_tan;
+t2:t1+tpi;
+t3:t2+tpi;
+t4:time;
+ta1: t1<t and t<t2; alt_ta1:decimalplaces(t1,4)<t and t<decimalplaces(t2,4);
+ta2: t3<t and t<t4; alt_ta2:decimalplaces(t3,4)<t and t<t4;]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Suppose that the amount of money in a bank account is given by
+\(P (t) = {@pt@}\) where \(t\) is in years. During the first \({@time@}\) years in which the account is open when is the amount of money in the account increasing?</p>
+<p>Find the increasing values in the \([{@tpi@}, {@time@}]\) interval:</p>
+<p>For the interval  \([{@tpi@}, {@2*tpi@}]={@ta1@}\)</p>
+<p>For the interval  \([{@3*tpi@}, {@time@}]={@ta2@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer"> Juma Zevick</p>
+<p id="description">Finding when the amount of money in the bank account is increasing, by determining the intervals where the derivative of P(t) is positive, because the derivative represents the rate of change of the amount of money in the account.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>20</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>20</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks if interchanged the correct values</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.7</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p></p>
+<p>You interchanged your intervals, but you still managed to get partial marks.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checkks for correct answer in 4dp</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>alt_ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks if interchanged the correct values</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.7</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p></p>
+<p>You interchanged your intervals, but you still managed to get partial marks.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checkks for correct answer in 4dp</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>alt_ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1095597141</deployedseed>
+    <deployedseed>726688114</deployedseed>
+    <deployedseed>135616685</deployedseed>
+    <deployedseed>1645914347</deployedseed>
+    <deployedseed>677735562</deployedseed>
+    <deployedseed>73288062</deployedseed>
+    <deployedseed>983253869</deployedseed>
+    <deployedseed>1430524184</deployedseed>
+    <deployedseed>88759537</deployedseed>
+    <deployedseed>266936090</deployedseed>
+    <deployedseed>1198504320</deployedseed>
+    <deployedseed>432852777</deployedseed>
+    <deployedseed>68425347</deployedseed>
+    <deployedseed>436520470</deployedseed>
+    <deployedseed>343451969</deployedseed>
+    <deployedseed>392283466</deployedseed>
+    <deployedseed>196490931</deployedseed>
+    <deployedseed>1986739000</deployedseed>
+    <deployedseed>1631077938</deployedseed>
+    <deployedseed>554295064</deployedseed>
+    <deployedseed>415245097</deployedseed>
+    <deployedseed>1772810699</deployedseed>
+    <deployedseed>2077699209</deployedseed>
+    <deployedseed>1702795347</deployedseed>
+    <deployedseed>208966824</deployedseed>
+    <deployedseed>1202000018</deployedseed>
+    <deployedseed>1508720239</deployedseed>
+    <deployedseed>1734244887</deployedseed>
+    <deployedseed>1725170188</deployedseed>
+    <deployedseed>951352133</deployedseed>
+    <deployedseed>806128485</deployedseed>
+    <deployedseed>246886055</deployedseed>
+    <deployedseed>928895417</deployedseed>
+    <deployedseed>13792118</deployedseed>
+    <deployedseed>1296480217</deployedseed>
+    <deployedseed>739208131</deployedseed>
+    <deployedseed>588459985</deployedseed>
+    <deployedseed>1666181034</deployedseed>
+    <deployedseed>800998436</deployedseed>
+    <deployedseed>801277382</deployedseed>
+    <deployedseed>1438226566</deployedseed>
+    <deployedseed>1555460041</deployedseed>
+    <deployedseed>895116434</deployedseed>
+    <deployedseed>1249381647</deployedseed>
+    <deployedseed>747440771</deployedseed>
+    <deployedseed>164149751</deployedseed>
+    <deployedseed>1520773463</deployedseed>
+    <deployedseed>533767733</deployedseed>
+    <deployedseed>580520094</deployedseed>
+    <deployedseed>1550095990</deployedseed>
+    <deployedseed>466895913</deployedseed>
+    <deployedseed>317250984</deployedseed>
+    <deployedseed>1911653575</deployedseed>
+    <deployedseed>448888071</deployedseed>
+    <deployedseed>1222285265</deployedseed>
+    <deployedseed>966781710</deployedseed>
+    <deployedseed>481665271</deployedseed>
+    <deployedseed>1076463341</deployedseed>
+    <deployedseed>1430826211</deployedseed>
+    <deployedseed>792740990</deployedseed>
+    <deployedseed>704040906</deployedseed>
+    <deployedseed>838382296</deployedseed>
+    <deployedseed>1085298135</deployedseed>
+    <deployedseed>1466453061</deployedseed>
+    <deployedseed>1613897109</deployedseed>
+    <deployedseed>996285733</deployedseed>
+    <deployedseed>1236542633</deployedseed>
+    <deployedseed>273957438</deployedseed>
+    <deployedseed>913777625</deployedseed>
+    <deployedseed>883881725</deployedseed>
+    <deployedseed>1641125193</deployedseed>
+    <deployedseed>1975821682</deployedseed>
+    <deployedseed>1628737111</deployedseed>
+    <deployedseed>985884100</deployedseed>
+    <deployedseed>100982895</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

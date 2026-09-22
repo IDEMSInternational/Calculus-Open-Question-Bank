@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Chain Rule Application for Computing a Derivative</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p></p>
+<p>Given the following information</p>
+<p>\( \displaystyle w= {@func_w@}\)</p>
+<p>\(\displaystyle  x={@func_x@}\)</p>
+<p>\(\displaystyle  y={@func_y@}\)</p>
+<p>\(\displaystyle z={@func_z@}\)</p>
+<p>Use Chain Rule to compute \(\displaystyle \frac{dw}{dt}\) </p>
+<p>\(\displaystyle \frac{dw}{dt} = \) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+<p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Worked solution</p> 
+<br>
+<p>From this information it looks like the chain rule for this case should be, </p>
+<p>\( \displaystyle
+\frac{dw}{dt}= \frac{\partial{w}}{\partial{x}}\frac{d{x}}{d{t}}+\frac{\partial{w}}{\partial{y}}\frac{d{y}}{d{t}}+\frac{\partial{w}}{\partial{z}}\frac{d{z}}{d{t}} \) </p>
+<p>\(\displaystyle \quad= {@func1a@}({@func1b@})+{@func2a@}({@func2b@})+{@func3a@}({@func3b@}) \)</p>             
+<p>\( \quad= {@ta@}\)  </p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2022071300</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Question variables*/
+aa:rand_with_prohib(-5,5,[0]);
+bb:rand_with_prohib(-5,5,[0]);
+cc:rand_with_prohib(-5,5,[0]);
+dd:rand_with_prohib(-5,5,[0]);
+
+func_w:expand((aa*x-z)*(x+bb*z))/y^(cc);
+func_x:t^(dd)+cc;
+func_y:cos(bb*t);
+func_z:dd*t;
+
+/*Worked solution*/
+func1a:diff(func_w,x);  func1b:diff(func_x,t);
+func2a:diff(func_w,y);  func2b:diff(func_y,t);
+func3a:diff(func_w,z);  func3b:diff(func_z,t);
+ta1:func1a*func1b+func2a*func2b+func3a*func3b;
+ta:ratsimp(ta1);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\( \displaystyle w= {@func_w@}\)</p>
+<p>\(\displaystyle  x={@func_x@}\)</p>
+<p>\(\displaystyle  y={@func_y@}\)</p>
+<p>\(\displaystyle z={@func_z@}\)</p>
+\(\displaystyle \frac{dw}{dx}= {@ta@}\)]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*mistake1:Computing the partial derivative of w wrt to t only and forgoing the other derivatives */
+mistake1:diff(func_w,t);
+
+/*mistake2:Computing all the derivatives of all the three functions wrt to t only then adding the final result. */
+mistake2:diff(func_w,t)+diff(func_x,t)+diff(func_y,t)+diff(func_z,t);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>t</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.3</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have computed the derivative of the function \( w \) alone without factoring in the other functions \( x,y &amp;, z\) in your computation.</p>
+<p>Hint: </p>
+\( \displaystyle \frac{dw}{dt}= \frac{\partial{w}}{\partial{x}}\frac{d{x}}{d{t}}+\frac{\partial{w}}{\partial{y}}\frac{d{y}}{d{t}}+\frac{\partial{w}}{\partial{z}}\frac{d{z}}{d{t}} \) <p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have computed the derivative of all the three functions wrt to t and added the result.</p>
+<p>Hint:</p> 
+<p>Suppose we have three functions as shown,</p>
+<p>\( z=f(x,y), x=g(t), y=h(t),\) </p>
+<p>in order to compute \( \displaystyle \frac{dz}{dt}\), you’ll have to compute an ordinary derivative since \(z\) really would be a function of \(t\) only if we were to substitute in for \(x\) and \(y\).</p>
+<p>Thus, the chain rule for this case is,</p>
+<p>\( \displaystyle \frac{dz}{dt}= \frac{\partial{z}}{\partial{x}}\frac{d{x}}{d{t}}+\frac{\partial{z}}{\partial{y}}\frac{d{y}}{d{t}}\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+</quiz>

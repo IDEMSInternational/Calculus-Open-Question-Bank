@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Analyzing Monotonicity and Boundedness of a Sequence</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Consider the sequence, \({@quest_seq@}_{n=1}^{\infty}\)</p>
+<p>Complete the following statements about the properties of this sequence.</p>
+<br>
+<p>(a) <b>Monotonicity:</b> The sequence is [[input:ans1]]
+<br>[[validation:ans1]] [[feedback:prt1]]</p>
+<br>
+<p>(b) <b>Boundedness:</b> The sequence is [[input:ans2]]
+<br>[[validation:ans2]] [[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<p><b>Worked solution</b></p>
+<p>A monotonic sequence is a sequence of numbers that either always increases or always decreases, but not both.</p>
+<p>A sequence or a set of numbers is said to be bounded above if there exists a number such that all the elements in the sequence are less than or equal to that number, and vice versa for bounded below</p>
+<br>
+<p>Looking at this sequence \({@quest_seq@}_{n=1}^{\infty}= {@a1@},{@a2@},{@a3@},{@a4@}, \cdots \)</p>
+
+<p>We can conclude that it is {@ta1@}</p>
+
+<p>and is {@ta2@}</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2022071300</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* List of possible questions: 
+Question information given as [*sequence*, *monotonicity*, *boundedness*] */
+quest_info: rand([
+    [{n*(-1)^(n+2)}, "not monotonic", "unbounded"],
+    [{log(n/2)}, "monotonic increasing", "bounded below"],[{1/(n+1)}, "monotonic increasing", "bounded below"],
+    [{2^(-n+2)}, "monotonic decreasing", "bounded above and below"],  [{1/(n^2+1)}, "monotonic decreasing", "bounded above and below"],
+    [{(-1)^n}, "not monotonic", "bounded above and below"], [{(-1)^n + n}, "not monotonic", "bounded above and below"]
+]);
+
+
+/* Separating out question information */
+quest_seq: quest_info[1];
+ta1: quest_info[2];
+ta2: quest_info[3];
+
+/* Model answers for monotonicity and boundedness */
+mans1: [
+    ["not monotonic", is(ta1="not monotonic")], 
+    ["monotonic increasing", is(ta1="monotonic increasing")], 
+    ["monotonic decreasing", is(ta1="monotonic decreasing")]
+];
+
+mans2: [
+    ["unbounded", is(ta2="unbounded")], 
+    ["bounded below", is(ta2="bounded below")], 
+    ["bounded above", is(ta2="bounded above")], 
+    ["bounded above and below", is(ta2="bounded above and below")]
+];
+
+/*Worked solution*/
+a1:subst(1,n, quest_seq);
+a2:subst(2,n, quest_seq);
+a3:subst(3,n, quest_seq);
+a4:subst(4,n, quest_seq);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Consider the sequence, {@quest_seq@}</p>
+<p>Complete the following statements about the properties of this sequence.</p>
+<br>
+<p>(a) <b>Monotonicity:</b> The sequence is {@mcq_correct(mans1)[1]@}
+<br>
+<p>(b) <b>Boundedness:</b> The sequence is {@mcq_correct(mans2)[1]@}]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>dropdown</type>
+      <tans>mans1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>dropdown</type>
+      <tans>mans2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p><b>Recall:</b> </p>
+</p><b>1.</b>A sequence \(a_n\) is said to be <b>increasing</b> if \(a_n \lt a_{n+1}\), or <b>decreasing</b> if \(a_n > a_{n+1}, \forall n \in \mathbb{N}\).</p>
+<p><b>2.</b>For an increasing or decreasing sequence, we call it <b>monotonic</b>. </p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p hidden>{@1@}</p>
+<p></b> A sequence \(a_n\) is said to be <b> bounded </b> if there exists a number \(m\) such that \( m \geq a_n \forall n \in \mathbb{N} \) to indicate its <b> bounded below</b>, and if thier exists another  number \(M\)  such that \( a_n \geq M \forall n \in \mathbb{N} \) to show it is bounded <b> bounded above</b>.</p>
+<p>Therefore this sequence is {@ta2@}</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1390043406</deployedseed>
+    <deployedseed>822605693</deployedseed>
+    <deployedseed>1410828512</deployedseed>
+    <deployedseed>1316333198</deployedseed>
+    <deployedseed>545308633</deployedseed>
+    <deployedseed>91957777</deployedseed>
+    <deployedseed>317338479</deployedseed>
+  </question>
+</quiz>

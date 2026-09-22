@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Question 5-Change Of Variables</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>If \(R\) is the parallelogram with vertices \(({@x_1@},{@y_1@}),({@x_2@},{@y_2@}),({@x_3@},{@y_3@}),({@x_4@},{@y_4@}),\)determine the region we would get applying the transformation \(x=\frac{1}{2}(v-u),y=\frac{1}{2}(v+u)\) to \(R\)</p>
+<p>Sketching \(R,\) we have</p>
+[[jsxgraph]]
+ var board = JXG.JSXGraph.initBoard(divid, { 
+    boundingbox: [-5, 10, 10, -5],
+    keepAspectRatio:true, 
+    showCopyright:false, 
+    axis: true, 
+    defaultAxes: {
+        x: {
+            name:'\\(x\\)',
+            withlabel:true,
+            label: {
+                position:'rt',
+                offset:[-20,15],
+                fontSize:15,
+                useMathJax:true,
+                parse:false
+            }
+        },
+        y: {
+            name:'\\(y\\)',
+            withlabel:true,
+            label: {
+                position:'rt',
+                offset:[15,-5],
+                fontSize:15,
+                useMathJax:true,
+                parse:false
+            }
+        }
+    },
+    showNavigation:true
+});
+        
+             var p1 = board.create('point', [{#x_1#},{#y_1#}],{fixed:true});
+var p2 = board.create('point', [{#x_2#}, {#y_2#}],{fixed:true});
+var p3 = board.create('point', [{#x_3#}, {#y_3#}],{fixed:true});
+var p4 = board.create('point', [{#x_4#}, {#y_4#}],{fixed:true});
+
+var pol = board.create('polygon', [p1, p2, p3, p4]);
+         var poly2 = board.create('polygon',points,{name:"Polygon 2",withLabel:true,
+             hasInnerPoints:true, withLines:true, vertices:{visible:true}});
+[[/jsxgraph]]
+<p>The equations of each of the boundaries of the region are given in the sketch.</p>
+<p>Apply the transformation to each of the boundary equations by plugging the transformation into each of the boundary equations.
+</p>
+<p>Applying the transformation to \(y={@eqn_y1@}\)</p>
+<p>This boundary transform into the equation \(u=\)[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>Applying the transformation to \(y={@eqn_y2@}\)</p>
+<p>This boundary transform into the equation \(v=\)[[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>
+<p>Applying the transformation to \(y={@eqn_y3@}\)</p>
+<p>This boundary transform into the equation \(u=\)[[input:ans3]] [[validation:ans3]][[feedback:prt3]]</p>
+<p>Applying the transformation to \(y={@eqn_y4@}\)</p>
+<p>This boundary transform into the equation \(v=\)[[input:ans4]] [[validation:ans4]][[feedback:prt4]]</p>
+<p>Sketch the transformed equations by moving the four points provided in the graph below</p>
+[[jsxgraph input-ref-ans5='ans5Ref' input-ref-ans6='ans6Ref' input-ref-ans7='ans7Ref' input-ref-ans8='ans8Ref']]
+ var board = JXG.JSXGraph.initBoard(divid, { 
+    boundingbox: [-5, 10, 10, -5],
+    keepAspectRatio:true, 
+    showCopyright:false, 
+   axis: true, 
+    defaultAxes: {
+        x: {
+            name:'\\(u\\)',
+            withlabel:true,
+            label: {
+                position:'rt',
+                offset:[-20,15],
+                fontSize:15,
+                useMathJax:true,
+                parse:false
+            }
+        },
+        y: {
+            name:'\\(v\\)',
+            withlabel:true,
+            label: {
+                position:'rt',
+                offset:[15,-5],
+                fontSize:15,
+                useMathJax:true,
+                parse:false
+            }
+        }
+    },
+    showNavigation:true
+});
+        
+             var p1 = board.create('point', [{#ax1#},{#ay1#}],{snapToGrid:true,snapSizeY:0.5,snapSizeX:0.5,withLabel:false});
+var p2 = board.create('point', [{#ax2#}, {#ay2#}],{snapToGrid:true,snapSizeY:0.5,snapSizeX:0.5,withLabel:false});
+var p3 = board.create('point', [{#ax3#}, {#ay3#}],{snapToGrid:true,snapSizeY:0.5,snapSizeX:0.5,withLabel:false});
+var p4 = board.create('point', [{#ax4#}, {#ay4#}],{snapToGrid:true,snapSizeY:0.5,snapSizeX:0.5,withLabel:false});
+ var line1 = board.create("line",[p1,p2],{name:'v={#ta2#}',straightFirst:false,straightLast:false,withLabel:false, strokeColor:'red'});
+ var line2 = board.create("line",[p1,p3],{name:'u={#ta1#}',straightFirst:false,straightLast:false, withLabel:false, strokeColor:'red'});
+ var line3 = board.create("line",[p3,p4],{name:'v={#ta4#}', straightFirst:false,straightLast:false,withLabel:false, strokeColor:'red'});
+ var line4 = board.create("line",[p2,p4],{name:'u={#ta3#}', straightFirst:false,straightLast:false,withLabel:false, strokeColor:'red'});
+stack_jxg.bind_point(ans5Ref, p1);
+stack_jxg.bind_point(ans6Ref, p2);
+stack_jxg.bind_point(ans7Ref, p3);
+stack_jxg.bind_point(ans8Ref, p4);
+[[/jsxgraph]]
+<p style='display:none'>[[input:ans5]] [[validation:ans5]]
+</p>
+<p style='display:none'>[[input:ans6]] [[validation:ans6]]
+</p>
+<p style='display:none'>[[input:ans7]] [[validation:ans7]]
+</p>
+<p style='display:none'>[[input:ans8]] [[validation:ans8]]
+</p>
+[[feedback:prt5]]]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Sketching \(R,\) we have</p>
+[[jsxgraph]]
+ var board = JXG.JSXGraph.initBoard(divid, { 
+    boundingbox: [-5, 10, 10, -5],
+    keepAspectRatio:true, 
+    showCopyright:false, 
+    axis: true, 
+    defaultAxes: {
+        x: {
+            name:'\\(x\\)',
+            withlabel:true,
+            label: {
+                position:'rt',
+                offset:[-20,15],
+                fontSize:15,
+                useMathJax:true,
+                parse:false
+            }
+        },
+        y: {
+            name:'\\(y\\)',
+            withlabel:true,
+            label: {
+                position:'rt',
+                offset:[15,-5],
+                fontSize:15,
+                useMathJax:true,
+                parse:false
+            }
+        }
+    },
+    showNavigation:true
+});
+        
+             var p1 = board.create('point', [{#x_1#},{#y_1#}],{fixed:true});
+var p2 = board.create('point', [{#x_2#}, {#y_2#}],{fixed:true});
+var p3 = board.create('point', [{#x_3#}, {#y_3#}],{fixed:true});
+var p4 = board.create('point', [{#x_4#}, {#y_4#}],{fixed:true});
+
+var pol = board.create('polygon', [p1, p2, p3, p4]);
+         var poly2 = board.create('polygon',points,{name:"Polygon 2",withLabel:true,
+             hasInnerPoints:true, withLines:true, vertices:{visible:true}});
+[[/jsxgraph]]
+<p>The equations of each of the boundaries of the region are given in the sketch.</p>
+<p>Apply the transformation to each of the boundary equations by plugging the transformation into each of the boundary equations.
+</p>
+<p>Applying the transformation to \(y={@eqn_y1@}\) gives,</p>
+<p>\(\frac{1}{2}(v+u)=\frac{1}{2}(v-u)+{@y_intercept1@}\)</p>
+<p>\(v+u=v-u+{@2*y_intercept1@}\)</p>
+<p>\(2u={@2*y_intercept1@}\) therefore \(u={@y_intercept1@}\)</p>
+<p>This boundary transform into the equation \(u={@ta1@}\)</p>
+<p></p>
+<p>Applying the transformation to \(y={@eqn_y2@}\) gives</p>
+<p>\(\frac{1}{2}(v+u)=-\frac{1}{2}(v-u)+{@y_intercept2@}\)</p>
+<p>\(v+u=-v+u+{@2*y_intercept2@}\)</p>
+<p>\(2v={@2*y_intercept2@}\) therefore \(v={@y_intercept2@}\)</p>
+<p>This boundary transform into the equation \(v={@ta2@}\)</p>
+<p></p>
+<p>Applying the transformation to \(y={@eqn_y3@}\)</p>
+<p>\(\frac{1}{2}(v+u)=\frac{1}{2}(v-u)+{@y_intercept3@}\)</p>
+<p>\(v+u=v-u+{@2*y_intercept3@}\)</p>
+<p>\(2u={@2*y_intercept3@}\) therefore \(u={@y_intercept3@}\)</p>
+<p>This boundary transform into the equation \(u={@ta3@}\)</p>
+<p></p>
+<p>Applying the transformation to \(y={@eqn_y4@}\)</p>
+<p>\(\frac{1}{2}(v+u)=-\frac{1}{2}(v-u)+{@y_intercept4@}\)</p>
+<p>\(v+u=-v+u+{@2*y_intercept4@}\)</p>
+<p>\(2v={@2*y_intercept4@}\) therefore \(v={@y_intercept4@}\)</p>
+<p>This boundary transform into the equation \(v={@ta4@}\)</p>
+<p>Sketching the transformed equations gives the following region.</p>
+[[jsxgraph]]
+ var board = JXG.JSXGraph.initBoard(divid, { 
+    boundingbox: [-5, 10, 10, -5],
+    keepAspectRatio:true, 
+    showCopyright:false, 
+   axis: true, 
+    defaultAxes: {
+        x: {
+            name:'\\(u\\)',
+            withlabel:true,
+            label: {
+                position:'rt',
+                offset:[-20,15],
+                fontSize:15,
+                useMathJax:true,
+                parse:false
+            }
+        },
+        y: {
+            name:'\\(v\\)',
+            withlabel:true,
+            label: {
+                position:'rt',
+                offset:[15,-5],
+                fontSize:15,
+                useMathJax:true,
+                parse:false
+            }
+        }
+    },
+    showNavigation:true
+});
+        
+             var p1 = board.create('point', [{#ta1#},{#ta2#}],{visible:false,withLabel:false,fixed:true});
+var p2 = board.create('point', [{#ta3#}, {#ta2#}],{visible:false,withLabel:false,fixed:true});
+var p3 = board.create('point', [{#ta1#}, {#ta4#}],{visible:false,withLabel:false,fixed:true});
+var p4 = board.create('point', [{#ta3#}, {#ta4#}],{visible:false,withLabel:false,fixed:true});
+ var line1 = board.create("line",[p1,p2],{name:'v={#ta2#}', straightFirst:false,straightLast:false,withLabel:false, strokeColor:'red'});
+ var line2 = board.create("line",[p1,p3],{name:'u={#ta1#}',straightFirst:false,straightLast:false, withLabel:false, strokeColor:'red'});
+ var line3 = board.create("line",[p3,p4],{name:'v={#ta4#}', straightFirst:false,straightLast:false,withLabel:false, strokeColor:'red'});
+ var line4 = board.create("line",[p2,p4],{name:'u={#ta3#}', straightFirst:false,straightLast:false,withLabel:false, strokeColor:'red'});
+[[/jsxgraph]]]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining question variables*/
+x_1:rand(7)-3;
+x_2:x_1+3;
+x_3:x_1;
+x_4:x_1-3;
+y_1:rand(7)-3;
+y_2:y_1+3;
+y_3:y_2+3;
+y_4:y_1+3;
+coord_1:[x_1,y_1];
+coord_2:[x_2,y_2];
+coord_3:[x_3,y_3];
+coord_4:[x_4,y_4];
+grad1:(y_2-y_1)/(x_2-x_1);
+grad2:(y_3-y_2)/(x_3-x_2);
+grad3:(y_3-y_4)/(x_3-x_4);
+grad4:(y_1-y_4)/(x_1-x_4);
+y_intercept1:y_2-grad1*x_2;
+y_intercept2:y_3-grad1*x_3;
+y_intercept3:y_4-grad1*x_4;
+y_intercept4:y_1-grad1*x_1;
+eqn_y1:grad1*x+y_intercept1;
+eqn_y2:grad2*x+y_intercept2;
+eqn_y3:grad3*x+y_intercept3;
+eqn_y4:grad4*x+y_intercept4;
+ax1:rand(7)-4;
+ay1:rand(7)-4;
+ax2:rand(7)-4;
+ay2:rand(7)-4;
+ax3:rand(7)-4;
+ay3:rand(7)-4;
+ax4:rand(7)-4;
+ay4:rand(7)-4;
+
+/*Model answer*/
+ta1:y_intercept1;
+ta2:y_intercept2;
+ta3:y_intercept3;
+ta4:y_intercept4;
+ta5:[ta1,ta2];
+ta6:[ta3,ta2];
+ta7:[ta1,ta4];
+ta8:[ta3,ta4];
+
+/*prt1*/
+/*Node 2 mistake:Usage of a wrong sign in giving the boundary transformation*/
+node_21_test:-ta1;
+/*prt2*/
+/*Node 2 mistake:Usage of a wrong sign in giving the boundary transformation*/
+node_22_test:-ta2;
+/*prt3*/
+/*Node 2 mistake:Usage of a wrong sign in giving the boundary transformation*/
+node_23_test:-ta3;
+/*prt4*/
+/*Node 2 mistake:Usage of a wrong sign in giving the boundary transformation*/
+node_24_test:-ta4;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(R\) is the parallelogram with vertices \(({@x_1@},{@y_1@}),({@x_2@},{@y_2@}),({@x_3@},{@y_3@}),({@x_4@},{@y_4@}),\)</p>
+<p>Applying the transformation to \(y={@eqn_y1@}\) we get \(u={@ta1@}\)</p>
+<p>Applying the transformation to \(y={@eqn_y2@}\) we get \(v={@ta2@}\)</p>
+<p>Applying the transformation to \(y={@eqn_y3@}\) we get \(u={@ta3@}\)</p>
+<p>Applying the transformation to \(y={@eqn_y4@}\) we get \(v={@ta4@}\)</p>
+]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Santiago Borio</p>
+<p id="description">This question requires the student to determine the region resulting from applying a given transformation to a parallelogram in the coordinate plane, involving the transformation equations and sketching the transformed equations.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta4</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>ta5</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>ta6</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7</name>
+      <type>algebraic</type>
+      <tans>ta7</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans8</name>
+      <type>algebraic</type>
+      <tans>ta8</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Possible mistakes prt1*/
+/*node1:Checks for the correct answer*/
+/*node2:Usage of a wrong sign in giving the boundary transformation*/
+mistake2:-ta1;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Usage of a wrong sign in giving the boundary transformation</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have used the wrong sing in giving the boundary transformation.Try again</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Possible mistakes prt2*/
+/*node1:Checks for the correct answer*/
+/*node2:Usage of a wrong sign in giving the boundary transformation*/
+mistake2:-ta2;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Usage of a wrong sign in giving the boundary transformation</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have used the wrong sing in giving the boundary transformation.Try again</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Possible mistakes prt3*/
+/*node1:Checks for the correct answer*/
+/*node2:Usage of a wrong sign in giving the boundary transformation*/
+mistake2:-ta3;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Usage of a wrong sign in giving the boundary transformation</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have used the wrong sing in giving the boundary transformation.Try again</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Possible mistakes prt4*/
+/*node1:Checks for the correct answer*/
+/*node2:Usage of a wrong sign in giving the boundary transformation*/
+mistake2:-ta4;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Usage of a wrong sign in giving the boundary transformation</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have used the wrong sing in giving the boundary transformation.Try again</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>ta:{ta5,ta6,ta7,ta8};
+sans:{ans5,ans6,ans7,ans8};</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>sans</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>860553107</deployedseed>
+    <deployedseed>1915089364</deployedseed>
+    <deployedseed>143693471</deployedseed>
+    <deployedseed>1668315264</deployedseed>
+    <deployedseed>711262885</deployedseed>
+    <deployedseed>510728445</deployedseed>
+    <deployedseed>1935690383</deployedseed>
+    <deployedseed>1754230544</deployedseed>
+    <deployedseed>844552997</deployedseed>
+    <deployedseed>1719977012</deployedseed>
+    <deployedseed>828413730</deployedseed>
+    <deployedseed>615591076</deployedseed>
+    <deployedseed>359568049</deployedseed>
+    <deployedseed>321360151</deployedseed>
+    <deployedseed>385565501</deployedseed>
+    <deployedseed>545993722</deployedseed>
+    <deployedseed>1095568238</deployedseed>
+    <deployedseed>1191367378</deployedseed>
+    <deployedseed>1230049721</deployedseed>
+    <deployedseed>277524850</deployedseed>
+    <deployedseed>1206393985</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta3</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>ta4</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>ta5</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>ta6</value>
+      </testinput>
+      <testinput>
+        <name>ans7</name>
+        <value>ta7</value>
+      </testinput>
+      <testinput>
+        <name>ans8</name>
+        <value>ta8</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>node_21_test</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>node_22_test</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>node_23_test</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>node_24_test</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value/>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value/>
+      </testinput>
+      <testinput>
+        <name>ans7</name>
+        <value/>
+      </testinput>
+      <testinput>
+        <name>ans8</name>
+        <value/>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty/>
+        <expectedanswernote>prt1-2-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty/>
+        <expectedanswernote>prt2-2-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty/>
+        <expectedanswernote>prt3-2-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty/>
+        <expectedanswernote>prt4-2-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore/>
+        <expectedpenalty/>
+        <expectedanswernote>NULL</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluate the Integral by parts_question2 (copy)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p></p><p><span id="docs-internal-guid-c4ff917c-7fff-8de2-5e7a-5a7a32781122">Evaluate \( \displaystyle \int ({@func_var_u@}){@func_var_dv@} dx\)</span><br></p><p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Worked out solution<br></p>
+<p>Step 1: The first step here is to pick \(u\) and \(dv\) such that \( \displaystyle \int udv = u \cdot v - \int vdu\).</p><p><br></p><p>Step 2: For this problem well use the following choices for \(u\) and \(dv\)</p>
+<p></p>
+<p>\(u = {@func_var_dv@}\), \(dv ={@func_var_u@} dx\), <br> Next, we need to compute \(du\) (by differentiating \(u\)) and \(v\) (by integrating \(dv\)).</p>
+<p>\(du = {@diff_u@}\), \(v= {@int_v@}\)</p>
+
+<p>Step 3: Plugging the above back into the Integration by Parts formula \( \displaystyle \int udv = u \cdot v - \int vdu\):</p>
+
+<p>\( \displaystyle \int ({@func_var_u@}){@func_var_dv@} dx = ({@int_v@})\times({@func_var_dv@}) - \displaystyle \int ({@int_v@})({@diff_u@}) dx\)</p> <br>
+
+<p>Step 4: We’ll now need to do integration by parts again for this \(\displaystyle \int ({@int_v@})({@diff_u@}) dx\), and to do this we’ll use the following choices for \(u\) and \(dv\) </p>
+<p>\(u={@diff_u@}\) and \(dv={@int_v@}dx\)</p>
+<br>
+<p>\(du={@diff(diff_u)@}\) and \(v={@int(int_v,x)@} \)</p>
+
+<br>
+<p>Now</p>
+<p>\(\displaystyle \int ({@int_v@})({@diff_u@}) dx =({@diff_u@})({@int(int_v,x)@})-\displaystyle \int({@int(int_v,x)@})\times {@diff(diff_u)/del(x)@}dx\) </p>
+<br>
+<p>\(\displaystyle \int ({@func_var_u@}){@func_var_dv@} dx =({@int_v@})({@func_var_dv@})+({@diff_u@})({@int(int_v,x)@})-\displaystyle \int {@int(int_v,x)@} \times{@diff(diff_u)@}\)</p>
+<p>Step 5: Rearranging and simplifying the above function we have the final answer,</p>
+<br>
+<p> \(={@ta@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>aa: 3+rand(4); bb: 2+aa;
+func_var_u:e^(aa*x); /*this is what will become  u in the question func*/
+func_var_dv:cos(aa*x/bb);  /*varible for dv in the question func*/
+question_func:(func_var_u)*((func_var_dv)); /* questoin expression in terms of u \times dv*/
+/*model answer*/
+ta:trigreduce(int(question_func,x)+c); /*force simplification of model answer*/
+
+/*Worked out solution codes*/
+diff_u:diff(func_var_u)/del(x);    /* derivative of var_u */
+int_v: trigreduce(int(func_var_dv,x));    /* integral of dv to get v */
+v_du: int_v*diff_u;       /* product  (diff_u and int_v) */
+int_v_du: int(v_du,x);  /* integral of _ product  (diff_u and int_v) */</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\( \displaystyle \int {@func_var_u@}{@func_var_dv@}\) = {@ta@}</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer"></p>
+<p id="description">The question focuses on Evaluating an Integral by parts that involve exponential and trig function</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>20</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node1- checking for correct answer*/
+
+/*Node 2: mistake_ failing to add the constant after integration*/
+sans_1:int(question_func,x);
+
+/*Node 3: differentiating instead of integrating*/
+sans_2:diff(question_func);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>x</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake as defined  above in feedback variables</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>sans_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p dir="ltr" style="text-align: left;"><span id="docs-internal-guid-aba13c86-7fff-6f79-9561-2b40408e8c3a">You seem to have failed to add the constant after integration. Recall that for indefinite integrals you need to add a constant of integration. Take a look at the worked out solution below:<br></span></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the second mistake as defined  above in feedback variables</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>sans_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1602361699</deployedseed>
+    <deployedseed>968330225</deployedseed>
+    <deployedseed>733812541</deployedseed>
+    <deployedseed>1756841260</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

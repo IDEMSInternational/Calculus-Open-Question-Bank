@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Determining  Arc Length-Q3 f(x)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Determine the length of  the curve whose equation is given by \( \displaystyle y= {@functx@}\),  for \({@lower_x@}\leq x\leq{@upper_x@}\). Give your answer correct to two decimal places.</p>
+<p>\(L=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>worked solution</p>
+<p>Let's take the derivative of the given function f(x) with respect to x, and then plug it into the ds formula.</p>
+<p>\(\frac{dy}{dx}={@d_functx@}\)</p>
+<p>So that
+\(
+\begin{align}
+ds &= \sqrt{1+[\frac{dy}{dx}]^{2}}dy \\
+  &= {@ds@}\;dy \\
+\end{align}
+\)
+</p>
+<p>Now, the integral giving the arc length is,</p>
+<p>\[L= \int ds=\int_{{@lower_x@}}^{{@upper_x@}}{@ds@}\;dx\]</p>
+<p>To evaluate this integral, use any  appropriate method learned earlier. This should give.</p>
+<p>\[\displaystyle \int  {@ds@}\;dx={@lfx@}.\]</p>
+<p>Now the arclength is \[L=\int_{{@lower_x@}}^{{@upper_x@}}{@ds@}\;dx={@ta1@}\] </p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining the question variables*/ 
+coef1:rand(9)+1;/*coeffient of the function*/
+const:rand(4)+1;/* constant inside the function*/
+lower_x:rand(3)+1;/*lower lmit of x*/
+upper_x:rand(4)+lower_x+2;/*upper lmit of x*/
+functx:rand([coef1*x^(3/2),coef1*x^2,(const/coef1)*x^(3/2),(const/coef1)*x^2]);
+d_functx: diff(functx,x);
+ds: sqrt(1+d_functx^2);
+lfx: int(ds,x);
+lffx: int(ds,x,lower_x,upper_x);
+ta1:decimalplaces(lffx,2);
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Length of the curve  \(y={@functx@}\), for the values of \(x\) between \({@lower_x@}\) and \({@upper_x@}\) is \({@ta1@}\).</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>numerical</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1 checks for correct answer*/
+/*Node 2: mistake:Integrating the expression instead of differentiating*/
+mistake_2:rhs((int(expr,y)));
+/*Node 3: mistake:   Interchanging the limits of integration*/
+mistake_1:int(ds,yrhs_y2,rhs_y1);
+mistake_2:decimalplaces(float(mistake_1),3);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have integrated the  the function instead of differentiating</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your computation looks okay for the definite integral, however it looks like you have interchanged the limits of integration.
+Take a look at the worked out solution below.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1183191486</deployedseed>
+    <deployedseed>558608838</deployedseed>
+    <deployedseed>2040764187</deployedseed>
+    <deployedseed>899651164</deployedseed>
+    <deployedseed>468916668</deployedseed>
+    <deployedseed>1020826846</deployedseed>
+    <deployedseed>503474338</deployedseed>
+    <deployedseed>493803561</deployedseed>
+    <deployedseed>340437088</deployedseed>
+    <deployedseed>1275383394</deployedseed>
+    <deployedseed>637631599</deployedseed>
+    <deployedseed>529799800</deployedseed>
+    <deployedseed>852251361</deployedseed>
+    <deployedseed>1691773612</deployedseed>
+    <deployedseed>1889193743</deployedseed>
+    <deployedseed>956780318</deployedseed>
+    <deployedseed>1948651691</deployedseed>
+    <deployedseed>1887977735</deployedseed>
+    <deployedseed>1869034675</deployedseed>
+    <deployedseed>1999555361</deployedseed>
+    <deployedseed>994006062</deployedseed>
+    <deployedseed>1074307805</deployedseed>
+    <deployedseed>644085781</deployedseed>
+    <deployedseed>616666666</deployedseed>
+    <deployedseed>496294173</deployedseed>
+    <deployedseed>66815297</deployedseed>
+    <deployedseed>753237326</deployedseed>
+    <deployedseed>761504351</deployedseed>
+    <deployedseed>1378612558</deployedseed>
+    <deployedseed>1658508899</deployedseed>
+  </question>
+</quiz>

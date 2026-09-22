@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Triple Integral Evaluation</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Evaluate \( \displaystyle \int_0^{@upper_limit_x@} \int_0^{@upper_limit_y@} \int_0^{@upper_limit_x@}  {@question_func@} dx dy dz = \) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+<p>(Give your answer correct to 2 decimal places)</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</b></h3>
+<p>\( \text{Recall that, just like with double integrals we start with the “inside” integral and work our way out.}\) </p>
+
+<p>\( \displaystyle \int_0^{@upper_limit_z@} \int_0^{@upper_limit_y@} \int_0^{@upper_limit_x@}  {@question_func@} dx dy dz \)</p>
+
+<p>\( \text{Let's start by integrating wrt to x},\) </p>
+<p>\( \begin{align}
+\displaystyle \int_0^{@upper_limit_z@} \int_0^{@upper_limit_y@}  {@x*coef_y*y*cos(z^(power_z))@} \displaystyle \left.\begin{matrix}
+ & \\ 
+ & 
+\end{matrix}\right|_0^{@upper_limit_x@} dy dz & =  \displaystyle \int_0^{@upper_limit_x@} \int_0^{@upper_limit_y@}  {@coef_y*y*cos(z^(power_z))*upper_limit_x@} dy dz. \\
+
+\displaystyle \int_0^{@upper_limit_z@}  \int_0^{@upper_limit_y@}  {@ta1@} dy dz & =  \displaystyle \int_0^{@upper_limit_z@} {@coef_y*y^2*cos(z^(power_z))*upper_limit_x/2@}  \displaystyle \left.\begin{matrix}
+ & \\ 
+ & 
+\end{matrix}\right|_0^{@upper_limit_y@} dz\\
+& \text{substituting y with}\,  {@upper_limit_y@}\,   \text{will give}\\
+
+& =\displaystyle \int_0^{@upper_limit_z@} {@ta2@} dz\\
+
+&=\left ( {@int(ta2,z)@} \right )\displaystyle \left.\begin{matrix}
+ & \\ 
+ & 
+\end{matrix}\right|_0^{@upper_limit_z@}\\
+& \text{substituting z with }  \, {@upper_limit_z@} \, \text{will give} \\
+&= {@ta@}
+    
+\end{align} 
+\) 
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>upper_limit_x:rand(3)+1;
+upper_limit_y:z^(rand(2)+1);
+upper_limit_z:rand(3)+1;
+power_z:rand([1,3,5]);
+coef_y:rand(3)+1;
+question_func:coef_y*y*cos(z^(power_z));
+
+/*Worked soln*/
+ta1:int(question_func,x,0,upper_limit_x);   /*First integral wrt x*/
+ta2:int(ta1,y,0,upper_limit_y);	/*Second integral wrt y*/
+ta3:int(ta2,z,0,upper_limit_z);	/*Thirst integral wrt z*/
+ta:decimalplaces(float(ta3),2);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\( \displaystyle \int_0^{@upper_limit_x@} \int_0^{@upper_limit_y@} \int_0^{@upper_limit_x@}  {@question_func@} dx dy dz  = {@ta@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Mary Sayuni</p>
+<p id="reviewer">Salvatore Mercuri</p>
+<p id="description"> This STACK question involves evaluating a triple integral with given limits and integrand. Students are required to compute the integral using the provided limits and function, and provide the answer rounded to two decimal places.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>line1:int(question_func,z,0,upper_limit_x);   /*First integral wrt z*/
+line2:int(line1,y,0,upper_limit_y);	/*Second integral wrt y*/
+line3:int(line2,x,0,upper_limit_z);	/*Thirst integral wrt x*/
+mistake1:decimalplaces(float(line3),2); /* Integrating the other way round, from z→ y →x instead of from x→y→ z.*/
+
+line11:int(question_func,x,upper_limit_x,0);   /*First integral wrt z*/
+line22:int(line11,y,upper_limit_y,0);	/*Second integral wrt y*/
+line33:int(line22,z,upper_limit_z,0);	/*Thirst integral wrt x*/
+mistake2: decimalplaces(float(line33),2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correcy answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description> Integrating the other way round, from z→ y →x instead of from x→y→ z</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> You needed to have started the integration by first computing the integral wrt to \(x\) , then wrt \(y\) and finally wrt \(z\). Not the other way round.   </p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>interchanged the limits of integration</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>It seems you have interchanged the limits of integration in your computation. Check how to approach the problem in the worked solution. </p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>135476663</deployedseed>
+    <deployedseed>197839543</deployedseed>
+    <deployedseed>745234186</deployedseed>
+    <deployedseed>1455840194</deployedseed>
+    <deployedseed>1428508971</deployedseed>
+    <deployedseed>2113834591</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

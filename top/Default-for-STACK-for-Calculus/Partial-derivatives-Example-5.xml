@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Partial derivatives: Example 5</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Let \(\displaystyle p(y_{1}, y_{2}, y_{3})={@pp@}\)</p>
+<p>and calculate \( \displaystyle \frac{\partial p}{\partial y_{3}}\) at the point \(\displaystyle (y_{1}, y_{2}, y_{3})=({@xx@}, {@yy@},{@zz@})\).</p>
+<p> <b>Step 1:</b> calculate \(\displaystyle \frac{\partial p}{\partial y_{3}}\) using the quotient rule. </p>
+<p style="color:blue">Note: \( \displaystyle  {@(y1^a*y2^b*y3^c)@}\) can be typed as y1^a*y2^b*y3^c  </p>
+<p>\(\displaystyle \frac{\partial p}{\partial y_{3}}=\) [[input:ans1]] [[validation:ans1]] </p><p>[[feedback:prt1]]</p>
+
+<p> <b>Step 2:</b> Plugging in the point \(\displaystyle (y_{1}, y_{2}, y_{3})=({@xx@}, {@yy@},{@zz@})\). </p>
+<p style="color:blue">Note: Give your answer in exact form or correct to \(2\) decimal places where necessary.</p>
+<p>\(\displaystyle \frac{\partial p}{\partial y_{3}} ({@xx@}, {@yy@},{@zz@})=\) [[input:ans2]] [[validation:ans2]] </p><p>[[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+Let \(\displaystyle p(y_{1}, y_{2}, y_{3})={@pp@}\)
+ <p> <b>Step 1: </b>calculate \(\displaystyle \frac{\partial p}{\partial y_{3}}\) using the quotient rule.</p> 
+<p>
+\(\displaystyle
+\begin{align}
+\frac{\partial p}{\partial y_{3}} & = \frac{\partial }{\partial y_{3}} \left( {@pp@}\right) \\
+\displaystyle
+& = \frac{\frac{\partial }{\partial y_{3}} ({@aa*y1^nn*y2^mm*y3^ee@}) \cdot ({@bb*y1+cc*y2+dd*y3@})-\frac{\partial }{\partial y_{3}} ({@bb*y1+cc*y2+dd*y3@}) \cdot ({@aa*y1^nn*y2^mm*y3^ee @})}{@(bb*y1+cc*y2+dd*y3)^2@}\\
+
+& = {@ta_1@}
+\end{align}
+\)</p>
+
+ <p> <b>Step 2: </b> Plugging in the point \((\displaystyle y_{1}, y_{2}, y_{3})=({@xx@}, {@yy@},{@zz@})\). </p> 
+\(\displaystyle \frac{\partial p}{\partial y_{3}} ({@xx@}, {@yy@},{@zz@})={@ta_2@}\)]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining randomised coefficients*/
+aa: rand_with_prohib(-9,9,[0]);
+bb:  rand_with_prohib(-5,5,[0]);
+cc:  rand_with_prohib(-7,7,[0]);
+dd:  rand_with_prohib(-8,8,[0]);
+nn: rand(5)+1;
+mm: rand(3)+1;
+ee: rand(4)+1;
+/*Define the function p(y1, y2, y3)*/
+pp: (aa*y1^nn*y2^mm*y3^ee)/(bb*y1+cc*y2+dd*y3);
+
+/*Define the coordinates of the randomised point */
+xx: rand_with_prohib(-3,4,[0]);  /*representing the value for y1*/
+yy: rand_with_prohib(-2,3,[0]); /*representing the value for y2*/
+zz:  rand_with_prohib(-5,5,[0]); /*representing the value for y3*/
+
+/*Model answers*/
+ta_1: (diff(aa*y1^nn*y2^mm*y3^ee,y3)*(bb*y1+cc*y2+dd*y3)-diff(bb*y1+cc*y2+dd*y3,y3)*(aa*y1^nn*y2^mm*y3^ee))/((bb*y1+cc*y2+dd*y3)^2);
+ta_2: at(ta_1, [y1=xx, y2=yy, y3=zz]);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle \frac{\partial p}{\partial y_{3}}={@ta_1@}\) </p>
+<p>\(\displaystyle \frac{\partial p}{\partial y_{3}} ({@xx@}, {@yy@},{@zz@})={@ta_2@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/Ap>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Santiago Borio</p>
+<p id="description">The question focuses on finding the equation of the tangent line to \( f(x) = {@func_x@} + {@func_y@} = {@lhs_question_func@}\) at the point \(({@x_point@},{@y_point@})\), using the outlined steps.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta_2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for correct answer to 2dp</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans2</sans>
+        <tans>ta_2</tans>
+        <testoptions>2</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p style="color:blue">Well done for giving your answer correct to \(2\) decimal places.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1473647352</deployedseed>
+    <deployedseed>1989859408</deployedseed>
+    <deployedseed>1839795068</deployedseed>
+    <deployedseed>782595086</deployedseed>
+    <deployedseed>301719820</deployedseed>
+    <deployedseed>1296832859</deployedseed>
+    <deployedseed>2052378609</deployedseed>
+    <deployedseed>1691361948</deployedseed>
+    <deployedseed>601964145</deployedseed>
+    <deployedseed>787804331</deployedseed>
+    <deployedseed>1516282872</deployedseed>
+    <deployedseed>1994183285</deployedseed>
+    <deployedseed>68524282</deployedseed>
+    <deployedseed>674271496</deployedseed>
+    <deployedseed>586509864</deployedseed>
+    <deployedseed>1732544712</deployedseed>
+    <deployedseed>310136975</deployedseed>
+    <deployedseed>518870786</deployedseed>
+    <deployedseed>1399337044</deployedseed>
+    <deployedseed>1517184939</deployedseed>
+    <deployedseed>1175085776</deployedseed>
+    <deployedseed>823618737</deployedseed>
+    <deployedseed>1714975933</deployedseed>
+    <deployedseed>1474454947</deployedseed>
+    <deployedseed>5965916</deployedseed>
+    <deployedseed>1478732339</deployedseed>
+    <deployedseed>1903790917</deployedseed>
+    <deployedseed>38611693</deployedseed>
+    <deployedseed>675075199</deployedseed>
+    <deployedseed>1560941008</deployedseed>
+    <deployedseed>320285709</deployedseed>
+    <deployedseed>1020734850</deployedseed>
+    <deployedseed>571964423</deployedseed>
+    <deployedseed>1089185184</deployedseed>
+    <deployedseed>165743939</deployedseed>
+    <deployedseed>548016493</deployedseed>
+    <deployedseed>785017919</deployedseed>
+    <deployedseed>344928435</deployedseed>
+    <deployedseed>615929231</deployedseed>
+    <deployedseed>552814577</deployedseed>
+    <deployedseed>1016039008</deployedseed>
+    <deployedseed>1195611233</deployedseed>
+    <deployedseed>396070615</deployedseed>
+    <deployedseed>484134963</deployedseed>
+    <deployedseed>505594934</deployedseed>
+    <deployedseed>188652246</deployedseed>
+    <deployedseed>857843440</deployedseed>
+    <deployedseed>1054022670</deployedseed>
+    <deployedseed>2090217130</deployedseed>
+    <deployedseed>830315044</deployedseed>
+    <deployedseed>1119369165</deployedseed>
+    <deployedseed>405960019</deployedseed>
+    <deployedseed>318770364</deployedseed>
+    <deployedseed>1125642371</deployedseed>
+    <deployedseed>828343780</deployedseed>
+    <deployedseed>593450641</deployedseed>
+    <deployedseed>1616230921</deployedseed>
+    <deployedseed>434295190</deployedseed>
+    <deployedseed>431299798</deployedseed>
+    <deployedseed>1455640843</deployedseed>
+    <deployedseed>1351822642</deployedseed>
+    <deployedseed>492916296</deployedseed>
+    <deployedseed>767372552</deployedseed>
+    <deployedseed>1919892325</deployedseed>
+    <deployedseed>831690656</deployedseed>
+    <deployedseed>1072052411</deployedseed>
+    <deployedseed>1212874263</deployedseed>
+    <deployedseed>551995708</deployedseed>
+    <deployedseed>1302129813</deployedseed>
+    <deployedseed>464539661</deployedseed>
+    <deployedseed>1394791439</deployedseed>
+    <deployedseed>1482936421</deployedseed>
+    <deployedseed>1348473834</deployedseed>
+    <deployedseed>1178948324</deployedseed>
+    <deployedseed>2035970360</deployedseed>
+    <deployedseed>52152649</deployedseed>
+    <deployedseed>550509424</deployedseed>
+    <deployedseed>665146006</deployedseed>
+    <deployedseed>1602294991</deployedseed>
+    <deployedseed>2051809653</deployedseed>
+    <deployedseed>105515102</deployedseed>
+    <deployedseed>908080149</deployedseed>
+    <deployedseed>1087369978</deployedseed>
+    <deployedseed>1481243596</deployedseed>
+    <deployedseed>1070537055</deployedseed>
+    <deployedseed>825468978</deployedseed>
+    <deployedseed>526089111</deployedseed>
+    <deployedseed>1466564606</deployedseed>
+    <deployedseed>1557370516</deployedseed>
+    <deployedseed>2034116680</deployedseed>
+    <deployedseed>879190486</deployedseed>
+    <deployedseed>872849944</deployedseed>
+    <deployedseed>671377425</deployedseed>
+    <deployedseed>264201745</deployedseed>
+    <deployedseed>59275754</deployedseed>
+    <deployedseed>478994255</deployedseed>
+    <deployedseed>1582496548</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta_2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

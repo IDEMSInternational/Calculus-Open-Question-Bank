@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Area Calculation Using Double Integrals for a Region Bounded by Curves</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<br>We can use double integral to calculate the area of the region inside \(r_1={@r1@}\) and outside \(r_2={@r2@}\)  by following the given steps. 
+<p>Below is a quick sketch of the region \(D\) that we want to find its area.</p>
+
+[[jsxgraph]]
+
+    var aa = {#aa#};
+    var bb = {#bb#};
+    
+    // bounding box dimensions change to have 2 square space above and below curves
+    JXG.Options.text.useMathJax=true;
+    var board = JXG.JSXGraph.initBoard(divid, {
+      boundingbox: [-(aa+bb+7)/2, aa+4, (aa+bb+7)/2, -bb-3], 
+      axis: true, 
+      showCopyright: false,
+      showNavigation: false,
+      keepaspectratio: true
+    });
+    
+    // setting display styles for objects
+    var curveStyle = {
+      fixed: true,
+      highlight: false,
+      curveType:'polar', 
+      strokeWidth:2
+    };
+
+    var fillStyle = {
+      fixed: true,
+      highlight: false,
+      color:'lime',
+      opacity:0.4,
+      strokeOpacity:0
+    };
+
+    var pointStyle = {
+      fixed: true,
+      highlight: false,
+      visible: true,
+      showinfobox: false,
+      fillOpacity: 0,
+      strokeOpacity: 0,
+      showLabel: true,
+      useMathJax: true,
+      parse: true,
+      label: {
+        fontSize: 15,
+        highlight: false
+      }
+    };
+
+    var lineStyle = {
+      fixed: true,
+      highlight: false,
+      strokeColor: 'black'
+    };
+
+    // larger blue curve
+    curveStyle.strokeColor = 'blue';
+    var function1 = board.create('curve', [
+      function(phi){return aa+2*Math.sin(phi)},
+      [0,0], 
+      0, 
+      function(){return 2*Math.PI}
+    ], curveStyle);
+
+    // smaller red curve
+    curveStyle.strokeColor = 'red';
+    var function2 = board.create('curve', [
+      function(phi){return bb-1*Math.sin(phi)},
+      [0,0], 
+      0, 
+      function(){return 2*Math.PI} 
+    ], curveStyle);
+
+    // shading upper difference between curves
+    var shading = board.create('curvedifference', 
+    [function1, function2], 
+    fillStyle)
+
+    // finding and labelling curve intersections
+    pointStyle.name = "\\(\\alpha\\)"
+    pointStyle.label.offset = [10,-10];
+    var intersect1 = board.create('intersection', [function1, function2, 1], pointStyle);
+    
+    pointStyle.name = "\\(\\beta\\)"
+    pointStyle.label.offset = [-10,-10];
+    pointStyle.label.anchorX = 'right'
+    var intersect2 = board.create('intersection', [function1, function2, 0], pointStyle);
+
+    // lines from origin to intersections
+    var line1 = board.create('segment', [[0,0], intersect1], lineStyle)
+    var line1 = board.create('segment', [[0,0], intersect2], lineStyle)
+  
+[[/jsxgraph]]
+
+<p><b>Step 1:</b> In order to determine the limits of \(\theta\) such that \(\alpha\leq \theta\leq \beta\), 
+</p>
+<p> \(\qquad\) write the two  equations as equivalent of themselves as shown. </p>
+<p> \(\qquad\)  \({@r1@}={@r2@}\)</p>
+<p>\(\qquad\)  \(\sin(\theta)=\) [[input:ans1]]  [[validation:ans1]] [[feedback:prt1]]</p>
+<p>\(\qquad\)  \(\alpha=\) [[input:ans2]] <b>(Hint: Solve for \(\theta\). Give your answer correct to 2dp)</b> [[validation:ans2]] [[feedback:prt2]]</p>
+<p>\(\qquad\)   Therefore, \(\beta=\pi-\alpha=\) [[input:ans3]] <b>(Hint: Solve for \(\beta\). Give your answer correct to 2dp)</b> [[validation:ans3]] [[feedback:prt3]]</p>
+<p>The limits will therefore be \(\alpha\leq \theta\leq \beta\),  , where \(\alpha\) & \(\beta\) are the values you’ve computed above for the first integral.</p>
+<p>The limits for the second integral will be \({@r2@}\leq r \leq {@r1@}\), </p>
+<p><b>Step 2:</b>Using double integral, compute the area of the region \(D\).</p>
+<p>Recall that \(\displaystyle A=\int \int_D dA\), where \(dA \) is \(rdrdθ\) and \(D\) is the limits of integration.
+</p>
+<p\(\displaystyle A=\int \int_D dA=\int_{\alpha}^{\beta} \int_{{@r2@}}^{@r1@} rdrd\theta = \) [[input:ans4]] <b>(Give your answer correct to 2dp).</b>[[validation:ans4]] [[feedback:prt4]]</p>
+<p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<p><b>Worked Solution</b></p>
+<p>Below is a quick sketch of the region \(D\) that we want to find its area.</p>
+<p>
+[[jsxgraph]]
+
+    var aa = {#aa#};
+    var bb = {#bb#};
+    
+    // bounding box dimensions change to have 2 square space above and below curves
+    JXG.Options.text.useMathJax=true;
+    var board = JXG.JSXGraph.initBoard(divid, {
+      boundingbox: [-(aa+bb+7)/2, aa+4, (aa+bb+7)/2, -bb-3], 
+      axis: true, 
+      showCopyright: false,
+      showNavigation: false,
+      keepaspectratio: true
+    });
+    
+    // setting display styles for objects
+    var curveStyle = {
+      fixed: true,
+      highlight: false,
+      curveType:'polar', 
+      strokeWidth:2
+    };
+
+    var fillStyle = {
+      fixed: true,
+      highlight: false,
+      color:'lime',
+      opacity:0.4,
+      strokeOpacity:0
+    };
+
+    var pointStyle = {
+      fixed: true,
+      highlight: false,
+      visible: true,
+      showinfobox: false,
+      fillOpacity: 0,
+      strokeOpacity: 0,
+      showLabel: true,
+      useMathJax: true,
+      parse: true,
+      label: {
+        fontSize: 15,
+        highlight: false
+      }
+    };
+
+    var lineStyle = {
+      fixed: true,
+      highlight: false,
+      strokeColor: 'black'
+    };
+
+    // larger blue curve
+    curveStyle.strokeColor = 'blue';
+    var function1 = board.create('curve', [
+      function(phi){return aa+2*Math.sin(phi)},
+      [0,0], 
+      0, 
+      function(){return 2*Math.PI}
+    ], curveStyle);
+
+    // smaller red curve
+    curveStyle.strokeColor = 'red';
+    var function2 = board.create('curve', [
+      function(phi){return bb-1*Math.sin(phi)},
+      [0,0], 
+      0, 
+      function(){return 2*Math.PI} 
+    ], curveStyle);
+
+    // shading upper difference between curves
+    var shading = board.create('curvedifference', 
+    [function1, function2], 
+    fillStyle)
+
+    // finding and labelling curve intersections
+    pointStyle.name = "\\(\\alpha\\)"
+    pointStyle.label.offset = [10,-10];
+    var intersect1 = board.create('intersection', [function1, function2, 1], pointStyle);
+    
+    pointStyle.name = "\\(\\beta\\)"
+    pointStyle.label.offset = [-10,-10];
+    pointStyle.label.anchorX = 'right'
+    var intersect2 = board.create('intersection', [function1, function2, 0], pointStyle);
+
+    // lines from origin to intersections
+    var line1 = board.create('segment', [[0,0], intersect1], lineStyle)
+    var line1 = board.create('segment', [[0,0], intersect2], lineStyle)
+  
+[[/jsxgraph]]
+</p>
+
+<p><b>Step 1:</b> In order to determine the limits of \(\theta\) such that \(\alpha\leq \theta\leq \beta\), 
+</p>
+<p> \(\qquad\) write the two  equations as equivalent of themselves as shown. </p>
+<p> \(\qquad\)  \({@r1@}={@r2@}\)</p>
+<p>\(\qquad\)  \(\sin(\theta)={@expr1@}\) </p>
+<p>\(\qquad\)  \(\sin(\theta)={@expr1@} \implies \theta=\sin^{-1}({@expr1@})={@alpha@}\) </p>
+<p>\(\qquad\)  This is the first angle in the fourth quadrant, \(α={@alpha@}\)</p>
+<p>\(\qquad\)   Recall that sine in the fourth quadrant is always negative. </p>
+<p>\(\qquad\)   Therefore, the second angle will simply be \(\beta=\pi-\alpha=\pi+{@-1*alpha@}={@beta@}\) </p>
+<p><b>Step 2:</b> The limits obtained are,</p>
+<p>\(\qquad\)  \( {@alpha@} \leq \theta \leq {@beta@}\),</p>
+<p>\(\qquad\)  \({@r2@}\leq r \leq {@r1@}\)</p>
+<p><b>Step 3:</b> In order to integrate the function with respect to r with polar coordinates, </p>
+  <p>\(\qquad \quad\) In this case we need to recall that \(dA=r dr dθ\).</p>
+ <p>
+\(
+\begin{align}
+\displaystyle A &= \int \int_D dA \\
+                       &= \int_{{@alpha@}}^{{@beta@}} \int_{{@r2@}}^{@r1@} rdrd\theta \\
+                      &= \int_{{@alpha@}}^{{@beta@}} {@r_int@}\left.\begin{matrix} & \\ & \end{matrix}\right|_{{@r2@}}^{@r1@} d\theta \\
+                        &= \int_{{@alpha@}}^{{@beta@}} \left({@r_int_limits@}\right) d\theta 
+\end{align}
+\)
+</p>
+<p><b>Step 4:</b> We compute the \(\theta\) integration. </p>
+ <p>
+\(
+\begin{align}
+\displaystyle A &= \int_{{@alpha@}}^{{@beta@}} \left({@r_int_limits@}\right) d\theta   \\
+                      &={@theta_int@}\left.\begin{matrix} & \\ & \end{matrix}\right|_{{@alpha@}}^{{@beta@}} \\
+                      &={@expr3@} - {@expr4@} \\
+                      &= {@ta4@}
+\end{align}
+\)
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2026010500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*Defining question variables: 4 <= aa <= 10, max(2, aa-2) <= bb < aa*/
+aa: 4+rand(7);
+bb: max(2, aa-2) + rand(aa - max(2, aa-2));
+
+r1:aa+2*sin(theta);
+r2:bb-sin(theta);
+
+/*Worked solution*/
+expr:solve(r1=r2,theta)[1];
+expr1:rhs(solve(r1=r2,sin(theta))[1]);
+final_expr:expr3-expr4;
+alpha:decimalplaces(rhs(expr),2);/*theta*/
+beta:decimalplaces(%pi+(-1*alpha),2);
+theta_limits:alpha<=theta and theta<=beta;
+r_limits:r2<=r and r<=r1;
+r_int:int(r,r);
+r_int_limits:int(r,r,r2,r1);
+theta_int:int(r_int_limits,theta);
+theta_int_limits:int(r_int_limits,theta,alpha,beta);
+expr3:subst(beta,theta,theta_int);
+expr4:subst(alpha,theta,theta_int);
+
+/*Model answers*/
+ta1:expr1;
+ta2:alpha;
+ta3:beta;
+ta4:decimalplaces(theta_int_limits,2);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\(r_1={@r1@}\) and outside \(r_2={@r2@} {@ta1@},{@ta2@},{@ta3@},{@ta4@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*possible mistakes*/
+/*node 1 checks for correct answer*/
+/*input 1 mistake: forgetting the negative sign*/
+mistake_2:-1*alpha;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have forgotten the negative sign. Recall that in the fourth quadrant, sine is always negative</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1 checks for correct answer*/
+/*input 2 mistake:using incorrect answer in above*/
+mistake_2:decimalplaces(%pi+(ans2),2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Remember \(\alpha\) is the angle in the \(4^th\) quadrant. To compute \(\beta\) simply take \(pi-\alpha\) which is the angle in the third quadrant of the circle.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>theta_int_limits:int(r_int_limits,theta,beta,alpha);
+mistake_2:decimalplaces(theta_int_limits,2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have interchanged your limits of integration.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1070126660</deployedseed>
+    <deployedseed>936523698</deployedseed>
+    <deployedseed>326939096</deployedseed>
+    <deployedseed>955755460</deployedseed>
+    <deployedseed>1520745326</deployedseed>
+    <deployedseed>815507253</deployedseed>
+    <deployedseed>361672686</deployedseed>
+    <deployedseed>671392080</deployedseed>
+    <deployedseed>147531830</deployedseed>
+    <deployedseed>1303891534</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta3</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>ta4</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

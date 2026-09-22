@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Finding the Limit of a Piecewise Function [broken: does not really check both sides of the limit]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Find \( \displaystyle {@limit_g@}\) where</p>
+<p style="margin-left:30px">
+\(g({@var@}) = \begin{cases} 
+{@gx@} & \text{if } {@var@} \neq {@point@}\\
+{@constant@} & \text{if } {@var@} = {@point@}
+\end{cases}
+\)</p>
+<p> \( \displaystyle {@limit_g@}=\)  [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To find the limit \({@limit_g@}\) where \( g({@var@}) = \begin{cases} 
+{@gx@} & \text{if } {@var@} \neq {@point@} \\
+{@constant@} & \text{if } {@var@} = {@point@}
+\end{cases} \), we need to evaluate the function \( g({@var@}) \) as \( {@var@} \) approaches \( {@point@} \).</p>
+
+<p>Since \( g({@var@}) \) is defined differently for \( {@var@} \neq {@point@} \) and \( {@var@} = {@point@} \), we consider the limit from both sides of \( {@point@} \):</p>
+
+<ul>
+    <li>For \( {@var@} \neq {@point@}\), \( g({@var@}) = {@gx@} \).</li>
+    <li>For \( {@var@} = {@point@} \), \( g({@point@}) = {@constant@} \).</li>
+</ul>
+
+<p>Now, let's evaluate the limit:</p>
+
+<p>\({@limit_g@}= \lim_{{@var@} \to {@point@}} ({@gx@})\).</p>
+
+<p>As \( {@var@} \) approaches \( {@point@} \) from either direction (left or right):</p>
+
+<p>\(\lim_{{@var@} \to {@point@}} ({@gx@}) = {@point@} + {@point2@} ={@ta@}\).</p>
+
+<p>Therefore, the limit of \( g({@var@}) \) as \( {@var@} \) approaches \( {@point@} \) is \( {@ta@} \).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>var:rand([x, z, w, r, a, b, c, d]);
+point:rand(10)+1;
+constant:rand([%pi, %e, %gamma, sqrt(%pi), sqrt(%e), 2*%pi, 3*%e, log(%pi)]);
+limit_g : limit(g(var), var, point);
+point2:rand_with_prohib(1,10,[point]);
+gx:var+point2;
+ta:limit(gx, var, point);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p style="margin-left:30px">
+\(g({@var@}) = \begin{cases} 
+{@gx@} & \text{if } {@var@} \neq {@point@}\\
+{@constant@} & \text{if } {@var@} = {@point@}
+\end{cases}
+\)</p>
+<p> \( \displaystyle {@limit_g@}={@ta@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">https://docs.google.com/document/d/1SRDu7SEnK09x3bnGqg0Gg1GONAxfVgNVeV74Zri7zuo/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">2</p>
+<p id="description"> The question involves finding the limit to understand the behavior of the function as x approaches the given point. The goal is to determine the value of this limit, which provides insights into the function's continuity and rate of change near the point given.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1047747381</deployedseed>
+    <deployedseed>126440119</deployedseed>
+    <deployedseed>1315022870</deployedseed>
+    <deployedseed>189072663</deployedseed>
+    <deployedseed>1439057374</deployedseed>
+    <deployedseed>1829329084</deployedseed>
+    <deployedseed>1764576076</deployedseed>
+    <deployedseed>1096040940</deployedseed>
+    <deployedseed>1610425993</deployedseed>
+    <deployedseed>88386263</deployedseed>
+    <deployedseed>1475964151</deployedseed>
+    <deployedseed>129967468</deployedseed>
+    <deployedseed>893545130</deployedseed>
+    <deployedseed>493105316</deployedseed>
+    <deployedseed>1616554925</deployedseed>
+    <deployedseed>1939429420</deployedseed>
+    <deployedseed>1201792929</deployedseed>
+    <deployedseed>1515472147</deployedseed>
+    <deployedseed>894431088</deployedseed>
+    <deployedseed>424103385</deployedseed>
+    <deployedseed>615739334</deployedseed>
+    <deployedseed>579729604</deployedseed>
+    <deployedseed>1207620783</deployedseed>
+    <deployedseed>1769363811</deployedseed>
+    <deployedseed>549140730</deployedseed>
+    <deployedseed>108092811</deployedseed>
+    <deployedseed>173027516</deployedseed>
+    <deployedseed>62460340</deployedseed>
+    <deployedseed>1774808759</deployedseed>
+    <deployedseed>92537821</deployedseed>
+    <deployedseed>257765247</deployedseed>
+    <deployedseed>550841339</deployedseed>
+    <deployedseed>32286713</deployedseed>
+    <deployedseed>1144978640</deployedseed>
+    <deployedseed>888491136</deployedseed>
+    <deployedseed>1530420176</deployedseed>
+    <deployedseed>580139892</deployedseed>
+    <deployedseed>1844891754</deployedseed>
+    <deployedseed>859060615</deployedseed>
+    <deployedseed>2105924719</deployedseed>
+    <deployedseed>549686038</deployedseed>
+    <deployedseed>857623516</deployedseed>
+    <deployedseed>2031450118</deployedseed>
+    <deployedseed>1546403495</deployedseed>
+    <deployedseed>1513456984</deployedseed>
+    <deployedseed>1195251492</deployedseed>
+    <deployedseed>574145403</deployedseed>
+    <deployedseed>1039903156</deployedseed>
+    <deployedseed>1867058204</deployedseed>
+    <deployedseed>293925516</deployedseed>
+    <deployedseed>1133259423</deployedseed>
+    <deployedseed>1752748824</deployedseed>
+    <deployedseed>243985010</deployedseed>
+    <deployedseed>305745994</deployedseed>
+    <deployedseed>712473091</deployedseed>
+    <deployedseed>271490970</deployedseed>
+    <deployedseed>326615189</deployedseed>
+    <deployedseed>382463011</deployedseed>
+    <deployedseed>1052327151</deployedseed>
+    <deployedseed>680154194</deployedseed>
+    <deployedseed>779006223</deployedseed>
+    <deployedseed>1080072371</deployedseed>
+    <deployedseed>1326026737</deployedseed>
+    <deployedseed>581275759</deployedseed>
+    <deployedseed>1833033059</deployedseed>
+    <deployedseed>115932824</deployedseed>
+    <deployedseed>1445673631</deployedseed>
+    <deployedseed>1233003074</deployedseed>
+    <deployedseed>1663461481</deployedseed>
+    <deployedseed>1867164913</deployedseed>
+    <deployedseed>863497805</deployedseed>
+    <deployedseed>1172867871</deployedseed>
+    <deployedseed>1090184700</deployedseed>
+    <deployedseed>1654471891</deployedseed>
+    <deployedseed>98889344</deployedseed>
+    <deployedseed>1858784648</deployedseed>
+    <deployedseed>755231054</deployedseed>
+    <deployedseed>636525133</deployedseed>
+    <deployedseed>1667792834</deployedseed>
+    <deployedseed>1413732477</deployedseed>
+    <deployedseed>14538397</deployedseed>
+    <deployedseed>119450323</deployedseed>
+    <deployedseed>1708266933</deployedseed>
+    <deployedseed>1912252702</deployedseed>
+    <deployedseed>2118875702</deployedseed>
+    <deployedseed>1737831012</deployedseed>
+    <deployedseed>1733015388</deployedseed>
+    <deployedseed>1909424574</deployedseed>
+    <deployedseed>2147277658</deployedseed>
+    <deployedseed>386341636</deployedseed>
+    <deployedseed>812777721</deployedseed>
+    <deployedseed>773007535</deployedseed>
+    <deployedseed>2008722988</deployedseed>
+    <deployedseed>688165626</deployedseed>
+    <deployedseed>920489885</deployedseed>
+    <deployedseed>794914366</deployedseed>
+    <deployedseed>1069150706</deployedseed>
+    <deployedseed>2080746061</deployedseed>
+    <deployedseed>680898128</deployedseed>
+    <deployedseed>1330514724</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

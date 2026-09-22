@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Volumes of Solids of Revolution-Washer method-q4</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Suppose that the region bounded by the curves \(y={@eqn_1@}\) and \(y={@eqn_2@}\) is revolved around the \(x-\)axis. Use the washer method to determine the volume of the solid of revolution. </p>
+
+<p><b>Note: </b> Give your answer interms of \(\pi,\) typed as <code>%pi</code></p>
+[[jsxgraph]]
+        const board = JXG.JSXGraph.initBoard(divid, {
+            boundingbox: [{#min_x#}, {#max_y#}, {#max_x#}, {#min_y#}], 
+            axis: true,
+            keepaspectratio: false,
+            showCopyright: false,
+            showNavigation: true 
+        });
+
+        // 1. step: input intersection points
+        var x_1 = {#x_1#};
+        var x_2 = {#x_2#};
+        var y_1 = {#y_1#};
+        var y_2 = {#y_2#};
+        var min_x = {#min_x#};
+        var max_x = {#max_x#};
+
+        // 2. step: plot curves only up to the mutual intersections
+        // We use JessieCode for the function terms
+        var curve1 = board.create('functiongraph', ['{#f_1#}', x_1, x_2], {visible: false});
+        var curve2 = board.create('functiongraph', ['{#f_2#}', x_1, x_2], {visible: false});
+        // Another copy of the curves, but they go beyond the intersection points.
+        var curve1ext = board.create('functiongraph', ['{#f_1#}', min_x, max_x]);
+        var curve2ext = board.create('functiongraph', ['{#f_2#}', min_x, max_x]);
+
+        // 3. step: plot a filled curve which starts at (x_1,y_1), contains all points of 'f_1'
+        // and is closed by adding (x_1,y_1) at the end.
+        var curve = board.create('curve', [[], []], { strokeWidth: 3, fillColor: 'yellow', fillOpacity: 0.3 });
+        curve.updateDataArray = function () {
+            // Start with (x_1, y_1)
+            this.dataX = [x_1];
+            this.dataY = [y_1];
+
+            // Copy all points from curve1
+            this.dataX = this.dataX.concat(curve1.points.map(p => p.usrCoords[1]));
+            this.dataY = this.dataY.concat(curve1.points.map(p => p.usrCoords[2]));
+
+            // Add (x_2,y_2)
+            this.dataX.push(x_2);
+            this.dataY.push(y_2);
+
+            // Copy all points from curve2
+            this.dataX = this.dataX.concat(curve2.points.map(p => p.usrCoords[1]));
+            this.dataY = this.dataY.concat(curve2.points.map(p => p.usrCoords[2]));
+
+            // Close the curve by adding (x_1,y_1)
+            this.dataX.push(x_1);
+            this.dataY.push(y_1);
+        };
+        board.update();
+
+[[/jsxgraph]]
+<br>
+<p>Volume \(=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>The region enclosed by the curves graphed below.</p>
+[[jsxgraph]]
+        const board = JXG.JSXGraph.initBoard(divid, {
+            boundingbox: [{#min_x#}, {#max_y#}, {#max_x#}, {#min_y#}], 
+            axis: true,
+            keepaspectratio: false,
+            showCopyright: false,
+            showNavigation: true 
+        });
+
+        // 1. step: input intersection points
+        var x_1 = {#x_1#};
+        var x_2 = {#x_2#};
+        var y_1 = {#y_1#};
+        var y_2 = {#y_2#};
+        var min_x = {#min_x#};
+        var max_x = {#max_x#};
+
+        // 2. step: plot curves only up to the mutual intersections
+        // We use JessieCode for the function terms
+        var curve1 = board.create('functiongraph', ['{#f_1#}', x_1, x_2], {visible: false});
+        var curve2 = board.create('functiongraph', ['{#f_2#}', x_1, x_2], {visible: false});
+        // Another copy of the curves, but they go beyond the intersection points.
+        var curve1ext = board.create('functiongraph', ['{#f_1#}', min_x, max_x]);
+        var curve2ext = board.create('functiongraph', ['{#f_2#}', min_x, max_x]);
+
+        // 3. step: plot a filled curve which starts at (x_1,y_1), contains all points of 'f_1'
+        // and is closed by adding (x_1,y_1) at the end.
+        var curve = board.create('curve', [[], []], { strokeWidth: 3, fillColor: 'yellow', fillOpacity: 0.3 });
+        curve.updateDataArray = function () {
+            // Start with (x_1, y_1)
+            this.dataX = [x_1];
+            this.dataY = [y_1];
+
+            // Copy all points from curve1
+            this.dataX = this.dataX.concat(curve1.points.map(p => p.usrCoords[1]));
+            this.dataY = this.dataY.concat(curve1.points.map(p => p.usrCoords[2]));
+
+            // Add (x_2,y_2)
+            this.dataX.push(x_2);
+            this.dataY.push(y_2);
+
+            // Copy all points from curve2
+            this.dataX = this.dataX.concat(curve2.points.map(p => p.usrCoords[1]));
+            this.dataY = this.dataY.concat(curve2.points.map(p => p.usrCoords[2]));
+
+            // Close the curve by adding (x_1,y_1)
+            this.dataX.push(x_1);
+            this.dataY.push(y_1);
+        };
+        board.update();
+
+[[/jsxgraph]]
+<br>
+<p>Recall that using washer method volume is given by:</p>
+<p>\(\displaystyle V= \pi \int_{a}^{b}\left [   R(x)^{2}- r(x)^{2}\right ]dx\) 
+where;</p><p> \(R(x)\) is the radius of the outer curve.</p><p>\(r(x)\) is the radius of the inner curve.</p><p>\(a\) is the lower limit and \(b\) is the upper limit.</p>  
+
+<p>The bounds of integration are \(a=0\) and \(b={@b@}\) (where the graphs intersect), we have:</p>
+<p>\(\displaystyle V= \pi \int_{@a@}^{@b@}\left [  ({@eqn_1@})^{2}-   ({@eqn_2@})^{2}\right ]dx\)</p>
+<p>\(\displaystyle \quad= \pi \int_{@a@}^{@b@}\left [  {@eqn_1^2@}-   {@eqn_2^2@}\right ]dx\) </p>
+
+<p>\(\displaystyle \quad= \pi \left [  {@eqn_11@}-   {@eqn_22@}\right ]_{@a@}^{{@b@}
+}\) </p>
+<p>\(\displaystyle  \quad= \pi \left [ \left ( {@eqn_11_1@}-   {@eqn_22_1@}\right )-\left ( {@eqn_11_2@}-   {@eqn_22_2@}\right )\right ]\)</p>
+<p>\(\displaystyle  \quad={@ta@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[n:rand(3)+1;
+coeff_r2:rand(3)+2;
+eqn_1:coeff_r2*x;
+
+eqn_2:n*x^2;
+
+
+/* JSXGraph*/
+f_1:n*x^2;
+f_2:coeff_r2*x;
+/*Compute the intersection points (x1,y1) and (x2,y2)*/
+/*We use the solve function here, but this isn't always guaranteed to work*/
+solns: solve(f_1=f_2, x);
+x_1:rhs(solns[1]);
+x_2:rhs(solns[2]);
+y_1:ev(f_1,x=x_1);
+y_2:ev(f_1,x=x_2);
+
+/*Boundaries of the display box*/
+min_x:if x_1<x_2 then x_1 -1 else x_2 -1;
+max_x:if x_1<x_2 then x_2 +1 else x_1 +1;
+min_y:if y_1<y_2 then y_1 -5 else y_2 -5;
+max_y:if y_1<y_2 then y_2 +5 else y_1 +5;
+
+/*Values of a and b*/
+a: if x_1<x_2 then x_1 else x_2
+b: if x_1<x_2 then x_2 else x_1;
+
+eqn_11:int(eqn_1^2,x);
+eqn_22:int(eqn_2^2,x);
+eqn_11_1:subst(b,x,eqn_11);
+eqn_22_1:subst(b,x,eqn_22);
+eqn_11_2:subst(a,x,eqn_11);
+eqn_22_2:subst(a,x,eqn_22);
+ta:(eqn_11_1-eqn_22_1)*pi;
+]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Find the volume of the solid generated by revolving the region bounded by \(y = {@eqn_1@}\) and \(y = {@eqn_2@}\)  about the \(x\)‐axis.</p>
+<p>\( V={@ta@}\) </p>
+
+
+
+]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author"> Emmaculate Odhiambo </p>
+<p id="concept"> N/A </p>
+<p id="reviewer">Mary</p>
+<p id="reviewer">Wastalas</p>
+<p id="description">Finding the volume of the solid generated by revolving the region bounded by \(y = {@eqn_1@}\) and \(y = {@eqn_2@}\) about the \(x\)‐axis using the Washer method formula.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>1</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>614298745</deployedseed>
+    <deployedseed>1923195339</deployedseed>
+    <deployedseed>1612172324</deployedseed>
+    <deployedseed>437897851</deployedseed>
+    <deployedseed>1996345454</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

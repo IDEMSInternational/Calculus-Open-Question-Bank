@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Chain Rule Application for Computing a Derivative</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Given the following functions,</p>
+<p>\( \displaystyle w= {@func_w@}\)</p>
+<p>\(\displaystyle  x={@func_x@}\)</p>
+<p>\(\displaystyle  y={@func_y@}\)</p>
+<p>\(\displaystyle z={@func_z@}\)</p>
+<p>Use Chain Rule to compute \(\displaystyle \frac{dw}{dt}\). </p>
+<p>\(\displaystyle \frac{dw}{dt} = \) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+<p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3>
+<br>
+<p>From this information it looks like the chain rule for this case should be, </p>
+<p style="margin-left: 30px">\( \displaystyle
+\frac{dw}{dt}= \displaystyle \frac{\partial{w}}{\partial{x}}\frac{d{x}}{d{t}}+\frac{\partial{w}}{\partial{y}}\frac{d{y}}{d{t}}+\frac{\partial{w}}{\partial{z}}\frac{d{z}}{d{t}} \) </p>
+<p style="margin-left: 30px">\( \displaystyle \qquad= \displaystyle {@func1a@}({@func1b@})+{@func2a@}({@func2b@})+{@func3a@}({@func3b@}) \)</p>             
+<p style="margin-left: 30px">\( \qquad= \displaystyle {@ta@}\)  </p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Question variables*/
+aa:rand_with_prohib(-5,5,[0]);
+bb:rand_with_prohib(-5,5,[0]);
+cc:rand_with_prohib(-5,5,[0]);
+dd:rand_with_prohib(-5,5,[0]);
+
+func_w:expand((aa*x-z)*(x+bb*z))/y^(cc);
+func_x:t^(dd)+cc;
+func_y:cos(bb*t);
+func_z:dd*t;
+
+/*Worked solution*/
+func1a:diff(func_w,x);  func1b:diff(func_x,t);
+func2a:diff(func_w,y);  func2b:diff(func_y,t);
+func3a:diff(func_w,z);  func3b:diff(func_z,t);
+ta1:func1a*func1b+func2a*func2b+func3a*func3b;
+ta:ratsimp(ta1);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\( \displaystyle w= {@func_w@}\)</p>
+<p>\(\displaystyle  x={@func_x@}\)</p>
+<p>\(\displaystyle  y={@func_y@}\)</p>
+<p>\(\displaystyle z={@func_z@}\)</p>
+<p>\(\displaystyle \frac{dw}{dx}= {@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Nixson Kiplagat </p>
+<p id="concept">N/A</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">This STACK question asks students to apply the Chain Rule to compute the derivative \(\frac{dw}{dt}\) of a function \(w\) expressed in terms of variables \(x\), \(y\), and \(z\). Students are required to differentiate each component function with respect to the independent variable \(t\) and apply the Chain Rule appropriately to obtain the final result.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>40</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>2</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer */
+/*Node 2 -mistake1:Computing the partial derivative of w wrt to t only and forgoing the other derivatives */
+mistake1:diff(func_w,t);
+
+/*Node 3 -mistake2:Computing all the derivatives of all the three functions wrt to t only then adding the final result. */
+mistake2:diff(func_w,t)+diff(func_x,t)+diff(func_y,t)+diff(func_z,t);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>t</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Computing the partial derivative of w wrt to t only and forgoing the other derivatives</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.3</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have computed the derivative of the function \( w \) alone without factoring in the other functions \( x,y &amp;, z\) in your computation.</p>
+<p>Hint: </p>
+\( \displaystyle \frac{dw}{dt}= \frac{\partial{w}}{\partial{x}}\frac{d{x}}{d{t}}+\frac{\partial{w}}{\partial{y}}\frac{d{y}}{d{t}}+\frac{\partial{w}}{\partial{z}}\frac{d{z}}{d{t}} \) <p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Computing all the derivatives of all the three functions wrt to t only then adding the final result.</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have computed the derivative of all the three functions wrt to t and added the result.</p>
+<p>Hint:</p> 
+<p>Suppose we have three functions as shown,</p>
+<p>\( z=f(x,y), x=g(t), y=h(t),\) </p>
+<p>in order to compute \( \displaystyle \frac{dz}{dt}\), you’ll have to compute an ordinary derivative since \(z\) really would be a function of \(t\) only if we were to substitute in for \(x\) and \(y\).</p>
+<p>Thus, the chain rule for this case is,</p>
+<p>\( \displaystyle \frac{dz}{dt}= \frac{\partial{z}}{\partial{x}}\frac{d{x}}{d{t}}+\frac{\partial{z}}{\partial{y}}\frac{d{y}}{d{t}}\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>181728172</deployedseed>
+    <deployedseed>2093470722</deployedseed>
+    <deployedseed>496491736</deployedseed>
+    <deployedseed>1680276498</deployedseed>
+    <deployedseed>703094867</deployedseed>
+    <deployedseed>515657093</deployedseed>
+    <deployedseed>1836490796</deployedseed>
+    <deployedseed>2071081047</deployedseed>
+    <deployedseed>1751459386</deployedseed>
+    <deployedseed>1291979295</deployedseed>
+    <deployedseed>1183210120</deployedseed>
+    <deployedseed>1102589845</deployedseed>
+    <deployedseed>825131921</deployedseed>
+    <deployedseed>341505020</deployedseed>
+    <deployedseed>1743599621</deployedseed>
+    <deployedseed>637186066</deployedseed>
+    <deployedseed>850783189</deployedseed>
+    <deployedseed>751383206</deployedseed>
+    <deployedseed>985243823</deployedseed>
+    <deployedseed>41155158</deployedseed>
+    <deployedseed>2123255580</deployedseed>
+    <deployedseed>1707435648</deployedseed>
+    <deployedseed>1621932965</deployedseed>
+    <deployedseed>1392848974</deployedseed>
+    <deployedseed>1339443716</deployedseed>
+    <deployedseed>212005326</deployedseed>
+    <deployedseed>1535430816</deployedseed>
+    <deployedseed>384130053</deployedseed>
+    <deployedseed>1080666389</deployedseed>
+    <deployedseed>2007469608</deployedseed>
+    <deployedseed>528007752</deployedseed>
+    <deployedseed>566090051</deployedseed>
+    <deployedseed>118526522</deployedseed>
+    <deployedseed>1818368187</deployedseed>
+    <deployedseed>1650966118</deployedseed>
+    <deployedseed>1735178259</deployedseed>
+    <deployedseed>1490182780</deployedseed>
+    <deployedseed>86574337</deployedseed>
+    <deployedseed>847257750</deployedseed>
+    <deployedseed>1784152015</deployedseed>
+    <deployedseed>1161009786</deployedseed>
+    <deployedseed>1599188223</deployedseed>
+    <deployedseed>1741859645</deployedseed>
+    <deployedseed>324681678</deployedseed>
+    <deployedseed>1409797030</deployedseed>
+    <deployedseed>1178582670</deployedseed>
+    <deployedseed>1301667877</deployedseed>
+    <deployedseed>1405117114</deployedseed>
+    <deployedseed>855043241</deployedseed>
+    <deployedseed>1780031231</deployedseed>
+    <deployedseed>1060611633</deployedseed>
+    <deployedseed>1526159467</deployedseed>
+    <deployedseed>141824574</deployedseed>
+    <deployedseed>1864787835</deployedseed>
+    <deployedseed>361693657</deployedseed>
+    <deployedseed>105250552</deployedseed>
+    <deployedseed>156913005</deployedseed>
+    <deployedseed>2047126108</deployedseed>
+    <deployedseed>1462817291</deployedseed>
+    <deployedseed>827679426</deployedseed>
+    <deployedseed>685297619</deployedseed>
+    <deployedseed>234941441</deployedseed>
+    <deployedseed>1777235813</deployedseed>
+    <deployedseed>1915507141</deployedseed>
+    <deployedseed>753114740</deployedseed>
+    <deployedseed>1084341231</deployedseed>
+    <deployedseed>130579853</deployedseed>
+    <deployedseed>594358425</deployedseed>
+    <deployedseed>20041251</deployedseed>
+    <deployedseed>1510936665</deployedseed>
+    <deployedseed>903182327</deployedseed>
+    <deployedseed>797948603</deployedseed>
+    <deployedseed>1162069358</deployedseed>
+    <deployedseed>919240743</deployedseed>
+    <deployedseed>1705536875</deployedseed>
+    <deployedseed>307849290</deployedseed>
+    <deployedseed>2000157436</deployedseed>
+    <deployedseed>1172043305</deployedseed>
+    <deployedseed>1043798886</deployedseed>
+    <deployedseed>852356318</deployedseed>
+    <deployedseed>780904388</deployedseed>
+    <deployedseed>1609724298</deployedseed>
+    <deployedseed>1311474891</deployedseed>
+    <deployedseed>986850620</deployedseed>
+    <deployedseed>868331540</deployedseed>
+    <deployedseed>1136410199</deployedseed>
+    <deployedseed>389540767</deployedseed>
+    <deployedseed>230491172</deployedseed>
+    <deployedseed>2138920953</deployedseed>
+    <deployedseed>1022313591</deployedseed>
+    <deployedseed>1276569211</deployedseed>
+    <deployedseed>2017174955</deployedseed>
+    <deployedseed>346884234</deployedseed>
+    <deployedseed>2017271981</deployedseed>
+    <deployedseed>1462097742</deployedseed>
+    <deployedseed>884092487</deployedseed>
+    <deployedseed>1284042283</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Triple Integral Calculation with Variable Coefficients</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Evaluate \( \displaystyle
+\int_{@lower_x@}^{@upper_x@} \int_{@lower_y@}^{@upper_y@}\int_{@lower_z@}^{@upper_z@}{@coeff_xy*x^power_x*y^power_y@}+ {@coeff_z*z^power_z@}\,dz\,dy\,dx=\)</p>
+<p>Note: Leave your answer Correct to \(2\) decimal places</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Recall that just like with double integrals we start with the “inside” integral and work our way out.</p>
+<p>So here is the \( z\) integration.</p>
+<p>\(\begin{align} \displaystyle
+\int_{@lower_x@}^{@upper_x@} \int_{@lower_y@}^{@upper_y@}\int_{@lower_z@}^{@upper_z@}{@coeff_xy*x^power_x*y^power_y@}+ {@coeff_z*z^power_z@}\,dz\,dy\,dx & =\int_{@lower_x@}^{@upper_x@} \int_{@lower_y@}^{@upper_y@} \bigg( {@intz@} \bigg ) \bigg|_{@lower_z@}^{@upper_z@}\,dy\,dx\\
+& =\int_{@lower_x@}^{@upper_x@} \int_{@lower_y@}^{@upper_y@}{@int_z@}\,dy\,dx
+ \end{align} \)</p>
+<p>Next, we’ll do the \(y\) integration.</p>
+<p>\(\begin{align}  \displaystyle
+\int_{@lower_x@}^{@upper_x@} \int_{@lower_y@}^{@upper_y@}\int_{@lower_z@}^{@upper_z@}{@coeff_xy*x^power_x*y^power_y@}+ {@coeff_z*z^power_z@}\,dz\,dy\,dx & =\int_{@lower_x@}^{@upper_x@} \bigg ( {@inty@} \bigg ) \bigg|_{@lower_y@}^{@upper_y@}\,dx \\
+& =\int_{@lower_x@}^{@upper_x@} {@int_y@} \,dx
+\end{align} \)</p>
+<p>Finally, we’ll do the \(x\) integration.</p>
+<p>\( \displaystyle
+\int_{@lower_x@}^{@upper_x@} \int_{@lower_y@}^{@upper_y@}\int_{@lower_z@}^{@upper_z@}{@coeff_xy*x^power_x*y^power_y@}+ {@coeff_z*z^power_z@}\,dz\,dy\,dx=\bigg ( {@intx@} \bigg ) \bigg|_{@lower_x@}^{@upper_x@} ={@ta@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>lower_x:rand_with_step(-1,2,1);
+upper_x:lower_x+1;
+lower_y:rand_with_step(-1,2,1);
+upper_y:lower_y+5;
+lower_z:rand_with_step(-1,2,1);
+upper_z:lower_z-1;
+power_x:rand(3)+1;
+power_y:rand(3)+1;
+power_z:rand(3)+1;
+coeff_xy:rand_with_prohib(-5,5,[0]);
+coeff_z:rand_with_prohib(-5,5,[0]);
+f_xyz:coeff_xy*x^power_x*y^power_y+coeff_z*(z^power_z);
+int_z:int(f_xyz,z,lower_z,upper_z);
+int_y:int(int_z,y,lower_y,upper_y);
+int_x:int(int_y,x,lower_x,upper_x);
+
+/*worked solution*/
+intz:int(f_xyz,z);
+inty:int(int_z,y);
+intx:int(int_y,x);
+
+/*Model Anz^coeff_zswer*/
+ta1:int_x;
+ta:decimalplaces(float(ta1),2);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>The integral is  \(\displaystyle
+\int_{@lower_x@}^{@upper_x@} \int_{@lower_y@}^{@upper_y@}\int_{@lower_z@}^{@upper_z@}{@coeff_xy@}x^{@power_x@}y^{@power_y@}-z^{@power_z@}\,dz\,dy\,dx={@ta@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept"></p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Salvatore Mercuri</p>
+<p id="description">This STACK question involves evaluating a triple integral with variable coefficients and power functions over a given region. Students are required to determine the correct numerical value of the integral, with the answer rounded to two decimal places.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Possible Mistakes*/
+/*node1:checks for the correct answer*/
+/*node2:interchanging the limits of variables*/
+int_z2:int(f_xyz,z,upper_z,lower_z);
+int_y2:int(int_z2,y,upper_y,lower_y);
+mistake2:int(int_y2,x,upper_x,lower_x);
+/*node3:interchanging the limits of x and z*/
+int_z:int(f_xyz,z,lower_x,upper_x);
+int_y:int(int_z,y,lower_y,upper_y);
+mistake_3:int(int_y,x,lower_z,upper_z);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have interchanged the limits of variables, try again!</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the second mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have interchanged the limits of \(x\) and \(z\) which should not be the case,try again</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>checks for number of dp</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because it's not given to the right number of decimal places</p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>704614704</deployedseed>
+    <deployedseed>1145284278</deployedseed>
+    <deployedseed>1549038141</deployedseed>
+    <deployedseed>1276359393</deployedseed>
+    <deployedseed>1742107333</deployedseed>
+    <deployedseed>1090737655</deployedseed>
+    <deployedseed>369984292</deployedseed>
+    <deployedseed>1289787286</deployedseed>
+    <deployedseed>1432286061</deployedseed>
+    <deployedseed>538922425</deployedseed>
+    <deployedseed>1398613273</deployedseed>
+    <deployedseed>158073050</deployedseed>
+    <deployedseed>1702804452</deployedseed>
+    <deployedseed>504215306</deployedseed>
+    <deployedseed>110091317</deployedseed>
+    <deployedseed>779673290</deployedseed>
+    <deployedseed>659859177</deployedseed>
+    <deployedseed>738446456</deployedseed>
+    <deployedseed>873469736</deployedseed>
+    <deployedseed>817983042</deployedseed>
+    <deployedseed>1029484268</deployedseed>
+    <deployedseed>922081513</deployedseed>
+    <deployedseed>574377306</deployedseed>
+    <deployedseed>1008044267</deployedseed>
+    <deployedseed>1536431374</deployedseed>
+    <deployedseed>311213036</deployedseed>
+    <deployedseed>407643737</deployedseed>
+    <deployedseed>633715227</deployedseed>
+    <deployedseed>336850359</deployedseed>
+    <deployedseed>104427244</deployedseed>
+    <deployedseed>1945690591</deployedseed>
+    <deployedseed>411810526</deployedseed>
+    <deployedseed>730504555</deployedseed>
+    <deployedseed>113321983</deployedseed>
+    <deployedseed>1529877725</deployedseed>
+    <deployedseed>1664039286</deployedseed>
+    <deployedseed>1719516423</deployedseed>
+    <deployedseed>1225389047</deployedseed>
+    <deployedseed>74495192</deployedseed>
+    <deployedseed>497493048</deployedseed>
+    <deployedseed>1190626819</deployedseed>
+    <deployedseed>811158982</deployedseed>
+    <deployedseed>37032059</deployedseed>
+    <deployedseed>1033553976</deployedseed>
+    <deployedseed>1203401438</deployedseed>
+    <deployedseed>1615271032</deployedseed>
+    <deployedseed>1206913494</deployedseed>
+    <deployedseed>983248496</deployedseed>
+    <deployedseed>1251264259</deployedseed>
+    <deployedseed>656534358</deployedseed>
+    <deployedseed>1197113499</deployedseed>
+    <deployedseed>1444902126</deployedseed>
+    <deployedseed>328428421</deployedseed>
+    <deployedseed>888948115</deployedseed>
+    <deployedseed>127475635</deployedseed>
+    <deployedseed>2032706285</deployedseed>
+    <deployedseed>338948800</deployedseed>
+    <deployedseed>713494675</deployedseed>
+    <deployedseed>46865655</deployedseed>
+    <deployedseed>1621610114</deployedseed>
+    <deployedseed>635462090</deployedseed>
+    <deployedseed>2051726669</deployedseed>
+    <deployedseed>342394704</deployedseed>
+    <deployedseed>497680710</deployedseed>
+    <deployedseed>1962976369</deployedseed>
+    <deployedseed>1149357300</deployedseed>
+    <deployedseed>644058452</deployedseed>
+    <deployedseed>1431548819</deployedseed>
+    <deployedseed>194143650</deployedseed>
+    <deployedseed>1627635868</deployedseed>
+    <deployedseed>720315917</deployedseed>
+    <deployedseed>695800111</deployedseed>
+    <deployedseed>488002282</deployedseed>
+    <deployedseed>2104527195</deployedseed>
+    <deployedseed>770301806</deployedseed>
+    <deployedseed>1002650100</deployedseed>
+    <deployedseed>402705402</deployedseed>
+    <deployedseed>1372427241</deployedseed>
+    <deployedseed>761205552</deployedseed>
+    <deployedseed>1860959965</deployedseed>
+    <deployedseed>1615187017</deployedseed>
+    <deployedseed>816844342</deployedseed>
+    <deployedseed>880866785</deployedseed>
+    <deployedseed>1103350042</deployedseed>
+    <deployedseed>1185680844</deployedseed>
+    <deployedseed>96596023</deployedseed>
+    <deployedseed>1321013641</deployedseed>
+    <deployedseed>954885002</deployedseed>
+    <deployedseed>671321532</deployedseed>
+    <deployedseed>1963450626</deployedseed>
+    <deployedseed>1470765141</deployedseed>
+    <deployedseed>771224097</deployedseed>
+    <deployedseed>691653130</deployedseed>
+    <deployedseed>51244737</deployedseed>
+    <deployedseed>760777924</deployedseed>
+    <deployedseed>2094312113</deployedseed>
+    <deployedseed>552503659</deployedseed>
+    <deployedseed>1277915478</deployedseed>
+    <deployedseed>1522803311</deployedseed>
+    <deployedseed>1546327098</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

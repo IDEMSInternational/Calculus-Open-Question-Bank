@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluate the Multiple Definite integrals of a function</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Evaluate the three integrals \(A\) ,\(B\) and \(C\)
+
+<p>\(\displaystyle A =\int_{@limit_1@}^{@limit_2@} ({@f_x@})dx\), \(\displaystyle B =\int_{@limit_1@}^{@limit_3@} ({@f_x@})dx\) ,   \(\displaystyle C = \int_{@limit_3@}^{@limit_2@} ({@f_x@})dx\)</p>
+
+<p>\(A\) = [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<P>\(B\) = [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>
+<P>\(C\) = [[input:ans3]] [[validation:ans3]][[feedback:prt3]]</p>
+<p>\(B+C = \) [[input:ans4]] [[validation:ans4]][[feedback:prt4]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Recall that  a definite integral \(f(x)\) with respect to a real variable x on an interval \([a, b]\) is expressed as,\( \displaystyle  \int_ a^bf(x)dx=F(b)-F(a)\), where \(F\) is an antiderivative of \(f\).</p>
+<p>Now in order to find \(A\), \(B\) and \(C\) we’ll have,</p>
+
+<p>\(\begin{align} 
+\displaystyle A &=\int_{@limit_1@}^{@limit_2@} ({@f_x@})dx\\
+&=\displaystyle  \left[ {@coeff_x_0@} x - \frac{x^3}{3}\right]_{{@limit_1@}}^{{@limit_2@}}\\
+&=\displaystyle  \left[ {@coeff_x_0@} ({@limit_2@}) - \frac{({@limit_2@})^3}{3}\right]-\left[ {@coeff_x_0@} ({@limit_1@}) - \frac{({@limit_1@})^3}{3} \right] \\
+&=\displaystyle  {@coeff_x_0*limit_2-limit_2^3/3@} - {@coeff_x_0*limit_1-limit_1^3/3@} \\
+&=\displaystyle  {@ta_1@}\\
+\end{align}\)</p>
+
+
+<p>\(\begin{align} 
+\displaystyle B &=\int_{@limit_1@}^{@limit_3@} ({@f_x@})dx\\
+&=\displaystyle \left[ {@coeff_x_0@} x - \frac{x^3}{3}\right]_{{@limit_1@}}^{{@limit_3@}}\\
+ &=\displaystyle \left[ {@coeff_x_0@} ({@limit_3@}) - \frac{({@limit_3@})^3}{3}\right]-\left[ {@coeff_x_0@} ({@limit_1@}) - \frac{({@limit_1@})^3}{3} \right]\\
+&=\displaystyle {@coeff_x_0*limit_3-limit_3^3/3@} - {@coeff_x_0*limit_1-limit_1^3/3@}\\
+&= \displaystyle  {@ta_2@}\\
+\end{align}\)</p>
+
+<p>
+\(\begin{align}
+\displaystyle C &=\int_{@limit_3@}^{@limit_2@} ({@f_x@})dx\\
+&=\displaystyle \left[ {@coeff_x_0@} x - \frac{x^3}{3}\right]_{{@limit_3@}}^{{@limit_2@}}\\
+&=\displaystyle  \left[ {@coeff_x_0@} ({@limit_3@}) - \frac{({@limit_2@})^3}{3}\right]-\left[ {@coeff_x_0@} ({@limit_1@}) - \frac{({@limit_3@})^3}{3} \right]\\
+&=\displaystyle  {@coeff_x_0*limit_2-limit_2^3/3@} - {@coeff_x_0*limit_3-limit_3^3/3@}\\
+&=\displaystyle  {@ta_3@}
+ \end{align}\)
+</p>
+
+<p>Using the answers above correctly, the expression \(A=B+C\), because \( \displaystyle {@ta_1@} =\displaystyle {@ta_2@}+\displaystyle {@ta_3@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Random generating and calculating variables*/
+
+root_1:(rand(5)+1); /*positive root*/
+f_x:expand(-(x-root_1)*(x+root_1)); /*define the function from its roots*/
+
+limit_1:rand_with_step(0,root_1-1,1); 
+limit_2:root_1;
+limit_3:rand_with_step(root_1+1,root_1+5,1);
+
+/*model answers*/
+ta_1:int(f_x,x,limit_1,limit_2);
+ta_2:int(f_x,x,limit_1,limit_3);
+ta_3:int(f_x,x,limit_3,limit_2);
+ta_4:ta_2+ta_3;
+
+/*Worked solution variables*/
+coeff_x_2:coeff(f_x,x,2);
+coeff_x_0:coeff(f_x,x,0);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle A =\int_{@limit_1@}^{@limit_2@} ({@f_x@})dx\), \(\displaystyle B =\int_{@limit_1@}^{@limit_3@} ({@f_x@})dx\) ,   \(\displaystyle C = \int_{@limit_3@}^{@limit_2@} ({@f_x@})dx\)</p>
+<p>\(A={@ta_1@}\)</p>
+<P>\(B={@ta_2@}\)</p>
+<P>\(C={@ta_3@}\)</p>
+<p>\(A\)=\(B+C={@ta_4@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Wastalas Motgnon</p>
+<p id="description">The question focuses on finding the definite Integral of a multiple definite integrals</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>numerical</type>
+      <tans>ta_1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>numerical</type>
+      <tans>ta_2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>numerical</type>
+      <tans>ta_3</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>numerical</type>
+      <tans>ta_4</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1 checks for mistakes*/
+/*node 2:differentiating instead of integrating*/
+ mistake_1:d(fn)/dx = nf^n-1;
+/*node 3:calculating the definite integral adding the values of the integral at the limits rather than subtracting them*/
+mistake_2:F(b)+F(a) rather than F(b)-F(a);
+/*node 4:inputing limits in wrong order*/
+mistake_3:F(a)-F(b) rather than F(b)-F(a);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have differentiated instead of integrating.
+Recall, \(\int_a^b(f(x))dx=F(b)-F(a)\), where \(F\) is the antiderivative of \(f\).</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the second mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have calculated the definite integral adding the values of the integral at the limits rather than subtracting them.
+Recall, 
+\(\int_a^b(f(x))dx=F(b)-F(a)\), where \(F\) is the antiderivative of \(f\).</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>checks for the fourth mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have calculated the definite integral with the limits in the wrong order.
+Recall, 
+\(\int_a^b(f(x))dx=F(b)-F(a)\), where \(F\) is the antiderivative of \(f\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1: checks for mistakes*/
+/*node 2:differentiating instead of integrating*/
+ mistake_1:d(fn)/dx = nf^n-1;
+/*node 3:calculating the definite integral adding the values of the integral at the limits rather than subtracting them*/
+mistake_2:F(b)+F(a) rather than F(b)-F(a);
+/*node 4:inputing limits in wrong order*/
+mistake_3:F(a)-F(b) rather than F(b)-F(a);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answers</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have differentiated instead of integrating.
+Recall, \(\int_a^b(f(x))dx=F(b)-F(a)\), where \(F\) is the antiderivative of \(f\).</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the second mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have calculated the definite integral adding the values of the integral at the limits rather than subtracting them.
+Recall, 
+\(\int_a^b(f(x))dx=F(b)-F(a)\), where \(F\) is the antiderivative of \(f\).</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt2-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>check for the third mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have calculated the definite integral with the limits in the wrong order.
+Recall, 
+\(\int_a^b(f(x))dx=F(b)-F(a)\), where \(F\) is the antiderivative of \(f\).</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1 checks for mistakes*/
+/*node 2:differentiating instead of integrating*/
+ mistake_1:d(fn)/dx = nf^n-1;
+/*node 3:calculating the definite integral adding the values of the integral at the limits rather than subtracting them*/
+mistake_2:F(b)+F(a) rather than F(b)-F(a);
+/*node 4:inputing limits in wrong order*/
+mistake_3:F(a)-F(b) rather than F(b)-F(a);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have differentiated instead of integrating.
+Recall, \(\int_a^b(f(x))dx=F(b)-F(a)\), where \(F\) is the antiderivative of \(f\).</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the second mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have calculated the definite integral adding the values of the integral at the limits rather than subtracting them.
+Recall, 
+\(\int_a^b(f(x))dx=F(b)-F(a)\), where \(F\) is the antiderivative of \(f\).</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt3-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>checks for the third mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have calculated the definite integral with the limits in the wrong order.
+Recall, 
+\(\int_a^b(f(x))dx=F(b)-F(a)\), where \(F\) is the antiderivative of \(f\).</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for correct answers*/
+/*node 2:Getting the correct answer if there are mistakes in the integral*/
+mistake_1:A=B+C;
+/*node 3:Giving B-C as answer*/
+mistake_2:B-C;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correctanswer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer seems to be correct. However, this is not consistent with your previous answers:
+\(A={@ans1@} and B+C={@ans2+ans3@}\).</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for second mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>It seems that you tried to generalize looking at the limits alone. Note the order of the limits for \(C\). Why is the lower limit larger than the upper limit?</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>49545231</deployedseed>
+    <deployedseed>152951065</deployedseed>
+    <deployedseed>261081960</deployedseed>
+    <deployedseed>1978472899</deployedseed>
+    <deployedseed>164163417</deployedseed>
+    <deployedseed>1394207983</deployedseed>
+    <deployedseed>1518735747</deployedseed>
+    <deployedseed>2064677149</deployedseed>
+    <deployedseed>1332699993</deployedseed>
+    <deployedseed>742850543</deployedseed>
+    <deployedseed>987477248</deployedseed>
+    <deployedseed>1841941378</deployedseed>
+    <deployedseed>940741269</deployedseed>
+    <deployedseed>974086342</deployedseed>
+    <deployedseed>576215127</deployedseed>
+    <deployedseed>1804533830</deployedseed>
+    <deployedseed>1705015270</deployedseed>
+    <deployedseed>1405530188</deployedseed>
+    <deployedseed>1432441184</deployedseed>
+    <deployedseed>810655818</deployedseed>
+    <deployedseed>622690510</deployedseed>
+    <deployedseed>68961647</deployedseed>
+    <deployedseed>1007669462</deployedseed>
+    <deployedseed>1148846353</deployedseed>
+    <deployedseed>1221894527</deployedseed>
+    <deployedseed>1591086634</deployedseed>
+    <deployedseed>330853921</deployedseed>
+    <deployedseed>696227869</deployedseed>
+    <deployedseed>1349795840</deployedseed>
+    <deployedseed>1605977489</deployedseed>
+    <deployedseed>668828760</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta_2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta_3</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>ta_4</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

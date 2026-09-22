@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Derivatives of the six trig functions</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the derivative of the following function:</p>
+<p>\(\quad \displaystyle f(x)={@fx@}\)</p>
+<p>\(\quad \displaystyle f'(x)=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To find the derivative of the function , use the table below</p>
+<p> \( \text{In order to carry out trig substitution derivative, let's take a look at the information in the table below.} \)<br></
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+<table style="width:100%">
+  <tr>
+    <td>\(\frac{d}{dx}(\sin(x))=\cos(x)  \cdot x'\)</td>
+    <td>\(\frac{d}{dx}(\cos(x))=\sin(x) \cdot x'\)</td>
+    <td>\(\frac{d}{dx}(\tan(x))=\sec^2(x) \cdot x'\)</td>
+  </tr>
+  <tr>
+    <td>\(\frac{d}{dx}(\csc(x))=\csc(x) \cot(x)  \cdot x'\)</td>
+    <td>\(\frac{d}{dx}(\sec(x))=\sec(x) \tan(x)  \cdot x'\)</td>
+    <td>\(\frac{d}{dx}(\cot(x))=\csc^2(x)  \cdot x'\)</td>
+  </tr>
+  <tr>
+    <td>\(\frac{d}{dx}(\sin^1(x))=\frac{1}{\sqrt{1  x^2}}\)</td>
+    <td>\(\frac{d}{dx}(\cos^1(x))=\frac{1}{\sqrt{1  \,x^2}}\)</td>
+    <td>\(\frac{d}{dx}(\tan^1(x))=\frac{1}{1+x^2}\cdot x^1\)</td>
+  </tr>
+   <tr>
+    <td>\(\frac{d}{dx}(\csc^1(x))=\frac{1}{x\sqrt{1  x^2}}  \cdot x'\)</td>
+    <td>\(\frac{d}{dx}(\sec^1(x))=\frac{1}{x\sqrt{1  x^2}}  \cdot x'\)</td>
+    <td>\(\frac{d}{dx}(\cot^1(x))=\frac{1}{1+x^2}\cdot x^1\)</td>
+  </tr>
+</table>
+
+<br><br>
+<p>The derivative of the function \(  \displaystyle f(x)={@fx@}\) with respect to \(x\) is:</p>
+<p>\( \qquad  \displaystyle f'(x)={@diff_fx@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>trig:rand([sin,cos,tan,cot,sec,csc]);
+a:rand(100)+1;
+b:(rand_with_prohib(-100,100,[0]))/(rand_with_prohib(-100,100,[0]));
+coeff:rand([a,b]);
+fx:trig(coeff*x);
+diff_fx : diff(fx, x);
+ta:diff_fx;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\quad \displaystyle f(x)={@fx@}\)</p>
+<p>\(\quad \displaystyle f'(x)={@ta@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Juma Zevick</p>
+<p id="description">Find the derivative of the six trig functions</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Chceks for correct derivative </description>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>x</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>866830410</deployedseed>
+    <deployedseed>1166923579</deployedseed>
+    <deployedseed>1295619912</deployedseed>
+    <deployedseed>1949927675</deployedseed>
+    <deployedseed>1567643932</deployedseed>
+    <deployedseed>1023931692</deployedseed>
+    <deployedseed>1605477600</deployedseed>
+    <deployedseed>1329371359</deployedseed>
+    <deployedseed>1878450613</deployedseed>
+    <deployedseed>287650576</deployedseed>
+    <deployedseed>1360538083</deployedseed>
+    <deployedseed>1509618199</deployedseed>
+    <deployedseed>1140298594</deployedseed>
+    <deployedseed>1870100221</deployedseed>
+    <deployedseed>991151469</deployedseed>
+    <deployedseed>185840668</deployedseed>
+    <deployedseed>1909559833</deployedseed>
+    <deployedseed>1673974993</deployedseed>
+    <deployedseed>1330067458</deployedseed>
+    <deployedseed>265054275</deployedseed>
+    <deployedseed>345218823</deployedseed>
+    <deployedseed>628408290</deployedseed>
+    <deployedseed>359353865</deployedseed>
+    <deployedseed>898563802</deployedseed>
+    <deployedseed>1517293841</deployedseed>
+    <deployedseed>836217582</deployedseed>
+    <deployedseed>190373381</deployedseed>
+    <deployedseed>1337570866</deployedseed>
+    <deployedseed>1043090930</deployedseed>
+    <deployedseed>1793504667</deployedseed>
+    <deployedseed>530658433</deployedseed>
+    <deployedseed>523213413</deployedseed>
+    <deployedseed>391758736</deployedseed>
+    <deployedseed>1158424456</deployedseed>
+    <deployedseed>399867728</deployedseed>
+    <deployedseed>1709778365</deployedseed>
+    <deployedseed>1465779595</deployedseed>
+    <deployedseed>1607721212</deployedseed>
+    <deployedseed>63159800</deployedseed>
+    <deployedseed>824186029</deployedseed>
+    <deployedseed>1242630682</deployedseed>
+    <deployedseed>1769807038</deployedseed>
+    <deployedseed>1709318149</deployedseed>
+    <deployedseed>1370223095</deployedseed>
+    <deployedseed>1430745290</deployedseed>
+    <deployedseed>1708393700</deployedseed>
+    <deployedseed>259343912</deployedseed>
+    <deployedseed>331700003</deployedseed>
+    <deployedseed>299670907</deployedseed>
+    <deployedseed>628247970</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

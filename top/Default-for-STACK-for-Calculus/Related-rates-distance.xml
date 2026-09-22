@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Related-rates-distance</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>A road running north to south crosses a road going east to west at point \(P\). Car \(A\) is driving north along the first road and car \(B\) is driving east along the second road. At a particular time, car \(A\) is {@dd@} km north of \(P\), driving&nbsp;at&nbsp;{@aa@} km/h and car \(B\) is {@ee@} km east of \(P\), driving at&nbsp;{@bb@} km/h. How fast is the distance between them changing at that point?</p><p>[[input:ans1]] km/h.&nbsp;</p><p>[[validation:ans1]][[feedback:prt1]]<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>Let \(x\) and \(y\) be the distance of \(A\) and \(B\) from \(P\) respectively. Then the distance between the two cars is given by \(\displaystyle D = \sqrt{x^2+y^2}\). At the point mentioned, the instantaneous rate of change is given by:</p><p>\(\displaystyle \frac{dD}{dt} = \frac{1}{2\cdot \sqrt{x^2+y^2}} \cdot (2\cdot x\cdot \frac{dx}{dt} + 2\cdot y\cdot \frac{dy}{dt}) = \frac{x\cdot \frac{dx}{dt} + y\cdot \frac{dy}{dt}}{\sqrt{x^2+y^2}}\).</p><p>Note that \(\displaystyle \frac{dx}{dt}\) and \(\displaystyle \frac{dy}{dt}\) are the respective speeds at the point in question and the values of \(x\) and \(y\) are the respective distances from \(P\). Therefore, the rate of change of the distance at that point is</p><p>\(\displaystyle \frac{dD}{dt} = \frac{{@dd@}\cdot {@aa@} + {@ee@}\cdot {@bb@}}{\sqrt{{@dd@}^2+{@ee@}^2}} = {@ta@}\)km/h.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>aa:10*(rand(5)+5);
+bb:10*(rand_with_prohib(5,10,[aa/10]));
+cc:rand([2,3,4,5,6]);
+dd:cc*3;
+ee:cc*4;
+ta:(dd*aa + ee*bb)/(sqrt(dd^2+ee^2));</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>At a particular time, car \(A\) is {@dd@} km north of \(P\), driving&nbsp;at&nbsp;{@aa@} km/h and car \(B\) is {@ee@} km east of \(P\), driving at&nbsp;{@bb@} km/h</p>
+<p>speed \(={@ta@}\)km/h</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept">NA</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Juma Zevick</p>
+<p id="description">Using related rates of change to determine how fast is the distance between them changing at that point</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>536816404</deployedseed>
+    <deployedseed>304298890</deployedseed>
+    <deployedseed>5325695</deployedseed>
+    <deployedseed>229589811</deployedseed>
+    <deployedseed>131454137</deployedseed>
+    <deployedseed>692242416</deployedseed>
+    <deployedseed>1633166138</deployedseed>
+    <deployedseed>267752581</deployedseed>
+    <deployedseed>207916390</deployedseed>
+    <deployedseed>969196890</deployedseed>
+    <deployedseed>994967727</deployedseed>
+    <deployedseed>1013694730</deployedseed>
+    <deployedseed>24654855</deployedseed>
+    <deployedseed>82890613</deployedseed>
+    <deployedseed>451156656</deployedseed>
+    <deployedseed>997727875</deployedseed>
+    <deployedseed>248348770</deployedseed>
+    <deployedseed>1206564599</deployedseed>
+    <deployedseed>1190545551</deployedseed>
+    <deployedseed>2028528345</deployedseed>
+    <deployedseed>1032563856</deployedseed>
+    <deployedseed>1923987163</deployedseed>
+    <deployedseed>894326661</deployedseed>
+    <deployedseed>1356753510</deployedseed>
+    <deployedseed>303860476</deployedseed>
+    <deployedseed>2105979988</deployedseed>
+    <deployedseed>85743223</deployedseed>
+    <deployedseed>1514259503</deployedseed>
+    <deployedseed>269109833</deployedseed>
+    <deployedseed>990181186</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

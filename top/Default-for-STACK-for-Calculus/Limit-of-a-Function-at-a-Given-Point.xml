@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Limit of a Function at a Given Point</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Find \(\displaystyle \lim_{x \rightarrow {@aa@}} {@fx@}\)</p>
+<p><em>Note: If no limit exists, give <code>NO</code> as your answer.</em></p>
+<p>[[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:prt1]] </p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3>
+
+<p>To find \(\lim_{x \rightarrow {@aa@}} {@fx@}\), we can simplify the expression and substitute \(x = {@aa@}\) into the simplified expression.</p>
+
+<p>First, let's simplify the expression. The common factor in the numerator and denominator cancel out.</p>
+<p style="margin-left: 30px">\(\displaystyle
+{@fx@} = \frac{({@(cc*x-bb)@})\times({@(x-aa)@})}{{@(x-aa)@}} = {@(cc*x-bb)@}
+\)</p>
+
+<p>Now, we can substitute \(x = {@aa@}\) into the expression.</p>
+<p hidden>{@simp:false;@}
+<p style="margin-left: 30px">\(\begin{align*}
+\displaystyle \lim_{x \rightarrow {@aa@}} {@fx@}
+\displaystyle &= \lim_{{x\to {@aa@}}} ({@(cc*x-bb)@}) \\ 
+\displaystyle &= {@line1@}  \\
+\displaystyle &= {@line2@} \\
+\displaystyle &= {@ta@}\
+\end{align*}\)</p>
+<p hidden>{@simp:true;@}
+
+<p>Therefore, \( \displaystyle \lim_{x \rightarrow {@aa@}} {@fx@} = {@ta@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>pm1:rand_with_prohib(-1,1,[0]);
+aa:pm1*(rand(6)+1);
+pm2:rand_with_prohib(-1,1,[0]);
+cc:rand(2)+2;
+bb:pm2*(rand_with_prohib(1,7,[cc,2*cc,3*cc,4*cc]));
+numer:expand((cc*x-bb)*(x-aa))
+fx:numer/(x-aa);
+ta:ev((cc*x-bb),x=aa);
+
+/* Worked solution - unevaluated lines*/
+simp:false;
+line1:cc*aa + bb;
+line2:ev(cc*aa,simp) - bb;
+simp:true;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle \lim_{x \rightarrow {@aa@}} {@fx@}={@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">NA</p>
+<p id="reviewer">Mary Sawema</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">This STACK question asks students to compute the limit of a given function as \(x\) approaches a specific value. Students are required to determine if the limit exists and, if so, provide its value.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: checks for correct answer that is algebraically equivalent */</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer that is algebraically equivalent </description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Here, we could try to determine the limit by testing values approaching {@aa@}.
+<br>However, it is much simpler and quicker to factorise the numerator and simplify the fraction to avoid dividing by \(0\).</p>
+
+<p style="margin-left: 30px">\(\displaystyle f(x) = {@fx@} = \frac{({@cc*x-bb@})({@x-aa@})}{{@x-aa@}} = {@cc*x-bb@}\)</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1117739733</deployedseed>
+    <deployedseed>1729005329</deployedseed>
+    <deployedseed>429233063</deployedseed>
+    <deployedseed>1789804814</deployedseed>
+    <deployedseed>558113924</deployedseed>
+    <deployedseed>767693895</deployedseed>
+    <deployedseed>1153567901</deployedseed>
+    <deployedseed>63681506</deployedseed>
+    <deployedseed>1998276833</deployedseed>
+    <deployedseed>405216841</deployedseed>
+    <deployedseed>988072040</deployedseed>
+    <deployedseed>1943022724</deployedseed>
+    <deployedseed>857634732</deployedseed>
+    <deployedseed>1543037675</deployedseed>
+    <deployedseed>1952073257</deployedseed>
+    <deployedseed>1745419310</deployedseed>
+    <deployedseed>1825003888</deployedseed>
+    <deployedseed>818440961</deployedseed>
+    <deployedseed>1429475479</deployedseed>
+    <deployedseed>813017672</deployedseed>
+    <deployedseed>2099078670</deployedseed>
+    <deployedseed>211761293</deployedseed>
+    <deployedseed>581224293</deployedseed>
+    <deployedseed>1449957831</deployedseed>
+    <deployedseed>170820027</deployedseed>
+    <deployedseed>1440521057</deployedseed>
+    <deployedseed>170547457</deployedseed>
+    <deployedseed>350854140</deployedseed>
+    <deployedseed>1295457713</deployedseed>
+    <deployedseed>1285206014</deployedseed>
+    <deployedseed>93090148</deployedseed>
+    <deployedseed>1530684791</deployedseed>
+    <deployedseed>1559051647</deployedseed>
+    <deployedseed>1168403611</deployedseed>
+    <deployedseed>831900496</deployedseed>
+    <deployedseed>1899927862</deployedseed>
+    <deployedseed>284167778</deployedseed>
+    <deployedseed>959071827</deployedseed>
+    <deployedseed>869880407</deployedseed>
+    <deployedseed>138476162</deployedseed>
+    <deployedseed>677771062</deployedseed>
+    <deployedseed>1942912208</deployedseed>
+    <deployedseed>497354230</deployedseed>
+    <deployedseed>760003589</deployedseed>
+    <deployedseed>747902637</deployedseed>
+    <deployedseed>2140912693</deployedseed>
+    <deployedseed>1589247002</deployedseed>
+    <deployedseed>187437927</deployedseed>
+    <deployedseed>493297900</deployedseed>
+    <deployedseed>666405532</deployedseed>
+    <deployedseed>2077734945</deployedseed>
+    <deployedseed>374945778</deployedseed>
+    <deployedseed>1018831339</deployedseed>
+    <deployedseed>1748192359</deployedseed>
+    <deployedseed>2135695477</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

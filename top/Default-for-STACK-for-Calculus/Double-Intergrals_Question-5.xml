@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Double Intergrals_Question 5</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Compute double integral over the indicated rectangle.</p>
+<p>\( \displaystyle \int \int_R {@question_expr@} dA \quad R=[{@lower_x@},{@upper_x@} ] \times [{@lower_y@},{@upper_y@}]\)</p><br>
+<p><b>Hint:</b> Rewrite the integral as follows, </p>
+<p>\(\displaystyle \int \int_R {@question_expr@} dA = \int_{@lower_x@}^{@upper_x@} \int_{@lower_y@}^{@upper_y@}{@question_expr@} dydx \)</p><br>
+<p><b>Step1:</b> Compute the definite integral of the function with respect to \(y\). Assume that the \(x\) is a constant.</p>
+<p>\(\displaystyle \int_{@lower_y@}^{@upper_y@}{@question_expr@} dy=\)[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p><br>
+<p><b>Step2:</b>Integrate your input answer in <b>Step 1</b> above with respect to \(x\). Such that, <b>(Write your answer in 2 decimal places)</b></p>
+<p>\(\displaystyle \int_{@lower_x@}^{@upper_x@} \int_{@lower_y@}^{@upper_y@}{@question_expr@} dydx= \) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<p><b>Worked Solution</b></p>
+<p><b>Step1:</b> In order to integrate the function with respect to \(y\), we need to use \(u\)-substitution.</p>
+<p>\(\displaystyle \int_{@lower_y@}^{@upper_y@}{@question_expr@} dy\)</p>
+<p>Let \(u={@let_u@} \rightarrow {@diff_u@}\) and \({@var_y@}\)</p>
+<p>Now let us substitute the above in the original equation. </p>
+<p>\(
+\begin{align}
+\displaystyle \int_{@lower_y@}^{@upper_y@}{@question_expr@} dy &=\int_{@lower_y@}^{@upper_y@}{@rhs(var_y)@}{@%e^u@} dy \\
+  &=\int_{@lower_y@}^{@upper_y@} {@expr1@} \\
+  &={@1/2@} \int_{@lower_y@}^{@upper_y@} e^{u}du \\
+ &={@1/2@}  \left(e^{u}\right) \left.\begin{matrix}& \\ & \end{matrix}\right|_{@lower_y@}^{@upper_y@} \\
+ &={@1/2@}  \left(e^{{@power_e@}}\right) \left.\begin{matrix}& \\ & \end{matrix}\right|_{@lower_y@}^{@upper_y@} \\
+&={@ta1@}  
+\end{align}
+\)</p>
+<p><b>Step 2:</b> The next step is to repeat <b>step 1</b>, but integrate wrt to \(x\),</p>
+<p>\(
+\begin{align}
+\displaystyle \int \int_R {@question_expr@} dA &=\int_{@lower_x@}^{@upper_x@} {@ta1@} dx \\
+ &= \left({@int_xx@}\right) \left.\begin{matrix}& \\ & \end{matrix}\right|_{@lower_x@}^{@upper_x@} \\
+&={@int_x@} \\
+&={@ta2@}  
+\end{align}
+\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2026010500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining the question*/
+lower_x:rand(4);
+upper_x:lower_x+rand(3)+1;
+lower_y:rand(3);
+upper_y:sqrt(rand(9)+lower_y);
+coeff_x:rand(4)+2;
+power_e:y^2-coeff_x*x;
+question_expr:y*%e^(power_e);/*the function*/
+int_y:int(question_expr,y,lower_y,upper_y); /*wrt y*/
+int_x:int(int_y,x,lower_x,upper_x); /*wrt x*/
+
+/*Worked solution*/
+let_u:power_e;
+diff_u:du=diff(let_u,y)*dy;
+var_y:solve(diff_u,y)[1];
+expr1:(rhs(var_y)*%e^u)*dy;
+int_xx:int(int_y,x); /*wrt x*/
+
+/*Model answers*/
+ta1:int_y;
+ta2:decimalplaces(int_x,2);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle \int \int_R {@question_expr@} dA = \int_{@lower_x@}^{@upper_x@} \int_{@lower_y@}^{@upper_y@}{@question_expr@} dydx \)</p>
+<p>{@ta1@}</p>
+<p>{@ta2@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1 checks for correct answer*/
+  /*node 2 mistake:forgetting the part with coeff_x*x in the exponent power */
+  power_e:y^2-upper_x*x;
+ question_expr:y*%e^(power_e);/*the function*/
+  int_y:int(question_expr,y,lower_y,upper_y); /*wrt y*/
+  mistake_2:int_y;
+/*node3: Adding a constant of integration as part of their answer*/
+mistake_3:int(question_expr,y)+c;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans> mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>It looks like you forgot the part with \({@coeff_x*x@}\) in the exponent power. Instead it should be included while integrating.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions>y</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.2</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Recall that this is a definite integral with the limits of integration provided. You need to substitute the limits on your integral to find the answer for this input.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1 checks for correct answer*/
+        /*node 2 mistake:integrating with the same variable*/
+            int_y:int(question_expr,x,lower_y,upper_y); /*wrt y*/
+        int_x:int(int_y,x,lower_x,upper_x); 
+     mistake_2:int_x;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You integrated with the same variable all through, which should not be the case, take a look at the worked out solution.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1145548402</deployedseed>
+    <deployedseed>284561725</deployedseed>
+    <deployedseed>327749874</deployedseed>
+    <deployedseed>1789130837</deployedseed>
+    <deployedseed>940232756</deployedseed>
+    <deployedseed>855524328</deployedseed>
+    <deployedseed>1300779174</deployedseed>
+    <deployedseed>66388098</deployedseed>
+    <deployedseed>1828444765</deployedseed>
+    <deployedseed>2102171438</deployedseed>
+    <deployedseed>1498291920</deployedseed>
+    <deployedseed>543558168</deployedseed>
+    <deployedseed>1365802952</deployedseed>
+    <deployedseed>408494237</deployedseed>
+    <deployedseed>2025412921</deployedseed>
+    <deployedseed>506474684</deployedseed>
+    <deployedseed>53082961</deployedseed>
+    <deployedseed>1155715339</deployedseed>
+    <deployedseed>776582009</deployedseed>
+    <deployedseed>1701191961</deployedseed>
+    <deployedseed>593780092</deployedseed>
+    <deployedseed>1126088316</deployedseed>
+    <deployedseed>537071681</deployedseed>
+    <deployedseed>862498620</deployedseed>
+    <deployedseed>632846892</deployedseed>
+    <deployedseed>1085165542</deployedseed>
+    <deployedseed>851993355</deployedseed>
+    <deployedseed>375935468</deployedseed>
+    <deployedseed>471563144</deployedseed>
+    <deployedseed>1035972206</deployedseed>
+    <deployedseed>805448939</deployedseed>
+    <deployedseed>1601535853</deployedseed>
+    <deployedseed>558479391</deployedseed>
+    <deployedseed>1776137035</deployedseed>
+    <deployedseed>218801865</deployedseed>
+    <deployedseed>958646319</deployedseed>
+    <deployedseed>1310390893</deployedseed>
+    <deployedseed>535140678</deployedseed>
+    <deployedseed>1868496893</deployedseed>
+    <deployedseed>1557384503</deployedseed>
+    <deployedseed>1190840984</deployedseed>
+    <deployedseed>173708032</deployedseed>
+    <deployedseed>1141674828</deployedseed>
+    <deployedseed>1163528236</deployedseed>
+    <deployedseed>1092579303</deployedseed>
+    <deployedseed>641820435</deployedseed>
+    <deployedseed>283007089</deployedseed>
+    <deployedseed>823947666</deployedseed>
+    <deployedseed>1725455566</deployedseed>
+    <deployedseed>491948756</deployedseed>
+    <deployedseed>1468673334</deployedseed>
+    <deployedseed>619151946</deployedseed>
+    <deployedseed>251136870</deployedseed>
+    <deployedseed>1522797722</deployedseed>
+    <deployedseed>1102804256</deployedseed>
+    <deployedseed>932300768</deployedseed>
+    <deployedseed>406374423</deployedseed>
+    <deployedseed>905540208</deployedseed>
+    <deployedseed>401427011</deployedseed>
+    <deployedseed>1016112762</deployedseed>
+    <deployedseed>556286665</deployedseed>
+    <deployedseed>246067213</deployedseed>
+    <deployedseed>1277968815</deployedseed>
+    <deployedseed>75561887</deployedseed>
+    <deployedseed>42403509</deployedseed>
+    <deployedseed>44934244</deployedseed>
+    <deployedseed>1230601113</deployedseed>
+    <deployedseed>2131995011</deployedseed>
+    <deployedseed>209610841</deployedseed>
+    <deployedseed>2134632710</deployedseed>
+    <deployedseed>1939744265</deployedseed>
+    <deployedseed>1196225646</deployedseed>
+    <deployedseed>1264166288</deployedseed>
+    <deployedseed>2132753619</deployedseed>
+    <deployedseed>1800486859</deployedseed>
+    <deployedseed>1110699633</deployedseed>
+    <deployedseed>1673086311</deployedseed>
+    <deployedseed>292158803</deployedseed>
+    <deployedseed>1753179501</deployedseed>
+    <deployedseed>1615192388</deployedseed>
+    <deployedseed>1839252863</deployedseed>
+    <deployedseed>1920617780</deployedseed>
+    <deployedseed>1867376172</deployedseed>
+    <deployedseed>2030582518</deployedseed>
+    <deployedseed>1910801293</deployedseed>
+    <deployedseed>1716415471</deployedseed>
+    <deployedseed>1989834565</deployedseed>
+    <deployedseed>1570475403</deployedseed>
+    <deployedseed>1682443838</deployedseed>
+    <deployedseed>1533500798</deployedseed>
+    <deployedseed>1631322909</deployedseed>
+    <deployedseed>423736516</deployedseed>
+    <deployedseed>655873479</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

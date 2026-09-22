@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Using limit Rules</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Suppose you have the following limit expressions:</p>
+<p>\( \lim_{{x \to {@limit_point@}}} f(x) = {@f(x)@} \) and \( \lim_{{x \to {@limit_point@}}} g(x) =  {@g(x)@}  \)</p>
+<p>
+\( \displaystyle
+\begin{align*} 
+\lim_{x \to {@limit_point@}} \frac{{@coef1@}f(x)-g(x)}{\left(f(x)+{@const@}\right)^{{@pwr@}}} &=\frac{\lim_{x \to {@limit_point@}} \left( {@coef1@}f(x)-g(x)\right )}{\lim_{x \to {@limit_point@}}\left(f(x)+{@const@}\right)^{{@pwr@}}} \qquad \qquad \qquad (a)\\
+  & \\
+      &=\frac{\lim_{x \to {@limit_point@}} {@coef1@}f(x)- \lim_{x \to {@limit_point@}} g(x)}{\lim_{x \to {@limit_point@}}\left(f(x)+{@const@}\right)^{{@pwr@}}} \qquad \qquad (b)\\
+  & \\
+      &=\frac{\lim_{x \to {@limit_point@}} {@coef1@}f(x)- \lim_{x \to {@limit_point@}} g(x)}{\left( \lim_{x \to {@limit_point@}}f(x)+\lim_{x \to {@limit_point@}}{@const@}\right)^{{@pwr@}}}  \qquad \qquad (c)\\
+  & \\
+      %&=\frac{{@coef1@}({@a1@})-({@a2@})}{\left(({@a1@}+{@const@})\right)^{{@pwr@}}}  \\
+  & \\
+      %&={@ta1@}
+\end{align*}
+\)
+ \(\qquad \qquad \qquad \quad  \quad=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+<ol>
+<li>In step \((a)\), what rule or property allows us to separate these limits into two separate limits in the numerator and denominator?[[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</li>
+<li>What mathematical rule or theorem justifies this separation of limits in step \((b)\)?[[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</li>
+<li>What mathematical properties are applied in \((c)\)?[[input:ans4]] [[validation:ans4]] [[feedback:prt4]]</li>
+</ol>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>From the given limit expressions we can find the 
+\( \displaystyle \lim_{{x \to {@limit_point@}}} \frac{{@coef1@}f(x)-g(x)}{\left(f(x)+{@const@}\right)^{{@pwr@}}}\) </p>
+<p>\( \lim_{{x \to {@limit_point@}}} f(x) = {@f(x)@} \) and \( \lim_{{x \to {@limit_point@}}} g(x) =  {@g(x)@}  \)</p>
+<p>
+\( \displaystyle
+\begin{align*} 
+\lim_{x \to {@limit_point@}} \frac{{@coef1@}f(x)-g(x)}{\left(f(x)+{@const@}\right)^{{@pwr@}}} &=\frac{\lim_{x \to {@limit_point@}} \left( {@coef1@}f(x)-g(x)\right )}{\lim_{x \to {@limit_point@}}\left(f(x)+{@const@}\right)^{{@pwr@}}} \qquad \qquad \qquad (a)\\
+      &=\frac{\lim_{x \to {@limit_point@}} {@coef1@}f(x)- \lim_{x \to {@limit_point@}} g(x)}{\lim_{x \to {@limit_point@}}\left(f(x)+{@const@}\right)^{{@pwr@}}} \qquad \qquad (b)\\
+      &=\frac{\lim_{x \to {@limit_point@}} {@coef1@}f(x)- \lim_{x \to {@limit_point@}} g(x)}{\left( \lim_{x \to {@limit_point@}}f(x)+\lim_{x \to {@limit_point@}}{@const@}\right)^{{@pwr@}}}  \qquad \qquad (c)\\
+      &=\frac{{@coef1@}({@a1@})-({@a2@})}{\left(({@a1@}+{@const@})\right)^{{@pwr@}}}  \\
+      &={@ta1@}
+\end{align*}
+\)
+
+<ol>
+<li>
+<p>In step \((a)\) of the calculation, we separated the limit expression using a specific rule. The correct mathematical rule used in step \((a)\) is: </p>
+<p><strong>{@mcq_correct(ta2)[1]@}:</strong> \( \displaystyle \lim_{{x \to a}} \frac{f(x)}{g(x)} = \frac{\lim_{{x \to a}} f(x)}{\lim_{{x \to a}} g(x)} \)</p>
+</li>
+
+<li>
+<p>In step \((b)\) the rule or principle that justifies this separation of limits in step \((b)\) is:</p>
+<p><strong>{@mcq_correct(ta3)[1]@}:</strong> \( \displaystyle  \lim_{{x \to a}} [f(x) \pm g(x)] = \lim_{{x \to a}} f(x) \pm \lim_{{x \to a}} g(x) \)</p>
+</li>
+
+<li>
+<p>In step \((c)\) of the calculation, we separated the limits for constants and functions. The mathematical property that allows us to do this separation in step \((c)\) are:</p>
+<p><strong> Limit of a Constant, The Sum and Difference Rule & Power rule for Limits.</strong></p>
+</li>
+</ol>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[a1:rand(4)+1;
+a2:rand_with_prohib(-4,8,[0,a1]);
+coef1:rand(4)+2;
+const:rand_with_prohib(1,10,[0,a1,coef1]);
+coef2:rand_with_prohib(-4,4,[coef1]);
+pwr:coef1/coef2;
+limit_point:rand(4);
+f(x):= a1; 
+g(x):= a2; 
+expr: (coef1*f(x) - g(x))/((f(x) + const)^(pwr)); 
+ta1:limit(expr, x, limit_point);
+
+ta2:random_permutation([["Limit of a Sum or Difference",false],["Limit of a Constant",false],["The Quotient Rule for Limits",true],["Limit of a Product",false ]]);
+
+ta3:random_permutation([["L'Hôpital's Rule",false],["The Fundamental Theorem of Calculus",false],["The Sum and Difference Rule for Limits",true],["Limit of a Composite Function",false]]);
+
+ta4:random_permutation([["Continuity of a Function",false],["The Mean Value Theorem",false],
+    ["Limit of a Constant",true],["The Sum and Difference Rule for Limits",true],["Power rule for limits",true]]);
+]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\( \lim_{{x \to {@limit_point@}}} f(x) = {@f(x)@} \) and \( \lim_{{x \to {@limit_point@}}} g(x) =  {@g(x)@}  \)</p>
+<p>\( \displaystyle \lim_{x \to {@limit_point@}} \frac{{@coef1@}f(x)-g(x)}{\left(f(x)+{@const@}\right)^{{@pwr@}}}={@ta1@}\)</p>
+<p>{@ta2@}</p><p>{@ta3@}</p><p>{@ta4@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">[N/A]</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">[Juma Zevick]</p>
+<p id="description">[Recognize the basic limit laws and using the limit laws to evaluate the limit of a function.]</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>radio</type>
+      <tans>ta2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>radio</type>
+      <tans>ta3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>checkbox</type>
+      <tans>ta4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mcq_correct(ta2)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mcq_correct(ta3)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mcq_correct(ta4)</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1659697068</deployedseed>
+    <deployedseed>1966697030</deployedseed>
+    <deployedseed>328631680</deployedseed>
+    <deployedseed>216116234</deployedseed>
+    <deployedseed>1786044190</deployedseed>
+    <deployedseed>2124211767</deployedseed>
+    <deployedseed>61075144</deployedseed>
+    <deployedseed>1633755596</deployedseed>
+    <deployedseed>821435857</deployedseed>
+    <deployedseed>1712314213</deployedseed>
+    <deployedseed>1036671577</deployedseed>
+    <deployedseed>1427415137</deployedseed>
+    <deployedseed>974375386</deployedseed>
+    <deployedseed>1458923782</deployedseed>
+    <deployedseed>701017404</deployedseed>
+    <deployedseed>776784343</deployedseed>
+    <deployedseed>2051271597</deployedseed>
+    <deployedseed>1255020476</deployedseed>
+    <deployedseed>656869577</deployedseed>
+    <deployedseed>822737076</deployedseed>
+    <deployedseed>562064253</deployedseed>
+    <deployedseed>45072062</deployedseed>
+    <deployedseed>2068201135</deployedseed>
+    <deployedseed>585288853</deployedseed>
+    <deployedseed>1991225175</deployedseed>
+    <deployedseed>159710517</deployedseed>
+    <deployedseed>1228821646</deployedseed>
+    <deployedseed>280267178</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>first(mcq_correct(ta2))</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>first(mcq_correct(ta3))</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>mcq_correct(ta4)</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

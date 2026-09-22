@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Finding Volume of a solid enclosed in a given region</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the volume of the solid S obtained by revolving around the y-axis the region enclosed by \(y ={@func_y@} \)  and \({@func_xy@}\).</p>
+<p>The height of a cylindrical shell for this solid is the difference of the top curve and the bottom curve.(Note: Give your answer to \((3 dp)\))</p>
+<hr>
+<p>
+ <p>
+[[jsxgraph]]
+        var board = JXG.JSXGraph.initBoard(divid, { 
+            boundingbox: [-1, {#const+3#} , {#const+3#} , -1],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: true,
+            showNavigation: false
+        });
+    // Define the functions for y = 3 + 2x - x^2 and x + y = 3
+          // Define the function y = 3 + 2x - x^2
+       var function1 = board.create('functiongraph', [function (x) {return {#const#}+{#coeff_x*x#}-{#x#}**2;  }],{ name: '{#y=const+coeff_x*x-x^2#}', withlabel: true, strokeColor: 'red' });
+       var function2 = board.create('functiongraph', [function (x) {return {#const#} - {#1/denom*x#} ;  }],{ name: '{#y=const-1/denom*x #}', withlabel: true, strokeColor: 'blue' });
+    
+    [[/jsxgraph]] </p>
+</p>
+<p></p>
+<p>Give your answer in 3 decimal places.</p>
+<p>\(v=\)[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Find the volume of the solid S obtained by revolving around the y-axis the region enclosed by \(y ={@func_y@} \)  and \({@func_xy@}\).</p>
+<p>The height of a cylindrical shell for this solid is the difference of the top curve and the bottom curve.</p>
+<hr>
+<p>
+ <p>
+[[jsxgraph]]
+        var board = JXG.JSXGraph.initBoard(divid, { 
+            boundingbox: [-1, {#const+2#} , {#const+2#} , -1],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: true,
+            showNavigation: false
+        });
+    // Define the functions for y = 3 + 2x - x^2 and x + y = 3
+          // Define the function y = 3 + 2x - x^2
+       var function1 = board.create('functiongraph', [function (x) {return {#const#}+{#coeff_x*x#}-{#x#}**2;  }],{ name: '{#y=const+coeff_x*x-x^2#}', withlabel: true, strokeColor: 'red' });
+       var function2 = board.create('functiongraph', [function (x) {return {#const#} - {#1/denom#}x;  }],{ name: '{#y=const-1/denom*x#}', withlabel: true, strokeColor: 'blue' });
+    
+    [[/jsxgraph]] </p>
+</p>
+<p></p>
+<p>We find the volume of the solid by using the formula below</p>
+<p>\(\begin{align}
+V&=\displaystyle \int_{0}^{{@ulim@}}2\pi x(f(x)-g(x))dx\\
+&=2\pi\displaystyle \int_{0}^{{@ulim@}} x({@func_y@}-({@new_func_xy@}))dx\\
+&=2\pi\displaystyle \int_{0}^{{@ulim@}} x({@sol1@})dx\\
+&=2\pi\displaystyle \int_{0}^{{@ulim@}} ({@sol2@})dx\\
+\end{align}\)</p>
+<p>Integrating the previous function with respect to \(x\), we have</p>
+<p>\(\begin{align}
+2\pi\displaystyle \int_{0}^{{@ulim@}} ({@sol2@})dx&= 2\pi \displaystyle \left [ {@sol_int@} \right ]_{0}^{{@ulim@}}\\
+&=2\pi({@sol3@})\\
+&={@sol4@}\\
+\end{align}\)</p>
+<p>Therefore the volume of the solid is \(\displaystyle {@ta@}\)</p>
+<p></p>
+<p></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*volume of a solid*/
+const:rand(5)+3;
+denom:rand_with_prohib(-5,20,[0]);
+coeff_x:rand(2)+2;
+func_y:const+coeff_x*x-x^2;
+func_xy:1/denom*x+y=const;
+
+/*solution variables*/
+ulim: coeff_x+1/denom;
+new_func_xy:const-1/denom*x;
+sol1: func_y-(new_func_xy);
+sol2:expand(x*(sol1));
+sol_int:int(sol2,x);
+sol3:int(sol2,x,0,ulim);
+sol4:2*pi*(sol3);
+ta:decimalplaces(sol4,3);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Find the volume of the solid S obtained by revolving around the y-axis the region enclosed by \(y ={@func_y@} \)and \({@func_xy@}\).</p>
+<p>
+[[jsxgraph]]
+        var board = JXG.JSXGraph.initBoard(divid, { 
+            boundingbox: [-1, {#const+3#} , {#const+3#} , -1],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: true,
+            showNavigation: false
+        });
+    // Define the functions for y = 3 + 2x - x^2 and x + y = 3
+          // Define the function y = 3 + 2x - x^2
+       var function1 = board.create('functiongraph', [function (x) {return {#const#}+{#coeff_x*x#}-{#x#}**2;  }],{ name: '{#y=const+coeff_x*x-x^2#}', withlabel: true, strokeColor: 'red' });
+       var function2 = board.create('functiongraph', [function (x) {return {#const#} - {#1/denom*x#};  }],{ name: '{#y=const-1/denom*x#}', withlabel: true, strokeColor: 'blue' });
+    
+    [[/jsxgraph]] </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey</p>
+<p id="reviewer"></p>
+<p id="description">This question focuses on finding the volume of solid given a function over a defined region </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>790325118</deployedseed>
+    <deployedseed>1164188386</deployedseed>
+    <deployedseed>1458013237</deployedseed>
+    <deployedseed>1412068972</deployedseed>
+    <deployedseed>1533056077</deployedseed>
+    <deployedseed>1890545516</deployedseed>
+    <deployedseed>15804207</deployedseed>
+    <deployedseed>610056904</deployedseed>
+    <deployedseed>566190123</deployedseed>
+    <deployedseed>1672844093</deployedseed>
+    <deployedseed>969798721</deployedseed>
+    <deployedseed>2024293302</deployedseed>
+    <deployedseed>484916950</deployedseed>
+    <deployedseed>17726181</deployedseed>
+    <deployedseed>1819791221</deployedseed>
+    <deployedseed>451258239</deployedseed>
+    <deployedseed>1191725061</deployedseed>
+    <deployedseed>1342360171</deployedseed>
+    <deployedseed>292752080</deployedseed>
+    <deployedseed>344286064</deployedseed>
+    <deployedseed>650803767</deployedseed>
+    <deployedseed>877859306</deployedseed>
+    <deployedseed>550337346</deployedseed>
+    <deployedseed>1475887692</deployedseed>
+    <deployedseed>2140611622</deployedseed>
+    <deployedseed>1881687789</deployedseed>
+    <deployedseed>1888674489</deployedseed>
+    <deployedseed>684910609</deployedseed>
+    <deployedseed>83321876</deployedseed>
+    <deployedseed>1153296256</deployedseed>
+    <deployedseed>558126498</deployedseed>
+    <deployedseed>140009287</deployedseed>
+    <deployedseed>1132822173</deployedseed>
+    <deployedseed>194449940</deployedseed>
+    <deployedseed>1229905848</deployedseed>
+    <deployedseed>1300246731</deployedseed>
+    <deployedseed>15297944</deployedseed>
+    <deployedseed>480308031</deployedseed>
+    <deployedseed>797613674</deployedseed>
+    <deployedseed>649175622</deployedseed>
+    <deployedseed>1590932679</deployedseed>
+    <deployedseed>1029270881</deployedseed>
+    <deployedseed>1469803231</deployedseed>
+    <deployedseed>288765628</deployedseed>
+    <deployedseed>631658075</deployedseed>
+    <deployedseed>258474313</deployedseed>
+    <deployedseed>1848347761</deployedseed>
+    <deployedseed>865192778</deployedseed>
+    <deployedseed>144550683</deployedseed>
+    <deployedseed>935309096</deployedseed>
+    <deployedseed>1830925788</deployedseed>
+    <deployedseed>517010977</deployedseed>
+    <deployedseed>596020481</deployedseed>
+    <deployedseed>17421564</deployedseed>
+    <deployedseed>1935334664</deployedseed>
+    <deployedseed>1053933713</deployedseed>
+    <deployedseed>691958581</deployedseed>
+    <deployedseed>1104616976</deployedseed>
+    <deployedseed>1207917886</deployedseed>
+    <deployedseed>310835952</deployedseed>
+    <deployedseed>471055874</deployedseed>
+    <deployedseed>1566090784</deployedseed>
+    <deployedseed>414667657</deployedseed>
+    <deployedseed>1167657408</deployedseed>
+    <deployedseed>584933587</deployedseed>
+    <deployedseed>205276304</deployedseed>
+    <deployedseed>1815741339</deployedseed>
+    <deployedseed>414042737</deployedseed>
+    <deployedseed>2065938931</deployedseed>
+    <deployedseed>792740074</deployedseed>
+    <deployedseed>1569761922</deployedseed>
+    <deployedseed>1265577163</deployedseed>
+    <deployedseed>1118987580</deployedseed>
+    <deployedseed>1725730990</deployedseed>
+    <deployedseed>859525852</deployedseed>
+    <deployedseed>196341518</deployedseed>
+    <deployedseed>2022779921</deployedseed>
+    <deployedseed>1309700379</deployedseed>
+    <deployedseed>549174559</deployedseed>
+    <deployedseed>1758944324</deployedseed>
+    <deployedseed>83267325</deployedseed>
+    <deployedseed>715198684</deployedseed>
+    <deployedseed>393359126</deployedseed>
+    <deployedseed>1074745854</deployedseed>
+    <deployedseed>615843833</deployedseed>
+    <deployedseed>570878768</deployedseed>
+    <deployedseed>1342621956</deployedseed>
+    <deployedseed>1244229227</deployedseed>
+    <deployedseed>1880377092</deployedseed>
+    <deployedseed>95465192</deployedseed>
+    <deployedseed>1056282776</deployedseed>
+    <deployedseed>115811545</deployedseed>
+    <deployedseed>479228393</deployedseed>
+    <deployedseed>285460147</deployedseed>
+    <deployedseed>945211485</deployedseed>
+    <deployedseed>172493227</deployedseed>
+    <deployedseed>1509531300</deployedseed>
+    <deployedseed>669273536</deployedseed>
+    <deployedseed>1023162599</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

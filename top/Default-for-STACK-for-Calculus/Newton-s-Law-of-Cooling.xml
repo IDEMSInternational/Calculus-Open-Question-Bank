@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Newton's Law of Cooling</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>According to experienced baristas, the optimal temperature to serve coffee is between \({@aa@} ^\circ F \) and \({@bb@}^\circ F\). Suppose coffee is poured at a temperature of  \({@cc@}^\circ F\), and after  \({@dd@}\) minutes in a \({@ee@}^\circ F\) room it has cooled to \({@ff@}^\circ F\). When is the coffee first cool enough to serve?
+<p>The coffee can be served about [[input:ans1]] minutes after it is poured. [[validation:ans1]][[feedback:prt1]]</p>
+ When is the coffee too cold to serve?</p>
+<p>The coffee is too cold to be served about [[input:ans2]]  minutes after it is poured.[[validation:ans2]][[feedback:prt2]]</p>
+<p><b>Note:</b> Round answers to the nearest half minute.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>We have </p>
+<p>\[\begin{align}
+T & =(T_0-T_a)e^{-kt}+T_a \\
+{@ff@}&=({@cc@}-{@ee@})e^{-k({@dd@})}+{@ee@} \\
+{@ff-ee@}&=({@cc-ee@})e^{@-k*dd@} \\
+{@(ff-ee)/(cc-ee)@}&=e^{@-k*dd@} \\
+\ln {@(ff-ee)/(cc-ee)@}&={@-k*dd@} \\
+\ln {@num((ff-ee)/(cc-ee))@}-\ln {@denom((ff-ee)/(cc-ee))@}&={@-k*dd@} \\
+k &=\frac{ \ln {@num((ff-ee)/(cc-ee))@}-\ln {@denom((ff-ee)/(cc-ee))@}}{{@dd@}} \\
+\end{align}\]</p>
+<p>Then the model is </p>
+<p>\[ T= {@cc-ee@} e^{( \frac{\ln {@num((ff-ee)/(cc-ee))@}-\ln {@denom((ff-ee)/(cc-ee))@}} {{@dd@}})t} +{@ee@} \]</p>
+<p>The coffee reaches \({@bb@}^\circ F \) when</p>
+<p>\[\begin{align} 
+{@bb@}&= {@cc-ee@} e^{( \frac{\ln {@num((ff-ee)/(cc-ee))@}-\ln {@denom((ff-ee)/(cc-ee))@}} {{@dd@}})t} +{@ee@} \\
+ {@bb-ee@}&={@cc-ee@} e^{( \frac{\ln {@num((ff-ee)/(cc-ee))@}-\ln {@denom((ff-ee)/(cc-ee))@}} {{@dd@}})t} \\
+ {@(bb-ee)/(cc-ee)@}&= e^{( \frac{\ln {@num((ff-ee)/(cc-ee))@}-\ln {@denom((ff-ee)/(cc-ee))@}} {{@dd@}})t} \\
+ \ln {@(bb-ee)/(cc-ee)@}&=  \frac{\ln {@num((ff-ee)/(cc-ee))@}-\ln {@denom((ff-ee)/(cc-ee))@}} {{@dd@}}t \\
+\ln {@num((bb-ee)/(cc-ee))@}-\ln {@denom((bb-ee)/(cc-ee))@} &= \frac{\ln {@num((ff-ee)/(cc-ee))@}-\ln {@denom((ff-ee)/(cc-ee))@}} {{@dd@}}t \\
+ t &=\frac {{@dd@}( \ln {@num((bb-ee)/(cc-ee))@}-\ln {@denom((bb-ee)/(cc-ee))@})}{\ln {@num((ff-ee)/(cc-ee))@}-\ln {@denom((ff-ee)/(cc-ee))@}}\\
+ t &\approx {@ta1_a@}
+ \end{align}
+\]</p>
+<p>The coffee can be served about \({@ta1@}\) minutes after it is poured. The coffee reaches \({@aa@} ^\circ F \) at </p>
+<p>\[\begin{align} 
+{@aa@}&= {@cc-ee@} e^{( \frac{\ln {@num((ff-ee)/(cc-ee))@}-\ln {@denom((ff-ee)/(cc-ee))@}} {{@dd@}})t} +{@ee@} \\
+ {@aa-ee@}&={@cc-ee@} e^{( \frac{\ln {@num((ff-ee)/(cc-ee))@}-\ln {@denom((ff-ee)/(cc-ee))@}} {{@dd@}})t} \\
+ {@(aa-ee)/(cc-ee)@}&= e^{( \frac{\ln {@num((ff-ee)/(cc-ee))@}-\ln {@denom((ff-ee)/(cc-ee))@}} {{@dd@}})t} \\
+ \ln {@(aa-ee)/(cc-ee)@}&=  \frac{\ln {@num((ff-ee)/(cc-ee))@}-\ln {@denom((ff-ee)/(cc-ee))@}} {{@dd@}}t \\
+\ln {@num((aa-ee)/(cc-ee))@}-\ln {@denom((aa-ee)/(cc-ee))@} &= \frac{\ln {@num((ff-ee)/(cc-ee))@}-\ln {@denom((ff-ee)/(cc-ee))@}} {{@dd@}}t \\
+ t &=\frac {{@dd@}( \ln {@num((aa-ee)/(cc-ee))@}-\ln {@denom((aa-ee)/(cc-ee))@})}{\ln {@num((ff-ee)/(cc-ee))@}-\ln {@denom((ff-ee)/(cc-ee))@}} \\
+ t &\approx {@ta2_a@}
+ \end{align}
+\]</p>
+<p>The coffee is too cold to be served about \({@ta2@}\) minutes after it is poured.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[aa:rand_with_step(110,160,5);
+bb:aa+20;
+cc:bb+25;
+dd:rand_with_step(2,6,1);
+ee:rand_with_step(50,90,10);
+ff:cc-20;
+ta1_a:decimalplaces((dd*(ln(num((bb-ee)/(cc-ee)))-ln(denom((bb-ee)/(cc-ee)))))/(ln(num((ff-ee)/(cc-ee)))-ln (denom((ff-ee)/(cc-ee)))),2);
+whole_part: floor(ta1_a);
+decimal_part:(ta1_a-whole_part)*10;
+ta1:if decimal_part<2.5 then whole_part elseif decimal_part<5 then whole_part+0.5 elseif decimal_part<7.5 then whole_part+0.5 else whole_part+1;
+ta2_a:decimalplaces((dd*(ln(num((aa-ee)/(cc-ee)))-ln(denom((aa-ee)/(cc-ee)))))/(ln(num((ff-ee)/(cc-ee)))-ln (denom((ff-ee)/(cc-ee)))),2);
+whole_part: floor(ta2_a);
+decimal_part:(ta2_a-whole_part)*10;
+ta2:if decimal_part<2.5 then whole_part elseif decimal_part<5 then whole_part+0.5 elseif decimal_part<7.5 then whole_part+0.5 else whole_part+1;
+]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>The coffee can be served about \({@ta1@}\) minutes after it is poured. \)</p>
+<p>The coffee is too cold to be served about \({@ta2@}\) minutes after it is poured.</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">[Juma Zevick]</p>
+<p id="description">The question focuses on finding the Newton's law of cooling given an optimal temperature of when cofffee is served and the period of cooling</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer */
+/*Node 2: Checks if the student rounded off to 1 decimal place*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer </description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks if the student rounded off to 1 decimal place</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans1</sans>
+        <tans>ta1_a</tans>
+        <testoptions>1</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have rounded your answer correct to one decimal place rather than half a minute</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer */
+/*Node 2: Checks if the student rounded off to 1 decimal place*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks if the student rounded off to 1 decimal place</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans2</sans>
+        <tans>ta2_a</tans>
+        <testoptions>1</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have rounded your answer correct to one decimal place rather than half a minute</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>477538793</deployedseed>
+    <deployedseed>1534907322</deployedseed>
+    <deployedseed>479590099</deployedseed>
+    <deployedseed>330513300</deployedseed>
+    <deployedseed>1453389175</deployedseed>
+    <deployedseed>143156906</deployedseed>
+    <deployedseed>612398883</deployedseed>
+    <deployedseed>1055322733</deployedseed>
+    <deployedseed>1764095943</deployedseed>
+    <deployedseed>1618853089</deployedseed>
+    <deployedseed>863739440</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

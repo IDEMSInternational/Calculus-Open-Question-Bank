@@ -1,0 +1,1106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Double Integral with Change of Variables</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Evaluate \( \displaystyle \int\int_{R}xy^{3}dA\) where \(R\) is the region bounded by  \(  \displaystyle xy={@xy_1@} ,\,  xy= {@xy_2@} \, , y={@y_1@}\) and \(y={@y_2@}\) using the transformation  \(  \displaystyle {@xx@} , \,  {@yy@}\)</p>
+<p>The first thing we need to do is to determine the transformation of R.</p>
+<p>Here is a sketch of the bounded region R .</p>
+<p>
+[[jsxgraph]]
+
+const board = JXG.JSXGraph.initBoard(divid, {
+            boundingbox: [-1, 7, 5, -2], axis: true
+        });
+
+        // Plot functions only up to the mutual intersections
+        var function1 = board.create('functiongraph', ['2', 1/2, 3/2], {strokeColor:'black', strokeWidth: 2 });
+        var function2 = board.create('functiongraph', ['3/x', 3/2, 1/2], {strokeColor:'red', strokeWidth: 2 });
+        var function3 = board.create('functiongraph', ['6', 1/2, 1/6], {strokeColor:'red', strokeWidth: 2 });
+        var function4 = board.create('functiongraph', ['1/x', 1/6, 1/2], {strokeColor:'blue', strokeWidth: 2} );
+        
+    
+
+        
+        // You can copy this function and then use it like in the examples below.
+        // element_list is a list of elements defining the outline of the function.
+        // The elements can be FunctionGraphs or Pairs of coordinates (encoding points)
+        // properties is a dictionary of properties for the generated function.
+        function make_filled_curve(board, element_list, properties) {
+            var curve = board.create('curve', [[], []], properties);
+            curve.updateDataArray = function () {
+                this.dataX = [];
+                this.dataY = [];
+                for (const element of element_list) {
+                    if (Array.isArray(element)) {
+                        // Add the point to the curve
+                        this.dataX.push(element[0]);
+                        this.dataY.push(element[1]);
+                    } else {
+                        // Copy all points from function
+                        this.dataX = this.dataX.concat(element.points.map(p => p.usrCoords[1]));
+                        this.dataY = this.dataY.concat(element.points.map(p => p.usrCoords[2]));
+                    }
+                }
+                // Close the loop
+                this.dataX.push(this.dataX[0]);
+                this.dataY.push(this.dataY[0]);
+            };
+            board.update();
+        }
+
+        // Plot different filled functions
+        make_filled_curve(board, [function1, function2, function3, function4], { strokeWidth: 0, fillColor: 'green', fillOpacity: 0.3 })
+       
+
+[[/jsxgraph]]
+</p>
+
+<p><b>Step 1:</b> Transform each of the boundary curves. (<b>Hint</b>: Compute the values of \(u\)& \(v\) by writing the given expression interms of \(u\)& \(v\).) </p>
+
+<p>\(y={@y_2@}:  \rightarrow  u=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+
+<p>\(xy={@xy_2@}:  \rightarrow  v=\) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>
+
+<p>\(y={@y_1@}:  \rightarrow   u=\) [[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</p>
+
+<p>\(xy={@xy_1@}:\rightarrow  v=\) [[input:ans4]] [[validation:ans4]] [[feedback:prt4]]</p>
+
+
+<p><b>Step 2:</b> Sketch the transformed equations by moving the four points provided in the graph below to form a region that satisfies the transformed region</p>
+
+[[jsxgraph input-ref-ans5='ans5Ref' input-ref-ans6='ans6Ref' input-ref-ans7='ans7Ref' input-ref-ans8='ans8Ref']]
+ var board = JXG.JSXGraph.initBoard(divid, { 
+    boundingbox: [-5, 10, 10, -5],
+    keepAspectRatio:true, 
+    showCopyright:false, 
+   axis: true, 
+    defaultAxes: {
+        x: {
+            name:'\\(u\\)',
+            withlabel:true,
+            label: {
+                position:'rt',
+                offset:[-20,15],
+                fontSize:15,
+                useMathJax:true,
+                parse:false
+            }
+        },
+        y: {
+            name:'\\(v\\)',
+            withlabel:true,
+            label: {
+                position:'rt',
+                offset:[15,-5],
+                fontSize:15,
+                useMathJax:true,
+                parse:false
+            }
+        }
+    },
+    showNavigation:true
+});
+  var p1 = board.create('point', [{#ax1#},{#ay1#}],{snapToGrid:true,snapSizeY:0.5,snapSizeX:0.5,withLabel:false});
+
+var p2 = board.create('point', [{#ax2#}, {#ay2#}],{snapToGrid:true,snapSizeY:0.5,snapSizeX:0.5,withLabel:false});
+
+var p3 = board.create('point', [{#ax3#}, {#ay3#}],{snapToGrid:true,snapSizeY:0.5,snapSizeX:0.5,withLabel:false});
+
+var p4 = board.create('point', [{#ax4#}, {#ay4#}],{snapToGrid:true,snapSizeY:0.5,snapSizeX:0.5,withLabel:false});
+ var line1 = board.create("line",[p1,p2],{name:'v={#ta2#}',straightFirst:false,straightLast:false,withLabel:false, strokeColor:'red'});
+ var line2 = board.create("line",[p1,p3],{name:'u={#ta1#}',straightFirst:false,straightLast:false, withLabel:false, strokeColor:'red'});
+ var line3 = board.create("line",[p3,p4],{name:'v={#ta4#}', straightFirst:false,straightLast:false,withLabel:false, strokeColor:'red'});
+ var line4 = board.create("line",[p2,p4],{name:'u={#ta3#}', straightFirst:false,straightLast:false,withLabel:false, strokeColor:'red'});
+stack_jxg.bind_point(ans5Ref, p1);
+stack_jxg.bind_point(ans6Ref, p2);
+stack_jxg.bind_point(ans7Ref, p3);
+stack_jxg.bind_point(ans8Ref, p4);
+[[/jsxgraph]]
+
+
+<p style='display:none'>[[input:ans5]] [[validation:ans5]]
+</p>
+<p style='display:none'>[[input:ans6]] [[validation:ans6]]
+</p>
+<p style='display:none'>[[input:ans7]] [[validation:ans7]]
+</p>
+<p style='display:none'>[[input:ans8]] [[validation:ans8]]
+</p>
+<p>[[feedback:prt5]]</p>
+<p><b>Step 3:</b> Give the limits for the transformed region for u and v
+</p>
+<p> For \(u:\) [[input:ans9]] [[validation:ans9]] [[feedback:prt9]]</p>
+<p> For \(v:\) [[input:ans10]] [[validation:ans10]] [[feedback:prt10]]</p>
+
+<p><b>Step 4:</b> Give the Jacobian of this transformation,</p>
+<p>Recall:</p>
+<b>\( \quad \displaystyle \frac{\partial(x,y)}{\partial(u,v)}=\begin{vmatrix}
+\frac{\partial(x)}{\partial(u)} & \frac{\partial(x)}{\partial(v)}\\ 
+\frac{\partial(y)}{\partial(u)} & \frac{\partial(y)}{\partial(v)}
+\end{vmatrix}\)</p>
+\( \quad =\) [[input:ans11]] [[validation:ans11]] [[feedback:prt11]]
+
+\(\quad \quad=\) [[input:ans12]] [[validation:ans12]] [[feedback:prt12]]</b>
+<p><b>Step 5:</b> Evaluate the integral.</p><p><b>(Hint: You have to rewrite the integral in terms of the “new” \(uv\) coordinates system first)</b></p>
+<p>\( \displaystyle \int\int_{R}xy^{3}dA=\) [[input:ans13]] [[validation:ans13]] [[feedback:prt13]]</p>
+<p></p>
+<p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<p><h3>Worked Solution</h3></p>
+<p>Evaluate \( \displaystyle \int\int_{R}xy^{3}dA\) where \(R\) is the region bounded by  \(  \displaystyle xy={@xy_1@} ,\,  xy= {@xy_2@} \, , y={@y_1@}\) and \(y={@y_2@}\) using the transformation  \(  \displaystyle {@xx@} , \,  {@yy@}\)</p>
+<p>The first thing we need to do is to determine the transformation of R.</p>
+<p>Here is a sketch of the bounded region R .</p>
+<p>
+[[jsxgraph]]
+
+const board = JXG.JSXGraph.initBoard(divid, {
+            boundingbox: [-1, 7, 5, -2], axis: true
+        });
+        // Plot functions only up to the mutual intersections
+        var function1 = board.create('functiongraph', ['2', 1/2, 3/2], {strokeColor:'black', strokeWidth: 2 });
+        var function2 = board.create('functiongraph', ['3/x', 3/2, 1/2], {strokeColor:'red', strokeWidth: 2 });
+        var function3 = board.create('functiongraph', ['6', 1/2, 1/6], {strokeColor:'red', strokeWidth: 2 });
+        var function4 = board.create('functiongraph', ['1/x', 1/6, 1/2], {strokeColor:'blue', strokeWidth: 2} );
+              
+        // You can copy this function and then use it like in the examples below.
+        // element_list is a list of elements defining the outline of the function.
+        // The elements can be FunctionGraphs or Pairs of coordinates (encoding points)
+        // properties is a dictionary of properties for the generated function.
+        function make_filled_curve(board, element_list, properties) {
+            var curve = board.create('curve', [[], []], properties);
+            curve.updateDataArray = function () {
+                this.dataX = [];
+                this.dataY = [];
+                for (const element of element_list) {
+                    if (Array.isArray(element)) {
+                        // Add the point to the curve
+                        this.dataX.push(element[0]);
+                        this.dataY.push(element[1]);
+                    } else {
+                        // Copy all points from function
+                        this.dataX = this.dataX.concat(element.points.map(p => p.usrCoords[1]));
+                        this.dataY = this.dataY.concat(element.points.map(p => p.usrCoords[2]));
+                    }
+                }
+                // Close the loop
+                this.dataX.push(this.dataX[0]);
+                this.dataY.push(this.dataY[0]);
+            };
+            board.update();
+        }
+
+        // Plot different filled functions
+        make_filled_curve(board, [function1, function2, function3, function4], { strokeWidth: 0, fillColor: 'green', fillOpacity: 0.3 })
+       
+[[/jsxgraph]]
+</p>
+
+<p><b>Step 1:</b> Transform each of the boundary curves. (<b>Hint</b>: Compute the values of \(u\)& \(v\) by writing the given expression interms of \(u\)& \(v\).) </p>
+
+<p>\(y={@y_2@}:\) Recall that \({@yy@}\) therefore \({@rhs(yy)=y_2@}\)  \(\rightarrow  u= {@ta1@}\)</p>
+
+<p>\(xy={@xy_2@}:\) Recall that \({@xx@}\) therefore \({@rhs(xx)*(rhs(yy))=xy_2@}\)  \(  \rightarrow  v= {@ta2@}\)</p>
+
+<p>\(y={@y_1@}:\) Recall that \({@yy@}\) therefore \({@rhs(yy)=y_1@}\)  \(  \rightarrow   u={@ta3@}\)</p>
+
+<p>\(xy={@xy_1@}:\) Recall that \({@xx@}\) therefore \({@rhs(xx)*(rhs(yy))=xy_1@}\)  \(\rightarrow  v={@ta4@}\)</p>
+
+
+<p><b>Step 2:</b> Sketch the transformed equations by moving the four points provided in the graph below to form a region that satisfies the transformed region</p>
+
+[[jsxgraph]]
+ var board = JXG.JSXGraph.initBoard(divid, { 
+    boundingbox: [-5, 10, 10, -5],
+    keepAspectRatio:true, 
+    showCopyright:false, 
+   axis: true, 
+    defaultAxes: {
+        x: {
+            name:'\\(u\\)',
+            withlabel:true,
+            label: {
+                position:'rt',
+                offset:[-20,15],
+                fontSize:15,
+                useMathJax:true,
+                parse:false
+            }
+        },
+        y: {
+            name:'\\(v\\)',
+            withlabel:true,
+            label: {
+                position:'rt',
+                offset:[15,-5],
+                fontSize:15,
+                useMathJax:true,
+                parse:false
+            }
+        }
+    },
+    showNavigation:true
+});
+  var p1 = board.create('point', [{#ax1#},{#ay1#}],{snapToGrid:true,snapSizeY:0.5,snapSizeX:0.5,withLabel:false});
+
+var p2 = board.create('point', [{#ax2#}, {#ay2#}],{snapToGrid:true,snapSizeY:0.5,snapSizeX:0.5,withLabel:false});
+
+var p3 = board.create('point', [{#ax3#}, {#ay3#}],{snapToGrid:true,snapSizeY:0.5,snapSizeX:0.5,withLabel:false});
+
+var p4 = board.create('point', [{#ax4#}, {#ay4#}],{snapToGrid:true,snapSizeY:0.5,snapSizeX:0.5,withLabel:false});
+ var line1 = board.create("line",[p1,p2],{name:'v={#ta2#}',straightFirst:false,straightLast:false,withLabel:false, strokeColor:'red'});
+ var line2 = board.create("line",[p1,p3],{name:'u={#ta1#}',straightFirst:false,straightLast:false, withLabel:false, strokeColor:'red'});
+ var line3 = board.create("line",[p3,p4],{name:'v={#ta4#}', straightFirst:false,straightLast:false,withLabel:false, strokeColor:'red'});
+ var line4 = board.create("line",[p2,p4],{name:'u={#ta3#}', straightFirst:false,straightLast:false,withLabel:false, strokeColor:'red'});
+stack_jxg.bind_point(ans5Ref, p1);
+stack_jxg.bind_point(ans6Ref, p2);
+stack_jxg.bind_point(ans7Ref, p3);
+stack_jxg.bind_point(ans8Ref, p4);
+[[/jsxgraph]]
+
+
+<p style='display:none'> {@ta5@}
+</p>
+<p style='display:none'>{@ta6@}
+</p>
+<p style='display:none'>{@ta7@}
+</p>
+<p style='display:none'>{@ta8@}
+</p>
+<p><b>Step 3:</b> Give the limits for the transformed region for u and v
+</p>
+<p> For \(u: {@ta9@}\)</p>
+<p> For \(v: {@ta10@}\)</p>
+
+<p><b>Step  4:</b> Give the Jacobian of this transformation,</p>
+<p>Recall:</p>
+<b>\( \quad \displaystyle \frac{\partial(x,y)}{\partial(u,v)}=\begin{vmatrix}
+\frac{\partial(x)}{\partial(u)} & \frac{\partial(x)}{\partial(v)}\\ 
+\frac{\partial(y)}{\partial(u)} & \frac{\partial(y)}{\partial(v)}
+\end{vmatrix} \quad ={@ta11@} = {@ta12@}\)</b>
+<p><b>Step 5:</b> Evaluate the integral.</p><p><b>(Hint: You have to rewrite the integral in terms of the “new” \(uv\) coordinates system first)</b></p>
+<p>
+\(
+\begin{align}
+ \displaystyle \int \int_{R}xy^{3}dA &= \int_{{@ta3@}}^{{@ta1@}} \int_{{@ta4@}}^{{@ta2@}} {@expr@} dvdu \\
+                                                      &= \int_{{@ta3@}}^{{@ta1@}} \left({@int_xy_v@} \right) \left.\begin{matrix} \\ \\ \end{matrix}\right|_{{@ta4@}}^{{@ta2@}} du \\
+                                                     &= \int_{{@ta3@}}^{{@ta1@}} {@int_xy_v1@} du \\
+                                                    &= \left({@int_xy_u@} \right) \left.\begin{matrix} \\ \\ \end{matrix}\right|_{{@ta4@}}^{{@ta2@}} \\
+                                                   &= {@ta13@} 
+\end{align}
+\)
+</p>
+<p> Therefore \( \displaystyle \int\int_{R}xy^{3}dA= {@ta13@}\)</p>
+<p></p>
+<p></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*Randomization of the coefficients of u and values of y's and xy's*/
+xy_1: rand(5)+1; /*1 xy_1:rand(3)+1;*/ 
+xy_2: 2+xy_1; /*3 xy_2:rand_with_prohib(1,4,[xy_1]);*/
+y_1: rand(5)+2; /*2 y_1:rand(3)+2;*/
+y_2: 4+y_1; /*6 y_2:rand_with_prohib(1,6,[y_1]);*/
+
+xx:x=(v/(y_2*u));
+yy:y=y_1*u;
+
+/*Worked solution code block*/
+uu:ev(yy,u,y=y_2); u_1:solve(uu)[1];
+xxx:x=(v/(y_2*u))*(y_1*u); vv:ev(xxx,v,x=xy_2); v_1:solve(vv)[1]; 
+uu_1:ev(yy,u,y=y_1); u_2:solve(uu_1)[1];
+xxx_1:x=(v/(y_2*u))*(y_1*u); vv_2:ev(xxx_1,v,x=xy_1); v_2:solve(vv_2)[1]; 
+diff_xu:diff(rhs(xx),u); diff_yu:diff(rhs(yy),u); 
+diff_xv:diff(rhs(xx),v); diff_yv:diff(rhs(yy),v); 
+transformation_J:diff_xu*diff_yv-diff_xv*diff_yu;
+expr:(rhs(xx)*rhs(yy)^3*(-1*(transformation_J)));
+int_xy_v:int(expr,v);
+int_xy_v1:int(expr,v,rhs(u_1),rhs(v_1));
+int_xy_u:int(int_xy_v1,u);
+int_xy_u1:int(int_xy_v1,u,rhs(u_2),rhs(v_2));
+
+/*Model answers*/
+ta1: rhs(u_1);
+ta2: rhs(v_1);
+ta3: rhs(u_2);
+ta4: rhs(v_2);
+
+
+ax1:rand(7)-4;
+ay1:rand(7)-4;
+ax2:rand(7)-4;
+ay2:rand(7)-4;
+ax3:rand(7)-4;
+ay3:rand(7)-4;
+ax4:rand(7)-4;
+ay4:rand(7)-4;
+
+ta5:[ta3,ta2];
+ta6:[ta1,ta2];
+ta7:[ta3,ta4];
+ta8:[ta1,ta4];
+
+ta9:ta3<=u and u<=ta1;   /*transformed limits of u*/
+ta10:ta4<=v and v<=ta2;    /*transformed limits of v*/
+ta11:matrix([diff_xu,diff_xv],[diff_yu,diff_yv]);
+ta12: transformation_J; /*the determinant*/
+ta13: int_xy_u1;]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Evaluate \( \displaystyle \int\int_{R}xy^{3}dA\) where \(R\) is the region bounded by  \(  \displaystyle xy={@xy_1@} ,\,  xy= {@xy_2@} \, , y={@y_1@}\) and \(y={@y_2@}\) using the transformation  \(  \displaystyle {@xx@} , \,  {@yy@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept">NA</p>
+<p id="reviewer"></p>
+<p id="reviewer">Salvatore Mercuri</p>
+<p id="description">This is a question about evaluating a double integral using a change of variables. The student is asked to determine the transformation of the region and then evaluate the integral in the new coordinate system. </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>|</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans10</name>
+      <type>algebraic</type>
+      <tans>ta10</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint><![CDATA[?<=v and v<=?]]></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans11</name>
+      <type>matrix</type>
+      <tans>ta11</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans12</name>
+      <type>algebraic</type>
+      <tans>ta12</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans13</name>
+      <type>algebraic</type>
+      <tans>ta13</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta4</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>ta5</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>ta6</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7</name>
+      <type>algebraic</type>
+      <tans>ta7</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans8</name>
+      <type>algebraic</type>
+      <tans>ta8</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans9</name>
+      <type>algebraic</type>
+      <tans>ta9</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint><![CDATA[?<=u and u<=?]]></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt10</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans10</sans>
+        <tans>ta10</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt10-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt10-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt11</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans11</sans>
+        <tans>ta11</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt11-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt11-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt12</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans12</sans>
+        <tans>ta12</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt12-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt12-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt13</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans13</sans>
+        <tans>ta13</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt13-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt13-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>ta5</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt9</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans9</sans>
+        <tans>ta9</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt9-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt9-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1426402633</deployedseed>
+    <deployedseed>1329508223</deployedseed>
+    <deployedseed>784540694</deployedseed>
+    <deployedseed>2010743923</deployedseed>
+    <deployedseed>663262276</deployedseed>
+    <deployedseed>298734180</deployedseed>
+    <deployedseed>1997468648</deployedseed>
+    <deployedseed>333712019</deployedseed>
+    <deployedseed>2139879625</deployedseed>
+    <deployedseed>2047796510</deployedseed>
+    <deployedseed>1673008263</deployedseed>
+    <deployedseed>810004055</deployedseed>
+    <deployedseed>768202841</deployedseed>
+    <deployedseed>1271011408</deployedseed>
+    <deployedseed>1807145150</deployedseed>
+    <deployedseed>1343248050</deployedseed>
+    <deployedseed>596084185</deployedseed>
+    <deployedseed>877013381</deployedseed>
+    <deployedseed>234387389</deployedseed>
+    <deployedseed>1075421781</deployedseed>
+    <deployedseed>411947214</deployedseed>
+    <deployedseed>2006124259</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans10</name>
+        <value>ta10</value>
+      </testinput>
+      <testinput>
+        <name>ans11</name>
+        <value>ta11</value>
+      </testinput>
+      <testinput>
+        <name>ans12</name>
+        <value>ta12</value>
+      </testinput>
+      <testinput>
+        <name>ans13</name>
+        <value>ta13</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta3</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>ta4</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>ta5</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>ta6</value>
+      </testinput>
+      <testinput>
+        <name>ans7</name>
+        <value>ta7</value>
+      </testinput>
+      <testinput>
+        <name>ans8</name>
+        <value>ta8</value>
+      </testinput>
+      <testinput>
+        <name>ans9</name>
+        <value>ta9</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt10</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt10-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt11</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt11-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt12</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt12-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt13</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt13-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt9</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt9-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

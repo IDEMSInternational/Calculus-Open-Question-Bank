@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluate the Integral by substitution</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Find the antiderivative</p>
+<p>\(\displaystyle\int{@func@}\,d{@tt@}\)</p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Let us solve \(\displaystyle \int {@func@}\, d{@tt@}\) by substitution method.</p>
+<p>let \(u= \displaystyle {@us@} \)</p>
+<p>Differentiating \(u\) with respect to \({@tt@}\) yields to \(\frac{du}{d{@tt@}}={@bb@}\). Then \(d{@tt@}=\frac{du}{@bb@}\)</p>
+<p>Replacing \(u\) and \(d{@tt@}\) expressions into the original integral yields;</p>
+<p>\[ \displaystyle \int {@func@}\, d{@tt@} = \displaystyle \int {@func_u@}\, du = {@tas@} \]</p>
+
+<p>Substituting the expression corresponding to \(u\) into \( \displaystyle {@tas@}\) yields to:</p>
+<p>\[ \displaystyle \int {@func@}\, d{@tt@} = {@ta_1@} \]<br></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Random generating and calculating variables*/
+aa:rand(5)+1;
+bb:rand_with_prohib(-8,8,[0,1]);
+tt:rand([t,x,z]);
+power:rand(8)+9;
+func:(aa+bb*tt)^power;
+func_u:(1/bb)*((u)^power);
+
+/*substitution expressions*/
+us: aa+bb*tt;
+ss: int(u^power,du)
+ss:(u^(power+1))/(power+1)+c;
+
+ta_1:int(func,tt)+c;
+
+/*Worked solution*/
+tas:int(func_u,u)+c;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle\int{@func@}\,d{@tt@}={@ta_1@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">[Godfrey Wabwire]</p>
+<p id="reviewer">[Juma Zevick]</p>
+<p id="description">The question focuses on finding the antiderivative of indefinite Integral by u substitution</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checking for the correct answer*/
+/*node 2: mistake: Differentiating instead of integrating*/
+mistake_1: diff(func,tt);
+/*node 3: mistake: Giving your answer in U form instead of substituting back the integral*/
+mistake_2: (u^power+1)/(power+1);
+/*node 4: mistake: Forgetting the negative sign*/
+mistake_3:Forgetting the negative sign;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checking for the correct answer</description>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions>tt</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Differentiating instead of integrating</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have differentiated instead of integrating.
+Recall \(\displaystyle\intx^n\,d(tt)= \(\displaystyle\int^power+1/(power+ 1)+c \)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Giving your answer in U form instead of substituting back the integral</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have given your answer in u form without substituting the expression value of u
+Here is a hint:\((u^10)/(10)+c = (- (1-t))^10/(10)+c\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>264993618</deployedseed>
+    <deployedseed>83696098</deployedseed>
+    <deployedseed>254766782</deployedseed>
+    <deployedseed>280868512</deployedseed>
+    <deployedseed>372508203</deployedseed>
+    <deployedseed>797900657</deployedseed>
+    <deployedseed>1866720324</deployedseed>
+    <deployedseed>835382603</deployedseed>
+    <deployedseed>1763380629</deployedseed>
+    <deployedseed>1499252606</deployedseed>
+    <deployedseed>2016368817</deployedseed>
+    <deployedseed>1281282300</deployedseed>
+    <deployedseed>1175159626</deployedseed>
+    <deployedseed>279395867</deployedseed>
+    <deployedseed>746474869</deployedseed>
+    <deployedseed>1717948660</deployedseed>
+    <deployedseed>1412571089</deployedseed>
+    <deployedseed>1063170813</deployedseed>
+    <deployedseed>1558508640</deployedseed>
+    <deployedseed>2027884195</deployedseed>
+    <deployedseed>627366303</deployedseed>
+    <deployedseed>767626187</deployedseed>
+    <deployedseed>1177830332</deployedseed>
+    <deployedseed>720818768</deployedseed>
+    <deployedseed>1373323094</deployedseed>
+    <deployedseed>523484335</deployedseed>
+    <deployedseed>1481068036</deployedseed>
+    <deployedseed>1813617694</deployedseed>
+    <deployedseed>2133919011</deployedseed>
+    <deployedseed>811892198</deployedseed>
+    <deployedseed>864089591</deployedseed>
+    <deployedseed>1919406417</deployedseed>
+    <deployedseed>679058067</deployedseed>
+    <deployedseed>1459139691</deployedseed>
+    <deployedseed>457861302</deployedseed>
+    <deployedseed>1783096224</deployedseed>
+    <deployedseed>1574742537</deployedseed>
+    <deployedseed>499310801</deployedseed>
+    <deployedseed>1001631600</deployedseed>
+    <deployedseed>1576363742</deployedseed>
+    <deployedseed>1582874170</deployedseed>
+    <deployedseed>843607229</deployedseed>
+    <deployedseed>848879213</deployedseed>
+    <deployedseed>1404694230</deployedseed>
+    <deployedseed>1853016177</deployedseed>
+    <deployedseed>990331389</deployedseed>
+    <deployedseed>781187746</deployedseed>
+    <deployedseed>389639044</deployedseed>
+    <deployedseed>1408858063</deployedseed>
+    <deployedseed>261973256</deployedseed>
+    <deployedseed>1295553352</deployedseed>
+    <deployedseed>1201321002</deployedseed>
+    <deployedseed>1689916681</deployedseed>
+    <deployedseed>623784810</deployedseed>
+    <deployedseed>172933367</deployedseed>
+    <deployedseed>428906711</deployedseed>
+    <deployedseed>43944320</deployedseed>
+    <deployedseed>784138283</deployedseed>
+    <deployedseed>1067935765</deployedseed>
+    <deployedseed>2109485236</deployedseed>
+    <deployedseed>387049581</deployedseed>
+    <deployedseed>577822983</deployedseed>
+    <deployedseed>169973141</deployedseed>
+    <deployedseed>1640268715</deployedseed>
+    <deployedseed>497521294</deployedseed>
+    <deployedseed>71660655</deployedseed>
+    <deployedseed>575979146</deployedseed>
+    <deployedseed>980470816</deployedseed>
+    <deployedseed>951345752</deployedseed>
+    <deployedseed>8784478</deployedseed>
+    <deployedseed>1119938166</deployedseed>
+    <deployedseed>208952841</deployedseed>
+    <deployedseed>1927169519</deployedseed>
+    <deployedseed>915766716</deployedseed>
+    <deployedseed>1936559481</deployedseed>
+    <deployedseed>1169663416</deployedseed>
+    <deployedseed>1783359300</deployedseed>
+    <deployedseed>581585318</deployedseed>
+    <deployedseed>1570772108</deployedseed>
+    <deployedseed>382853237</deployedseed>
+    <deployedseed>212916684</deployedseed>
+    <deployedseed>1052114415</deployedseed>
+    <deployedseed>1199785306</deployedseed>
+    <deployedseed>385935490</deployedseed>
+    <deployedseed>1554591136</deployedseed>
+    <deployedseed>1766080520</deployedseed>
+    <deployedseed>1105248000</deployedseed>
+    <deployedseed>2013411639</deployedseed>
+    <deployedseed>1486575764</deployedseed>
+    <deployedseed>1285073129</deployedseed>
+    <deployedseed>1334123265</deployedseed>
+    <deployedseed>1800781446</deployedseed>
+    <deployedseed>50858284</deployedseed>
+    <deployedseed>1796172416</deployedseed>
+    <deployedseed>1006755512</deployedseed>
+    <deployedseed>335115954</deployedseed>
+    <deployedseed>2015618342</deployedseed>
+    <deployedseed>4126038</deployedseed>
+    <deployedseed>1915724970</deployedseed>
+    <deployedseed>765370302</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_1</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

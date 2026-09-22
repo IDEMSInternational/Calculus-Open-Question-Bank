@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Estimating Tangent Slope of Exponential Function</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>The slope of the tangent line to the graph of the exponential function \(y = {@fx@}\) at the point \(( {@point@}, {@y_cord@})\)  is \(\displaystyle \lim_{x \to {@point@}} {@df_point_x@}\). </p><p><strong>Note:</strong> Give the slope in exact form or correct to <strong>three</strong> decimal places.</p>
+<p>[[input:ans1]] [[validation:ans1]]</p><p>[[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To find the slope of the tangent line to the graph of \(y = {@fx@}\) at the point \(({@point@}, {@y_cord@})\), we need to compute the derivative of \({@fx@}\) at \({@var@} = {@point@}\). </p><p>The derivative \(f'(x)\) of a function \(f(x)\) at \(x = a\) is defined as:</p>
+
+<p>\[\displaystyle f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h} \]</p>
+
+<p>In this case, \( \displaystyle f({@var@}) = {@fx@}\) and \(a = {@point@}\):</p>
+
+<p>\[\displaystyle  f'({@point@}) = \lim_{h \to 0} \frac{{@fxh@} - {@fx@}}{h} = \lim_{h \to 0} {@df_point@} \]</p>
+
+<p>So, \( \displaystyle \lim_{{@var@} \to {@point@}} {@df_point_x@} \) is the derivative of \({@fx@}\) evaluated at \({@var@} = {@point@}\). </p><p>This limit represents the slope of the tangent line to the graph of \(y = {@fx@}\) at the point \(({@point@}, {@y_cord@})\).</p>
+
+<p>To find the slope of the tangent line to the graph of \( y = {@fx@} \) at the point \(({@point@}, {@y_cord@})\), we need to compute the limit \(\displaystyle \lim_{{@var@} \to {@point@}} {@df_point_x@}\).</p>
+
+<p>Let's apply L'Hôpital's rule, which is suitable for limits of the indeterminate form \(\displaystyle \frac{0}{0} \):</p>
+
+<ol>
+    <li>Evaluate the limit \( \displaystyle \lim_{{@var@} \to {@point@}} {@df_point_x@} \):</li>
+    <p>This is of the form \(\displaystyle  \frac{0}{0} \) as \( {@var@} \to {@point@}\).</p>
+
+    <li>Apply L'Hôpital's rule:</li>
+    <p>\[\displaystyle  \lim_{{@var@} \to {@point@}} {@df_point_x@} = \lim_{{@var@} \to {@point@}} \frac{\frac{d}{dx}\left({@num1@}\right)}{\frac{d}{dx}\left({@den1@}\right)} \]</p>
+
+    <p>Compute the derivatives:</p>
+    <ul>
+        <li>Derivative of \(\displaystyle  {@num1@} \) with respect to \( {@var@} \) is \( {@dnum@} \).</li>
+        <li>Derivative of \(\displaystyle  {@den1@} \) with respect to \( {@var@} \) is \( {@dden@} \).</li>
+    </ul>
+
+    <p>So, the limit becomes:</p>
+    <p>\[ \displaystyle \lim_{{@var@} \to {@point@}} \frac{{@dnum@}}{{@dden@}} = {@ta@} \]</p>
+</ol>
+
+<p>Therefore, the slope of the tangent line to the graph of \(\displaystyle  y = {@fx@} \) at the point \(({@point@}, {@y_cord@})\) is \( {@ta@} \).</p>
+
+<p>To estimate this slope to three decimal places:</p>
+<p>\[ \displaystyle {@ta@} \approx {@decimalplaces(ta,3)@} \]</p>
+
+<p>So, the slope of the tangent line to \(\displaystyle  y = {@fx@} \) at \( {@var@} = {@point@} \) is approximately \( {@decimalplaces(ta,3)@} \).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>var_list: [x, z, w, r, b, q, k,m,n];
+/* Randomly select a variable from the list */
+var: rand(var_list);
+base:rand(10)+2; /*the base of the exponential*/
+const:1; /*coefficent of x*/
+point:0; /*limit point*/
+y_cord:rand(4)+1;
+fx:base^(var*const); /*the function*/
+fxh:base^(var*const+h);
+/* Define the function to compute the difference quotient */
+num: fxh-fx; /*numerator*/
+den:h; /*denominator*/
+df:num/den;
+df_point:at(df,[var=point]);
+df_point_x:at(df_point,[h=var]);
+num1:num(df_point_x);
+den1:denom(df_point_x);
+dnum:diff(num1,var); /*derivative of the numerator */
+dden:diff(den1,var); /*derivative of the denominator */
+
+ta:at(dnum, [var=point])/at(dden, [var=point]); /*Model answer*/</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>The exponential function \(y = {@fx@}\) at the point \(( {@point@}, {@y_cord@})\)  is \(\displaystyle \lim_{{@var@} \to {@point@}} {@df_point_x@}= \displaystyle \lim_{{@var@} \to {@point@}} \frac{{@num1@}}{{@den1@}}={@ta@} \approx {@decimalplaces(ta,3)@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p><p>
+</p><p id="concept">https://docs.google.com/document/d/1FinNy6siB7_G6DNE2Vhj-c4QIMLRY0qilDMgMsnQ8jc/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">[2]</p>
+<p id="description">This task involves estimating the slope of the tangent line to the graph of the given exponential function at a given point . The slope is approximated by evaluating a limit that represents the derivative , providing insight into the instantaneous rate of change of the function at that point. </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct slope of the tangent</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for correct slope of the tangent correct to 3dp</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>3</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>850636112</deployedseed>
+    <deployedseed>1236118440</deployedseed>
+    <deployedseed>1735298452</deployedseed>
+    <deployedseed>2137195243</deployedseed>
+    <deployedseed>177073584</deployedseed>
+    <deployedseed>1382934532</deployedseed>
+    <deployedseed>1431800601</deployedseed>
+    <deployedseed>222699755</deployedseed>
+    <deployedseed>932697192</deployedseed>
+    <deployedseed>2062663513</deployedseed>
+    <deployedseed>853621625</deployedseed>
+    <deployedseed>1748896237</deployedseed>
+    <deployedseed>124404165</deployedseed>
+    <deployedseed>1395815296</deployedseed>
+    <deployedseed>2039538770</deployedseed>
+    <deployedseed>335277052</deployedseed>
+    <deployedseed>871305038</deployedseed>
+    <deployedseed>1921247530</deployedseed>
+    <deployedseed>597204090</deployedseed>
+    <deployedseed>1342209856</deployedseed>
+    <deployedseed>624079852</deployedseed>
+    <deployedseed>1532182164</deployedseed>
+    <deployedseed>1568394107</deployedseed>
+    <deployedseed>387009702</deployedseed>
+    <deployedseed>751711796</deployedseed>
+    <deployedseed>458985505</deployedseed>
+    <deployedseed>1916746474</deployedseed>
+    <deployedseed>1765580676</deployedseed>
+    <deployedseed>1954415414</deployedseed>
+    <deployedseed>1462302906</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

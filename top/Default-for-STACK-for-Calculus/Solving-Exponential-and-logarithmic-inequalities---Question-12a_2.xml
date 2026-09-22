@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Solving Exponential and logarithmic inequalities - Question 12a</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p> Solve for \(x\) in the inequality \(\displaystyle {@lhs_const*e^(power*x)@} < {@rhs_const@}\)</p>
+<p><b>Note</b>: Give your answer correct to \(2\) decimal places.</p>
+<p>\(x< \)[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To solve the inequality \({@func@}\) we proceed as follows;</p>
+<p>\(\begin{align}
+\displaystyle {@lhs_const*e^(power*x)@} < {@rhs_const@}\\
+&={@e^(power*x)@} < {@rhs_const/lhs_const@}\\
+&={@log(e^(power*x))@} <{@log(rhs_const/lhs_const)@}\\
+&=x < \displaystyle \frac{{@log(rhs_const/lhs_const)@}}{{@power@}}\\
+\end{align}\)</p>
+<p>Calculating \(\displaystyle \frac{{@log(rhs_const/lhs_const)@}}{{@power@}}\) to two decimalplaces,</p>
+<p>\(\displaystyle \frac{{@log(rhs_const/lhs_const)@}}{{@power@}}\approx {@ta1@}\)</p>
+<p>Therefore,</p>
+<p>\(x< {@ta1@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*exponential inequalities*/
+rhs_const:rand_with_step(8,40,2);/*constant before the exponentail*/
+lhs_const:rand_with_step(2,20,2)+2;/*constant after the inequality sign*/
+power:rand(5)+5;
+func:lhs_const*e^(power*x)< rhs_const;
+/*worked soln variables*/
+sol1:e^(power*x)<(rhs_const/lhs_const);
+sol2:log(e^(power*x))<log((rhs_const/lhs_const));
+sol3:x=log((rhs_const/lhs_const))/power;
+sol4:float(rhs(sol3));
+/*determining decimalplaces*/
+round_dp_n(float_number, decimal_places) :=
+  block(
+    [rounded_number: floor(float_number * 10^decimal_places + 0.5)],
+    float(rounded_number / 10^decimal_places)
+  );
+ta1:round_dp_n(sol4,2);
+exact_form: rhs(sol3);
+frac:rat(ta1);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle {@lhs_const*e^(power*x)@} < {@rhs_const@}\)</p>
+<p>\(x<{@ta1@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">https://docs.google.com/document/d/1-0V2TbnP7qT6tqepxe5DeFEbFqVlsvtz6d4VSfMik9s/edit</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">This question involves solving various inequalities involving exponential and logarithmic functions for the variable \( x \). The inequalities include both simple and compound expressions, requiring the application of properties of exponentials and logarithms to find the solution intervals for \( x \).</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans1</sans>
+        <tans>sol4</tans>
+        <testoptions>2</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>checks if the answer is in exact form</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>exact_form</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is not correct because it's not a float of up to \(2\) decimalplaces</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1312578322</deployedseed>
+    <deployedseed>1380597677</deployedseed>
+    <deployedseed>655612785</deployedseed>
+    <deployedseed>1572422063</deployedseed>
+    <deployedseed>2067960692</deployedseed>
+    <deployedseed>723515656</deployedseed>
+    <deployedseed>1827492152</deployedseed>
+    <deployedseed>686197859</deployedseed>
+    <deployedseed>1146244907</deployedseed>
+    <deployedseed>1460156610</deployedseed>
+    <deployedseed>1263949753</deployedseed>
+    <deployedseed>771838760</deployedseed>
+    <deployedseed>308597776</deployedseed>
+    <deployedseed>162968686</deployedseed>
+    <deployedseed>1605347918</deployedseed>
+    <deployedseed>1686902678</deployedseed>
+    <deployedseed>1403655157</deployedseed>
+    <deployedseed>1860189999</deployedseed>
+    <deployedseed>1963482001</deployedseed>
+    <deployedseed>1430629364</deployedseed>
+    <deployedseed>413231074</deployedseed>
+    <deployedseed>736156965</deployedseed>
+    <deployedseed>2083273832</deployedseed>
+    <deployedseed>1508874701</deployedseed>
+    <deployedseed>757210453</deployedseed>
+    <deployedseed>103166194</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

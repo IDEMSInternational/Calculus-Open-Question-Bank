@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Finding Inverses of Functions_9(ii)</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the inverse of the function \(g(x)={@func@}\) </p>
+<p><b>Hint:</b> \(\ln\) can be typed as <code> log</code></p>
+<p>\(g^{-1}(x)=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>To find the inverse of the function \(g(x)={@func@}\), we proceed as follows</p>
+<p>Replace \(g(x)\) with \(y\)</p>
+<p>\(\begin{align}
+&y={@func@}\\
+&\displaystyle \frac{y}{{@coeff_log@}}={@log(coeff_x*x+const)@}\\
+&{@%e^(y/coeff_log)@}={@coeff_x*x+const@}\\
+\end{align}\)</p>
+<p>Solving for \(x\)</p>
+<p>\(\begin{align}
+&{@coeff_x*x+const@}={@%e^(y/coeff_log)@}\\
+&{@coeff_x*x@}={@%e^(y/coeff_log)-const@}\\
+&x=\displaystyle \frac{{@%e^(y/coeff_log)-const@}}{{@coeff_x@}}\\
+\end{align}\)</p>
+<p>Replace \(y\) with \(x\) to find the inverse function</p>
+<p>\(y=\displaystyle \frac{{@%e^(x/coeff_log)-const@}}{{@coeff_x@}}\)</p>
+<p>Thus the inverse \(g^{-1}(x)=\displaystyle \frac{{@%e^(x/coeff_log)-const@}}{{@coeff_x@}}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*finding inverses*/
+coeff_log:rand(5)+5;
+coeff_x:rand(6)+4;
+const:rand(3)+6;
+func:coeff_log*log(coeff_x*x+const);
+/*worked soln variables*/
+sol1:x=coeff*log(coeff_x*y+const);
+sol2:x/coeff_log=log(coeff_x*y+const);/*introduce exponential*/
+sol3:%e^(x/coeff_log)=coeff_x*y+const;
+sol4:(%e^(x/coeff_log)-const)/coeff_x;/*finding y*/</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(g(x)={@func@}\) </p>
+<p>\(g^{-1}(x)={@sol4@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p><p>
+</p><p id="concept">https://docs.google.com/document/d/1LTgQPWKiqQbYDCsHZYtPSScGwHo3kvlmQ8fZZS5rqmU/edit</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">2</p>
+<p id="description">This question requires the  student to find the inverse of a given  function that involves \( \ln(x) \) . </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>sol4</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>sol4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>457584372</deployedseed>
+    <deployedseed>1738841129</deployedseed>
+    <deployedseed>1174933476</deployedseed>
+    <deployedseed>597193437</deployedseed>
+    <deployedseed>512513348</deployedseed>
+    <deployedseed>1346096092</deployedseed>
+    <deployedseed>2070299577</deployedseed>
+    <deployedseed>137440456</deployedseed>
+    <deployedseed>305571991</deployedseed>
+    <deployedseed>219565493</deployedseed>
+    <deployedseed>1989051242</deployedseed>
+    <deployedseed>1650236865</deployedseed>
+    <deployedseed>2085229312</deployedseed>
+    <deployedseed>421142817</deployedseed>
+    <deployedseed>2043305642</deployedseed>
+    <deployedseed>2037655408</deployedseed>
+    <deployedseed>1957213616</deployedseed>
+    <deployedseed>2011575589</deployedseed>
+    <deployedseed>1477651390</deployedseed>
+    <deployedseed>1979491297</deployedseed>
+    <deployedseed>1009246480</deployedseed>
+    <deployedseed>1291423058</deployedseed>
+    <deployedseed>1720673923</deployedseed>
+    <deployedseed>945456148</deployedseed>
+    <deployedseed>1239818827</deployedseed>
+    <deployedseed>896330491</deployedseed>
+    <deployedseed>588086982</deployedseed>
+    <deployedseed>1824822075</deployedseed>
+    <deployedseed>931483499</deployedseed>
+    <deployedseed>1766873818</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>sol4</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

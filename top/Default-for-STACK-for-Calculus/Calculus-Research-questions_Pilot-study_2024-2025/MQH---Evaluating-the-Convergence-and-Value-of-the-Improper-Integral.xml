@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>MQH - Evaluating the Convergence and Value of the Improper Integral</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Evaluate the integral below and determine if it converges or diverges. 
+</p>
+<p>Note: \( \infty\) is entered as <b>inf</b> and \( -\infty\) is entered as <b>minf</b>.</p>
+<p>\(\displaystyle \int_{{@lower_lm@}}^{{@upper_lm@}}{@fx@}\,dx=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+<p>Therefore, the integral is [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>Recall that we can’t evaluate the integral as long as there is an infinity in one of the limits. Therefore, we’ll need to replace infinity with a parameter \(t\) as follows,
+</p>
+<p>The given improper integral is</p>
+
+<p>
+\(\displaystyle  I = \int_{@lower_lm@}^{{@upper_lm@}}{@fx@} \, dx. \)
+</p>
+
+<p>We will first evaluate whether the integral converges or diverges by finding the limit of the integral as \( t \to \infty \):</p>
+
+<p>
+\( \displaystyle I =  \int_{@lower_lm@}^{{@b@}}{@fx@} \, dx. \)
+</p>
+
+<p>The antiderivative of \(\displaystyle {@fx@}  \) is:</p>
+
+<p>
+\(\displaystyle  \int {@fx@} \, dx = {@indef_int@} \)
+</p>
+
+<p>Now, evaluate the integral from \( {@lower_lm@} \) to \( t\):</p>
+
+<p>
+\(\displaystyle  I(t) = \left[  {@indef_int@} \right]_ {@lower_lm@}^t = {@indef_val@}\)
+</p>
+
+<p>Take the limit as \( t \to \infty \)</p>
+
+<p>
+\(\displaystyle  I = \lim_{t \to \infty} \left( {@indef_val@}\right) = {@def_integral@} \)
+</p>
+
+<p>The improper integral is {@mcq_correct(ta_4)[1]@}, and its exact value is \( \boxed{{@def_integral@}} \).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* Define the constants and variables */
+num:rand(10)+1;
+power:rand(5)+2;
+upper_lm:inf;
+lower_lm:rand(5)+1;
+limit_pt:t;
+den:x^power;
+fx : num/den;
+
+/* Compute the indefinite integral */
+indef_int: int(fx, x);
+
+/* Compute the definite integral from 1 to t */
+upper:at(indef_int,x=limit_pt);
+lower:at(indef_int,x=lower_lm);
+indef_val: upper-lower;
+
+/* Compute the definite integral from 1 to infinity */
+def_integral: limit(indef_val, limit_pt, inf);
+
+/*Model answers*/
+ta_1: limit(indef_val, limit_pt, inf);
+ta_2:if ta_1=upper_lm then "Divergent" elseif ta_1=minf then "Divergent" else"Convergent";
+ta_3:if ta_2="Divergent" then "Convergent" else "Divergent";
+ta_4:random_permutation([[ta_2, true],[ta_3, false],["Divergent and convergent", false]]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Evaluate the integral below and determine if it converges or diverges.</p>
+<p>\(\displaystyle\int_{{@lower_lm@}}^{{@upper_lm@}}{@fx@}\,dx={@ta_1@}\)</p>
+<p>Therefore, the integral is {@mcq_correct(ta_4)[1]@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/A</p>
+<p id="reviewer">1</p>
+<p id="reviewer">2</p>
+<p id="description">The question focuses on evaluating an Integral  into Inverse Trigonometric function by substitution by a defined formula</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>dropdown</type>
+      <tans>ta_4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for correct answers*/
+
+/*node 2:Calculating the integral as F(a)-F(b) instead of F(b)-F(a)*/
+mistake_1:int(fx,upper_lm, lower_lm) ;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You calculated the value of the integral in a wrong format \(F(a)-F(b)\),instead of \(F(b)-F(a)\)</p>
+<p>Hint: Check the worked out solution</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mcq_correct(ta_4)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>520111421</deployedseed>
+    <deployedseed>1730022432</deployedseed>
+    <deployedseed>392992338</deployedseed>
+    <deployedseed>2106026170</deployedseed>
+    <deployedseed>1655802434</deployedseed>
+    <deployedseed>1173700416</deployedseed>
+    <deployedseed>1929933520</deployedseed>
+    <deployedseed>1749024360</deployedseed>
+    <deployedseed>1959743812</deployedseed>
+    <deployedseed>1257970512</deployedseed>
+    <deployedseed>864306730</deployedseed>
+    <deployedseed>1628128377</deployedseed>
+    <deployedseed>1209968803</deployedseed>
+    <deployedseed>236173587</deployedseed>
+    <deployedseed>1081772027</deployedseed>
+    <deployedseed>128996711</deployedseed>
+    <deployedseed>1504728500</deployedseed>
+    <deployedseed>60521317</deployedseed>
+    <deployedseed>356992224</deployedseed>
+    <deployedseed>1473971307</deployedseed>
+    <deployedseed>837978684</deployedseed>
+    <deployedseed>1238410704</deployedseed>
+    <deployedseed>1542058202</deployedseed>
+    <deployedseed>2128827445</deployedseed>
+    <deployedseed>1953803961</deployedseed>
+    <deployedseed>1864475807</deployedseed>
+    <deployedseed>615085227</deployedseed>
+    <deployedseed>461197240</deployedseed>
+    <deployedseed>81616282</deployedseed>
+    <deployedseed>648157353</deployedseed>
+    <deployedseed>754080688</deployedseed>
+    <deployedseed>1117727109</deployedseed>
+    <deployedseed>1802842760</deployedseed>
+    <deployedseed>2015138390</deployedseed>
+    <deployedseed>1921324635</deployedseed>
+    <deployedseed>497940549</deployedseed>
+    <deployedseed>689429745</deployedseed>
+    <deployedseed>1070950475</deployedseed>
+    <deployedseed>1822872537</deployedseed>
+    <deployedseed>1060081553</deployedseed>
+    <deployedseed>1747072416</deployedseed>
+    <deployedseed>1576936051</deployedseed>
+    <deployedseed>1380428879</deployedseed>
+    <deployedseed>1026038802</deployedseed>
+    <deployedseed>817266571</deployedseed>
+    <deployedseed>2085823376</deployedseed>
+    <deployedseed>272122292</deployedseed>
+    <deployedseed>1309718354</deployedseed>
+    <deployedseed>2066817853</deployedseed>
+    <deployedseed>1403987388</deployedseed>
+    <deployedseed>757967920</deployedseed>
+    <deployedseed>1176219232</deployedseed>
+    <deployedseed>593919790</deployedseed>
+    <deployedseed>2025411806</deployedseed>
+    <deployedseed>977055744</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>first(mcq_correct(ta2))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <hint format="html">
+      <text><![CDATA[<p>Start by recognizing the form of the integrand.</p>
+<p>Recall that we can’t evaluate the integral as long as there is an infinity in one of the limits. Therefore, we’ll need to replace infinity with a parameter \( t \) as follows:</p>
+ <p>The given improper integral is</p> 
+<p> \(\displaystyle I = \int_{@lower_lm@}^{@upper_lm@} {@fx@} \, dx. \) </p>
+ <p>We will first evaluate whether the integral converges or diverges by finding the limit of the integral as \( t \to \infty \):</p> <p> \(\displaystyle I = \int_{@lower_lm@}^{t} {@fx@} \, dx. \) </p>
+<p>The function \( {@num@}e^{{@-x^power/den@}} \) is an exponential function. Recall that the integral of an exponential function of the form \( e^{ax} \) is:</p>
+<p>
+\(\displaystyle 
+\int e^{ax} \, dx = \frac{1}{a} e^{ax} + C
+\)
+</p>]]></text>
+    </hint>
+  </question>
+</quiz>

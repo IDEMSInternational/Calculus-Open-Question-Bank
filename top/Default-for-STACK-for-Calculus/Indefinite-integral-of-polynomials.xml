@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Indefinite integral of polynomials</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Find the antiderivative of the function \( \displaystyle f(x)= {@f_t@}\)</p>
+<p>\(\displaystyle F(x) = \) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>Suppose we have a function of the form \( \displaystyle f(x)=x^{n}\), its antiderivative can be computed as,</p>
+<p> \(  \displaystyle  \int x^n\, dx=\frac{x^{n+1}}{n+1}+c\), where \(\ c\) is the constant of integration</p>
+<p>Therefore, the antiderivative of \(  \displaystyle {@f_t@}\) will be,</p>
+<p>\(  \displaystyle  \int {@f_t@}\, dt = {@ta@} \)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*randomizing the static question variables*/
+aa:1+rand(5); /*variable aa is a random number between 1 to 6-coefficient of t*/
+bb:2+rand(5); /*variable bb is a random number between 2 to 7-power of t*/
+cc:rand(5)+1; /*variable cc is a random number between 1 to 5 - sum it to the others */
+f_t: aa*t^(bb)+cc; /*function expression*/
+
+ta:int(f_t,t)+c; /*model answer*/
+
+mistake_1_n2:int(f_t,t);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\(\int{@f_t@} dt={@ta@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">[N/A]</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">[Juma Zevick]</p>
+<p id="description">[Given a rational  function find its antiderivative with respect to t ]</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1 checking for the correct answer*/
+
+/*node 2 checking if a student dropped the constant of integration*/
+mistake_1_n2:int(f_t,t);
+</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>t</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks if a student dropped the constant of integration</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1_n2</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have dropped the constant of integration. Otherwise your computation is corect.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>291325490</deployedseed>
+    <deployedseed>1451612284</deployedseed>
+    <deployedseed>153245730</deployedseed>
+    <deployedseed>126121413</deployedseed>
+    <deployedseed>195530853</deployedseed>
+    <deployedseed>818840762</deployedseed>
+    <deployedseed>554446305</deployedseed>
+    <deployedseed>1864574139</deployedseed>
+    <deployedseed>173579950</deployedseed>
+    <deployedseed>2083265145</deployedseed>
+    <deployedseed>435790990</deployedseed>
+    <deployedseed>41210588</deployedseed>
+    <deployedseed>793462192</deployedseed>
+    <deployedseed>1553852413</deployedseed>
+    <deployedseed>1653235636</deployedseed>
+    <deployedseed>1490506673</deployedseed>
+    <deployedseed>2084617257</deployedseed>
+    <deployedseed>999967392</deployedseed>
+    <deployedseed>454246637</deployedseed>
+    <deployedseed>441132590</deployedseed>
+    <deployedseed>384644082</deployedseed>
+    <deployedseed>665725750</deployedseed>
+    <deployedseed>1960435902</deployedseed>
+    <deployedseed>956822810</deployedseed>
+    <deployedseed>1642309285</deployedseed>
+    <deployedseed>1303429610</deployedseed>
+    <deployedseed>1656082051</deployedseed>
+    <deployedseed>1871330545</deployedseed>
+    <deployedseed>503887859</deployedseed>
+    <deployedseed>950975902</deployedseed>
+    <deployedseed>922926677</deployedseed>
+    <deployedseed>1341677241</deployedseed>
+    <deployedseed>1807250478</deployedseed>
+    <deployedseed>150824692</deployedseed>
+    <deployedseed>1507414368</deployedseed>
+    <deployedseed>942802894</deployedseed>
+    <deployedseed>670406775</deployedseed>
+    <deployedseed>2087272850</deployedseed>
+    <deployedseed>2040435082</deployedseed>
+    <deployedseed>1095065596</deployedseed>
+    <deployedseed>1127499903</deployedseed>
+    <deployedseed>924384881</deployedseed>
+    <deployedseed>193840063</deployedseed>
+    <deployedseed>2102535628</deployedseed>
+    <deployedseed>1278752276</deployedseed>
+    <deployedseed>994860100</deployedseed>
+    <deployedseed>708714053</deployedseed>
+    <deployedseed>796467155</deployedseed>
+    <deployedseed>1186759796</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>mistake_1_n2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>0.5000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>prt1-2-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

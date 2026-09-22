@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Finding Inverses of Functions_9(iii)</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the inverse of the function \(\displaystyle h(x)= {@quest_func@}\) </p>
+<p><b>Note:</b> \(\ln\) can be typed as <code> log</code></p>
+
+<p>\(h^{-1}(x)=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>To find the inverse of the function \(h(x)=\displaystyle {@quest_func@}\), we proceed as follows;</p>
+<p>Replace \(h(x)\) with \(y\)</p>
+<p>\(\begin{align}
+y=\displaystyle {@quest_func@}\\
+&y({@const_3-const_4*%e^x@})={@const_1+const_2*%e^x@}\\
+&{@(const_3*y-y*const_4*%e^x)@}={@const_1+const_2*%e^x@}\\
+&{@const_3*y-const_1@}={@const_2*%e^x+y*const_4*%e^x@}\\
+&{@const_3*y-const_1@}=e^x({@const_2+y*const_4@})\\
+&\displaystyle \frac{{@const_3*y-const_1@}}{{@const_2+y*const_4@}}=e^x\\
+\end{align}\)
+</p>
+<p>Rearranging, we have</p>
+<p>\(\begin{align}
+&e^x=\displaystyle \frac{{@const_3*y-const_1@}}{{@const_2+y*const_4@}}\\
+&x={@log@} \displaystyle \left ( \frac{{@const_3*y-const_1@}}{{@const_2+y*const_4@}}\right )\\
+\end{align}\)</p>
+<p>Replacing \(y\) with \(x\) to find the inverse we have;</p>
+<p>\(y={@log@} \displaystyle \left ( \frac{{@const_3*x-const_1@}}{{@const_2+x*const_4@}}\right )\)</p>
+<p>Therefore, the inverse of the function \(h(x)\) is</p>
+<p>\(h^{-1}(x)={@log@} \displaystyle \left ( \frac{{@const_3*x-const_1@}}{{@const_2+x*const_4@}}\right )\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*finding the questions variables*/
+const_1:rand(2)+2;
+const_2:rand(5)+5;
+const_3:rand(4)+const_1;
+const_4:const_3+const_1;
+quest_func:(const_1+const_2*%e^x)/(const_3-const_4*%e^x);
+
+/*worked solution variables*/
+sol1:x=(const_1+const_2*%e^y)/(const_3-const_4*%e^y);
+sol2:x*(const_3-const_4*%e^y)=(const_1+const_2*%e^y);
+sol3:x*const_3-const_4*%e^y*x=const_1+const_2*%e^y;
+sol4:const_2*%e^y+const_4*%e^y*x=x*const_3-const_1;
+sol5:%e^y*(const_2+const_4*x)=x*const_3-const_1;
+sol6:%e^y=(x*const_3-const_1)/(const_2+const_4*x);
+sol_y:log((x*const_3-const_1)/(const_2+const_4*x));</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(h(x)={@quest_func@}\) </p>
+<p>\(h^{-1}(x)=\displaystyle{@sol_y@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p><p>
+</p><p id="concept">https://docs.google.com/document/d/1LTgQPWKiqQbYDCsHZYtPSScGwHo3kvlmQ8fZZS5rqmU/edit</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">2</p>
+<p id="description">This question requires the  student to find the inverse of a given  function that involves \( \ln(x) \) . </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>sol_y</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the inverse</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>sol_y</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1092671949</deployedseed>
+    <deployedseed>2000137934</deployedseed>
+    <deployedseed>366533603</deployedseed>
+    <deployedseed>581786292</deployedseed>
+    <deployedseed>1648582803</deployedseed>
+    <deployedseed>1505382998</deployedseed>
+    <deployedseed>1245105727</deployedseed>
+    <deployedseed>17888363</deployedseed>
+    <deployedseed>1201673579</deployedseed>
+    <deployedseed>1496545591</deployedseed>
+    <deployedseed>374178471</deployedseed>
+    <deployedseed>578591345</deployedseed>
+    <deployedseed>380406748</deployedseed>
+    <deployedseed>142501137</deployedseed>
+    <deployedseed>215670459</deployedseed>
+    <deployedseed>460657339</deployedseed>
+    <deployedseed>1549156279</deployedseed>
+    <deployedseed>1678922337</deployedseed>
+    <deployedseed>176459286</deployedseed>
+    <deployedseed>1209931498</deployedseed>
+    <deployedseed>1145980956</deployedseed>
+    <deployedseed>897817087</deployedseed>
+    <deployedseed>560810788</deployedseed>
+    <deployedseed>1533906797</deployedseed>
+    <deployedseed>328148547</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>sol_y</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

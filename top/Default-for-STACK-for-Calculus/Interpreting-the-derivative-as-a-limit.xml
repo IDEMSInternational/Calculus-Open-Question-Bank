@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Interpreting the derivative as a limit</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Which of the following is equal to \(f'({@lim_point@})\) for \(f(x)={@func@}\)</p>
+<p>[[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To find the derivative of the function \(f(x) = {@func@}\) at a specific point, \(x = {@lim_point@}\), we can use the limit definition of a derivative (the difference quotient). </p>
+<p>The formula for finding the derivative of a function \(f(x)\) at a point \(x = a\) is given by:</p>
+<p style="margin-left:30px">\( \displaystyle f'(a) = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}\)</p>
+
+<p>In this case, we want to find \( \displaystyle f'({@lim_point@})\), so \(a = {@lim_point@}\). Therefore, we have:</p>
+
+<p style="margin-left:30px">\( \displaystyle  f'({@lim_point@}) = \lim_{h \to 0} \frac{f({@lim_point@} + h) - f({@lim_point@})}{h}\)</p>
+
+<p>Now, plug in the function \(f(x) = {@func@}\):</p>
+
+<p style="margin-left:30px">\( \displaystyle  f'({@lim_point@}) = \lim_{h \to 0} \frac{{@func_coeff@}({@lim_point@} + h)^{@func_power@} - {@func_coeff@}({@lim_point@})^{@func_power@}}{h}\)</p>
+
+<p>Now, simplify the expression inside the limit:</p>
+<p style="margin-left:30px">
+\(  \begin{align*}
+\displaystyle f'({@lim_point@}) &=  \lim_{h \to 0} \frac{{@func_coeff@}({@lim_point@} + h)^{@func_power@} -{@num_right@}}{h} \\ 
+&= \lim_{h \to 0} \frac{{@func_coeff@}({@num_left@}) - {@num_right@}}{h}  \\
+&= \lim_{h \to 0} \frac{{@num_left1@} - {@num_right@}}{h} \\
+&= \lim_{h \to 0} \frac{{@func_num@}}{h} \\
+&= \lim_{h \to 0} \frac{{@func_num_simp@}}{h} \\
+&= \lim_{h \to 0} {@func_num_simp1@} 
+\end{align*}
+\)
+</p>
+
+<p>Now, you can evaluate the limit as \(h\) approaches \(0\):</p>
+
+<p style="margin-left:30px">\(\displaystyle f'({@lim_point@}) = {@correct_limit@} \)</p>
+
+<p>So, \( \displaystyle f'({@lim_point@}) = {@correct_limit@}\). This is the derivative of the function \( \displaystyle f(x) = {@func@}\) at \(x = {@lim_point@}\), as found using the limit definition of a derivative.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[func_coeff: rand(8)+3;
+func_power: rand(5)+2;
+
+func: func_coeff*x^func_power;
+lim_point: rand(4)+2;
+
+corr_ans: [1, true, sconcat("\\(\\displaystyle \\lim_{h \\rightarrow 0} \\frac{", func_coeff, (lim_point + h)^func_power, "-", func_coeff*lim_point^func_power, "}{h} \\)")];
+
+/* wrong answers */
+/* 2: leaves x in the second term of the numerator */
+/* 3: leaves x in the first term of the numerator */
+/* 4: leaves x both terms in the numerator */
+/* 5: brings power inside brackets for first term in numerator */
+/* 6: takes h to the wrong limit */
+
+incorr_ans: rand_selection([
+
+[2, false, sconcat("\\(\\displaystyle \\lim_{h \\rightarrow 0} \\frac{", func_coeff, (lim_point + h)^func_power, "-", func_coeff, x^func_power, "}{h} \\)")],
+
+[3, false, sconcat("\\(\\displaystyle \\lim_{h \\rightarrow 0} \\frac{", func_coeff, (x + h)^func_power, "-", func_coeff*lim_point^func_power, "}{h} \\)")],
+
+[4, false, sconcat("\\(\\displaystyle \\lim_{h \\rightarrow 0} \\frac{", func_coeff, (x + h)^func_power, "-", func_coeff, x^func_power, "}{h} \\)")],
+
+[5, false, sconcat("\\(\\displaystyle \\lim_{h \\rightarrow 0} \\frac{", func_coeff, "(", lim_point + h^func_power, ")", "-", func_coeff*lim_point^func_power, "}{h} \\)")],
+
+[6, false, sconcat("\\(\\displaystyle \\lim_{h \\rightarrow", lim_point, "} \\frac{", func_coeff, (lim_point + h)^func_power, "-", func_coeff*lim_point^func_power, "}{h} \\)")]
+
+], 3);
+
+ma: random_permutation(append([corr_ans], incorr_ans));
+
+/*worked solution */
+num_left: expand((lim_point + h)^func_power); 
+num_left1: expand(func_coeff*num_left); 
+num_right:func_coeff*(lim_point)^func_power;
+func_num:num_left1-num_right;
+func_num_simp:factor(func_num);
+func_num_simp1:expand(func_num_simp/h); 
+/* Calculate the limit as h approaches 0 */
+coef:coeff(func_num_simp1,h,0);
+coef:coeff(func_num_simp1,h,1); 
+correct_limit:limit(func_num_simp1, h, 0); ]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Which of the following is equal to \(f'({@lim_point@})\) for \(f(x)={@func@}\)</p>
+<p>\(\lim_{h \rightarrow 0} \frac{{@func_coeff*(lim_point + h)^func_power@} - {@func_coeff*lim_point^func_power@}}{h} \)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">[N/A]</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">Dan Kelly</p>
+<p id="description">Interpreting the derivative as a limit involves understanding how, mathematically, the derivative of a function \( f(x) \) at a point \( x = a \) is defined as \( f'(a) = \lim_{{h \to 0}} \frac{{f(a + h) - f(a)}}{h} \), capturing the instantaneous rate of change as the change in \( x \) (represented by \( h \)) approaches zero.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ma</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>The formula for finding the derivative of a function \(f(x)\) at a point \(x = a\) is given by:</p>
+<p style="margin-left:30px">\( \displaystyle f'(a) = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}\)</p>
+<p>In this case, we want to find \( \displaystyle f'({@lim_point@})\), so \(a = {@lim_point@}\). Therefore, we have:</p>
+<p style="margin-left:30px">\( 
+\displaystyle f(x)={@func@} \\
+\displaystyle f'({@lim_point@})=  \lim_{h \rightarrow 0} \frac{{@func_coeff*(lim_point + h)^func_power@} - {@func_coeff*lim_point^func_power@}}{h} \)</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>25610733</deployedseed>
+    <deployedseed>1636168159</deployedseed>
+    <deployedseed>1446789663</deployedseed>
+    <deployedseed>435813145</deployedseed>
+    <deployedseed>1165235720</deployedseed>
+    <deployedseed>286480389</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>first(mcq_correct(ta))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

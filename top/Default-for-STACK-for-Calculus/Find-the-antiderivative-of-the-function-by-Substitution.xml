@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Find the antiderivative of the function by Substitution</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Find the antiderivative of the function \(\displaystyle\int{@f_x@}dx\) by substitution</span><strong></strong>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Worked out solution</p>
+<p> Recall that inorder to find the integral of a function using u-substitution, the function needs to be in the form \(\displaystyle\int\) \(f(g(x))g'(x)dx\), where \(g'(x)\) is the derivative of \(g(x)\)</p>
+
+<p>From here we can easily carry out \(u\)-substitution and then integrate \(f(u)\) using the power rule. So, </p>
+<p> Let \(u\)= {@var@}, \(du = {@diff_var@}, dx=\frac{-du}{@aa*xx@}\)</p>
+<p>Substituting for u we get:</p>
+<p> \(\displaystyle\int{@f_x@}dx\)= \(\displaystyle\int {@xx@}(u^{@1/power@}) \frac{-du}{@aa*xx@}\) </p>
+<p>= \(\displaystyle\int (u^{@1/power@}) \frac{-{@xx@}du}{@aa*xx@}\) </p>
+<p>= \(\displaystyle\int (u^{@1/power@}) \frac{-du}{@aa@}\) </p>
+<p>= \( \frac{-1}{@aa@} \displaystyle\int (u^{@1/power@}) du \) </p>
+<p>= \( \frac{-1}{@aa@}[{@int_u@}+c]\) </p> <br>
+<p> But \(u\)= {@var@}, therefore we need to plug u back into the equation and simplify to get:</p>
+<p>\( \frac{-1}{@aa@}[{@int_u@}+c]\)={@ta_1@} </p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining the question*/
+constant:rand(100)+50; /*random number for the constant*/
+power:rand(8)+2; /*random value of n outside the root sign*/
+
+aa:2+rand(5);/*power of x*/
+var:constant-x^(aa);
+xx:x^(aa-1);
+f_x:(xx*(var)^(1/power)); /* the function */
+
+/*Model answers*/
+ta_1:int(f_x,x)+c;
+
+/*General feedback codes*/
+diff_var:diff(var); /*differentiating var*/
+let_u: u^(1/power);
+int_u:int(let_u,u);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle\int{@f_x@}dx\)</p>
+<p>{@ta_1@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Possible mistakes*/
+mistake_1:diff(f_x, x); /*Differentiating instead of integrating*/
+mistake_2:int(f_x,x); /*Failing to add the constant of integration*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions>x</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p dir="ltr" style="text-align: left;"><span id="docs-internal-guid-23c5a212-7fff-c938-6e81-3786eb724f60">You seem to have computed the derivative of the function instead of its integral.</span><br></p><p dir="ltr" style="text-align: left;"></p><p dir="ltr"></p><br><p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p dir="ltr" style="text-align: left;"><strong></strong></p><p dir="ltr"><span id="docs-internal-guid-ceb42114-7fff-9ba5-d0cd-15e326849cf1">Your answer is fine, but you seem to have dropped the constant of integration in your computation.</span></p><p dir="ltr"><span id="docs-internal-guid-ceb42114-7fff-9ba5-d0cd-15e326849cf1">Recall that,&nbsp;</span></p><span id="docs-internal-guid-ceb42114-7fff-9ba5-d0cd-15e326849cf1">f(x)dx=F(x)+c , where c is the constant of integration and f is the derivative of F.</span><br><p></p><p dir="ltr" style="text-align: left;"></p><br><p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>866645188</deployedseed>
+    <deployedseed>1543620827</deployedseed>
+    <deployedseed>1309869226</deployedseed>
+    <deployedseed>63964658</deployedseed>
+    <deployedseed>1417177194</deployedseed>
+    <deployedseed>1706862129</deployedseed>
+    <deployedseed>2088987801</deployedseed>
+    <deployedseed>145465433</deployedseed>
+    <deployedseed>1570191544</deployedseed>
+    <deployedseed>2098491210</deployedseed>
+    <deployedseed>375961716</deployedseed>
+    <deployedseed>76342993</deployedseed>
+    <deployedseed>639479847</deployedseed>
+    <deployedseed>1715335731</deployedseed>
+    <deployedseed>2097948799</deployedseed>
+    <deployedseed>2108684067</deployedseed>
+    <deployedseed>1771368944</deployedseed>
+    <deployedseed>2097974811</deployedseed>
+    <deployedseed>638593995</deployedseed>
+    <deployedseed>695636229</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_1</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Integration by u substitution_Q2</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Find  \( \displaystyle \int {@f_x@}\, dx\)  by use of substitution method.<br></p><p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><b>Worked Solution</b></p>
+<p>Let us solve \( \displaystyle \int {@f_x@}\, dx\) by substitution method.</p>
+<p> Let \(u=x^2-{@constant_denom@}\)</p>
+<p> Differentiating \(u\) with respect to \(x\) we have: \(\frac{du}{dx}=2 \cdot x\).</p>.
+<p>Making \(dx\) the subject, then \( dx=\frac{du}{2 \cdot x} \).</p>
+<p>Replacing the obtained expressions \(u\) and \(dx\) in the integral \( \displaystyle \int{@f_x@}\,dx\), we get;</p>
+<p>\[ \displaystyle \int {@f_x@}\, dx = \displaystyle \int {@g_x@}\, du \].</p>
+<p>\[ \displaystyle \int {@f_x@}\, dx = {@tas@}\].<br></p>
+<p>But \(u=x^2-{@constant_denom@}\)<br>
+</p>
+<p>Therefore,</p>
+<p>\[ \displaystyle \int {@f_x@}\, dx={@ta_1@}\]</p>
+<p>where \(c\) is the constant of integration. </p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining the question*/
+coeff_numerator:rand(8)+2;/*random number for the coefficient of x in the numerator*/
+constant_denom:rand(7)+1;/*random number for the constant of the denominator*/
+power:rand(9)+2;/*random value of n outside the root sign*/
+f_x:coeff_numerator*x/((x^(2)-constant_denom)^(1/power));/*the function*/
+g_x:(1/(2*x))*coeff_numerator*x/((u)^(1/power));/*the function*/
+
+
+/*Model answers*/
+ta_1:int(f_x,x)+c;
+tas:int(g_x,u)+c;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\(\int{@f_x@} dx={@ta_1@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/A</p>
+<p id="reviewer">[Reviewer 1 Name]</p>
+<p id="reviewer">[Juma Zevick]</p>
+<p id="description">The focuses on finding the antiderivative of Indefinite integral by u substitution</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checking for the correct answer*/
+
+/*node 2: mistake: missing the constant of integration*/
+mistake_2:int(f_x,x);
+
+/*node 3: mistake: not replacing the value of u back*/
+mistake_3:((1/(power+1))/(power+1))*(u^(power+1))+c;
+
+/*node 4: mistake: differentiating instead of integrating*/
+mistake_4:diff(f_x,x);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checking for the correct answer</description>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions>x</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>missing the constant of integration</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>2</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You have missed the constant of integration. This is an indefinite integral. Recall, \(\int x^n\, dx=\frac{x^{n+1}}{n+1}+c\), where \( c\) is the constant of integration.<br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>provided your answer in terms of u.</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You provided your answer in terms of u. Note that u was just a temporal value.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>differentiated instead of integrating</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You differentiated instead of integrating. To find antiderivatives you need to integrate.  Recall,\(\int x^n\, dx=\frac{x^{n+1}}{n+1}+c\), where \(\ c\) is the constant of integration</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>302726237</deployedseed>
+    <deployedseed>1375957204</deployedseed>
+    <deployedseed>1699503371</deployedseed>
+    <deployedseed>24824820</deployedseed>
+    <deployedseed>2006600225</deployedseed>
+    <deployedseed>1728289124</deployedseed>
+    <deployedseed>1392589813</deployedseed>
+    <deployedseed>721759732</deployedseed>
+    <deployedseed>1051520472</deployedseed>
+    <deployedseed>205419976</deployedseed>
+    <deployedseed>653913853</deployedseed>
+    <deployedseed>775889463</deployedseed>
+    <deployedseed>1803049138</deployedseed>
+    <deployedseed>1404499170</deployedseed>
+    <deployedseed>1351357809</deployedseed>
+    <deployedseed>735866958</deployedseed>
+    <deployedseed>1126443180</deployedseed>
+    <deployedseed>1697663562</deployedseed>
+    <deployedseed>1846715457</deployedseed>
+    <deployedseed>2133596292</deployedseed>
+    <deployedseed>1622678881</deployedseed>
+    <deployedseed>1666270858</deployedseed>
+    <deployedseed>1337569283</deployedseed>
+    <deployedseed>967391046</deployedseed>
+    <deployedseed>1928493312</deployedseed>
+    <deployedseed>692567155</deployedseed>
+    <deployedseed>1892959575</deployedseed>
+    <deployedseed>1436821606</deployedseed>
+    <deployedseed>158950775</deployedseed>
+    <deployedseed>1882559882</deployedseed>
+    <deployedseed>440404568</deployedseed>
+    <deployedseed>449389151</deployedseed>
+    <deployedseed>896009791</deployedseed>
+    <deployedseed>146757504</deployedseed>
+    <deployedseed>456399004</deployedseed>
+    <deployedseed>2089773541</deployedseed>
+    <deployedseed>1857151584</deployedseed>
+    <deployedseed>1171840599</deployedseed>
+    <deployedseed>1653818593</deployedseed>
+    <deployedseed>727088771</deployedseed>
+    <deployedseed>257754654</deployedseed>
+    <deployedseed>1561856475</deployedseed>
+    <deployedseed>1142203437</deployedseed>
+    <deployedseed>1725029649</deployedseed>
+    <deployedseed>1513514009</deployedseed>
+    <deployedseed>723336672</deployedseed>
+    <deployedseed>1666175033</deployedseed>
+    <deployedseed>1458213985</deployedseed>
+    <deployedseed>354146906</deployedseed>
+    <deployedseed>157982746</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_1</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

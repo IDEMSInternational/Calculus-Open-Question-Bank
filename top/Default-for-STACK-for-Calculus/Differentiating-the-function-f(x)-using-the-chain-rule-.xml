@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Differentiating the function f(x) using the chain rule.</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Differentiate the following. </p>
+<p>\(\quad f(x) = {@fx@}\)</p>
+<p>\(\quad f'(x) =\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To differentiate the function \(f(x) ={@fx@}\) with respect to \(x\), we will use the chain rule. </p>
+<p>The chain rule states that if you have a function \(g(u)\) inside another function \(f(v)\), then the derivative of \(f(g(u))\) with respect to \(u\) is given by:</p>
+<p>\( \displaystyle 
+\frac{d}{du}(f(g(u))) = f'(g(u)) \cdot g'(u)
+\)</p>
+<p>In this case, let \(u = {@u@}\), and \(v = \sin(u)\). Then we have:</p>
+<p>\( \displaystyle 
+f(x) = v = \sin(u)
+\)</p>
+<p>Now, let's calculate the derivatives:</p>
+<ol>
+  <li>Derivative of \(v = \sin(u)\) with respect to \(u\):</li>
+  <p>\( \displaystyle 
+     \frac{dv}{du} = \cos(u)
+     \)</p>
+  <li>Derivative of \(u = {@u@}\) with respect to \(x\):</li>
+  <p>\( \displaystyle 
+     \frac{du}{dx} = {@diff_u@}
+     \)</p>
+</ol>
+<p>Now, using the chain rule, we can find the derivative of \(f(x)\):</p>
+<p>\( \displaystyle 
+\frac{df}{dx} = \frac{dv}{du} \cdot \frac{du}{dx} = \cos\left({@u@}\right) \cdot \left({@diff_u@}\right)
+\)</p>
+<p>So, the derivative of \(f(x) = {@fx@}\) with respect to \(x\) is:</p>
+<p>\(\displaystyle 
+f'(x) = {@ta@}
+\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/* Define the function */ 
+cfx:(rand([rand(100)+3,(rand(100)+1)/(rand(100)+4)]));
+power:rand(10)+2;
+cf2:rand_with_prohib(-100,100,[0,cfx,power]);
+u:cfx*x^power + cf2*x; diff_u:diff(u,x);
+fx:sin(u); diff_f:cos(u);
+/* Differentiate the function with respect to x */ 
+dfx : diff(fx, x);  
+/* Simplify the result if needed */ 
+ta:simplify(dfx);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Differentiate the following. </p>
+<p>\(\quad f(x) = {@fx@}\)</p>
+<p>\(\quad f'(x) ={@ta@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">Differentiating the function \( \displaystyle f(x)={@fx@}\) using the chain rule.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>x</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1545381625</deployedseed>
+    <deployedseed>586361900</deployedseed>
+    <deployedseed>1713077883</deployedseed>
+    <deployedseed>1246197505</deployedseed>
+    <deployedseed>798967544</deployedseed>
+    <deployedseed>1028525900</deployedseed>
+    <deployedseed>324967711</deployedseed>
+    <deployedseed>262214480</deployedseed>
+    <deployedseed>498065986</deployedseed>
+    <deployedseed>22456636</deployedseed>
+    <deployedseed>202765700</deployedseed>
+    <deployedseed>1068071385</deployedseed>
+    <deployedseed>1772655711</deployedseed>
+    <deployedseed>719788866</deployedseed>
+    <deployedseed>1606965397</deployedseed>
+    <deployedseed>555487292</deployedseed>
+    <deployedseed>1691415951</deployedseed>
+    <deployedseed>669759980</deployedseed>
+    <deployedseed>1644602709</deployedseed>
+    <deployedseed>1713746553</deployedseed>
+    <deployedseed>416518235</deployedseed>
+    <deployedseed>954450023</deployedseed>
+    <deployedseed>1282331837</deployedseed>
+    <deployedseed>153801404</deployedseed>
+    <deployedseed>399616658</deployedseed>
+    <deployedseed>1117246433</deployedseed>
+    <deployedseed>254852989</deployedseed>
+    <deployedseed>1649437714</deployedseed>
+    <deployedseed>1229058253</deployedseed>
+    <deployedseed>2040806843</deployedseed>
+    <deployedseed>400907964</deployedseed>
+    <deployedseed>918640773</deployedseed>
+    <deployedseed>79631332</deployedseed>
+    <deployedseed>1170737059</deployedseed>
+    <deployedseed>430971387</deployedseed>
+    <deployedseed>1506596979</deployedseed>
+    <deployedseed>1592961489</deployedseed>
+    <deployedseed>1985920822</deployedseed>
+    <deployedseed>840102611</deployedseed>
+    <deployedseed>542557706</deployedseed>
+    <deployedseed>2043460958</deployedseed>
+    <deployedseed>1090845028</deployedseed>
+    <deployedseed>2010779366</deployedseed>
+    <deployedseed>1393594823</deployedseed>
+    <deployedseed>1171181733</deployedseed>
+    <deployedseed>388665099</deployedseed>
+    <deployedseed>1250072423</deployedseed>
+    <deployedseed>1376803824</deployedseed>
+    <deployedseed>1786778658</deployedseed>
+    <deployedseed>1474220349</deployedseed>
+    <deployedseed>575907575</deployedseed>
+    <deployedseed>933737978</deployedseed>
+    <deployedseed>991963272</deployedseed>
+    <deployedseed>1688507784</deployedseed>
+    <deployedseed>247567624</deployedseed>
+    <deployedseed>1255339390</deployedseed>
+    <deployedseed>1937825272</deployedseed>
+    <deployedseed>710981878</deployedseed>
+    <deployedseed>1692381652</deployedseed>
+    <deployedseed>524133798</deployedseed>
+    <deployedseed>798915162</deployedseed>
+    <deployedseed>626589390</deployedseed>
+    <deployedseed>1763672057</deployedseed>
+    <deployedseed>910001200</deployedseed>
+    <deployedseed>2067862279</deployedseed>
+    <deployedseed>1570299437</deployedseed>
+    <deployedseed>1036601476</deployedseed>
+    <deployedseed>554644067</deployedseed>
+    <deployedseed>1742378463</deployedseed>
+    <deployedseed>483320639</deployedseed>
+    <deployedseed>1698750683</deployedseed>
+    <deployedseed>1149332684</deployedseed>
+    <deployedseed>1825032074</deployedseed>
+    <deployedseed>1854862620</deployedseed>
+    <deployedseed>759559611</deployedseed>
+    <deployedseed>297087932</deployedseed>
+    <deployedseed>2127148613</deployedseed>
+    <deployedseed>1564243021</deployedseed>
+    <deployedseed>1474166883</deployedseed>
+    <deployedseed>798186423</deployedseed>
+    <deployedseed>877962704</deployedseed>
+    <deployedseed>1482692666</deployedseed>
+    <deployedseed>1793132750</deployedseed>
+    <deployedseed>207176418</deployedseed>
+    <deployedseed>178162480</deployedseed>
+    <deployedseed>740680038</deployedseed>
+    <deployedseed>1948826886</deployedseed>
+    <deployedseed>1732005967</deployedseed>
+    <deployedseed>591502546</deployedseed>
+    <deployedseed>1757400813</deployedseed>
+    <deployedseed>121493117</deployedseed>
+    <deployedseed>267655546</deployedseed>
+    <deployedseed>1927001149</deployedseed>
+    <deployedseed>1026540981</deployedseed>
+    <deployedseed>1950674065</deployedseed>
+    <deployedseed>706691249</deployedseed>
+    <deployedseed>1132026073</deployedseed>
+    <deployedseed>1549561517</deployedseed>
+    <deployedseed>1492388116</deployedseed>
+    <deployedseed>1068508336</deployedseed>
+    <deployedseed>169185620</deployedseed>
+    <deployedseed>392430474</deployedseed>
+    <deployedseed>1374577063</deployedseed>
+    <deployedseed>371988083</deployedseed>
+    <deployedseed>1319301962</deployedseed>
+    <deployedseed>1650313992</deployedseed>
+    <deployedseed>968252190</deployedseed>
+    <deployedseed>205184421</deployedseed>
+    <deployedseed>1323565141</deployedseed>
+    <deployedseed>480544247</deployedseed>
+    <deployedseed>2090240271</deployedseed>
+    <deployedseed>321054963</deployedseed>
+    <deployedseed>1165906637</deployedseed>
+    <deployedseed>653594302</deployedseed>
+    <deployedseed>566106990</deployedseed>
+    <deployedseed>2132105655</deployedseed>
+    <deployedseed>50800034</deployedseed>
+    <deployedseed>1839590012</deployedseed>
+    <deployedseed>1402508410</deployedseed>
+    <deployedseed>1271485212</deployedseed>
+    <deployedseed>1525297393</deployedseed>
+    <deployedseed>1818663532</deployedseed>
+    <deployedseed>1842789834</deployedseed>
+    <deployedseed>1699393521</deployedseed>
+    <deployedseed>1576144471</deployedseed>
+    <deployedseed>51871669</deployedseed>
+    <deployedseed>2084627091</deployedseed>
+    <deployedseed>767714592</deployedseed>
+    <deployedseed>1534624047</deployedseed>
+    <deployedseed>1438158400</deployedseed>
+    <deployedseed>135332953</deployedseed>
+    <deployedseed>1730312135</deployedseed>
+    <deployedseed>1282552929</deployedseed>
+    <deployedseed>119118821</deployedseed>
+    <deployedseed>772805900</deployedseed>
+    <deployedseed>1518921630</deployedseed>
+    <deployedseed>898836773</deployedseed>
+    <deployedseed>2066494960</deployedseed>
+    <deployedseed>403796998</deployedseed>
+    <deployedseed>39263311</deployedseed>
+    <deployedseed>696626557</deployedseed>
+    <deployedseed>1525629498</deployedseed>
+    <deployedseed>1291075603</deployedseed>
+    <deployedseed>1474421835</deployedseed>
+    <deployedseed>846537134</deployedseed>
+    <deployedseed>245692532</deployedseed>
+    <deployedseed>1200029153</deployedseed>
+    <deployedseed>819054621</deployedseed>
+    <deployedseed>389318640</deployedseed>
+    <deployedseed>837950705</deployedseed>
+    <deployedseed>1167389873</deployedseed>
+    <deployedseed>49170935</deployedseed>
+    <deployedseed>1129076643</deployedseed>
+    <deployedseed>774059989</deployedseed>
+    <deployedseed>245672762</deployedseed>
+    <deployedseed>1013304404</deployedseed>
+    <deployedseed>71059156</deployedseed>
+    <deployedseed>463352052</deployedseed>
+    <deployedseed>2032699838</deployedseed>
+    <deployedseed>919626564</deployedseed>
+    <deployedseed>1518020226</deployedseed>
+    <deployedseed>1127456380</deployedseed>
+    <deployedseed>2137935856</deployedseed>
+    <deployedseed>1972604720</deployedseed>
+    <deployedseed>523457054</deployedseed>
+    <deployedseed>1255926269</deployedseed>
+    <deployedseed>1007405699</deployedseed>
+    <deployedseed>1418971301</deployedseed>
+    <deployedseed>1108915086</deployedseed>
+    <deployedseed>1105205392</deployedseed>
+    <deployedseed>514315548</deployedseed>
+    <deployedseed>1162321794</deployedseed>
+    <deployedseed>1680520076</deployedseed>
+    <deployedseed>2114278957</deployedseed>
+    <deployedseed>322271828</deployedseed>
+    <deployedseed>279822458</deployedseed>
+    <deployedseed>1759622440</deployedseed>
+    <deployedseed>175871553</deployedseed>
+    <deployedseed>616446495</deployedseed>
+    <deployedseed>1800832455</deployedseed>
+    <deployedseed>1432405942</deployedseed>
+    <deployedseed>961833854</deployedseed>
+    <deployedseed>220969064</deployedseed>
+    <deployedseed>922544602</deployedseed>
+    <deployedseed>1182018327</deployedseed>
+    <deployedseed>1710094075</deployedseed>
+    <deployedseed>168480693</deployedseed>
+    <deployedseed>158108109</deployedseed>
+    <deployedseed>120784058</deployedseed>
+    <deployedseed>983793609</deployedseed>
+    <deployedseed>370632482</deployedseed>
+    <deployedseed>19760642</deployedseed>
+    <deployedseed>1492782560</deployedseed>
+    <deployedseed>803783429</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

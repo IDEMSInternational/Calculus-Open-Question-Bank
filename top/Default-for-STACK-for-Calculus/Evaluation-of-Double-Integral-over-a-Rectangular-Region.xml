@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluation of Double Integral over a Rectangular Region</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Compute double integral over the indicated rectangle.</p>
+<p>\( \displaystyle \int \int_R {@question_expr@} dA \quad R=[{@lower_x@},{@upper_x@} ] \times [{@lower_y@},{@upper_y@}]\)</p><br>
+<p><strong>Note:</strong> Give your answer in exact form or correct to \(2\) decimal places</p>
+<p>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3><b>Worked Solution</b></h3>
+<p>We will use <a href="https://tutorial.math.lamar.edu/Classes/CalcIII/IteratedIntegrals.aspx"><strong>Fubini's Theorem</strong></a> in this problem and follow the proceeding steps.</p>
+
+<p>Let's denote the rectangular region as \( R = [a, b] \times [c, d] \). If \( f(x, y) \) is continuous on \( R \), then Fubini's Theorem states that:</p>
+
+\[ \displaystyle \iint_R f(x, y) \, dA = \int_a^b \int_c^d f(x, y) \, dy \, dx = \int_c^d \int_a^b f(x, y) \, dx \, dy \]
+
+<p><b>Step 1:</b> In order to integrate the function with respect to \(y\), we need to use \(u\)-substitution.</p>
+<p>\(\displaystyle \int_{@lower_y@}^{@upper_y@}{@question_expr@} dy\)</p>
+<p>Let \(\displaystyle u={@let_u@} \rightarrow {@diff_u@}\) and \(\displaystyle {@var_y@}\)</p>
+<p>Now let us substitute the above in the original equation. </p>
+<p>\(
+\begin{align}
+\displaystyle \int_{@lower_y@}^{@upper_y@}{@question_expr@} dy &=\int_{@lower_y@}^{@upper_y@}{@rhs(var_y)@}{@%e^u@} dy \\
+  &=\int_{@lower_y@}^{@upper_y@} {@expr1@} \\
+  &={@1/2@} \int_{@lower_y@}^{@upper_y@} e^{u}du \\
+ &={@1/2@}  \left(e^{u}\right) \left.\begin{matrix}& \\ & \end{matrix}\right|_{@lower_y@}^{@upper_y@} \\
+ &={@1/2@}  \left(e^{{@power_e@}}\right) \left.\begin{matrix}& \\ & \end{matrix}\right|_{@lower_y@}^{@upper_y@} \\
+&={@int_y@}  
+\end{align}
+\)</p>
+<p><b>Step 2:</b> The next step is to repeat <b>step 1</b>, but integrate wrt to \(x\),</p>
+<p>\(
+\begin{align}
+\displaystyle \int \int_R {@question_expr@} dA &=\int_{@lower_x@}^{@upper_x@}  \left({@int_y@}\right) dx \\
+ &= \left({@int_xx@}\right) \left.\begin{matrix}& \\ & \end{matrix}\right|_{@lower_x@}^{@upper_x@} \\
+&={@int_x@} \\
+& \approx {@decimalplaces(ta1,2)@}  
+\end{align}
+\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining the question*/
+lower_x:rand(4);
+upper_x:lower_x+rand(3)+1;
+lower_y:rand(3);
+upper_y:sqrt(rand(9)+lower_y^2 + 1);
+coeff_x:rand(4)+2;
+power_e:y^2-coeff_x*x;
+question_expr:y*%e^(power_e);/*the function*/
+int_y:int(question_expr,y,lower_y,upper_y); /*wrt y*/
+int_x:int(int_y,x,lower_x,upper_x); /*wrt x*/
+
+/*Worked solution*/
+let_u:power_e;
+diff_u:du=diff(let_u,y)*dy;
+var_y:solve(diff_u,y)[1];
+expr1:(rhs(var_y)*%e^u)*dy;
+int_xx:int(int_y,x); /*wrt x*/
+/*model answer*/
+ta1:(int_x);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle \int \int_R {@question_expr@} dA = \int_{@lower_x@}^{@upper_x@} \int_{@lower_y@}^{@upper_y@}{@question_expr@} dydx \)</p>
+<p>\({@ta1@}  \approx {@decimalplaces(ta1,2)@}\)  </p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">Salvatore Mercuri</p>
+<p id="description">This question asks students to compute a double integral over a rectangular region. The limits of integration and the integrand function are provided, and the students are required to perform the necessary calculations. The question is designed to test their understanding of double integrals and their ability to evaluate them correctly.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for the correct answers*/
+
+/*node 2:integrating with the same variable*/
+int_y:int(question_expr,y,lower_y,upper_y); /*wrt y*/
+mistake_1:int_x:int(int_y,y,lower_x,upper_x); /*wrt x*/
+
+int_y_1:int(question_expr,x,lower_y,upper_y); /*wrt y*/
+mistake_2:int_x:int(int_y_1,x,lower_x,upper_x); /*wrt x*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answers</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>integrating with the same variable</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You integrated with the same variable all through.</p>
+<p><b>Hint:</b> Rewrite the integral as follows, </p>
+<p>\(\displaystyle \int \int_R {@question_expr@} dA = \int_{@lower_x@}^{@upper_x@} \int_{@lower_y@}^{@upper_y@}{@question_expr@} dydx \)</p>
+<p>Now,integrate the function wrt to \(y\) first, then afterwards wrt to  \(y\).</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>integrating with the same variable</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You integrated with the same variable all through.</p>
+<p><b>Hint:</b> Rewrite the integral as follows, </p>
+<p>\(\displaystyle \int \int_R {@question_expr@} dA = \int_{@lower_x@}^{@upper_x@} \int_{@lower_y@}^{@upper_y@}{@question_expr@} dydx \)</p>
+<p>Now,integrate the function wrt to \(y\) first, then afterwards wrt to  \(y\).</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>checks for the correct answers 2dp</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions>2</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Well done for giving your answer correct to \(2\) decimal places</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>checks for the correct answers with an error margin of 0.001</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions>0.001</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-5-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-5-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>227795335</deployedseed>
+    <deployedseed>440630042</deployedseed>
+    <deployedseed>373586727</deployedseed>
+    <deployedseed>456295786</deployedseed>
+    <deployedseed>1361202996</deployedseed>
+    <deployedseed>713419767</deployedseed>
+    <deployedseed>438595698</deployedseed>
+    <deployedseed>1302552281</deployedseed>
+    <deployedseed>830836371</deployedseed>
+    <deployedseed>1397104067</deployedseed>
+    <deployedseed>1939974184</deployedseed>
+    <deployedseed>1585500916</deployedseed>
+    <deployedseed>572157801</deployedseed>
+    <deployedseed>1862575662</deployedseed>
+    <deployedseed>1595463951</deployedseed>
+    <deployedseed>145151089</deployedseed>
+    <deployedseed>1046528957</deployedseed>
+    <deployedseed>851149484</deployedseed>
+    <deployedseed>1210325095</deployedseed>
+    <deployedseed>1450646500</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

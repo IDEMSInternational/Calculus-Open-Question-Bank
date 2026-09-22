@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Determining the indefinite Integral</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Determine the Indefinite Integral \(\displaystyle \int {@quest_expr@}\,dx\)</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Given \(\displaystyle \int {@quest_expr@}\,dx\) </p>
+<p>Expanding the function and dividing through by denominator, we have</p>
+<p>\( \displaystyle \int ({@cc*x^3/x@}+{@bb*x/x@}+{@aa/x@})\;dx\)</p>
+<p>Applying Linearity</p>
+<p>\(\displaystyle {@cc@} \int x^2dx +{@aa@} \int \frac{1}{x}\,dx+{@bb@} \int dx\)</p>
+<p>Solving by Integration</p>
+<p>\({@sol2@}+{@soln3@}+{@soln4@}\)</p>
+<p>Thus, the solution is</p>
+<p> \(\displaystyle \int {@quest_expr@}\,dx ={@ta@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Integral calculus*/
+aa:rand(2)+2;
+bb:rand(5)+3;
+cc:rand(3)+3;
+quest_expr:(aa+bb*x+cc*x^3)/(x);
+/*worked solution variables*/
+soln1:((aa/x)+(bb*x/x)-(cc*x^3/x));
+/*applying linearity*/
+sol2:int(aa/x,x);
+soln3:int(bb*x/x,x);
+soln4:int(cc*x^3/x,x);
+ta:sol2+soln3+soln4+c;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle \int {@quest_expr@}\,dx = {@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">This question requires students to find the indefinite integral</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>20</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>x</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1805384543</deployedseed>
+    <deployedseed>1834375438</deployedseed>
+    <deployedseed>53070094</deployedseed>
+    <deployedseed>1251217042</deployedseed>
+    <deployedseed>729456660</deployedseed>
+    <deployedseed>1979897722</deployedseed>
+    <deployedseed>2010554553</deployedseed>
+    <deployedseed>2140764246</deployedseed>
+    <deployedseed>1034727538</deployedseed>
+    <deployedseed>383049022</deployedseed>
+    <deployedseed>997194819</deployedseed>
+    <deployedseed>1944357572</deployedseed>
+    <deployedseed>1780983384</deployedseed>
+    <deployedseed>958402907</deployedseed>
+    <deployedseed>1509073522</deployedseed>
+    <deployedseed>1385005223</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

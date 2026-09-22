@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Determining the exponential growth equation for the population model</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p></p><p>Many populations of organisms in the world can be modeled with exponential growth and decay. The main equation for this model is&nbsp;</p><p>\[ \displaystyle N(t) = N_0 \cdot e^{r\cdot t}\]</p><p>where,</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; \(t\) = time</p><p></p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; \(r\) = growth rate (for \(r&gt;0\)) or decay rate (for \(r&lt;0\))</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; \(N_0\) = initial population</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; \(N(t)\) = population after an amount \(t\) of time has passed.</p>A particular population of bacteria has an&nbsp;initial size of {@aa@} and {@cc@} days later it has a population size of {@bb@}.&nbsp;&nbsp;<p>i. Determine the exponential growth equation for this population.</p><p>\(N(t) = \)[[input:ans1]] [[validation:ans1]]&nbsp;[[feedback:prt1]]</p><p>ii. How long will it take for the population to grow from its initial population to a population of {@dd@}?</p><p>\(t=\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]] (Give your answers in exact form fully simplified. Remember that \(\ln(a)\) is entered as log(\(a\)). Also, the function \(e^{ax}\) is entered as \(\mbox{%}e\mbox{^}(a\mbox{*}x)\).)</p>
+<p>\(t=\) [[input:ans3]] [[validation:ans3]][[feedback:prt3]] (Correct to 2 decimal places) </p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>\(N(t) = N_0 \cdot e^{r\cdot t}\).<br></p><p>Substituting the initial values \(t = 0\) and initial population size of {@aa@} gives us \({@aa@} = N_0 \cdot e^{0} = N_0 \cdot 1\) which verifies that \(N_0 = {@aa@}\) and our equation becomes&nbsp;\(N(t) = {@aa@} \cdot e^{r\cdot t}\).</p><p>Substituting the values \(t = {@cc@}\) and \(N({@cc@}) = {@bb@}\) gives us</p><p>\({@bb@} = {@aa@} \cdot e^{r\cdot {@cc@}}\)</p>
+<p>\(e^{{@cc*r@} } = {@bb/aa@}\)<br></p>\(\displaystyle {@cc*r@} = \ln{\big( {@bb/aa@} \big) } \)<br>\(\displaystyle r = {@1/cc@} \cdot \ln{\big( {@bb/aa@} \big) } \)</p><p>Therefore, the equation for the population growth becomes \(\displaystyle N(t) = {@aa@} \cdot e^{&nbsp;{@1/cc@} \cdot \ln{\big( {@bb/aa@} \big) } \cdot t}\).</p>
+<p>To find the time it takes for the population to grow to \(N = {@dd@}\) we simply substitute the values:</p>
+<p>\(\displaystyle {@dd@} = {@aa@} \cdot e^{&nbsp;{@1/cc@} \cdot \ln{\big( {@bb/aa@} \big) } \cdot t}\)</p>
+<p>\(\displaystyle \frac{{@dd@}}{{@aa@}} = e^{&nbsp;{@1/cc@} \cdot \ln{\big( {@bb/aa@} \big) } \cdot t}\)</p>
+<p>\(\displaystyle {@dd/aa@} = e^{&nbsp;{@1/cc@} \cdot \ln{\big( {@bb/aa@} \big) } \cdot t}\)</p>
+<p>\(\displaystyle \ln{\big( {@dd/aa@} \big) } = {@1/cc@} \cdot \ln{\big( {@bb/aa@} \big) } \cdot t\)</p>
+<p>\( \displaystyle {@cc@} \cdot \ln{\big( {@dd/aa@} \big) } = \ln{\big( {@bb/aa@} \big) } \cdot t\)</p>
+<p>\( \begin{align} \displaystyle t &= \frac{{@cc@} \cdot \ln{\big( {@dd/aa@} \big) }}{\ln{\big( {@bb/aa@} \big) }}\\ &={@decimalplaces(ta2,2)@} \end{align} \)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>aa:(rand(8)+4)*25;
+bb:(rand(15)+60)*25;
+cc:rand(5)+2;
+dd:bb+25*(rand(5)+10);
+gc:1/cc*log(bb/aa);
+ta1:aa*e^(gc*t);
+ta2: (cc*log(dd/aa))/(log(bb/aa));</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle N(t) = {@aa@} \cdot e^{&nbsp;{@1/cc@} \cdot \ln{\big( {@bb/aa@} \big) } \cdot t}\).</p>
+<p>\(\displaystyle t = \frac{{@cc@} \cdot \ln{\big( {@dd/aa@} \big) }}{\ln{\big( {@bb/aa@} \big) }}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Mary Sayuni</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">Determining the exponential growth equation for the population model after a given time t</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>decimalplaces(ta2,2)</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer */</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans3</sans>
+        <tans>decimalplaces(ta2,2)</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1526978121</deployedseed>
+    <deployedseed>1838077913</deployedseed>
+    <deployedseed>1191973854</deployedseed>
+    <deployedseed>2045053816</deployedseed>
+    <deployedseed>561655397</deployedseed>
+    <deployedseed>160802158</deployedseed>
+    <deployedseed>1728776774</deployedseed>
+    <deployedseed>1886661892</deployedseed>
+    <deployedseed>818016047</deployedseed>
+    <deployedseed>2072373953</deployedseed>
+    <deployedseed>569342481</deployedseed>
+    <deployedseed>100821000</deployedseed>
+    <deployedseed>1171953754</deployedseed>
+    <deployedseed>1185568867</deployedseed>
+    <deployedseed>118876993</deployedseed>
+    <deployedseed>920025446</deployedseed>
+    <deployedseed>2056897601</deployedseed>
+    <deployedseed>1889568483</deployedseed>
+    <deployedseed>1158787626</deployedseed>
+    <deployedseed>1686079975</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

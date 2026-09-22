@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Proving a Difference Quotient</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p> If \(f(x)={@fx@}\), show that </p>
+<p>\( \qquad \quad \displaystyle {@fx@} \left(\frac{{@constant^(h)@}-1}{h} \right )=\frac{f(x+h)-f(x)}{h}\)</p>
+<p>Proof Steps:</p>
+
+<p><strong>Step \(1\):</strong> Calculate \(f(x+h)\) using \(f(x)\):</p>
+<p>\(\qquad \quad  f(x) = {@fx@}\)</p>
+<p>\(\qquad \quad  f(x+h) = \) [[input:ans1]] [[validation:ans1]] \( \ldots \bigstar\)</p>
+<p>[[feedback:prt1]]</p>
+
+<p><strong>Step \(2\):</strong> Rewrite \(\bigstar\) in the form \(a^m \cdot a^n\) using exponent properties:</p>
+<p>\(\qquad  \quad f(x+h) = \) [[input:ans2]] [[validation:ans2]]</p>
+<p>[[feedback:prt2]]</p>
+
+<p><strong>Step \(3\):</strong> Subtract \(f(x)\) from \(f(x+h)\):</p>
+<p>\(\qquad  \quad f(x+h) - f(x)  = \) [[input:ans3]] [[validation:ans3]]</p>
+<p>[[feedback:prt3]]</p>
+
+<p><strong>Step \(4\):</strong> Divide both sides by \(h\) and recognize the left side as the derivative of \(f(x)\) with respect to \(x\), denoted as \(f'(x)\)</p>
+<div style="text-align: left; margin-left: 1cm;">
+<p>So, [[input:ans4]][[validation:ans4]] </p>
+<p> [[feedback:prt4]] </p>
+</div>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<!-- This is a comment don't review it 
+<h3>Worked Solution</h3>
+<p> If \(f(x)={@fx@}\), show that </p>
+<p>\( \qquad \quad \displaystyle {@fx@} \left(\frac{{@constant^(h)@}-1}{h} \right )=\frac{f(x+h)-f(x)}{h}\)</p>
+<p>Proof Steps:</p>
+
+<p><strong>Step \(1\):</strong> Calculate \(f(x+h)\) using \(f(x)\):</p>
+<p>\(\qquad \quad  f(x) = {@fx@}\)</p>
+<p>\(\qquad \quad  f(x+h) = {@fxh@} \ldots \bigstar\)</p>
+
+<p><strong>Step \(2\):</strong> Rewrite \(\bigstar\) in the form \(a^m \cdot a^n\) using exponent properties:</p>
+<p>\(\qquad  \quad f(x+h) = {@constant^(x)@} \cdot {@constant^(h)@}\)</p>
+
+<p><strong>Step \(3\):</strong> Subtract \(f(x)\) from \(f(x+h)\):</p>
+<p>\(\qquad  \quad \begin{align} 
+ f(x+h) - f(x)  &= {@fx_lhs@} \\
+                       &= \left({@constant^(x)@} \cdot {@constant^(h)@} \right)-{@fx@} \\
+                                        &= {@fx_factored@} 
+\end{align} \)</p>
+
+<p><strong>Step \(4\):</strong> Divide both sides by \(h\) and recognize the left side as the derivative of \(f(x)\) with respect to \(x\), denoted as \(f'(x)\):</p>
+<p>\(\qquad \quad  \displaystyle \frac{f(x+h) - f(x)}{h} =  {@fx@} \left(\frac{{@constant^(h)@}-1}{h} \right )\)</p>
+
+<p>So, \( \displaystyle {@fx@} \left(\frac{{@constant^(h)@}-1}{h} \right )=\frac{f(x+h)-f(x)}{h}\), proving the given equation.</p>
+ -->]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* Step 1: Calculate f(x+h) using f(x) */
+constant:(rand(100)+5);
+fx:constant^(x);
+fxh:constant^((x)+h);
+/* Step 2: Rewrite f(x+h) as a^x * b^h */
+simp:false;
+fxh_expand: factor(constant^(x)*constant^(h));
+/* Step 3: Subtract f(x) from f(x+h) */
+fx_lhs: fxh - fx;
+fx_factored:factor(fx_lhs);
+/* Step 4: Divide both sides by h and recognize the left side as the derivative of f(x) with respect to x */
+fx_fact_h: (fx_factored/h);
+
+/*Model Answers*/
+ta1:fxh;
+
+ta2:(constant^(x))*(constant^(h));
+
+ta3:fx_factored;
+
+corr_ans : [
+    [1, true, sconcat("\\(\\displaystyle ", fx, "  \\left(\\frac{ ", constant, "^{h} - 1}{h} \\right )=\\frac{f(x+h)-f(x)}{h}\\)")]
+];
+
+incorr_ans : rand_selection([
+    [2, false, sconcat("\\(\\displaystyle ", fx, "  \\left(\\frac{ ", constant, "^{h} - 1}{h} \\right ) \\neq \\frac{f(x+h)-f(x)}{h}\\)")],
+    [3, false, sconcat("\\(\\displaystyle ", fx, "  \\left(\\frac{ ", constant, "^{h} - 1}{h} \\right ) \\geq \\frac{f(x+h)-f(x)}{h}\\)")],
+    [4, false, sconcat("\\(\\displaystyle ", fx, "  \\left(\\frac{ ", constant, "^{h} - 1}{h} \\right ) > \\frac{f(x+h)-f(x)}{h}\\)")],
+    [5, false, sconcat("\\(\\displaystyle ", fx, "   \\left(\\frac{ ", constant, "^{h} - 1}{h} \\right ) < \\frac{f(x+h)-f(x)}{h}\\)")]], 2);
+
+ta4: random_permutation(append(corr_ans, incorr_ans));]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p> If \(f(x)={@fx@}\), </p>
+<p>\(  \displaystyle {@fx@} \left(\frac{{@constant^(h)@}-1}{h} \right )=\frac{f(x+h)-f(x)}{h}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p><p>
+</p><p id="concept">https://docs.google.com/document/d/1PNF5hio-gU5zMMKc91A8k_uE-iA_VdCwWZJ-nN0KG38/edit</p>
+<p id="reviewer">[1]</p>
+<p id="reviewer">[2]</p>
+<p id="description">This question requires the student to demonstrating a difference quotient for a given function \( f(x) = ax \). By computing \( f(x+h) \) and \( f(x) \) and then substituting them into the expression, the proof shows that the difference quotient simplifies to \(a\). </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>radio</type>
+      <tans>ta4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>EqualComAss</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks if the answer is ta1</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your did not express your answer in the form \(a^m \cdot a^n\) using exponent properties</p>
+<p>According to the properties of exponentiation, we know that:
+
+\[
+a^{m+n} = a^m \cdot a^n
+\]</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mcq_correct(ta4)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1324277540</deployedseed>
+    <deployedseed>1886974815</deployedseed>
+    <deployedseed>1833074740</deployedseed>
+    <deployedseed>1723329256</deployedseed>
+    <deployedseed>391584549</deployedseed>
+    <deployedseed>1297480069</deployedseed>
+    <deployedseed>1445242925</deployedseed>
+    <deployedseed>1319537700</deployedseed>
+    <deployedseed>1396684184</deployedseed>
+    <deployedseed>787900397</deployedseed>
+    <deployedseed>165429851</deployedseed>
+    <deployedseed>125980345</deployedseed>
+    <deployedseed>192748263</deployedseed>
+    <deployedseed>1815631698</deployedseed>
+    <deployedseed>854096535</deployedseed>
+    <deployedseed>1340462013</deployedseed>
+    <deployedseed>66219165</deployedseed>
+    <deployedseed>995509888</deployedseed>
+    <deployedseed>762748328</deployedseed>
+    <deployedseed>455177768</deployedseed>
+    <deployedseed>1618631896</deployedseed>
+    <deployedseed>318200751</deployedseed>
+    <deployedseed>250770510</deployedseed>
+    <deployedseed>14846461</deployedseed>
+    <deployedseed>929233144</deployedseed>
+    <deployedseed>2065157457</deployedseed>
+    <deployedseed>1899053745</deployedseed>
+    <deployedseed>1642433941</deployedseed>
+    <deployedseed>1782313051</deployedseed>
+    <deployedseed>493689595</deployedseed>
+    <deployedseed>966732982</deployedseed>
+    <deployedseed>156222101</deployedseed>
+    <deployedseed>1436586800</deployedseed>
+    <deployedseed>1593678351</deployedseed>
+    <deployedseed>1227724578</deployedseed>
+    <deployedseed>250130458</deployedseed>
+    <deployedseed>1603372001</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta3</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>first(mcq_correct(ta4))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

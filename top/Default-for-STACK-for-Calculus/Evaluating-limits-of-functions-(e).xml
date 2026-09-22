@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluating limits of functions (e)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Find \(\displaystyle \lim_{x \rightarrow {@point@}} {@fx@}\).</p><p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Given the expression:</p>
+<p style="margin-left: 30px">\(\displaystyle \lim_{x \rightarrow {@point@}} {@fx@}\).</p>
+<p>To find the limit of the above expression, we first need to simplify it;</p>
+
+<p style="margin-left: 30px">\(\displaystyle \lim_{x \rightarrow {@point@}} {@fx@} = \lim_{{x \rightarrow {@point@}}} \frac{({@x - aa@})({@x - aa@})}{({@x - aa@})}= \lim_{{x \rightarrow {@point@}}} ({@x - aa@})\). <p>
+
+<p>Now, we can directly evaluate the limit by plugging in the value of \(x\), which is \({@point@}\).</p>
+
+<p style="margin-left: 30px">\(\lim_{{x \to {@point@}}} ({@x - aa@}) = {@point@}{@sign_ev@}{@ev(abs(aa),simp)@} = {@ta@}\) </p>
+
+<p>Therefore,</p>
+
+<p style="margin-left: 30px">\(\displaystyle \lim_{{x \rightarrow {@point@}}} \frac{{({@x - aa@})^2}}{{{@x - aa@}}} = {@ta@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[aa:rand(9)+1;
+point:rand_with_prohib(-5,5,[0]);
+simp:false
+fx:(aax)/(x-(aa+1));
+fsimp:ev(fx,simp);
+tad:ev(fsimp,x=point);
+ta:ev(tad,simp);
+sign_ev:if aa>0 then "-" else "+";
+]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p> \(\displaystyle \lim_{x \rightarrow {@point@}} {@fx@}={@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">https://docs.google.com/document/d/12Jw4vs0Kf3NzbJnbeXYcMToj54bk9LNSVOrQAahnVuc/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">2</p>
+<p id="description"> The question involves finding the limit to understand the behavior of the function as x approaches the given point. The goal is to determine the value of this limit, which provides insights into the function's continuity and rate of change near the point given.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>You could simplify \(f(x)\) as follows \(f(x) = {@fx@} = {@fsimp@} \)</p>
+<p> Therefore \(\displaystyle \lim_{x\rightarrow {@aa@}} f(x) = \lim_{x\rightarrow {@aa@}} ({@fsimp@})=f({@aa@})={@aa-aa@}={@ta@}\)</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>185883987</deployedseed>
+    <deployedseed>72013422</deployedseed>
+    <deployedseed>10371126</deployedseed>
+    <deployedseed>53721626</deployedseed>
+    <deployedseed>938933859</deployedseed>
+    <deployedseed>1625466034</deployedseed>
+    <deployedseed>1861125925</deployedseed>
+    <deployedseed>437554440</deployedseed>
+    <deployedseed>5211273</deployedseed>
+    <deployedseed>1461854746</deployedseed>
+    <deployedseed>1375007853</deployedseed>
+    <deployedseed>619054006</deployedseed>
+    <deployedseed>1244866483</deployedseed>
+    <deployedseed>2011765214</deployedseed>
+    <deployedseed>437805451</deployedseed>
+    <deployedseed>1732969228</deployedseed>
+    <deployedseed>734121681</deployedseed>
+    <deployedseed>257640913</deployedseed>
+    <deployedseed>334505141</deployedseed>
+    <deployedseed>1272360535</deployedseed>
+    <deployedseed>1127102538</deployedseed>
+    <deployedseed>2012650842</deployedseed>
+    <deployedseed>1357305714</deployedseed>
+    <deployedseed>1413724426</deployedseed>
+    <deployedseed>450649456</deployedseed>
+    <deployedseed>1864854889</deployedseed>
+    <deployedseed>1524995396</deployedseed>
+    <deployedseed>133430939</deployedseed>
+    <deployedseed>560054916</deployedseed>
+    <deployedseed>629759049</deployedseed>
+    <deployedseed>1055149134</deployedseed>
+    <deployedseed>358711196</deployedseed>
+    <deployedseed>562414271</deployedseed>
+    <deployedseed>606769632</deployedseed>
+    <deployedseed>595551342</deployedseed>
+    <deployedseed>1229782426</deployedseed>
+    <deployedseed>130963127</deployedseed>
+    <deployedseed>1401658429</deployedseed>
+    <deployedseed>1875750671</deployedseed>
+    <deployedseed>1378544335</deployedseed>
+    <deployedseed>1046686149</deployedseed>
+    <deployedseed>1623193401</deployedseed>
+    <deployedseed>949323899</deployedseed>
+    <deployedseed>1739749518</deployedseed>
+    <deployedseed>1342497600</deployedseed>
+    <deployedseed>484414688</deployedseed>
+    <deployedseed>1683857117</deployedseed>
+    <deployedseed>731817487</deployedseed>
+    <deployedseed>973443214</deployedseed>
+    <deployedseed>85265122</deployedseed>
+    <deployedseed>2059688890</deployedseed>
+    <deployedseed>1740185367</deployedseed>
+    <deployedseed>604930289</deployedseed>
+    <deployedseed>1471152094</deployedseed>
+    <deployedseed>779190097</deployedseed>
+    <deployedseed>918524401</deployedseed>
+    <deployedseed>342603086</deployedseed>
+    <deployedseed>1572270787</deployedseed>
+    <deployedseed>1438334689</deployedseed>
+    <deployedseed>1432510594</deployedseed>
+    <deployedseed>238269152</deployedseed>
+    <deployedseed>367114098</deployedseed>
+    <deployedseed>1739251319</deployedseed>
+    <deployedseed>871892789</deployedseed>
+    <deployedseed>1266252476</deployedseed>
+    <deployedseed>772464724</deployedseed>
+    <deployedseed>1550989756</deployedseed>
+    <deployedseed>820286298</deployedseed>
+    <deployedseed>1627418044</deployedseed>
+    <deployedseed>1164820937</deployedseed>
+    <deployedseed>452114093</deployedseed>
+    <deployedseed>939833378</deployedseed>
+    <deployedseed>855791677</deployedseed>
+    <deployedseed>2125056429</deployedseed>
+    <deployedseed>1722383559</deployedseed>
+    <deployedseed>121382414</deployedseed>
+    <deployedseed>194284722</deployedseed>
+    <deployedseed>835157629</deployedseed>
+    <deployedseed>1873202524</deployedseed>
+    <deployedseed>455138026</deployedseed>
+    <deployedseed>581554596</deployedseed>
+    <deployedseed>1581432572</deployedseed>
+    <deployedseed>1957952082</deployedseed>
+    <deployedseed>1178437613</deployedseed>
+    <deployedseed>1109304823</deployedseed>
+    <deployedseed>860637729</deployedseed>
+    <deployedseed>1071702783</deployedseed>
+    <deployedseed>1988532800</deployedseed>
+    <deployedseed>2070237299</deployedseed>
+    <deployedseed>1615207908</deployedseed>
+    <deployedseed>1859696399</deployedseed>
+    <deployedseed>835324193</deployedseed>
+    <deployedseed>997160489</deployedseed>
+    <deployedseed>1666350352</deployedseed>
+    <deployedseed>2056527688</deployedseed>
+    <deployedseed>1447914997</deployedseed>
+    <deployedseed>30987811</deployedseed>
+    <deployedseed>245172636</deployedseed>
+    <deployedseed>1108511674</deployedseed>
+    <deployedseed>387658911</deployedseed>
+    <deployedseed>978018406</deployedseed>
+    <deployedseed>1600512068</deployedseed>
+    <deployedseed>512253301</deployedseed>
+    <deployedseed>1258708362</deployedseed>
+    <deployedseed>1864792725</deployedseed>
+    <deployedseed>1772719771</deployedseed>
+    <deployedseed>345112031</deployedseed>
+    <deployedseed>77060044</deployedseed>
+    <deployedseed>789953266</deployedseed>
+    <deployedseed>1550675489</deployedseed>
+    <deployedseed>2033705736</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

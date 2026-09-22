@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Computing Jacobian Determinant for Given Transformations</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Given the following transformations of \(x\) and \(y\) such that \(\displaystyle x={@eq1@}\) and \(\displaystyle y={@eq2@}\). 
+Compute its Jacobian as shown below:</p>
+<p>We will take the determinant of the two by two matrix of partial derivatives using the formula;</p>
+\( \displaystyle \frac{\partial(x,y) }{\partial(u,v) }= \displaystyle \begin{vmatrix}
+\displaystyle \frac{\partial x}{\partial u} &  \displaystyle \frac{\partial x}{\partial v}\\
+\displaystyle \frac{\partial y}{\partial u} & \displaystyle \frac{\partial y}{\partial v}
+\end{vmatrix}\)
+<br>\(\quad\quad=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]
+<br>
+<p>\(\quad\quad=\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>Given the following transformations of \(x\) and \(y\) such that \(\displaystyle x={@eq1@}\) and \(\displaystyle y={@eq2@}\). </p>
+<p>There really isn’t much to do here other than compute the Jacobian as shown;</p>
+<p>We will take the determinant of the two by two matrix of partial derivatives using the formula;</p>
+\(\displaystyle\frac{\partial(x,y) }{\partial(u,v) }=\begin{vmatrix}
+\displaystyle\frac{\partial x}{\partial u} &  \displaystyle \frac{\partial x}{\partial v}\\
+\displaystyle\frac{\partial y}{\partial u} & \displaystyle \frac{\partial y}{\partial v}
+\end{vmatrix}\)
+<p>To find the partial derivatives, we have:</p>
+<p>\(\displaystyle
+\frac{\partial x}{\partial u} = {@aa@} \quad \text{and} \quad \displaystyle \frac{\partial x}{\partial v} = {@bb@}
+\)</p>
+<p>\(\displaystyle
+\frac{\partial y}{\partial u} = {@cc@} \quad \text{and} \quad \displaystyle \frac{\partial y}{\partial v} = {@dd@}
+\)</p>
+<p>Now, we can form the Jacobian matrix:</p>
+
+<p>\(\displaystyle \quad\quad={@ta1@}\)</p>
+<p>Calculating the determinant:</p>
+<p>\(\displaystyle
+\frac{\partial(x,y)}{\partial(u,v)} = ({@aa@} \times {@dd@}) - ({@cc@} \times {@bb@}) = {@ta2@}
+\)</p>
+<p>Therefore, the Jacobian determinant is \({@ta2@}\).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>var1:rand_with_prohib(-3,3,[0]);  var2:rand_with_prohib(-3,3,[0]); var3:rand(3)+1;var4:rand(3)+1;
+eq1: var1*u+var2*v^var3; /*eqn for x*/
+aa:diff(eq1,u);
+bb:diff(eq1,v);
+
+eq2:var3*u^var4-var2*v; /*eqn for y*/
+cc:diff(eq2,u);
+dd:diff(eq2,v);
+ta1:matrix([aa,bb],[cc,dd]); /*input 1- matrix input*/
+ta2:determinant(ta1);   /*input 2- determinant of input 1*/</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p> \(\displaystyle x={@eq1@}\) and \(\displaystyle y={@eq2@}\). </p>
+<p>Jacobian matrix is \({@ta1@}\)</p>
+<p>Jacobian determinant is \({@ta2@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/Ap>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Salvatore Mercuri</p>
+<p id="description">The question requires computing the Jacobian determinant for given transformation equations \(x(u, v)\) and \(y(u, v)\). This involves finding partial derivatives of \(x\) and \(y\) with respect to \(u\) and \(v\), forming a Jacobian matrix, and calculating its determinant.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>matrix</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node1: Checking for correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checking for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node1: Checking for correct answer*/
+
+/*node2: Adding the leading diagonal to find the determinant instead of subtraction*/
+ans_node2:aa*dd+cc*bb;
+
+/*node3:Computing the determinant using antidiagonal instead of leading diagonals.*/
+mistake_2:cc*bb-aa*dd;
+
+/*node4: Finding the correct determinant of the wrong matrix computed in input 1*/
+Sans_node4:determinant(ans1);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checking for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Adding the leading diagonal to find the determinant instead of subtraction</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ans_node2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You need to subtract the minor diagonal from the leading diagonal. It seems you have added them. </p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Computing the determinant using antidiagonal instead of leading diagonals</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>It seems you have interchanged the operation of the two diagonals. It should be; Leading diagonal- minor diagonal</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt2-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>Finding the correct determinant of the wrong matrix computed in input 1</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>Sans_node4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> You seem to have computed the determinant of input 1 above correctly. However, your matrix is incorrect.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1931575106</deployedseed>
+    <deployedseed>304580762</deployedseed>
+    <deployedseed>1319779733</deployedseed>
+    <deployedseed>1847435161</deployedseed>
+    <deployedseed>1848883341</deployedseed>
+    <deployedseed>809714747</deployedseed>
+    <deployedseed>1359436287</deployedseed>
+    <deployedseed>523961417</deployedseed>
+    <deployedseed>1103189191</deployedseed>
+    <deployedseed>1941660251</deployedseed>
+    <deployedseed>7492659</deployedseed>
+    <deployedseed>576451009</deployedseed>
+    <deployedseed>1415415245</deployedseed>
+    <deployedseed>963450330</deployedseed>
+    <deployedseed>2973925</deployedseed>
+    <deployedseed>1135867643</deployedseed>
+    <deployedseed>933756199</deployedseed>
+    <deployedseed>1512585393</deployedseed>
+    <deployedseed>1622355780</deployedseed>
+    <deployedseed>672359929</deployedseed>
+    <deployedseed>219596796</deployedseed>
+    <deployedseed>497725578</deployedseed>
+    <deployedseed>260800356</deployedseed>
+    <deployedseed>190203099</deployedseed>
+    <deployedseed>713062378</deployedseed>
+    <deployedseed>1413597419</deployedseed>
+    <deployedseed>2049802041</deployedseed>
+    <deployedseed>1897373076</deployedseed>
+    <deployedseed>1147039861</deployedseed>
+    <deployedseed>1882153796</deployedseed>
+    <deployedseed>264307619</deployedseed>
+    <deployedseed>1443556923</deployedseed>
+    <deployedseed>1798194856</deployedseed>
+    <deployedseed>320831136</deployedseed>
+    <deployedseed>349862153</deployedseed>
+    <deployedseed>1311177124</deployedseed>
+    <deployedseed>1286206380</deployedseed>
+    <deployedseed>1199926272</deployedseed>
+    <deployedseed>1924723898</deployedseed>
+    <deployedseed>1245885566</deployedseed>
+    <deployedseed>145176778</deployedseed>
+    <deployedseed>1123465933</deployedseed>
+    <deployedseed>1456783665</deployedseed>
+    <deployedseed>1355622581</deployedseed>
+    <deployedseed>886070625</deployedseed>
+    <deployedseed>1857767180</deployedseed>
+    <deployedseed>146292817</deployedseed>
+    <deployedseed>1940327057</deployedseed>
+    <deployedseed>513756089</deployedseed>
+    <deployedseed>1536142141</deployedseed>
+    <deployedseed>830283804</deployedseed>
+    <deployedseed>1891395741</deployedseed>
+    <deployedseed>279231614</deployedseed>
+    <deployedseed>1045270421</deployedseed>
+    <deployedseed>267941746</deployedseed>
+    <deployedseed>1695119401</deployedseed>
+    <deployedseed>264810680</deployedseed>
+    <deployedseed>517537295</deployedseed>
+    <deployedseed>1883957431</deployedseed>
+    <deployedseed>501558164</deployedseed>
+    <deployedseed>196720053</deployedseed>
+    <deployedseed>516628691</deployedseed>
+    <deployedseed>339910437</deployedseed>
+    <deployedseed>286616777</deployedseed>
+    <deployedseed>961300753</deployedseed>
+    <deployedseed>625099759</deployedseed>
+    <deployedseed>810160639</deployedseed>
+    <deployedseed>1807448581</deployedseed>
+    <deployedseed>702577233</deployedseed>
+    <deployedseed>121247568</deployedseed>
+    <deployedseed>965704911</deployedseed>
+    <deployedseed>1374834613</deployedseed>
+    <deployedseed>1440133028</deployedseed>
+    <deployedseed>1363152541</deployedseed>
+    <deployedseed>347314661</deployedseed>
+    <deployedseed>1818307105</deployedseed>
+    <deployedseed>1398636507</deployedseed>
+    <deployedseed>2029264562</deployedseed>
+    <deployedseed>935908648</deployedseed>
+    <deployedseed>106399350</deployedseed>
+    <deployedseed>575841663</deployedseed>
+    <deployedseed>1495304068</deployedseed>
+    <deployedseed>766998773</deployedseed>
+    <deployedseed>2039617536</deployedseed>
+    <deployedseed>1371449965</deployedseed>
+    <deployedseed>1430694852</deployedseed>
+    <deployedseed>1371557147</deployedseed>
+    <deployedseed>1270047312</deployedseed>
+    <deployedseed>1562417103</deployedseed>
+    <deployedseed>1308687008</deployedseed>
+    <deployedseed>929523382</deployedseed>
+    <deployedseed>248872624</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

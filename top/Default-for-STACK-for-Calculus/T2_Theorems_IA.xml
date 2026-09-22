@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="description">
+    <name>
+      <text>T2_Theorems_IA</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p></p><p>The following information might be useful<br><strong>THEOREM 1: A Comparison Test for Improper Integrals</strong></p><p>Let \(f\) and \(g\) be positive integrable functions and \(0\leq f(x)\leq g(x)\) for all \( x\in [a,\infty)\). By the monotone property of the integral \[0\leq \displaystyle\int_a^\infty g(x)dx \leq \int_a^\infty g(x)dx\]</p><ol><li>If \(\displaystyle\int_a^\infty g(x)dx\) converges, then \(\displaystyle\int_a^\infty f(x)dx\) converges.</li><li>On the other hand, if \(\displaystyle\int_a^\infty f(x)dx\) diverges, then \(\displaystyle\int_a^\infty g(x)dx\) also diverges.</li><li>The same results hold for the other types of improper integrals.</li>
+</ol><br>
+
+<b>THEOREM 2: The Fundamental Theorem of Calculus</b><br>
+If \(f\) is continuous on \([a,b]\), then the function \(F\) defined by
+\[F(x)=\int_a^xf(t)dt\] is differentiable on \((a,b)\) and its derivative is given by \(F'(x)=f(x)\). 
+
+ i.e \(\displaystyle\int_a^xf(t)dt\) is an antiderivative for \(f(x)\) on \((a,b)\).
+
+
+STACK inputs writting
+
+<table cellpadding="10" ,="" cellspacing="10" border="1">
+<tbody><tr align="center">
+<td><b>Math Symbol/Function</b> </td> <td> <b>STACK Input</b> </td>
+</tr>
+<tr align="center">
+<td><b>\(\infty\)</b> </td> <td> inf</td>
+</tr>
+<tr align="center">
+<td><b>\(-\infty\)</b> </td> <td> minf or -inf</td>
+</tr>
+<tr align="center">
+<td><b>\(\theta\)</b> </td> <td> theta </td>
+</tr>
+<tr align="center">
+<td><b>\(\pi\)</b> </td> <td> pi</td>
+</tr>
+<tr align="center">
+<td><b>\(\xi\)</b> </td> <td> xi</td>
+</tr>
+<tr align="center">
+<td><b>\(\xi_k\)</b> </td> <td> xi_k</td>
+</tr>
+<tr align="center">
+<td><b>\(\sqrt{x}\)</b> </td> <td> sqrt(x)</td>
+</tr>
+
+
+</tbody></table>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>0</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+  </question>
+</quiz>

@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Increaments and Differentials: Example 13.4.2</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Showing a function is differentiable.</p>
+<p>Show \(f(x, y)={@f_xy@}\) is differentiable using the following definition</p>
+<p><b>Definition: </b> Multivariable Differentiability. </p>
+Let \(z=f(x, y)\) be defined on an open set \(S\) containing \((x_{0}, y_{0})\) where \(f_{x}(x_{0}, y_{0})\) and \(f_{x}(x_{0}, y_{0})\) exist.
+</p><p>Let \(dz\) be the total differential of \(z\) at \((x_{0}, y_{0})\). Let \( \Delta z = f(x_{0}+dx, y_{0}+dy) - f(x_{0}, y_{0}) \), </p>
+<p> and let \(E_{1}\) and \(E_{2}\) be functions of \(dx\) and \(dy\) such that </p>
+<p>\[\Delta z = dz + E_{1}dx + E_{2}dy  \]</p>
+<p>(a) \(f\) is differentiable at \((x_{0}, y_{0})\) if </p>
+<p>\[\lim_{(dx, dy) \longrightarrow (0, 0)} E_{1} = 0 \quad \text{and } \quad \lim_{(dx, dy) \longrightarrow (0, 0)} E_{2} = 0 \]</p>
+<p>(b) \(f\) is differentiable on \(S\) if \(f\) is differentiable at every point in \(S\). If \(f\) is differentiable on \(\mathbb{R}^2\), </p> 
+<p>we say that \(f\) is differentiable everywhere.</p>
+<hr>
+<p>You begin by following these steps below</p>
+<br><b>Step 1:</b> Find \(f(x+dx,y+dy)\) and \( \Delta z \).
+<br>\(f(x+dx,y+dy)=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]
+<br>\( \Delta z = \) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]
+<br><b>Step 2:</b> Consider once more \(\Delta z\), then find \(f_{x}\), \(f_{y}\), \(E_{1}\) and \(E_{2}\).
+<br>Remember that \(dz=f_{x}dx + f_{y}dy\).
+<br>\(f_{x}=\)[[input:ans3]] and \(f_{y}=\)[[input:ans4]] [[validation:ans3]] [[validation:ans4]] [[feedback:prt3]]
+<br>\(E_{1}=\)[[input:ans5]] and \(E_{2}=\)[[input:ans6]]  [[validation:ans5]] [[validation:ans6]] [[feedback:prtA]]
+<br><b>Step 3:</b> Evaluation of limits.
+<br>\(\lim_{(dx, dy) \longrightarrow (0, 0)} E_{1} =\)[[input:ans7]] and \(\lim_{(dx, dy) \longrightarrow (0, 0)} E_{2} = \)[[input:ans8]]  [[validation:ans7]] [[validation:ans8]] [[feedback:prtB]]
+<br>Since this did not depend on a specific point \((x_{0}, y_{0})\) we can say that \(f(x, y) \) is differentiable for all pairs \((x, y)\) in \(\mathbb{R}^2\), or, equivalently, that \(f\) is differentiable everywhere.]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3><b>Worked solution</b></h3>
+<p>Show \(f(x, y)={@f_xy@}\) is differentiable using the following definition</p>
+<p><b>Definition: </b> Multivariable Differentiability. </p>
+Let \(z=f(x, y)\) be defined on an open set \(S\) containing \((x_{0}, y_{0})\) where \(f_{x}(x_{0}, y_{0})\) and \(f_{x}(x_{0}, y_{0})\) exist.
+</p><p>Let \(dz\) be the total differential of \(z\) at \((x_{0}, y_{0})\). Let \( \Delta z = f(x_{0}+dx, y_{0}+dy) - f(x_{0}, y_{0}) \), </p>
+<p> and let \(E_{1}\) and \(E_{2}\) be functions of \(dx\) and \(dy\) such that </p>
+<p>\[\Delta z = dz + E_{1}dx + E_{2}dy  \]</p>
+<p>(a) \(f\) is differentiable at \((x_{0}, y_{0})\) if </p>
+<p>\[\lim_{(dx, dy) \longrightarrow (0, 0)} E_{1} = 0 \quad \text{and } \quad \lim_{(dx, dy) \longrightarrow (0, 0)} E_{2} = 0 \]</p>
+<p>(b) \(f\) is differentiable on \(S\) if \(f\) is differentiable at every point in \(S\). If \(f\) is differentiable on \(\mathbb{R}^2\), </p> 
+<p>we say that \(f\) is differentiable everywhere.</p>
+<hr>
+<p>You begin by following these steps below.</p>
+<p><b>Step 1:</b> Find \(f(x+dx,y+dy)\) and \( \Delta z \).</p>
+<p>\(f(x+dx,y+dy)={@ta_1@}\) </p>
+<p>\(\Delta z = f(x+dx,y+dy) - f(x, y) \), so</p>
+<p>\( \Delta z = {@ta_2@}\)</p>
+<p><b>Step 2:</b> Find \(f_{x}\), \(f_{y}\), \(E_{1}\) and \(E_{2}\).</p>
+<p>It is straightforward to compute \(f_{x} = {@ta_3@} \) and \(f_{y} = {@ta_4@} \). Consider once more \(\Delta z\): </p>
+<p>\( 
+\begin{align} 
+\Delta z &=& {@ta_2@} \quad \text{(now reorder)} \\
+& = & f_{x} \cdot dx + f_{y} \cdot dy + E_{1} \cdot dx + E_{2} \cdot dy \\
+\end{align}
+\)
+</p>
+<p> We get, \(E_{1}={@ta_5@}\) and \(E_{2}={@ta_6@}\)</p>
+<p><b>Step 3:</b> Evaluation of limits.
+<p>\(\lim_{(dx, dy) \longrightarrow (0, 0)} E_{1} ={@ta_7@}\) and \(\lim_{(dx, dy) \longrightarrow (0, 0)} E_{2} ={@ta_8@} \)</p>
+<p>Since this did not depend on a specific point \( (x_{0}, y_{0}) \), we can say that \(f(x, y) \) is differentiable. </p>
+<p>for all pairs \((x, y)\) in \(\mathbb{R}^2\), or, equivalently, that \(f\) is differentiable everywhere.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining randomised coefficients for the functuon z*/
+aa: rand_with_prohib(-5,5,[0]);
+bb: 3;
+cc: 1;
+dd: 1;
+ee: 2;
+/*Define the function z=f(x,y)*/
+f_xy: aa*x^cc*y^dd+bb*y^ee;
+
+/*Model answers*/
+ta_1: expand(at(f_xy, [x=x+dx, y=y+dy])); /*Evaluate f(x+dx, y+dy)*/
+ta_2: ta_1-f_xy; /*evaluate Delta z = f(x+dx, y+dy)-f(x,y)*/
+ta_3: diff(f_xy,x); /*partial derivative of f wrt x*/
+ta_4: diff(f_xy,y); /*partial derivative of f wrt y*/
+expr: (1/dy)*factor(ta_2 -(ta_3*dx+ta_4*dy)); /*For getting E1*(dx/dy)+E2*/
+expr1: expand(ta_2 -(ta_3*dx+ta_4*dy)); /*For getting E2*(dy/dx)+E1*/
+expr2: subst(0,dy^2,expr1);
+ta_6: at(expr, [dx=0]); /*Expression corresponding to E2*/
+ta_5: at(expr2,[dy=1]); /*Expression corresponding to E1*/
+ta_7: at(ta_5, [dx=0, dy=0]); /*Evaluating limit of E1, when (dx, dy) tends to (0, 0)*/
+ta_8: at(ta_6, [dx=0, dy=0]); /*Evaluating limit of E2, when (dx, dy) tends to (0, 0)*/</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Show \(f(x, y)={@f_xy@}\) is differentiable.</p>
+<p>\(f(x+dx,y+dy)={@ta_1@}\) and \( \Delta z = {@ta_2@}\)</p>
+<p>\(f_{x}={@ta_3@}\); \(f_{y}={@ta_4@}\); \(E_{1}={@ta_5@}\) and \(E_{2}={@ta_6@}\)</p>
+<p>\( \lim_{(dx, dy) \longrightarrow (0, 0)} E_{1} = {@ta_7@} \) and \( \lim_{(dx, dy) \longrightarrow (0, 0)} E_{2} ={@ta_8@} \)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/Ap>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">2</p>
+<p id="description">Show \(f(x, y)={@f_xy@}\) is differentiable using the Definition of Multivariable Differentiability.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta_2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta_3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta_4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>ta_5</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>ta_6</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7</name>
+      <type>algebraic</type>
+      <tans>ta_7</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans8</name>
+      <type>algebraic</type>
+      <tans>ta_8</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1 Check the correct answer*/
+/*node 2: Forget to include dx and dy */
+mistake_1: expand(at(f_xy, [x=x, y=y]));</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Forgets to include dx and dy</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>You should include \( dx \) and \(dy\).</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prtA</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>ta_5</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>1</truenextnode>
+        <trueanswernote>prtA-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtA-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks the correct answer if swapped</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>ta_6</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtA-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtA-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prtB</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans7</sans>
+        <tans>ta_7</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>1</truenextnode>
+        <trueanswernote>prtB-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtB-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks the correct answer if swapped</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans8</sans>
+        <tans>ta_8</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtB-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtB-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>787463423</deployedseed>
+    <deployedseed>1860504819</deployedseed>
+    <deployedseed>936069553</deployedseed>
+    <deployedseed>851090393</deployedseed>
+    <deployedseed>1986682956</deployedseed>
+    <deployedseed>952616536</deployedseed>
+    <deployedseed>1565517447</deployedseed>
+    <deployedseed>800317300</deployedseed>
+    <deployedseed>1006678533</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta_2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta_3</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>ta_4</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>ta_5</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>ta_6</value>
+      </testinput>
+      <testinput>
+        <name>ans7</name>
+        <value>ta_7</value>
+      </testinput>
+      <testinput>
+        <name>ans8</name>
+        <value>ta_8</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-2-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prtA</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prtA-2-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prtB</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prtB-2-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

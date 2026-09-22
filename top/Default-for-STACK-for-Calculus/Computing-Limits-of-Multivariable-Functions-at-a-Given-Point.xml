@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Computing Limits of Multivariable Functions at a Given Point</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Assuming the limit of the function below exists, compute its value. </p>
+<p> \(\lim_{(x,y,z) \to ({@var_x@},{@var_y@},{@var_z@})} {@question_func@} = \) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<p>Worked solution</p>
+<p>Recall, \( \lim_{(x,y,z) \to (a,b,c)} \frac{ f(x,y,z)}{g(x,y,z)}\)   \( (a,b,c) \in \mathbb{R} \) exists when \( \lim_{(x,y,z) \to (x,y,z)}  g(x,y,z) \neq 0\) </p>
+<br>
+<p>Looking at \( \lim_{(x,y) \to ({@var_x@},{@var_y@},{@var_z@})} {@question_func@} \) the limit of the denominator exists. </p>
+<p>Therefore, substituting \(x,y,z\) by \({@var_x@},{@var_y@},{@var_z@}\) yields </p>
+<p>\[ \lim_{(x,y,z) \to ({@var_x@},{@var_y@},{@var_z@})} {@question_func@} = {@ta@}\]</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>aa:rand_with_step(1,4,1); bb:rand_with_step(1,4,1); cc: rand_with_step(1,4,1);
+num_func:aa*x^bb-z*e^(cc*y);  /*numerator function*/
+denom_func:aa*x+bb*y-cc*z;  /*denomenator function*/
+question_func:num_func/denom_func;
+var_x: rand(3)+1; var_y:rand_with_step(-3,3,1); var_z:rand_with_step(-3,3,1); /*limit points*/
+ta1:limit (question_func, x, var_x);  
+ta2:limit (ta1, y, var_y);
+ta:ratsimp(limit (ta2, z, var_z));</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\[ \lim_{(x,y,z) \to ({@var_x@},{@var_y@},{@var_z@})} {@question_func@} = {@ta@}\]</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>732887291</deployedseed>
+    <deployedseed>366198186</deployedseed>
+    <deployedseed>740221625</deployedseed>
+    <deployedseed>1693747234</deployedseed>
+    <deployedseed>1982945919</deployedseed>
+    <deployedseed>178428551</deployedseed>
+    <deployedseed>1680503292</deployedseed>
+    <deployedseed>838945833</deployedseed>
+    <deployedseed>1955483300</deployedseed>
+    <deployedseed>1776300037</deployedseed>
+    <deployedseed>867446230</deployedseed>
+    <deployedseed>1379318415</deployedseed>
+    <deployedseed>1270941427</deployedseed>
+    <deployedseed>682729792</deployedseed>
+    <deployedseed>651041990</deployedseed>
+    <deployedseed>1548887072</deployedseed>
+    <deployedseed>274336523</deployedseed>
+    <deployedseed>2140523016</deployedseed>
+    <deployedseed>1236841603</deployedseed>
+    <deployedseed>1286109514</deployedseed>
+    <deployedseed>555777570</deployedseed>
+    <deployedseed>1241893360</deployedseed>
+    <deployedseed>442439615</deployedseed>
+    <deployedseed>223733509</deployedseed>
+    <deployedseed>1796477424</deployedseed>
+    <deployedseed>567256809</deployedseed>
+    <deployedseed>1151645517</deployedseed>
+    <deployedseed>169287491</deployedseed>
+    <deployedseed>1214310328</deployedseed>
+    <deployedseed>455972967</deployedseed>
+    <deployedseed>1119078817</deployedseed>
+    <deployedseed>1039485016</deployedseed>
+    <deployedseed>807746690</deployedseed>
+    <deployedseed>1513378001</deployedseed>
+    <deployedseed>675145108</deployedseed>
+    <deployedseed>2095657429</deployedseed>
+    <deployedseed>720044090</deployedseed>
+    <deployedseed>1481005838</deployedseed>
+    <deployedseed>995926638</deployedseed>
+    <deployedseed>1134933693</deployedseed>
+    <deployedseed>1795295347</deployedseed>
+    <deployedseed>1461109704</deployedseed>
+    <deployedseed>1005838253</deployedseed>
+    <deployedseed>427904433</deployedseed>
+    <deployedseed>1183646733</deployedseed>
+    <deployedseed>1057263394</deployedseed>
+    <deployedseed>331170563</deployedseed>
+    <deployedseed>65636420</deployedseed>
+    <deployedseed>1357693886</deployedseed>
+    <deployedseed>963668264</deployedseed>
+    <deployedseed>1213787232</deployedseed>
+    <deployedseed>906838843</deployedseed>
+    <deployedseed>1666004869</deployedseed>
+    <deployedseed>1244955177</deployedseed>
+    <deployedseed>1827909031</deployedseed>
+    <deployedseed>1584927272</deployedseed>
+    <deployedseed>1570683433</deployedseed>
+    <deployedseed>983094054</deployedseed>
+    <deployedseed>433730072</deployedseed>
+    <deployedseed>169135873</deployedseed>
+    <deployedseed>838468214</deployedseed>
+    <deployedseed>1569771262</deployedseed>
+    <deployedseed>2018639942</deployedseed>
+    <deployedseed>2001934281</deployedseed>
+    <deployedseed>98813758</deployedseed>
+    <deployedseed>1914256995</deployedseed>
+    <deployedseed>1665395386</deployedseed>
+    <deployedseed>1954890538</deployedseed>
+    <deployedseed>1672203518</deployedseed>
+    <deployedseed>481417238</deployedseed>
+    <deployedseed>1634187333</deployedseed>
+    <deployedseed>1701876913</deployedseed>
+    <deployedseed>729592121</deployedseed>
+    <deployedseed>1067830158</deployedseed>
+    <deployedseed>1642689780</deployedseed>
+    <deployedseed>1745859264</deployedseed>
+    <deployedseed>440988901</deployedseed>
+    <deployedseed>1063186067</deployedseed>
+    <deployedseed>664272503</deployedseed>
+    <deployedseed>558431435</deployedseed>
+    <deployedseed>723411460</deployedseed>
+    <deployedseed>195408341</deployedseed>
+    <deployedseed>60038310</deployedseed>
+    <deployedseed>488641345</deployedseed>
+    <deployedseed>1934923668</deployedseed>
+    <deployedseed>533630860</deployedseed>
+    <deployedseed>112225465</deployedseed>
+    <deployedseed>944572588</deployedseed>
+    <deployedseed>177906258</deployedseed>
+    <deployedseed>1525372480</deployedseed>
+    <deployedseed>2070558634</deployedseed>
+    <deployedseed>656709050</deployedseed>
+    <deployedseed>369990209</deployedseed>
+    <deployedseed>706038798</deployedseed>
+  </question>
+</quiz>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Approximating the value of a definite integral</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Evaluate the integral:</p>
+<p>\( \displaystyle \int_{@a@}^{@b@} {@func@} \, dx=\)&nbsp;<span style="font-size: 0.9375rem;">[[input:ans1]] [[validation:ans1]]&nbsp;[[feedback:prt1]]</span></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><b><h3>Worked solution</h3></b></p>
+<p>To find the definite integral of \(\displaystyle f(x) = {@func@}\) from \(a = {@a@}\) to \(b = {@b@}\) , we can use the definite integral formula:</p>
+
+<p>\( \displaystyle \int_{a}^{b} f(x)\, dx= F(b) - F(a)\), where \(F(x)\) is the antiderivative of \(f(x)\). </p>
+
+<p>Let's find the antiderivative of \( \displaystyle f(x) = {@func@}\):</p>
+<p>\( \displaystyle \int {@func@} \, dx= {@expr1@}\)</p>
+
+<p>Now we can evaluate the definite integral from \(a = {@a@}\) to \(b = {@b@}\):</p>
+<p>\( \begin{align} \displaystyle \int_{@a@}^{@b@}{@func@} \, dx &= \left[{@expr1@}\right]_{@a@}^{@b@}\\
+                 & = {@fb@}-{@fa@} \\
+                  &= {@expr2@}
+ \end{align}\)</p>
+
+<p>Therefore,</p>
+<p>\( \displaystyle \int_{@a@}^{@b@} {@func@} \, dx={@ta@}\).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>a:rand(10);
+b:rand_with_prohib(1,10,[a]);
+power:rand(5);
+expr:rand([x^power,x^power+x^2+x,x^power+x+a,b*x^power,x^power-a,b*x^power+a]);
+func:expr;
+ta:int(func,x,a,b);
+/*worked solution*/
+expr1:int(func,x);
+fb:subst(b,x,expr1);
+fa:subst(a,x,expr1);
+expr2:fb-fa;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\( \displaystyle \int_{@a@}^{@b@} {@func@} \, dx={@ta@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">NA</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer"></p>
+<p id="description">The question focuses on approximating the average  value of a definite Integral</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1 checks for correct answer*/
+/*Node 2 interchanging limits*/
+mistake:int(func,x,b,a);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have subtracted the higher limit from the lower limit</p>
+<p>Here is  the definite integral formula: \( \displaystyle \int_{a}^{b} f(x)\, dx= F(b) - F(a)\), where \(F(x)\) is the antiderivative of \(f(x)\). </p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1170135716</deployedseed>
+    <deployedseed>426920915</deployedseed>
+    <deployedseed>1357013578</deployedseed>
+    <deployedseed>1784438569</deployedseed>
+    <deployedseed>2027759627</deployedseed>
+    <deployedseed>772869553</deployedseed>
+    <deployedseed>1696975483</deployedseed>
+    <deployedseed>2036294560</deployedseed>
+    <deployedseed>607906094</deployedseed>
+    <deployedseed>1874253873</deployedseed>
+    <deployedseed>2062413707</deployedseed>
+    <deployedseed>379261623</deployedseed>
+    <deployedseed>1021250524</deployedseed>
+    <deployedseed>2142745983</deployedseed>
+    <deployedseed>1473735336</deployedseed>
+    <deployedseed>6149872</deployedseed>
+    <deployedseed>587002846</deployedseed>
+    <deployedseed>1126934497</deployedseed>
+    <deployedseed>803590410</deployedseed>
+    <deployedseed>718001654</deployedseed>
+    <deployedseed>957781870</deployedseed>
+    <deployedseed>1522322677</deployedseed>
+    <deployedseed>711063186</deployedseed>
+    <deployedseed>1599159224</deployedseed>
+    <deployedseed>1386581746</deployedseed>
+    <deployedseed>1789604768</deployedseed>
+    <deployedseed>456588126</deployedseed>
+    <deployedseed>1227055107</deployedseed>
+    <deployedseed>1978946549</deployedseed>
+    <deployedseed>2000025433</deployedseed>
+    <deployedseed>1402270834</deployedseed>
+    <deployedseed>1257991263</deployedseed>
+    <deployedseed>387824059</deployedseed>
+    <deployedseed>1583037945</deployedseed>
+    <deployedseed>1525054160</deployedseed>
+    <deployedseed>203632840</deployedseed>
+    <deployedseed>2142161528</deployedseed>
+    <deployedseed>1409125512</deployedseed>
+    <deployedseed>431676865</deployedseed>
+    <deployedseed>2109206269</deployedseed>
+    <deployedseed>1465582712</deployedseed>
+    <deployedseed>1544786092</deployedseed>
+    <deployedseed>229298524</deployedseed>
+    <deployedseed>180606420</deployedseed>
+    <deployedseed>416668513</deployedseed>
+    <deployedseed>377191996</deployedseed>
+    <deployedseed>1999384338</deployedseed>
+    <deployedseed>296614343</deployedseed>
+    <deployedseed>540434551</deployedseed>
+    <deployedseed>400676815</deployedseed>
+    <deployedseed>918886608</deployedseed>
+    <deployedseed>1293234967</deployedseed>
+    <deployedseed>1339177978</deployedseed>
+    <deployedseed>1744120932</deployedseed>
+    <deployedseed>1658884259</deployedseed>
+    <deployedseed>585437026</deployedseed>
+    <deployedseed>947812624</deployedseed>
+    <deployedseed>1125247794</deployedseed>
+    <deployedseed>694785409</deployedseed>
+    <deployedseed>2024739041</deployedseed>
+    <deployedseed>627626492</deployedseed>
+    <deployedseed>1771962725</deployedseed>
+    <deployedseed>708325402</deployedseed>
+    <deployedseed>2080080693</deployedseed>
+    <deployedseed>550822562</deployedseed>
+    <deployedseed>1115587711</deployedseed>
+    <deployedseed>1733704854</deployedseed>
+    <deployedseed>1609302205</deployedseed>
+    <deployedseed>256117305</deployedseed>
+    <deployedseed>39182543</deployedseed>
+    <deployedseed>158690863</deployedseed>
+    <deployedseed>1039536720</deployedseed>
+    <deployedseed>184768300</deployedseed>
+    <deployedseed>181363438</deployedseed>
+    <deployedseed>1376227603</deployedseed>
+    <deployedseed>1821875543</deployedseed>
+    <deployedseed>1321919013</deployedseed>
+    <deployedseed>412631907</deployedseed>
+    <deployedseed>1556244179</deployedseed>
+    <deployedseed>783887116</deployedseed>
+    <deployedseed>504129282</deployedseed>
+    <deployedseed>160560757</deployedseed>
+    <deployedseed>2017339665</deployedseed>
+    <deployedseed>2042196072</deployedseed>
+    <deployedseed>1218032674</deployedseed>
+    <deployedseed>1897155169</deployedseed>
+    <deployedseed>645493110</deployedseed>
+    <deployedseed>1667226098</deployedseed>
+    <deployedseed>1473182812</deployedseed>
+    <deployedseed>2063547264</deployedseed>
+    <deployedseed>820011894</deployedseed>
+    <deployedseed>1064741629</deployedseed>
+    <deployedseed>454907831</deployedseed>
+    <deployedseed>261607223</deployedseed>
+    <deployedseed>40325754</deployedseed>
+    <deployedseed>905048195</deployedseed>
+    <deployedseed>521692255</deployedseed>
+    <deployedseed>1603358594</deployedseed>
+    <deployedseed>45931367</deployedseed>
+    <deployedseed>134000945</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

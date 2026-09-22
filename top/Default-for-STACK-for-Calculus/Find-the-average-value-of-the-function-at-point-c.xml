@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Find the average value of the function at point c</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the average value of the function \(f(x)={@quest_expr1@}\) over the interval \([{@a@},{@b2@}]\) and find the value of \(c\) that satisfies the Mean Value Theorem for f(x) in the given interval. </p>
+<p>Average value \(=f(c)=\) [[input:ans1a]] [[validation:ans1a]][[feedback:prt1a]]</p></p>
+<p>\(c=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Finding the average value of the function \(\displaystyle f(x)={@quest_expr1@}\) over the interval \([{@a@},{@b2@}]\) and finding \(c\) such that \(f(c)\) equals the average value of the function over \([{@a@},{@b2@}]\).</p>
+<p>We use the formula \(f(c)=\displaystyle \frac{1}{b-a}\int_a^b f(x)dx\)</p>
+<p>Applying this formula to \(\displaystyle f(x)={@quest_expr1@}\) over the interval \([{@a@},{@b2@}]\) </p>
+<p>we have \(\displaystyle \frac{1}{{@b2@}-{@a@}}\displaystyle \int _{@a@}^{@b2@} {@quest_expr1@}\,dx\)</p>
+<p>\( \begin{align}
+\displaystyle \frac{1}{{@b2@}-{@a@}}\displaystyle \int _{@a@}^{@b2@} {@quest_expr1@}\,dx&=\frac{1}{{@b2-a@}} \times \left [  {@solution1@} \right ]_{@a@}^{@b2@}\\
+&={@sol2@}
+\end {align}\)</p>
+<p></p>
+<p>Find  \(c\) by Substituting \(c\) in the question expression</p>
+<p>\(\displaystyle f(c)={@sol2@}={@sol3@}\)</p>
+<p>Therefore \(\displaystyle c={@ta1@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*mean value theorem*/
+constant_2:rand(3)+2;
+quest_expr1:x/constant_2;
+a:rand(3);
+b2:a+2+rand(8);
+/*worked solution 1*/
+solution1:int(quest_expr1,x);
+sol1:int(quest_expr1,x,a,b2);
+sol2:(1/(b2-a))*sol1;
+ta1a: sol2;
+sol3:subst(c,x,quest_expr1);
+sol4:solve(sol2=sol3)[1];
+ta1:rhs(sol4);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(f(x)={@quest_expr1@}\)</p> 
+<p>\(f(c)={@ta1a@}\)</p>
+<p>\(c={@ta1@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept"></p>
+<p id="first reviewer">Nixson Kiplagat</p>
+<p id="second reviewer">Wastalas Motognon</p>
+
+<p id="description">Finding the average value of the function \(f(x)={@quest_expr1@}\) over the interval \([0,6]\) and find \(c\) such that \(f(c)\) equals the average value of the function over \([0,6]\).</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans1a</name>
+      <type>numerical</type>
+      <tans>ta1a</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer */</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer </description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt1a</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer */</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1a</sans>
+        <tans>ta1a</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1a-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1a-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>454918315</deployedseed>
+    <deployedseed>1163193301</deployedseed>
+    <deployedseed>1399859364</deployedseed>
+    <deployedseed>70162243</deployedseed>
+    <deployedseed>488714290</deployedseed>
+    <deployedseed>750926697</deployedseed>
+    <deployedseed>1802937951</deployedseed>
+    <deployedseed>283635645</deployedseed>
+    <deployedseed>1528448108</deployedseed>
+    <deployedseed>510295265</deployedseed>
+    <deployedseed>1173366886</deployedseed>
+    <deployedseed>1266426127</deployedseed>
+    <deployedseed>71485730</deployedseed>
+    <deployedseed>1146984717</deployedseed>
+    <deployedseed>1181874199</deployedseed>
+    <deployedseed>130162806</deployedseed>
+    <deployedseed>1933781832</deployedseed>
+    <deployedseed>1526262024</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans1a</name>
+        <value>ta1a</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt1a</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1a-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

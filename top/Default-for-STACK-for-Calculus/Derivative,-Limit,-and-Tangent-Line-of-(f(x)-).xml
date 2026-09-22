@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Derivative, Limit, and Tangent Line of \(f(x)\)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>A. Which of the following is equal to \(f'({@lim_point@})\) for \(f(x)={@func@}\)</p>
+<p>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+
+<p>B. Evaluate the exact limit of \(f'({@lim_point@})\).</p><p>\(f'({@lim_point@})=\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>
+
+<p>C. What is the gradient of the tangent to the graph of \(f(x)\) when \(x={@lim_point@}\)</p>
+<p>\(m=\) [[input:ans3]] [[validation:ans3]][[feedback:prt3]]</p>
+
+<p>D. Find the equation of the tangent to the graph of \(f(x)\) when \(x={@lim_point@}\). Give your answer in the form \(y=mx+c\).</p>
+<p>\(y=\) [[input:ans4]] [[validation:ans4]][[feedback:prt4]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>A. To find the derivative of the function \(f(x) = {@func@}\) at a specific point, \(x = {@lim_point@}\), we can use the limit definition of a derivative (the difference quotient). </p>
+<p>The formula for finding the derivative of a function \(f(x)\) at a point \(x = a\) is given by:</p>
+<p style="margin-left:30px">\( \displaystyle f'(a) = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}\)</p>
+
+<p>In this case, we want to find \( \displaystyle f'({@lim_point@})\), so \(a = {@lim_point@}\). Therefore, we have:</p>
+
+<p style="margin-left:30px">\( \displaystyle  f'({@lim_point@}) = \lim_{h \to 0} \frac{f({@lim_point@} + h) - f({@lim_point@})}{h}\)</p>
+
+<p>Now, plug in the function \(f(x) = {@func@}\):</p>
+
+<p style="margin-left:30px">\( \displaystyle  f'({@lim_point@}) = \lim_{h \to 0} \frac{{@func_coeff@}({@lim_point@} + h)^{@func_power@} - {@func_coeff@}({@lim_point@})^{@func_power@}}{h}\)</p>
+
+<p>Now, simplify the expression inside the limit:</p>
+<p style="margin-left:30px">
+\(  \begin{align*}
+\displaystyle f'({@lim_point@}) &=  \lim_{h \to 0} \frac{{@func_coeff@}({@lim_point@} + h)^{@func_power@} -{@num_right@}}{h} \\ 
+&= \lim_{h \to 0} \frac{{@func_coeff@}({@num_left@}) - {@num_right@}}{h}  \\
+&= \lim_{h \to 0} \frac{{@num_left1@} - {@num_right@}}{h} \\
+&= \lim_{h \to 0} \frac{{@func_num@}}{h} \\
+&= \lim_{h \to 0} \frac{{@func_num_simp@}}{h} \\
+&= \lim_{h \to 0} {@func_num_simp1@} 
+\end{align*}
+\)
+</p>
+
+<p>Now, you can evaluate the limit as \(h\) approaches \(0\):</p>
+
+<p style="margin-left:30px"> \(\displaystyle f'({@lim_point@}) = {@correct_limit@} \)</p>
+
+<p>B. So, the exact limit of \( \displaystyle f'({@lim_point@}) = {@correct_limit@}\). </p>
+<p>This is the derivative of the function \( \displaystyle f(x) = {@func@}\) at \(x = {@lim_point@}\), as found using the limit definition of a derivative.</p>
+
+<p>C. To find the gradient (\(m\)) of the tangent to the graph of \(f(x) = {@func@}\) when \(x = {@lim_point@}\), we can use the derivative of the function \(f(x)\) at that point. </p>
+<p>The gradient of the tangent line at a specific point is equal to the value of the derivative of the function at that point.</p>
+<p>First, we find the derivative of \(f(x)\) with respect to \(x\):</p>
+\(  \displaystyle 
+\begin{align*}
+f'(x) &= \frac{d}{dx}({@func@}) = {@df@} \\
+ f'({@lim_point@}) &= {@m@} \\
+m &= f'({@lim_point@}) = {@m@}
+\end{align*}\)
+<p>D. We already have \(m = {@m@}\), and we can use the point \(({@lim_point@}, f({@lim_point@}))\) on the graph of \(f(x)\) to find \(c\).</p>
+
+<p>Plug \(x = {@lim_point@}\) into the original function to find \(f({@lim_point@})\):</p>
+
+\(f({@lim_point@}) = {@func_coeff@} ({@lim_point@}^{@func_power@})= {@fx_at_lim_point@}\)
+
+<p>Now, you have a point \(({@lim_point@},  {@fx_at_lim_point@})\) and the gradient \(m = {@m@}\). Plug these values into the equation \(y = mx + c\) and solve for \(c\):</p>
+\(  \displaystyle 
+\begin{align*}
+{@fx_at_lim_point@} &= ({@m@} \times {@lim_point@}) + c \\
+      {@fx_at_lim_point@} &= {@m*lim_point@} + c \\
+c &= {@fx_at_lim_point@} - {@m*lim_point@} \\
+   &= {@c@}
+ \end{align*}\)
+
+<p>So, the equation of the tangent to the graph of \(f(x) = {@func@}\) when \(x = {@lim_point@}\) is:</p>
+\( \qquad y = {@tangent_line@}\)]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[func_coeff: rand(8)+3;
+func_power: rand(5)+2;
+
+func: func_coeff*x^func_power;
+lim_point: rand(4)+2;
+
+corr_ans: [1, true, sconcat("\\(\\displaystyle \\lim_{h \\rightarrow 0} \\frac{", func_coeff, (lim_point + h)^func_power, "-", func_coeff*lim_point^func_power, "}{h} \\)")];
+
+/* wrong answers */
+/* 2: leaves x in the second term of the numerator */
+/* 3: leaves x in the first term of the numerator */
+/* 4: leaves x both terms in the numerator */
+/* 5: brings power inside brackets for first term in numerator */
+/* 6: takes h to the wrong limit */
+
+incorr_ans: rand_selection([
+
+[2, false, sconcat("\\(\\displaystyle \\lim_{h \\rightarrow 0} \\frac{", func_coeff, (lim_point + h)^func_power, "-", func_coeff, x^func_power, "}{h} \\)")],
+
+[3, false, sconcat("\\(\\displaystyle \\lim_{h \\rightarrow 0} \\frac{", func_coeff, (x + h)^func_power, "-", func_coeff*lim_point^func_power, "}{h} \\)")],
+
+[4, false, sconcat("\\(\\displaystyle \\lim_{h \\rightarrow 0} \\frac{", func_coeff, (x + h)^func_power, "-", func_coeff, x^func_power, "}{h} \\)")],
+
+[5, false, sconcat("\\(\\displaystyle \\lim_{h \\rightarrow 0} \\frac{", func_coeff, "(", lim_point + h^func_power, ")", "-", func_coeff*lim_point^func_power, "}{h} \\)")],
+
+[6, false, sconcat("\\(\\displaystyle \\lim_{h \\rightarrow", lim_point, "} \\frac{", func_coeff, (lim_point + h)^func_power, "-", func_coeff*lim_point^func_power, "}{h} \\)")]
+
+], 3);
+
+ma: random_permutation(append([corr_ans], incorr_ans));
+
+/*worked solution for part A and B*/
+num_left: expand((lim_point + h)^func_power); 
+num_left1: expand(func_coeff*num_left); 
+num_right:func_coeff*(lim_point)^func_power;
+func_num:num_left1-num_right;
+func_num_simp:factor(func_num);
+func_num_simp1:expand(func_num_simp/h); 
+/* Calculate the limit as h approaches 0 */
+coef:coeff(func_num_simp1,h,0);
+coef:coeff(func_num_simp1,h,1); 
+correct_limit:limit(func_num_simp1, h, 0); 
+
+
+/*Part C and D*/ /* Define the function f(x) */  
+f(x) := func;   
+/* Find the derivative of f(x) */  
+df : diff(f(x), x);  
+/* Find the gradient (m) at x = lim_point */  
+m : subst(lim_point,x,df) ;  
+/* Find the value of f(x) at x = lim_point */  
+fx_at_lim_point :  subst(lim_point,x,func) ;
+/* Find the y-intercept (c) of the tangent line */  
+c : fx_at_lim_point - m * lim_point;  
+/* Define the equation of the tangent line */  
+tangent_line: m * x + c; ]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Which of the following is equal to \(f'({@lim_point@})\) for \(f(x)={@func@}\)</p>
+<p>\(\lim_{h \rightarrow 0} \frac{{@func_coeff*(lim_point + h)^func_power@} - {@func_coeff*lim_point^func_power@}}{h} \)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">[N/A]</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer"> Juma Zevick </p>
+<p id="description">This question focuses on finding the derivative, evaluating a limit, determining the gradient of a tangent line, and finding the equation of the tangent line for a given function \(f(x)\) at a specific point.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ma</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>correct_limit</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>m</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>tangent_line</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description> Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>The formula for finding the derivative of a function \(f(x)\) at a point \(x = a\) is given by:</p>
+<p style="margin-left:30px">\( \displaystyle f'(a) = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}\)</p>
+<p>In this case, we want to find \( \displaystyle f'({@lim_point@})\), so \(a = {@lim_point@}\). Therefore, we have:</p>
+<p style="margin-left:30px">\( 
+\displaystyle f(x)={@func@} \\
+\displaystyle f'({@lim_point@})=  \lim_{h \rightarrow 0} \frac{{@func_coeff*(lim_point + h)^func_power@} - {@func_coeff*lim_point^func_power@}}{h} \)</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct limit</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>correct_limit</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>m</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>This is the derivative at that point.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>tangent_line</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>We want \(y=mx+c\). We know that when \(x=3\), \(m=6\) and \(y=3^2=9\). Therefore, substituting values we get \(9=6\cdot 3 + c\) and solving for \(c\) gives us \(c=-9\). Therefore, \(y=6x-9\).<br></p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>2005438298</deployedseed>
+    <deployedseed>1335757635</deployedseed>
+    <deployedseed>893173295</deployedseed>
+    <deployedseed>273989936</deployedseed>
+    <deployedseed>1016262862</deployedseed>
+    <deployedseed>1905131090</deployedseed>
+    <deployedseed>1367847995</deployedseed>
+    <deployedseed>1155686043</deployedseed>
+    <deployedseed>1663421307</deployedseed>
+    <deployedseed>865851633</deployedseed>
+    <deployedseed>1580076589</deployedseed>
+    <deployedseed>1102710383</deployedseed>
+    <deployedseed>536314855</deployedseed>
+    <deployedseed>2032728572</deployedseed>
+    <deployedseed>159620820</deployedseed>
+    <deployedseed>558008481</deployedseed>
+    <deployedseed>174899367</deployedseed>
+    <deployedseed>1072831618</deployedseed>
+    <deployedseed>748653873</deployedseed>
+    <deployedseed>1118193210</deployedseed>
+    <deployedseed>922237049</deployedseed>
+    <deployedseed>1848143653</deployedseed>
+    <deployedseed>1049438011</deployedseed>
+    <deployedseed>1371772743</deployedseed>
+    <deployedseed>1106273981</deployedseed>
+    <deployedseed>1256421539</deployedseed>
+    <deployedseed>2030422347</deployedseed>
+    <deployedseed>1585398704</deployedseed>
+    <deployedseed>1639415047</deployedseed>
+    <deployedseed>987187474</deployedseed>
+    <deployedseed>1069635082</deployedseed>
+    <deployedseed>842627724</deployedseed>
+    <deployedseed>1535722326</deployedseed>
+    <deployedseed>219849044</deployedseed>
+    <deployedseed>187582861</deployedseed>
+    <deployedseed>634486994</deployedseed>
+    <deployedseed>2138711538</deployedseed>
+    <deployedseed>687324672</deployedseed>
+    <deployedseed>342502233</deployedseed>
+    <deployedseed>2049560375</deployedseed>
+    <deployedseed>1466857658</deployedseed>
+    <deployedseed>1119599216</deployedseed>
+    <deployedseed>1877661012</deployedseed>
+    <deployedseed>1892575597</deployedseed>
+    <deployedseed>1211411767</deployedseed>
+    <deployedseed>1515544075</deployedseed>
+    <deployedseed>1911753981</deployedseed>
+    <deployedseed>115811059</deployedseed>
+    <deployedseed>1267743751</deployedseed>
+    <deployedseed>1349669649</deployedseed>
+    <deployedseed>292422943</deployedseed>
+    <deployedseed>2058875056</deployedseed>
+    <deployedseed>794760776</deployedseed>
+    <deployedseed>902956853</deployedseed>
+    <deployedseed>848760019</deployedseed>
+    <deployedseed>844952820</deployedseed>
+    <deployedseed>1072938931</deployedseed>
+    <deployedseed>941128007</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>first(mcq_correct(ma))</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>correct_limit</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>m</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>tangent_line</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

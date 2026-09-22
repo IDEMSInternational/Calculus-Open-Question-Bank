@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Partial derivatives: Example 4</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p> By assuming that \(z=z(x, y)\), find \(\displaystyle \frac{\partial z}{ \partial x} \) and \(\displaystyle \frac{\partial z}{ \partial y} \) for each of the following function</p>
+<p>(a) \({@f_1@}\)</p>
+<br> \(\displaystyle \frac{\partial z}{ \partial x} =\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]
+<br> \( \displaystyle \frac{\partial z}{ \partial y} = \) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]
+<p></p>
+<p>(b) \({@f_2@}\)</p>
+<br> \( \displaystyle \frac{\partial z}{ \partial x} =\) [[input:ans3]] [[validation:ans3]] [[feedback:prt3]]
+<br> \( \displaystyle \frac{\partial z}{ \partial y} = \) [[input:ans4]] [[validation:ans4]] [[feedback:prt4]]]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<p><b>Worked solution</b></p>
+<p> First of all, we want to recall the following derivations of functions, which are used during worked solution from one step to another step.</p>
+<div>
+    <table width="250" cellspacing="1" cellpadding="0" border="1">
+ <colgroup>
+            <col>
+            <col>
+    </colgroup>
+        <tbody>
+  <tr>
+    <th>Functions</th>
+    <th>Derivative formulas</th>
+  </tr>
+  <tr>
+    <td>\( \sqrt{f} \)</td>
+    <td>\(\displaystyle \frac{f'}{2f}\)</td>
+  </tr>
+  <tr>
+    <td>\( \ln f\)</td>
+    <td>\( \displaystyle \frac{f'}{f} \)</td>
+  </tr>
+  <tr>
+    <td>\((f + g)' \)</td>
+    <td>\(f' + g'\)</td>
+  </tr>
+  <tr>
+    <td>\(\displaystyle \frac{f}{g} \)</td>
+    <td>\(\displaystyle \frac{f'g - g'f}{g^2} \)</td>
+  </tr>
+ <tr>
+    <td>\(\alpha f\)</td>
+    <td>\(\alpha f'\)</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+<p></p>
+<p>(a) {@f_1@}</p>
+<p>Let’s start with finding \( \displaystyle \frac{\partial z}{\partial x} \). We first partially differentiate both sides with respect to \(x\), treating the variable \(y\) as a constant. We then solve for \( \displaystyle \frac{\partial z}{\partial x} \).</p>
+<p>\( 
+\begin{align}
+ \displaystyle \frac{\partial }{ \partial x} ({@aa*x^3*z^2@}) + \frac{\partial }{ \partial x} ({@bb*x*y^5*z@}) &  = & \displaystyle \frac{\partial }{ \partial x} ({@cc*x^2@})+ \frac{\partial }{ \partial x} ({@dd*y^3@})    \qquad  \qquad (1) 
+\end{align}
+\)
+</p>
+But
+<p>\( 
+\begin{align}
+\displaystyle \frac{\partial }{ \partial x} ({@aa*x^3*z^2@}) + \frac{\partial }{ \partial x} ({@bb*x*y^5*z@}) & = &({@diff(aa*x^3,x)*z^2@} )+( {@aa*x^3*diff(z^2,z)@} \cdot \frac{\partial z}{\partial x}) + ({@diff(bb*x*y^5,x)*z@})+ ({@bb*x*y^5*diff(z,z)@} \cdot \frac{\partial z}{\partial x} ) \\
+& = & \displaystyle \left( {@ta_1b@} \right) \cdot \frac{\partial z}{\partial x} + ({@diff(aa*x^3,x)*z^2@} ) + ({@diff(bb*x*y^5,x)*z@})  \qquad \qquad (2)
+\end{align}
+\)
+</p>
+and 
+<p>\( 
+\begin{align}
+\displaystyle \frac{\partial }{ \partial x} ({@cc*x^2@})+ \frac{\partial }{ \partial x} ({@dd*y^3@}) & = & {@diff(cc*x^2+dd*y^3,x)@}   \qquad \qquad (3)
+\end{align}
+\)
+</p>
+By replacing the expressions (2) and (3) in (1), we have
+<p>\( 
+\begin{align}
+\displaystyle \left( {@ta_1b@} \right) \cdot \frac{\partial z}{\partial x} & = &  
+{@ta_1a@} \\
+\displaystyle \frac{\partial z}{\partial x} & = & {@ta_1@}
+\end{align}
+\)
+</p>
+<p>Next let’s start with finding \( \displaystyle \frac{\partial z}{\partial y} \). We partially differentiate both sides with respect to \(y\), treating the variable \(x\) as a constant. We then solve for \( \displaystyle \frac{\partial z}{\partial y} \).</p>
+<p>\( 
+\begin{align}
+\displaystyle \frac{\partial }{ \partial y} ({@aa*x^3*z^2@}) + \displaystyle \frac{\partial }{ \partial y} ({@bb*x*y^5*z@}) &  = & \displaystyle  \frac{\partial }{ \partial y} ({@cc*x^2@})+ \frac{\partial }{ \partial y} ({@dd*y^3@}) \\
+ ({@diff(aa*x^3,y)*z^2@} )+ ( {@aa*x^3*diff(z^2,z)@} \cdot \displaystyle  \frac{\partial z}{\partial y}) +( {@diff(bb*x*y^5,y)*z@} )+ ( {@bb*x*y^5*diff(z,z)@} \cdot \displaystyle  \frac{\partial z}{\partial y} ) & = &  
+({@diff(cc*x^2+dd*y^3,y)@})\\
+\left( {@ta_2b@} \right) \cdot \displaystyle  \frac{\partial z}{\partial y} & = &  
+{@ta_2a@} \\
+\displaystyle \frac{\partial z}{\partial y} & = & {@ta_2@}
+\end{align}
+\)
+</p>
+<p>(b) {@f_2@}</p>
+<p>Let’s start with finding \( \displaystyle \frac{\partial z}{\partial x} \) We first differentiate both sides with respect to \(x\). We then solve for \( \displaystyle \frac{\partial z}{\partial x} \).</p>
+<p>\( 
+\begin{align}
+\displaystyle \frac{\partial }{ \partial x} ({@aa*x^2*sin(bb*y+cc*z)@}) & = & \displaystyle  \frac{\partial }{ \partial x} ({@ff+dd*y*cos(ee*z*x)@})\\
+\displaystyle ({@diff(aa*x^2,x)*sin(bb*y+cc*z)@} )+({@aa*x^2*diff(sin(bb*y+cc*z),z)@} \cdot \frac{\partial z}{\partial x}) & = & ( {@diff(dd*y,x)*cos(ee*z*x)@} )-({@dd*y@} \cdot \left( {@diff(ee*x,x)*z@})+({@ee*x@} \cdot \displaystyle \frac{\partial z}{\partial x}\right) \cdot {@sin(ee*z*x)@})\\
+\displaystyle ( {@diff(aa*x^2,x)*sin(bb*y+cc*z)@} )+( {@aa*x^2*diff(sin(bb*y+cc*z),z)@} \cdot \frac{\partial z}{\partial x} )& = & \displaystyle  ({@-dd*y*diff(ee*x,x)*z*sin(ee*z*x)@})-({@dd*y*ee*x*sin(ee*z*x)@} \cdot \displaystyle  \frac{\partial z}{\partial x})\\
+\displaystyle \left( {@ta_3b@} \right) \cdot \displaystyle  \frac{\partial z}{\partial x} & = & {@ta_3a@} \\
+\displaystyle \frac{\partial z}{\partial x} & = & {@ta_3@}
+\end{align}
+\)
+</p>
+<p>Next let’s start with finding  \( \displaystyle \frac{\partial z}{\partial y} \). We differentiate both sides with respect to \(y\). We then solve for \( \displaystyle \frac{\partial z}{\partial y} \).</p>
+ </p>
+<p>\( 
+\begin{align}
+\displaystyle \frac{\partial }{ \partial y} ({@aa*x^2*sin(bb*y+cc*z)@}) & = & \displaystyle  \frac{\partial }{ \partial y} ({@ff+dd*y*cos(ee*z*x)@})\\
+\displaystyle {@diff(aa*x^2,y)*sin(bb*y+cc*z)@} +{@aa*x^2@} \cdot \left( {@bb@}+{@cc@} \cdot \frac{\partial z}{\partial y}\right) \cdot {@cos(bb*y+cc*z)@} & = & \displaystyle  {@diff(dd*y,y)*cos(ee*z*x)@}-{@dd*y@} \cdot \left( {@diff(ee*x,y)*z@}+{@ee*x@} \cdot \frac{\partial z}{\partial y}\right) \cdot {@sin(ee*z*x)@}\\
+\displaystyle {@aa*x^2*bb@} \cdot {@cos(bb*y+cc*z)@} +{@aa*x^2*cc*cos(bb*y+cc*z)@} \cdot \displaystyle \frac{\partial z}{\partial y} & = & -{@diff(aa*x^2,y)*sin(bb*y+cc*z)@} + {@diff(dd*y,y)*cos(ee*z*x)@}-{@dd*y*diff(ee*x,y)*z*sin(ee*z*x)@}-{@dd*y*ee*x*sin(ee*z*x)@}\cdot \frac{\partial z}{\partial y}\\
+\displaystyle \left({@ta_4b@} \right) \cdot \displaystyle \frac{\partial z}{\partial y} & = & {@ta_4a@}\\
+\displaystyle \frac{\partial z}{\partial y} & = & {@ta_4@}
+
+\end{align}
+\)
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2022071300</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Randomisation of the coefficients of the first function*/
+aa: rand_with_prohib(-5,5,[0]);
+bb: rand_with_prohib(-5,5,[0]);
+cc: rand_with_prohib(-5,5,[0]);
+dd: rand_with_prohib(-5,5,[0]);
+ee: rand_with_prohib(-7,7,[0]);
+ff:rand_with_prohib(-5,5,[0]);
+/*Defining the first randomised function*/
+f_1: aa*x^3*z^2+bb*x*y^5*z=cc*x^2+dd*y^3;
+/*Steps of expression of partial of z w.r.t x*/
+ta_1a: diff(cc*x^2+dd*y^3,x)-diff(aa*x^3,x)*z^2-diff(bb*x*y^5,x)*z; /*expression of the numerator*/
+ta_1b: aa*x^3*diff(z^2,z)+bb*x*y^5*diff(z,z); /*expression of the denominator*/
+ta_1: ta_1a/ta_1b; /*partial of z w.r.t x*/
+/*Steps of expression of partial of z w.r.t y*/
+ta_2a: diff(cc*x^2+dd*y^3,y)-diff(aa*x^3,y)*z^2-diff(bb*x*y^5,y)*z; /*expression of the numerator*/
+ta_2b: aa*x^3*diff(z^2,z)+bb*x*y^5*diff(z,z); /*expression of the denominator*/
+ta_2: ta_2a/ta_2b; /*partial of z w.r.t y*/
+/*Defining the second randomised function*/
+f_2: aa*x^2*sin(bb*y+cc*z)=ff+dd*y*cos(ee*z*x);
+ta_3a:-dd*y*diff(ee*x,x)*z*sin(ee*z*x)-diff(aa*x^2,x)*sin(bb*y+cc*z);
+ta_3b: dd*y*ee*x*sin(ee*z*x)+aa*x^2*diff(sin(bb*y+cc*z),z); 
+ta_3: ta_3a/ta_3b;
+ta_4a:-aa*x^2*bb*cos(bb*y+cc*z)-diff(aa*x^2,y)*sin(bb*y+cc*z)+diff(dd*y,y)*cos(ee*z*x)-dd*y*diff(ee*x,y)*z*sin(ee*z*x);
+ta_4b: dd*y*ee*x*sin(ee*z*x)+aa*x^2*cc*cos(bb*y+cc*z);
+ta_4: ta_4a/ta_4b;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>(a) {@f_1@}</p>
+<br> \( \displaystyle \frac{\partial z}{ \partial x} ={@ta_1@}\)
+<br> \( \displaystyle \frac{\partial z}{ \partial y} = {@ta_2@}\)
+<p></p>
+<p>(b) {@f_2@}</p>
+<br> \(\displaystyle  \frac{\partial z}{ \partial x} ={@ta_3@}\) 
+<br> \( \displaystyle  \frac{\partial z}{ \partial y} = {@ta_4@} \)]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta_2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta_3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta_4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>Diff</answertest>
+        <sans>ans2</sans>
+        <tans>ta_2</tans>
+        <testoptions>y</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>2007891031</deployedseed>
+    <deployedseed>277189944</deployedseed>
+    <deployedseed>1607406169</deployedseed>
+    <deployedseed>580594714</deployedseed>
+    <deployedseed>799526129</deployedseed>
+    <deployedseed>1068071640</deployedseed>
+    <deployedseed>727031350</deployedseed>
+    <deployedseed>885747027</deployedseed>
+    <deployedseed>607532062</deployedseed>
+    <deployedseed>264764875</deployedseed>
+    <deployedseed>701282431</deployedseed>
+    <deployedseed>1595314025</deployedseed>
+    <deployedseed>22224332</deployedseed>
+    <deployedseed>1051423719</deployedseed>
+    <deployedseed>1216142028</deployedseed>
+    <deployedseed>551760290</deployedseed>
+    <deployedseed>505638225</deployedseed>
+    <deployedseed>1402531589</deployedseed>
+    <deployedseed>1542791474</deployedseed>
+    <deployedseed>2051897844</deployedseed>
+    <deployedseed>566775686</deployedseed>
+    <deployedseed>1410858647</deployedseed>
+    <deployedseed>2110268402</deployedseed>
+    <deployedseed>663448576</deployedseed>
+    <deployedseed>1273061118</deployedseed>
+    <deployedseed>1793963296</deployedseed>
+    <deployedseed>1296049373</deployedseed>
+    <deployedseed>1635161910</deployedseed>
+    <deployedseed>631371383</deployedseed>
+    <deployedseed>1281968766</deployedseed>
+    <deployedseed>1369283558</deployedseed>
+    <deployedseed>2127720059</deployedseed>
+    <deployedseed>2074637251</deployedseed>
+    <deployedseed>904845512</deployedseed>
+    <deployedseed>1262782823</deployedseed>
+    <deployedseed>1001704409</deployedseed>
+    <deployedseed>1142337498</deployedseed>
+    <deployedseed>1939419971</deployedseed>
+    <deployedseed>790319364</deployedseed>
+    <deployedseed>2018381828</deployedseed>
+    <deployedseed>818303315</deployedseed>
+    <deployedseed>827352938</deployedseed>
+    <deployedseed>1442364123</deployedseed>
+    <deployedseed>352628510</deployedseed>
+    <deployedseed>2067681096</deployedseed>
+    <deployedseed>886800143</deployedseed>
+    <deployedseed>1979281908</deployedseed>
+    <deployedseed>1030976068</deployedseed>
+    <deployedseed>30330704</deployedseed>
+    <deployedseed>483237032</deployedseed>
+    <deployedseed>571117290</deployedseed>
+    <deployedseed>375406308</deployedseed>
+    <deployedseed>1250770139</deployedseed>
+    <deployedseed>1213495844</deployedseed>
+    <deployedseed>456517281</deployedseed>
+    <deployedseed>2137908503</deployedseed>
+    <deployedseed>931596869</deployedseed>
+    <deployedseed>327509550</deployedseed>
+    <deployedseed>1778541449</deployedseed>
+    <deployedseed>1148278821</deployedseed>
+    <deployedseed>187785003</deployedseed>
+    <deployedseed>536497320</deployedseed>
+    <deployedseed>1085608520</deployedseed>
+    <deployedseed>537731738</deployedseed>
+  </question>
+</quiz>

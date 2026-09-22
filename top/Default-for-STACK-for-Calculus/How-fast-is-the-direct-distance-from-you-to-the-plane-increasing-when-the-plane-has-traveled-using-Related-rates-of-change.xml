@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>How fast is the direct distance from you to the plane increasing when the plane has traveled  using Related-rates-of-change</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p></p>
+<p>An airplane flies directly above your position, flying parallel to the ground at a constant speed of {@aa@} mph at an altitude of \({@bb@}\) miles.</p>
+<p>How fast is the direct distance from you to the plane increasing when the plane has traveled {@cc@} miles? (Give your answer correct to \(2\) decimal places.)</p>
+<p>[[input:ans1]] miles per hour [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Let the distance traveled by the plane from the point directly above your position be \(x\). </p>
+<p>Then, \( \displaystyle  \frac{dx}{dt} = {@aa@}\). </p>
+<p></p>
+<p>Let the distance from you to the plane be \(D\). Then, as the plane is flying parallel to the ground, by Pythagoras,</p>
+<p></p>
+<p> \( \displaystyle  D = \sqrt{x^2+{@bb@}^2} = \sqrt{x^2 + {@bb^2@}}\).</p>
+<p></p>
+<p>We want \( \displaystyle  \frac{dD}{dt}\). Since \(D\) is a function of \(x\) and \(x\) is a function of \(t\), using chain rule \(\displaystyle  \frac{dD}{dt} = \frac{dD}{dx}\cdot \frac{dx}{dt}\).</p>
+<p></p>
+<p>Since \( \displaystyle  D = \sqrt{x^2 + {@bb^2@}} \)</p>
+<p></p>
+<p> \( \displaystyle \frac{dD}{dx} = {@diff(sqrt(x^2 +bb^2),x)@}\)</p>
+<p></p>
+<p>Therefore, \(\displaystyle  \frac{dD}{dt} = \frac{x}{\sqrt{x^2 + {@bb^2@}}}\cdot {@aa@} = \frac{{@aa*x@}}{\sqrt{x^2 + {@bb^2@}}}\).</p>
+<p></p>
+<p>When the plane has traveled {@cc@} miles, \( \displaystyle  \frac{dD}{dt} = \frac{{@aa@}\cdot {@cc@}}{\sqrt{{@cc@}^2 + {@bb^2@}}} = {@dispdp(ta,2)@}\) miles per hour.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>aa:rand([400,420,440,460,480,500,520,540,560,580,600]);
+bb:rand(4)+2;
+cc:rand(5)+4;
+ta:float(aa*cc/(sqrt(cc^2+bb^2)));</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p> constant speed of {@aa@} mph at an altitude of {@bb@} miles.</p>
+<p> speed  {@ta@}miles per hour </p>
+]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">[Juma Zevick]</p>
+<p id="description">How fast is the direct distance from you to the plane increasing when the plane has traveled using related-rates-of-change</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>numerical</type>
+      <tans>dispdp(ta,2)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>2</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>631275556</deployedseed>
+    <deployedseed>1315397136</deployedseed>
+    <deployedseed>872064545</deployedseed>
+    <deployedseed>2104482134</deployedseed>
+    <deployedseed>984637895</deployedseed>
+    <deployedseed>1192175803</deployedseed>
+    <deployedseed>1972986141</deployedseed>
+    <deployedseed>2082662713</deployedseed>
+    <deployedseed>1079785489</deployedseed>
+    <deployedseed>2046343598</deployedseed>
+    <deployedseed>1838074118</deployedseed>
+    <deployedseed>1986629730</deployedseed>
+    <deployedseed>1416999910</deployedseed>
+    <deployedseed>1413788106</deployedseed>
+    <deployedseed>1319643175</deployedseed>
+    <deployedseed>832332225</deployedseed>
+    <deployedseed>1105416113</deployedseed>
+    <deployedseed>1747111917</deployedseed>
+    <deployedseed>1811306756</deployedseed>
+    <deployedseed>488255986</deployedseed>
+    <deployedseed>715642015</deployedseed>
+    <deployedseed>1380086655</deployedseed>
+    <deployedseed>1058971667</deployedseed>
+    <deployedseed>1252693181</deployedseed>
+    <deployedseed>1524566310</deployedseed>
+    <deployedseed>1047677243</deployedseed>
+    <deployedseed>113447035</deployedseed>
+    <deployedseed>1819100256</deployedseed>
+    <deployedseed>569182996</deployedseed>
+    <deployedseed>1616513805</deployedseed>
+    <deployedseed>300366642</deployedseed>
+    <deployedseed>1017315516</deployedseed>
+    <deployedseed>870541973</deployedseed>
+    <deployedseed>1571554110</deployedseed>
+    <deployedseed>1368957737</deployedseed>
+    <deployedseed>1959072436</deployedseed>
+    <deployedseed>510768438</deployedseed>
+    <deployedseed>2007311225</deployedseed>
+    <deployedseed>1870450983</deployedseed>
+    <deployedseed>667634851</deployedseed>
+    <deployedseed>30516935</deployedseed>
+    <deployedseed>1628397359</deployedseed>
+    <deployedseed>976094466</deployedseed>
+    <deployedseed>1006897038</deployedseed>
+    <deployedseed>363802382</deployedseed>
+    <deployedseed>688102347</deployedseed>
+    <deployedseed>21338363</deployedseed>
+    <deployedseed>296234838</deployedseed>
+    <deployedseed>1923085205</deployedseed>
+    <deployedseed>1298391770</deployedseed>
+    <deployedseed>1697787815</deployedseed>
+    <deployedseed>877201182</deployedseed>
+    <deployedseed>698582788</deployedseed>
+    <deployedseed>48276996</deployedseed>
+    <deployedseed>1857317571</deployedseed>
+    <deployedseed>1337772533</deployedseed>
+    <deployedseed>795839598</deployedseed>
+    <deployedseed>28310565</deployedseed>
+    <deployedseed>1610272876</deployedseed>
+    <deployedseed>492271748</deployedseed>
+    <deployedseed>1622284167</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>dispdp(ta,2)</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

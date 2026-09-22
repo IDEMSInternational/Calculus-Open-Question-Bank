@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Determine if the integral converges or diverges</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Calculate the integral below and determine if it converges or diverges</p>
+<p>\(\displaystyle \int_{{@lower_lmt@}}^{{@upper_lmt@}}\frac{{@num@}}{v}\,dv\)</p>
+<p>First Integration \(=\)[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>Second Integration \(=\)[[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>
+<p>Therefore, the integral is [[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>There is a discontinuity at \(v=0\)</p>
+<p>So we split the integral </p>
+<p>\(\displaystyle \int_{{@lower_lmt@}}^{{@upper_lmt@}}\frac{{@num@}}{v}\,dv=\displaystyle \int_{{@lower_lmt@}}^{0}\frac{{@num@}}{v}\,dv=\displaystyle \int_{0}^{{@upper_lmt@}}\frac{{@num@}}{v}\,dv\)</p>
+<p>Evaluate Each Part:</p>
+<p>\(\begin{align}
+\displaystyle \int_{{@lower_lmt@}}^{0}\frac{{@num@}}{v}\,dv&=\displaystyle {@num@}\lim_{v \to t} \left( {@val1_upper@}-{@val1_lower@} \right)|_{@lower_lmt@}^{@t@}\\
+&={@num@}({@ta1@})\\
+\end{align}\)</p>
+<p>Evaluating the other part of the integral</p>
+<p>\(\begin{align}
+\displaystyle \int_{0}^{{@upper_lmt@}}\frac{{@num@}}{v}\,dv&=\displaystyle {@num@}\lim_{v \to t} \left( {@val2_upper@}-{@val2_lower@} \right)|_{t}^{@upper_lmt@}\\
+&={@num@}({@ta2@})\\
+\end{align}\)</p>
+<p> Since one part of the integral approaches \(-\infty \) and the other approaches \(+\infty \), the integral diverges.</p>
+<p></p>
+<p></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*new improper questions*/
+upper_lmt:rand(5)+1;
+lower_lmt:-upper_lmt;
+num:rand(4)+2;
+func:num/v;
+/*worked solution*/
+sol1:int(func,v);
+val1_upper:subst(v=t,sol1);
+val1_lower:subst(v=lower_lmt,sol1);
+ta1:-inf;
+/*2nd integration*/
+val2_upper:subst(v=upper_lmt,sol1);
+val2_lower:subst(v=t,sol1);
+ta2:inf;
+ta_3:random_permutation([["Divergent", true],["Convergent", false],["Divergent and convergent", false]]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle \int_{{@lower_lmt@}}^{{@upper_lmt@}}\frac{{@num@}}{v}\,dv\)</p>
+<p>\(\displaystyle \int_{{@lower_lmt@}}^{0}\frac{{@num@}}{v}\,dv={@num@}({@ta1@})\)</p>
+<p>\(\displaystyle \int_{0}^{{@upper_lmt@}}\frac{{@num@}}{v}\,dv={@num@}({@ta2@})\)</p>
+<p>Therefore, the integral is {@mcq_correct(ta_3)[1]@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Mike</p>
+<p id="description">The question focuses on evaluating an improper Integral that is undefined</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>dropdown</type>
+      <tans>ta_3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for integration 0 to the -value</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for integration 0 to the upper limit</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks if it's convergent or divergent</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mcq_correct(ta_3)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1042159212</deployedseed>
+    <deployedseed>2019488577</deployedseed>
+    <deployedseed>699766606</deployedseed>
+    <deployedseed>1105404208</deployedseed>
+    <deployedseed>327974543</deployedseed>
+    <deployedseed>1621004471</deployedseed>
+    <deployedseed>1975798005</deployedseed>
+    <deployedseed>1415510823</deployedseed>
+    <deployedseed>562405737</deployedseed>
+    <deployedseed>160660259</deployedseed>
+    <deployedseed>740012749</deployedseed>
+    <deployedseed>1268141660</deployedseed>
+    <deployedseed>309391598</deployedseed>
+    <deployedseed>773630308</deployedseed>
+    <deployedseed>688150036</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>first(mcq_correct(ta_3))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

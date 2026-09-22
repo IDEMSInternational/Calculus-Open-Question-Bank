@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Gradient vector- Tangent planes and Normal lines-Question 1</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the tangent plane and normal line to \(\displaystyle {@aa1@}\) at \(\displaystyle ({@c1@},{@c2@},{@c3@})\).</p>
+<p>The tangent plane is [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>The normal line is \(\displaystyle\langle\)[[input:ans2]] \(,\) [[feedback:prt2]] [[input:ans3]] \(,\) [[feedback:prt3]][[input:ans4]][[feedback:prt4]]\(\displaystyle\rangle\)</p>
+<p>[[validation:ans2]][[validation:ans3]][[validation:ans4]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<p><b>Worked Solution</b></p>
+<p>Given the \(\displaystyle f(x,y,z)={@aa1@}\) at \(\displaystyle ({@c1@},{@c2@},{@c3@})\),we need to solve the problem as follows;</p>
+<p><b>Step</b> \(1:\) The first thing will be to rewrite the equation as follows,</p>
+<p>\(\displaystyle {@aa@}=0\)</p>
+<p>We need to compute,\(\displaystyle\frac{df(x,y,z)}{dx}=\nabla f_x'\frac{df(x,y,z)}{dy}=\nabla f_y' \frac{df(x,y,z)}{dz}=\nabla f_z'\)</p>
+<p>\(\nabla f\,x={@diff_aax@}\)</p>
+<p>\(\nabla f\,y={@diff_aay@}\)</p>
+<p>\(\nabla f\,z={@diff_aaz@}\)</p>
+<p><b>Step</b> \(2:\)  Now, we can find the gradient  at the points \(({@c1@},{@c2@},{@c3@})\) by substituting the values of \(x,y,z\) respectively to the above equation \(\nabla f\,x' \,\nabla f\,y' \,\nabla f\,z'\)</p>
+<p>\(\nabla f\,x={@t1@}\)</p>
+<p>\(\nabla f\,y={@t2@}\)</p>
+<p>\(\nabla f\,z={@t3@}\)</p>
+<p><b>Step</b> \(3:\) Now to find the equation of the tangent plane we need to do as follows,</p>
+<p>\(\nabla f_x(x-x_1)+\nabla f_y(y-y_1)+\nabla f_z(z-z_1)={@t1@}({@x-c1@}){@t2@}({@y-c2@}){@t3@}({@z-c3@})=0\)</p>
+<p>Therefore, tangent plane is \({@ta1@}\)</p>
+<p>Step \(4:\) We can find the normal line given the guide equation below,</p>
+<p>\(\displaystyle  r^\rightarrow (t)=(x_1,y_1,z_1)+t(\nabla f_x,\nabla f_y,\nabla f_z)\)</p>
+<p>\(\displaystyle  r^\rightarrow (t)=\langle {@c1@},{@c2@},{@c3@}\rangle + t\langle{@t1@},{@t2@},{@t3@}\rangle=\langle{@c1+t1*t@},{@c2+t2*t@},{@c3+t3*t@}\rangle\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining question Variables*/
+a1:rand(7)-8;
+power_x:rand(3)+1;
+power_y:rand(3)+1;
+
+c1:rand(4)+1;
+c2:-c1;
+c3:rand(4)+1;
+
+a2:-1*(c1^power_x*c2^power_y+a1*c3);
+
+aa1:x^power_x*y^power_y=-a1*z*e^(x+y)-a2;
+aa:x^power_x*y^power_y+a1*z*e^(x+y)+a2;
+
+diff_aax:diff(aa,x);
+diff_aay:diff(aa,y);
+diff_aaz:diff(aa,z);
+change_f:[diff_aax,diff_aay,diff_aaz];
+t1:ev(diff_aax,x=c1,y=c2,z=c3);
+t2:ev(diff_aay,x=c1,y=c2,z=c3);
+t3:ev(diff_aaz,x=c1,y=c2,z=c3);
+
+/*Model Answers*/
+ta1:expand(t1*(x-c1)+t2*(y-c2)+t3*(z-c3)=0);
+normal_line:[c1+t1*t,c2+t2*t,c3+t3*t];
+ta2:c1+t1*t;
+ta3:c2+t2*t;
+ta4:c3+t3*t;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p> \(\displaystyle f(x,y,z)={@aa1@}\) at \(\displaystyle ({@c1@},{@c2@},{@c3@})\)</p>
+
+<p>Therefore, tangent plane is \({@ta1@}\)</p>
+<p>\(\displaystyle  r^\rightarrow (t)=\langle {@c1@},{@c2@},{@c3@}\rangle + t\langle{@t1@},{@t2@},{@t3@}\rangle=\langle{@c1+t1*t@},{@c2+t2*t@},{@c3+t3*t@}\rangle\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Emamaculate Odhiambo</p>
+<p id="concept">N/Ap>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Salvatore Mercuri</p>
+<p id="description">This question tasks students with finding the tangent plane and normal line to a given surface at a specified point(x,y,z). Steps involve implicit differentiation, gradient computation, and equation derivation for both the tangent plane and normal line. Students need to input expressions for partial derivatives, gradient components, and equations, ensuring accurate calculations and substitutions.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta4</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Possible Mistakes prt1*/
+/*node1:checks for correct answer*/
+/*node2:interchanging values of x and y when substituting for change in f*/
+mistake_t1:ev(diff_aax,x=c2,y=c1,z=c3);
+mistake_t2:ev(diff_aay,x=c2,y=c1,z=c3);
+t3:ev(diff_aaz,x=c2,y=c1,z=c3);
+mistake2:expand(mistake_t1*(x-c2)+mistake_t2*(y-c1)+t3*(z-c3)=0);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>interchanging values of x and y when substituting for change in f</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have interchanged the values of \(x\) and \(y\) when substituting for change in \(f\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Possible Mistakes prt2*/
+/*node1:checks for correct answer*/
+/*node2:Giving the second equation*/
+mistake2:ta3;
+/*node3:Giving the third equation*/
+mistake3:ta4;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Giving the second equation</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have given the second equation instead of the first equation
+Check out the worked solutions below
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Giving the third equation</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have given the third equation instead of the first equation
+Check out the worked solutions below
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Possible Mistakes prt3*/
+/*node1:checks for correct answer*/
+/*node2:Giving the first equation*/
+mistake2:ta2;
+/*node3:Giving the third equation*/
+mistake3:ta4;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Giving the first equation</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have given the first equation instead of the second equation
+Check out the worked solutions below
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Giving the third equation</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have given the third equation instead of the second equation
+Check out the worked solutions below
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Possible Mistakes prt4*/
+/*node1:checks for correct answer*/
+/*node2:Giving the first equation*/
+mistake2:ta2;
+/*node3:Giving the second equation*/
+mistake3:ta3;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Giving the first equation</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have given the first equation instead of the third equation
+Check out the worked solutions below
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Giving the second equation</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have given the second equation instead of the third equation
+Check out the worked solutions below
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>209642902</deployedseed>
+    <deployedseed>1087973023</deployedseed>
+    <deployedseed>1108628534</deployedseed>
+    <deployedseed>2942369</deployedseed>
+    <deployedseed>1446189443</deployedseed>
+    <deployedseed>1088178266</deployedseed>
+    <deployedseed>933950721</deployedseed>
+    <deployedseed>690074454</deployedseed>
+    <deployedseed>90326861</deployedseed>
+    <deployedseed>795456055</deployedseed>
+    <deployedseed>951859307</deployedseed>
+    <deployedseed>1196311882</deployedseed>
+    <deployedseed>842779903</deployedseed>
+    <deployedseed>565956422</deployedseed>
+    <deployedseed>207916703</deployedseed>
+    <deployedseed>740664867</deployedseed>
+    <deployedseed>1797281491</deployedseed>
+    <deployedseed>1967782063</deployedseed>
+    <deployedseed>856723007</deployedseed>
+    <deployedseed>1335230893</deployedseed>
+    <deployedseed>548615448</deployedseed>
+    <deployedseed>1036017421</deployedseed>
+    <deployedseed>622225392</deployedseed>
+    <deployedseed>2131013549</deployedseed>
+    <deployedseed>1377649845</deployedseed>
+    <deployedseed>1196711175</deployedseed>
+    <deployedseed>476297886</deployedseed>
+    <deployedseed>1530652347</deployedseed>
+    <deployedseed>559586331</deployedseed>
+    <deployedseed>1075186063</deployedseed>
+    <deployedseed>396515760</deployedseed>
+    <deployedseed>1220167193</deployedseed>
+    <deployedseed>1315527990</deployedseed>
+    <deployedseed>14293767</deployedseed>
+    <deployedseed>1077487135</deployedseed>
+    <deployedseed>1260654249</deployedseed>
+    <deployedseed>199488330</deployedseed>
+    <deployedseed>102361734</deployedseed>
+    <deployedseed>1922390636</deployedseed>
+    <deployedseed>246733017</deployedseed>
+    <deployedseed>1814381060</deployedseed>
+    <deployedseed>1200163346</deployedseed>
+    <deployedseed>972971473</deployedseed>
+    <deployedseed>240435458</deployedseed>
+    <deployedseed>1750034877</deployedseed>
+    <deployedseed>505991082</deployedseed>
+    <deployedseed>17502528</deployedseed>
+    <deployedseed>238576686</deployedseed>
+    <deployedseed>2037623768</deployedseed>
+    <deployedseed>696987474</deployedseed>
+    <deployedseed>1864676567</deployedseed>
+    <deployedseed>1914738449</deployedseed>
+    <deployedseed>179176380</deployedseed>
+    <deployedseed>718168351</deployedseed>
+    <deployedseed>1959670972</deployedseed>
+    <deployedseed>1230792454</deployedseed>
+    <deployedseed>848265462</deployedseed>
+    <deployedseed>1592429545</deployedseed>
+    <deployedseed>1834100702</deployedseed>
+    <deployedseed>390368990</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta3</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>ta4</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>mistake2</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>mistake2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>mistake2</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>mistake2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty/>
+        <expectedanswernote>prt1-2-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty/>
+        <expectedanswernote>prt2-2-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty/>
+        <expectedanswernote>prt3-2-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty/>
+        <expectedanswernote>prt4-2-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>3</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value/>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>mistake3</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>mistake3</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>mistake3</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore/>
+        <expectedpenalty/>
+        <expectedanswernote>NULL</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty/>
+        <expectedanswernote>prt2-3-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty/>
+        <expectedanswernote>prt3-3-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty/>
+        <expectedanswernote>prt4-3-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

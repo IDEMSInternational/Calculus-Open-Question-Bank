@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>First-Order Partial Derivatives of Multivariable Functions</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find all of the first order partial derivatives for the following functions.</p>
+<p><b>Hint:</b>  \( \sqrt{x} \) is can be typed as \(sqrt(x)\) or \((x)^{\frac{1}{2}}\).</p>
+<p>(a) \( \displaystyle z= \displaystyle {@f_1@}\)</p>
+<br> \( \displaystyle  \partial_{u} z=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]
+<br> \( \displaystyle  \partial_{v} z=\) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]
+
+<p>(b) \( \displaystyle g(x, y, z)=\displaystyle {@g_xyz@}\)</p>
+<br> \( \displaystyle  \frac{\partial g}{ \partial x} =\) [[input:ans3]] [[validation:ans3]] [[feedback:prt3]]
+<br> \( \displaystyle  \frac{\partial g}{ \partial y} = \) [[input:ans4]] [[validation:ans4]] [[feedback:prt4]]
+<br> \( \displaystyle  \frac{\partial g}{ \partial z} = \) [[input:ans5]] [[validation:ans5]] [[feedback:prt5]]
+
+<p>(c) \(h(x, y)= \displaystyle {@h@}\)</p>
+<br> \( \displaystyle  \frac{\partial h}{ \partial x} =\) [[input:ans6]] [[validation:ans6]] [[feedback:prt6]]
+<br> \( \displaystyle  \frac{\partial h}{ \partial y} = \) [[input:ans7]] [[validation:ans7]] [[feedback:prt7]]]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<p><b>Worked solution</b></p>
+<p> We recall the following derivations of functions</p>
+<div>
+    <table width="250" cellspacing="1" cellpadding="0" border="1">
+ <colgroup>
+            <col>
+            <col>
+    </colgroup>
+        <tbody>
+  <tr>
+    <th>Functions</th>
+    <th>Derivative formulas</th>
+  </tr>
+  <tr>
+    <td>\( \sqrt{f} \)</td>
+    <td>\(\displaystyle \frac{f'}{2f}\)</td>
+  </tr>
+  <tr>
+    <td>\( \ln f\)</td>
+    <td>\( \displaystyle \frac{f'}{f} \)</td>
+  </tr>
+  <tr>
+    <td>\((f + g)' \)</td>
+    <td>\(f' + g'\)</td>
+  </tr>
+  <tr>
+    <td>\(\displaystyle \frac{f}{g} \)</td>
+    <td>\(\displaystyle \frac{f'g - g'f}{g^2} \)</td>
+  </tr>
+ <tr>
+    <td>\(\alpha f\)</td>
+    <td>\(\alpha f'\)</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+<p>(a) \(z= \displaystyle {@f_1@}\)</p>
+<p>Let’s start with finding  \( \partial_{u} z\). We first differentiate with respect to \(x\).</p>
+<p>\( 
+\begin{align}
+\displaystyle  \partial_{u} z & = & \displaystyle  \frac{ \partial_{u} ({@f_numerator@}) \cdot ({@f_denominator@})-\partial_{u} ({@f_denominator@}) \cdot ({@f_numerator@})}{({@f_denominator@})^2} \\
+& = & {@ta_1@}
+\end{align}
+\)
+</p>
+<p>Next let’s start with finding  \(\displaystyle  \frac{\partial z}{\partial v} \). We differentiate with respect to \(v\).</p>
+<p>\( 
+\begin{align}
+\displaystyle  \partial_{v} z & = &\displaystyle  \frac{ \partial_{v} ({@f_numerator@}) \cdot ({@f_denominator@})-\partial_{v} ({@f_denominator@}) \cdot ({@f_numerator@})}{({@f_denominator@})^2} \\
+& = & {@ta_2@}
+\end{align}
+\)
+</p>
+<hr>
+<p>(b) \(g(x, y, z)= \displaystyle {@g_xyz@}\)</p>
+<p>Let’s start with finding  \( \displaystyle  \partial_{x} g\). We first differentiate with respect to \(x\).</p>
+<p>\( 
+\begin{align}
+\displaystyle  \partial_{x} g & = & \displaystyle  \frac{ \partial_{x} ({@g_numerator@}) \cdot ({@g_denominator@})-\partial_{x} ({@g_denominator@}) \cdot ({@g_numerator@})}{({@g_denominator@})^2} \\
+\displaystyle  \partial_{x} g & = & {@ta_3@}
+\end{align}
+\)
+</p>
+<p>Next let’s start with finding  \(\displaystyle  \partial_{y} g\). We differentiate with respect to \(y\).</p>
+<p>\( 
+\begin{align}
+\displaystyle  \partial_{y} g & = &\frac{ \partial_{y} ({@g_numerator@}) \cdot ({@g_denominator@})-\partial_{y} ({@g_denominator@}) \cdot ({@g_numerator@})}{({@g_denominator@})^2} \\
+\displaystyle  \partial_{x} g & = & {@ta_4@}
+\end{align}
+\)
+</p>
+<p>Finally we differentiate \(g\) with respect to \(z\).</p>
+<p>\( 
+\begin{align}
+\displaystyle  \partial_{z} g & = &\frac{ \partial_{z} ({@g_numerator@}) \cdot ({@g_denominator@})-\partial_{z} ({@g_denominator@}) \cdot ({@g_numerator@})}{({@g_denominator@})^2} \\
+\displaystyle  \partial_{x} g & = & {@ta_5@}
+\end{align}
+\)
+</p>
+<hr>
+<p>(c) \(h(x,y)=\displaystyle{@h@}\)</p>
+<p>Let’s start with finding  \( \partial_{x} h\). We first differentiate with respect to \(x\).</p>
+<p>\( 
+\begin{align}
+\displaystyle \partial_{x} h & = & {@(1/2)@} \cdot \left[{@fxy@}\right]^{@(-1/2)@} \cdot \partial_{x} \left({@fxy@} \right) \\
+\displaystyle  & = & {@(1/2)@} \cdot \left[{@fxy@}\right]^{@(-1/2)@} \cdot \left[ \partial_{x} ({@aa*x^2@}) + \frac{\partial_{x} \left({@bb*x-cc*y^2@}\right) }{{@bb*x-cc*y^2@}}  \right] \\
+& = & {@(1/2)@} \cdot \left[{@fxy@}\right]^{@(-1/2)@} \cdot \left[ \partial_{x} ({@aa*x^2@}) + \frac{\partial_{x} ({@bb*x@})-\partial_{x} ({@cc*y^2@})}{{@bb*x-cc*y^2@}}  \right] \\
+& = & {@(1/2)@} \cdot \left[{@fxy@}\right]^{@(-1/2)@} \cdot \left[  {@diff(aa*x^2,x)@} + \frac{{@diff(bb*x-cc*y^2,x)@}}{{@bb*x-cc*y^2@}}  \right] \\
+& = & {@ta_6@}
+\end{align}
+\)
+</p>
+<p>Let’s start with finding  \(\displaystyle  \partial_{y} h\). We differentiate with respect to \(y\).</p>
+<p>\( 
+\begin{align}
+\displaystyle  \partial_{y} h & = & {@(1/2)@} \cdot \left[{@fxy@}\right]^{@(-1/2)@} \cdot \partial_{y} \left({@fxy@} \right) \\
+\displaystyle  & = & {@(1/2)@} \cdot \left[{@fxy@}\right]^{@(-1/2)@} \cdot \left[ \partial_{y} ({@aa*x^2@}) + \displaystyle  \frac{\partial_{y} \left({@bb*x-cc*y^2@}\right) }{{@bb*x-cc*y^2@}}  \right] \\
+& = &\displaystyle  {@(1/2)@} \cdot \left[{@fxy@}\right]^{@(-1/2)@} \cdot \left[ \partial_{y} ({@aa*x^2@}) + \displaystyle \frac{\partial_{y} ({@bb*x@})-\partial_{y} ({@cc*y^2@})}{{@bb*x-cc*y^2@}}  \right] \\
+& = & {@(1/2)@} \cdot \left[{@fxy@}\right]^{@(-1/2)@} \cdot \left[  {@diff(aa*x^2,y)@} + \frac{{@diff(bb*x-cc*y^2,y)@}}{{@bb*x-cc*y^2@}}  \right] \\
+& = & {@ta_7@}
+\end{align}
+\)
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2022071300</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*Randomisation of the coefficients of the given functions*/
+aa: rand_with_prohib(-5,5,[0]);
+bb: rand_with_prohib(-7,7,[0]);
+cc: rand_with_prohib(-8,8,[0]);
+dd: rand_with_prohib(-6,6,[0]);
+
+/*Defining the first randomised function denoted by z*/
+f_numerator: aa*u;
+f_denominator: bb*u^2+cc*v;
+f_1: f_numerator/f_denominator;
+/*Steps of expression of partial derivatives of z w.r.t u*/
+ta_1a: expand(diff(f_numerator,u)*f_denominator- diff(f_denominator,u)*f_numerator),simp;/*expression of the numerator*/
+ta_1b:  f_denominator^2/*expression of the denominator*/
+ta_1: ta_1a/ta_1b; /*partial of z w.r.t u*/
+/*Steps of expression of partial derivatives of z w.r.t v*/
+ta_2a: expand(diff(f_numerator,v)*f_denominator- diff(f_denominator,v)*f_numerator),simp;/*expression of the numerator*/
+ta_2b:  f_denominator^2; /*expression of the denominator*/
+ta_2: ta_2a/ta_2b; /*partial of z w.r.t v*/
+/*Defining the second randomised function denoted by g*/
+g_numerator: aa*x*sin(bb*y);
+g_denominator: dd*z^2;
+g_xyz: g_numerator/g_denominator;
+
+ta_3a: expand(diff(g_numerator,x)*g_denominator- diff(g_denominator,x)*g_numerator),simp;/*expression of the numerator*/
+ta_3b:  g_denominator^2/*expression of the denominator*/
+ta_3: ta_3a/ta_3b; /*partial derivative of of g w.r.t x*/
+
+ta_4a: expand(diff(g_numerator,y)*g_denominator- diff(g_denominator,y)*g_numerator),simp;/*expression of the numerator*/
+ta_4b:  g_denominator^2/*expression of the denominator*/
+ta_4: ta_4a/ta_4b; /*partial derivative of of g w.r.t y*/
+
+ta_5a: expand(diff(g_numerator,z)*g_denominator- diff(g_denominator,z)*g_numerator),simp;/*expression of the numerator*/
+ta_5b:  g_denominator^2/*expression of the denominator*/
+ta_5: ta_5a/ta_5b; /*partial derivative of of g w.r.t z*/
+
+/*Defining the first randomised function denoted by z*/
+assume(bb*x-cc*y^2>0);
+fxy: aa*x^2+log(bb*x-cc*y^2);
+assume(fxy>0);
+h: sqrt(fxy);
+
+/*Steps of expression of partial derivatives of h w.r.t x*/
+ta_6a: (1/2)*(fxy^(-1/2)); 
+ta_6b: diff(aa*x^2,x)+(diff(bb*x-cc*y^2,x)/(bb*x-cc*y^2));
+ta_6: ta_6a*ta_6b;
+
+/*Steps of expression of partial derivatives of h w.r.t y*/
+ta_7a: (1/2)*(fxy^(-1/2)); 
+ta_7b: diff(aa*x^2,y)+(diff(bb*x-cc*y^2,y)/(bb*x-cc*y^2));
+ta_7: ta_7a*ta_7b;]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>(a) \(z={@f_1@}\)</p>
+<br> \(\displaystyle  \frac{\partial z}{ \partial u} ={@ta_1@}\)
+<br> \(\displaystyle  \frac{\partial z}{ \partial v} = {@ta_2@}\)
+<p></p>
+<p>(b) \(g(x,y,z)={@g_xyz@}\)</p>
+<br> \(\displaystyle  \frac{\partial g}{ \partial x} ={@ta_3@}\) 
+<br> \( \displaystyle  \frac{\partial g}{ \partial y} = {@ta_4@} \) 
+<br> \( \displaystyle \frac{\partial g}{ \partial z} = {@ta_5@} \) 
+<p>(c) \(h(x, y)={@h@}\)</p>
+<br> \( \displaystyle \frac{\partial h}{ \partial x} ={@ta_6@}\) 
+<br> \(\displaystyle  \frac{\partial h}{ \partial y} = {@ta_7@} \)]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta_2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta_3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta_4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>ta_5</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>ta_6</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7</name>
+      <type>algebraic</type>
+      <tans>ta_7</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>Diff</answertest>
+        <sans>ans2</sans>
+        <tans>ta_2</tans>
+        <testoptions>y</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>ta_5</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>ta_6</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt7</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans7</sans>
+        <tans>ta_7</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt7-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt7-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>2007891031</deployedseed>
+    <deployedseed>277189944</deployedseed>
+    <deployedseed>1607406169</deployedseed>
+    <deployedseed>580594714</deployedseed>
+    <deployedseed>799526129</deployedseed>
+    <deployedseed>1068071640</deployedseed>
+    <deployedseed>727031350</deployedseed>
+    <deployedseed>885747027</deployedseed>
+    <deployedseed>607532062</deployedseed>
+    <deployedseed>264764875</deployedseed>
+    <deployedseed>701282431</deployedseed>
+    <deployedseed>1595314025</deployedseed>
+    <deployedseed>22224332</deployedseed>
+    <deployedseed>1051423719</deployedseed>
+    <deployedseed>1216142028</deployedseed>
+    <deployedseed>551760290</deployedseed>
+    <deployedseed>505638225</deployedseed>
+    <deployedseed>1402531589</deployedseed>
+    <deployedseed>1542791474</deployedseed>
+    <deployedseed>2051897844</deployedseed>
+    <deployedseed>566775686</deployedseed>
+    <deployedseed>1410858647</deployedseed>
+    <deployedseed>2110268402</deployedseed>
+    <deployedseed>663448576</deployedseed>
+    <deployedseed>1273061118</deployedseed>
+    <deployedseed>1793963296</deployedseed>
+    <deployedseed>1296049373</deployedseed>
+    <deployedseed>1635161910</deployedseed>
+    <deployedseed>631371383</deployedseed>
+    <deployedseed>1281968766</deployedseed>
+    <deployedseed>1369283558</deployedseed>
+    <deployedseed>2127720059</deployedseed>
+    <deployedseed>2074637251</deployedseed>
+    <deployedseed>904845512</deployedseed>
+    <deployedseed>1262782823</deployedseed>
+    <deployedseed>1001704409</deployedseed>
+    <deployedseed>1142337498</deployedseed>
+    <deployedseed>1939419971</deployedseed>
+    <deployedseed>790319364</deployedseed>
+    <deployedseed>2018381828</deployedseed>
+    <deployedseed>818303315</deployedseed>
+    <deployedseed>827352938</deployedseed>
+    <deployedseed>1442364123</deployedseed>
+    <deployedseed>352628510</deployedseed>
+    <deployedseed>2067681096</deployedseed>
+    <deployedseed>886800143</deployedseed>
+    <deployedseed>1979281908</deployedseed>
+    <deployedseed>1030976068</deployedseed>
+    <deployedseed>30330704</deployedseed>
+    <deployedseed>483237032</deployedseed>
+    <deployedseed>571117290</deployedseed>
+    <deployedseed>375406308</deployedseed>
+    <deployedseed>1250770139</deployedseed>
+    <deployedseed>1213495844</deployedseed>
+    <deployedseed>456517281</deployedseed>
+    <deployedseed>2137908503</deployedseed>
+    <deployedseed>931596869</deployedseed>
+    <deployedseed>327509550</deployedseed>
+    <deployedseed>1778541449</deployedseed>
+    <deployedseed>1148278821</deployedseed>
+    <deployedseed>187785003</deployedseed>
+    <deployedseed>536497320</deployedseed>
+    <deployedseed>1085608520</deployedseed>
+    <deployedseed>537731738</deployedseed>
+  </question>
+</quiz>

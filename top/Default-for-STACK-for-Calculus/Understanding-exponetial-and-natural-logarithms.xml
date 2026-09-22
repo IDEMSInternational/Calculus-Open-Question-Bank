@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Understanding exponetial and natural logarithms</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Consider the following questions:</p>
+<ol type="a">
+    <li>
+        <p>How is the constant \(e\) defined? Select all that apply</p>
+        <p>[[input:ans1]] [[validation:ans1]]</p>
+        <p>[[feedback:prt1]]</p>
+    </li>
+
+    <li>
+        <p>What is the approximate value of \(e\) to \(5\) decimalplaces?</p>
+        <p>\(\quad e \approx \) [[input:ans2]] [[validation:ans2]]</p>
+        <p>[[feedback:prt2]]</p>
+    </li>
+
+    <li>
+        <p>What is the natural logarithmic function?</p>
+        <p>[[input:ans3]] [[validation:ans3]]</p>
+        <p>[[feedback:prt3]]</p>
+    </li>
+</ol>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3>
+<ol type="a">
+        <li>
+<p>How is the constant e defined in terms of the exponential function?</p>
+<p>The number \(e\) is the limit \(\lim_{n \to \infty}\left(\displaystyle 1 + \frac{1}{n}\right)^{n},\) an expression arises in the computation of compound interest, which is the sum of iifinite series:</p>
+<p>\(\displaystyle e= \sum_{n=0}^{\infty} 1 + \frac{1}{1!} + \frac{1}{2!} + \frac{1}{3!} + \cdots\)</p>
+    </li>
+
+        <li>
+<p>What is the approximate value of \(e\) to \(5\) decimalplaces?</p>
+<p>The approximate value of the mathematical constant \(e\) is approximately \({@float(%e)@}\), to \(5\)dp \(e \approx {@ta_2@}\).
+It's an irrational number and it's transcendental, meaning it cannot be expressed as the solution to any polynomial equation with rational coefficients.</p>
+  </li>
+
+        <li>
+<p>What is the natural logarithmic function?</p>
+<p>The natural logarithmic function, denoted as \(\log_{e}(x)=\ln(x)\), is the logarithm to the base \(e\).</p>
+<p>For example:
+\[\begin{align}
+\ln(e) &amp;= 1 \quad \text{(since } e^1 = e\text{)} \\
+\ln(1) &amp;= 0 \quad \text{(since } e^0 = 1\text{)} \\
+\ln(e^2) &amp;= 2 \quad \text{(since } e^2 = e^2\text{)}
+\end{align}\]</p>
+    </li>
+        </ol>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*part a*/
+incorrect_answer:[
+[1, false, "\\( e \\) is derived as the result of taking the sum of natural numbers raised to their factorial powers, starting from \\( n = 1 \\) to \\( n = \\infty \\)"]];
+
+correct_answers:[
+[2, true, "It is the limit \\(\\lim_{{n \\to \\infty}}\\left(\\displaystyle 1 + \\frac{1}{n}\\right)^{n},\\) an expression arises in the computation of compound interest"],
+[3, true, "\\(e\\) is the sum of the infinite series \\(\\displaystyle e= \\sum_{n=0}^{\\infty} 1 + \\frac{1}{1!} + \\frac{1}{2!} + \\frac{1}{3!} + \\cdots\\) "]
+    ];
+ta:random_permutation(append(correct_answers,incorrect_answer));
+
+ta_index: sort(makelist(x[1], x, ta));
+
+/*part b*/
+value_e:%e;
+ta_2:decimalplaces(value_e,5);
+
+/*part c*/
+correct_answer3:[
+[1, true, "The natural logarithmic function, denoted as \\(\\log_{e}(x)=\\ln(x)\\), is the logarithm to the base \\(e\\)"]];
+
+incorrect_answers3:rand_selection([
+[2, false, "The natural logarithmic function, denoted as \\(\\log_{10}(x)\\) is the logarithm to the base \\(10\\) "],
+[3, false, "The natural logarithmic function, denoted as \\(\\ln(x)\\) is the inverse of \\(\\log_{10}(x)\\)"],
+[4, false, "The function that evaluates \\( \\log_{10}(x) \\) raised to the power of \\( x \\),  expressed as \\(\\displaystyle 10^{\\log_{10}(x)^{x}} \\)"]],2);
+
+ta_3:random_permutation(append(correct_answer3,incorrect_answers3));
+
+ta_index_3: sort(makelist(x[1], x, ta_3));]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<br>{@(ta_index)@}
+<br>\(e \approx {@(ta_2)@}\)
+<br>{@(ta_index_3)@}]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p><p>
+</p><p id="concept">https://docs.google.com/document/d/1TL8EN3-XFuGEYVSnxaRTob0BxAavYx9VIvAREYzJXNI/edit</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">Santiago Borio</p>
+<p id="description">This question requires student to give the definition of the exponential \( e \), its approximate value, and the concept of the natural logarithmic function \( \ln(x) \). </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>checkbox</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta_2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>radio</type>
+      <tans>ta_3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: checks for all the corrrect answer from the list*/
+
+/*Node 2: Checks if option 2 (correct) was provided and selected*/
+true_opt_2:if member(2,ta_index) then ( if member(2,ans1) then 1 else 0 ) else 0;
+
+/*Node 3: Checks if option 3 (correct) was provided and selected*/
+true_opt_3:if member(3,ta_index) then ( if member(3,ans1) then 1 else 0 ) else 0;
+
+/*Node 4: Checks if option 4 (correct) was provided and selected*/
+true_opt_4:if member(4,ta_index) then ( if member(4,ans1) then 1 else 0 ) else 0;
+
+/*Node 5: Checks if option 5 (correct) was provided and selected*/
+true_opt_5:if member(5,ta_index) then ( if member(5,ans1) then 1 else 0 ) else 0;
+
+/*Node 6: Checks if option 1 (incorrect) was provided and selected*/
+true_opt_1:if member(1,ta_index) then ( if member(1,ans1) then 1 else 0 ) else 0;
+true_opt_11: if ans1[1] and ans1[2] and ans1[3] and ans1[4] and ans1[5]  then 1 else 0;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the corrrect answer from the list</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mcq_correct(ta)</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks if option 2 (correct) was provided and selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>true_opt_2</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>2</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Checks if option 3 (correct) was provided and selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>true_opt_3</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>3</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>Checks if option 4 (correct) was provided and selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>true_opt_4</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>4</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>Checks if option 5 (correct) was provided and selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>true_opt_5</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.125</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-5-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>5</falsenextnode>
+        <falseanswernote>prt1-5-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>5</name>
+        <description>Checks if option 1 (incorrect) was provided and selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>true_opt_1</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-6-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> \( e \) is derived as the result of taking the sum of the <strong> reciprocals of natural numbers</strong> raised to their factorial powers, starting from \( n = 1 \) to \( n = \infty \)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-6-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1 checks for correct answer*/
+/*Node 2 mistake: Incorrect Rounding*/
+mistake_2:float(%e);
+/*Node 3 mistake: Giving the exact Euler's number */
+mistake_3:%e;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the corrrect approx e </description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans2</sans>
+        <tans>ta_2</tans>
+        <testoptions>5</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Well done for giving your answer correct to \(5\) decimal places</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Incorrect Rounding</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans2</sans>
+        <tans>mistake_2</tans>
+        <testoptions>4</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The value of \(e\) should be approximated to \(5\) decimal places. Make sure to provide the correct value without rounding prematurely.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Giving a precise value</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>This question asks for an approximate value of \(e\) to \(5\) decimal places. Please provide a rounded value to match this requirement.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the corrrect answer from the list</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mcq_correct(ta_3)[1]</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>930029979</deployedseed>
+    <deployedseed>2137984753</deployedseed>
+    <deployedseed>1432229719</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>mcq_correct(ta)</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta_2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>first(mcq_correct(ta_3))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

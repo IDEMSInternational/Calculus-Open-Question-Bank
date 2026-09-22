@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Limits of functions with several variables - Question 3</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Determine if the limit of the function given below exists or not. <p>
+<p><b>Note:</b> You are required to fill in the missing computational steps.</p>
+<p>\(\displaystyle \lim_{(x,y) \to (0,0)} {@question_func@}\)</p>
+<br>
+
+<p>Step 1. Compute the value of the limit on the \(x\)-axis (i.e \( y=0\) ) as follows;</p>
+<p>\(\displaystyle \lim_{(x,0) \to (0,0)} {@question_func@} =\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]  </p>
+<br>
+
+<p>Step 2. Now compute the limit on the y-axis (i.e \(x=0\) ), following the steps below;</p>
+<p>\(\displaystyle \lim_{(0,y) \to (0,0)} {@question_func@} =\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]  </p>
+<br>
+<p>Step 3. Comparison and conclusion. </p>
+<p>Do we have \(\displaystyle \lim_{(x,0) \to (0,0)} {@question_func@} = \lim_{(0,y) \to (0,0)} {@question_func@} \)? [[input:ans4]] [[validation:ans4]] [[feedback:prt4]]</p>
+<p>We can conclude that [[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Step 1. Compute the value of the limit on the \(x\)-axis (i.e \( y=0\) ) as follows;</p>
+<p>\(\displaystyle \lim_{(x,0) \to (0,0)} {@question_func@} = {@ta2@}\) </p>
+<br>
+
+<p>Step 2. Now compute the limit on the y-axis (i.e \(x=0\) ), following the steps below;</p>
+<p>\(\displaystyle \lim_{(0,y) \to (0,0)} {@question_func@} = {@ta1@}\) </p>
+<br>
+
+<p>Step 3. Comparison and conclusion. </p>
+<p>we have \(\displaystyle \lim_{(x,0) \to (0,0)} {@question_func@} \neq \lim_{(0,y) \to (0,0)} {@question_func@} \). </p>
+<p>Therefore we can conclude that {@mcq_correct(ta3)[1]@}.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[aa:rand(3)+1; bb:rand(3)+1; cc:rand_with_step(1,5,1);
+func_num:aa*x-bb*y;
+func_denom:cc*y+ (bb+rand(3)+1)*x;
+question_func:func_num/func_denom;
+
+ta1: subst(0,x,question_func); /*ta1 is the answer for input1 and input2*/
+ta2: subst(0,y,question_func); /*ta2 is the answer for input3 and input4*/
+ta3a:if ta1=ta2 then "the limit exists" else "the limit does not exist";
+ta3:[[ta3a, true],["the limit exists", false]];
+ta4: if ta1=ta2 then true else false;]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle \lim_{(x,0) \to (0,0)} {@question_func@} = {@ta2@}\) </p>
+<br>
+<p>\(\displaystyle \lim_{(0,y) \to (0,0)} {@question_func@} = {@ta1@}\) </p>
+<br>
+<p>Do we have \(\displaystyle \lim_{(x,0) \to (0,0)} {@question_func@} = \lim_{(0,y) \to (0,0)} {@question_func@} \) ? \( \textbf{Ans: } \) {@ta4@}  </p>
+<p>We can conclude that {@mcq_correct(ta3)[1]@}.</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">[Actual question description]</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>dropdown</type>
+      <tans>ta3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>boolean</type>
+      <tans>ta4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Note that you need to substitute for \(y\) with 0 and simplify the expression afterwards </p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Note that you need to substitute for \(x\) with 0 and simplify the expression afterwards </p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mcq_correct(ta3)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>If the limits of function is the same and is non zero at two different paths, we conclude that it exists. </p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1644537645</deployedseed>
+    <deployedseed>1552662977</deployedseed>
+    <deployedseed>1104789975</deployedseed>
+    <deployedseed>1682393374</deployedseed>
+    <deployedseed>1355585938</deployedseed>
+    <deployedseed>952884864</deployedseed>
+    <deployedseed>531014391</deployedseed>
+    <deployedseed>1226654944</deployedseed>
+    <deployedseed>1246694788</deployedseed>
+    <deployedseed>404619513</deployedseed>
+    <deployedseed>1987174416</deployedseed>
+    <deployedseed>150754188</deployedseed>
+    <deployedseed>696269027</deployedseed>
+    <deployedseed>318945133</deployedseed>
+    <deployedseed>1951262113</deployedseed>
+    <deployedseed>2095789270</deployedseed>
+    <deployedseed>411271670</deployedseed>
+    <deployedseed>1938786600</deployedseed>
+    <deployedseed>1701607075</deployedseed>
+    <deployedseed>1440414109</deployedseed>
+    <deployedseed>722424376</deployedseed>
+    <deployedseed>1380015242</deployedseed>
+    <deployedseed>861198066</deployedseed>
+    <deployedseed>320395488</deployedseed>
+    <deployedseed>1192589916</deployedseed>
+    <deployedseed>354998663</deployedseed>
+    <deployedseed>1928957920</deployedseed>
+    <deployedseed>1464257925</deployedseed>
+    <deployedseed>373281964</deployedseed>
+    <deployedseed>1811247862</deployedseed>
+    <deployedseed>1268920101</deployedseed>
+    <deployedseed>1029589304</deployedseed>
+    <deployedseed>970367379</deployedseed>
+    <deployedseed>650690696</deployedseed>
+    <deployedseed>1092956051</deployedseed>
+    <deployedseed>721485935</deployedseed>
+    <deployedseed>1779843812</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>first(mcq_correct(ta3))</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>ta4</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

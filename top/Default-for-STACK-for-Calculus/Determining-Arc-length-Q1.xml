@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Determining Arc length-Q1</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Determine the length of \( \displaystyle {@expr@}\), \({@lower_y@}\leq y\leq{@upper_y@}\).</p>
+<p><em>Note: Round off your answer correct to 2 decimal places.</em></p>
+<p>\(L=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution:</h3>
+<p>First we differentiate the function with respect to \(x\) and then plug it into the \(ds\) formula, given by \( \displaystyle ds=\sqrt{1+[\frac{dy}{dx}]^{2}}dx\)
+</p><br>
+<p> \({@expr@}\). Then \(\displaystyle \frac{dy}{dx}={@dy@} \) where \({@lower_y@} \leq y \leq {@upper_y@} \) </p>
+<p>
+    \(
+    \begin{align}
+\displaystyle   ds=\sqrt{1+[\frac{dy}{dx}]^{2}}dx &amp;=\sqrt{1+\left[{@dy@}\right]^{2}}dx \\
+    &amp;=\sqrt{1+{@dy^2@}}\,dx \\
+    &amp;={@(factor(sqrt(1+dy^2))),simp@}\,dx
+    \end{align}
+    \)
+</p>
+<p>Since the limits of integration are given in \(y\) we then convert them in terms of \(x\) as shown below:</p>
+<p>\(\displaystyle y_{1}={@lower_y@}: \qquad {@lower_y@}={@rhs(expr)@} \qquad \rightarrow x_{1}={@rhs_x1@}\)</p>
+<p>\(\displaystyle  y_{2}={@upper_y@}: \qquad {@upper_y@}={@rhs(expr)@} \qquad \rightarrow x_{2}={@rhs_x2@}\)</p>
+<p>So, the corresponding ranges of \(x's\) is \(\displaystyle  {@rhs_x1@}\leq x\leq{@rhs_x2@}\)</p>
+<p>The integral giving the arc length is then, </p>
+<p>
+    \[
+    \begin{align}
+    \displaystyle L &amp;= \int ds \\
+\displaystyle     &amp;= \int_{{@rhs_x1@}}^{{@rhs_x2@}} {@(factor(sqrt(1+dy^2))),simp@}\,dx \\
+\displaystyle     &amp;= \left[ {@int((factor(sqrt(1+dy^2))),x)@} \right]_{{@rhs_x1@}}^{{@rhs_x2@}} \\
+\displaystyle     &amp;= {@arc_length@} \\
+\displaystyle     &amp;= {@ta@}
+    \end{align}
+    \]
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining the question*/
+coef1:rand(7)+1;/*coeffient of the root*/
+const:rand(3)+1;/*coeffient constant inside the root*/
+lower_y:rand_with_step(1,9,3);/*lower lmit of y*/
+upper_y:rand_with_step(15,24,3);/*upper lmit of y*/
+expr:y=coef1*(const+x)^(3/2);
+dy:rhs(diff(expr)/del(x));
+ds:sqrt(1+(dy)^2);
+expr1:ev(expr,y=lower_y);
+x_1:solve(expr1,x)[3];
+rhs_x1_1: rhs(x_1),simp;
+rhs_x1: ratsimp((lower_y/coef1)^(2/3)-const);
+expr2:ev(expr,y=upper_y);
+x_2:solve(expr2,x)[3];
+rhs_x2_2: rhs(x_2);
+rhs_x2: ratsimp((upper_y/coef1)^(2/3)-const);
+ds_1:(factor(sqrt(1+dy^2)));
+arc_length:int(ds_1,x,rhs_x1,rhs_x2);
+
+/*Model answer*/
+ta:decimalplaces(float(arc_length),2);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Determine the length of \( \displaystyle {@expr@}\), \({@lower_y@}\leq y\leq{@upper_y@}\).</p>
+<p>\(L={@ta@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept"></p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">The question focuses on finding the arc length of a given function over a defined random range</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1 checks for correct answer*/
+/*Node 2: mistake:Integrating the expression instead of differentiating*/
+mistake_2:rhs((int(expr,x)));
+/*Node 3: mistake:   Interchanging the limits of integration*/
+mistake_l:int(ds,x,rhs_x2,rhs_x1);
+mistake_3:decimalplaces(float(mistake_l),4);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have integrated the function instead of differentiating.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the second mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your computation looks okay for the definite integral, however it looks like you have interchanged the limits of integration.
+Take a look at the worked out solution below.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>20805244</deployedseed>
+    <deployedseed>1477084696</deployedseed>
+    <deployedseed>967753894</deployedseed>
+    <deployedseed>911296620</deployedseed>
+    <deployedseed>1841364279</deployedseed>
+    <deployedseed>958731252</deployedseed>
+    <deployedseed>414745035</deployedseed>
+    <deployedseed>1144953139</deployedseed>
+    <deployedseed>1868202589</deployedseed>
+    <deployedseed>1972284560</deployedseed>
+    <deployedseed>529006922</deployedseed>
+    <deployedseed>616311865</deployedseed>
+    <deployedseed>1261553206</deployedseed>
+    <deployedseed>159700657</deployedseed>
+    <deployedseed>313643646</deployedseed>
+    <deployedseed>1256062673</deployedseed>
+    <deployedseed>908357277</deployedseed>
+    <deployedseed>1287134179</deployedseed>
+    <deployedseed>358646953</deployedseed>
+    <deployedseed>531344660</deployedseed>
+    <deployedseed>268151133</deployedseed>
+    <deployedseed>2067268467</deployedseed>
+    <deployedseed>1038278489</deployedseed>
+    <deployedseed>1548189717</deployedseed>
+    <deployedseed>1000107309</deployedseed>
+    <deployedseed>1392630840</deployedseed>
+    <deployedseed>1351814780</deployedseed>
+    <deployedseed>108471453</deployedseed>
+    <deployedseed>943700400</deployedseed>
+    <deployedseed>903612458</deployedseed>
+    <deployedseed>808668346</deployedseed>
+    <deployedseed>615137714</deployedseed>
+    <deployedseed>1494958739</deployedseed>
+    <deployedseed>1157596345</deployedseed>
+    <deployedseed>1279823872</deployedseed>
+    <deployedseed>1918975991</deployedseed>
+    <deployedseed>70890452</deployedseed>
+    <deployedseed>140677254</deployedseed>
+    <deployedseed>2032057879</deployedseed>
+    <deployedseed>1387426512</deployedseed>
+    <deployedseed>122202117</deployedseed>
+    <deployedseed>2063004970</deployedseed>
+    <deployedseed>328477545</deployedseed>
+    <deployedseed>13776829</deployedseed>
+    <deployedseed>6558096</deployedseed>
+    <deployedseed>1508095469</deployedseed>
+    <deployedseed>660384911</deployedseed>
+    <deployedseed>2024583274</deployedseed>
+    <deployedseed>595697568</deployedseed>
+    <deployedseed>833597985</deployedseed>
+    <deployedseed>1672617404</deployedseed>
+    <deployedseed>1459559796</deployedseed>
+    <deployedseed>755474517</deployedseed>
+    <deployedseed>1672368128</deployedseed>
+    <deployedseed>264319172</deployedseed>
+    <deployedseed>2068312753</deployedseed>
+    <deployedseed>1343975105</deployedseed>
+    <deployedseed>1646270919</deployedseed>
+    <deployedseed>1566140598</deployedseed>
+    <deployedseed>2036216049</deployedseed>
+    <deployedseed>154550547</deployedseed>
+    <deployedseed>1729545181</deployedseed>
+    <deployedseed>1338698862</deployedseed>
+    <deployedseed>1742370174</deployedseed>
+    <deployedseed>329282121</deployedseed>
+    <deployedseed>1879636304</deployedseed>
+    <deployedseed>1547452462</deployedseed>
+    <deployedseed>1771938637</deployedseed>
+    <deployedseed>1295671832</deployedseed>
+    <deployedseed>2052464873</deployedseed>
+    <deployedseed>239789709</deployedseed>
+    <deployedseed>1890202732</deployedseed>
+    <deployedseed>972920641</deployedseed>
+    <deployedseed>1949339874</deployedseed>
+    <deployedseed>314510149</deployedseed>
+    <deployedseed>1744014480</deployedseed>
+    <deployedseed>1571052816</deployedseed>
+    <deployedseed>151817726</deployedseed>
+    <deployedseed>1256792245</deployedseed>
+    <deployedseed>458916484</deployedseed>
+    <deployedseed>1679750197</deployedseed>
+    <deployedseed>2062087400</deployedseed>
+    <deployedseed>394870804</deployedseed>
+    <deployedseed>1460459680</deployedseed>
+    <deployedseed>70084480</deployedseed>
+    <deployedseed>1106966440</deployedseed>
+    <deployedseed>1580945180</deployedseed>
+    <deployedseed>1134922246</deployedseed>
+    <deployedseed>612447575</deployedseed>
+    <deployedseed>1495212180</deployedseed>
+    <deployedseed>1231129862</deployedseed>
+    <deployedseed>1879921223</deployedseed>
+    <deployedseed>345342787</deployedseed>
+    <deployedseed>1877531143</deployedseed>
+    <deployedseed>832565803</deployedseed>
+    <deployedseed>1572939121</deployedseed>
+    <deployedseed>413717769</deployedseed>
+    <deployedseed>1689246234</deployedseed>
+    <deployedseed>1310883070</deployedseed>
+    <deployedseed>1743094320</deployedseed>
+    <deployedseed>1194889497</deployedseed>
+    <deployedseed>917532385</deployedseed>
+    <deployedseed>834698344</deployedseed>
+    <deployedseed>814147425</deployedseed>
+    <deployedseed>1983280894</deployedseed>
+    <deployedseed>1769896774</deployedseed>
+    <deployedseed>1174185662</deployedseed>
+    <deployedseed>1050633262</deployedseed>
+    <deployedseed>2060364297</deployedseed>
+    <deployedseed>1435477515</deployedseed>
+    <deployedseed>1966504812</deployedseed>
+    <deployedseed>1779985873</deployedseed>
+    <deployedseed>98970610</deployedseed>
+    <deployedseed>160454255</deployedseed>
+    <deployedseed>869599099</deployedseed>
+    <deployedseed>691672159</deployedseed>
+    <deployedseed>199386728</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

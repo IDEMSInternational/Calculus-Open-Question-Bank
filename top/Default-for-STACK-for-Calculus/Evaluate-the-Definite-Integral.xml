@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluate the Definite Integral</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Find the value of the integral</p>
+<p>\( \displaystyle \int_{{@lower@}}^{@higher@}{@f_x@}\, dx =\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To find the value of the integral \( \displaystyle \int_{{@lower@}}^{@higher@}{@f_x@}\, dx \), you can use the fundamental theorem of calculus, which states that if \(F(x)\) is an antiderivative of \(f(x)\), then:</p>
+<p>\( \displaystyle \int_{a}^{b} f(x) dx = F(b) - F(a)\)</p>
+<p>In this case, \( \displaystyle f(x) = {@f_x@}\), so we need to find an antiderivative of \({@f_x@}\).</p>
+<p>The antiderivative of \( \displaystyle e^x\) is simply \(e^x\). So, \( \displaystyle F(x) = e^x\).</p>
+<p>Now, we can evaluate the definite integral as follows:</p>
+<p>\( \displaystyle \int_{{@lower@}}^{@higher@}{@f_x@}\, dx  = F({@higher@}) - F({@lower@}) = {@ta_1@}\)</p>
+<p>So, the value of the integral  \( \displaystyle \int_{{@lower@}}^{@higher@}{@f_x@}\, dx \), is \({@ta_1@}\).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*randomizing the static question variables*/
+lower:rand_with_step(-10,10,1); /* lower limit of the integration*/
+higher:rand_with_prohib(-3,10,[lower]); /* upper limit of integration*/
+f_x: e^x; /* the function */
+ta_1:integrate(f_x,x,lower,higher);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text><![CDATA[<br>]]></text>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\(\int_{x={@lower@}}^{@higher@} {@f_x@}\, dx={@ta_1@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Santiago Borio</p>
+<p id="description">This question requires students to find the definite integral</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1: checking for the correct answer*/
+
+/*node 2: mistake: Adding 1 to the power of e then dividing by the new power*/
+mistake_step_2_1:e^(x+1)/(x+1);
+mistake_step_2_2:ev(mistake_step_2_1,x=higher);
+mistake_step_2_3:ev(mistake_step_2_1,x=lower);
+mistake_2:mistake_step_2_2-mistake_step_2_3;
+
+/*node 4: mistake: Subtracting the higher limit from the lower limit*/
+mistake_step_4_1:e^x;
+mistake_step_4_2:ev(mistake_step_4_1,x=lower);
+mistake_step_4_3:ev(mistake_step_4_1,x=higher);
+mistake_4:mistake_step_4_2-mistake_step_4_3;
+
+/*node 5: mistake: Omitting the lower limit during evaluation*/
+mistake_step_5_1:e^x;
+mistake_step_5_2:ev(mistake_step_5_1,x=higher);
+mistake_step_5_3:ev(mistake_step_5_1,x=lower);
+mistake_5:mistake_step_5_2;
+
+/*node 6: mistake: Adding the values after replacing the limits of integration*/
+mistake_step_6_1:e^x;
+mistake_step_6_2:ev(mistake_step_6_1,x=higher);
+mistake_step_6_3:ev(mistake_step_6_1,x=lower);
+mistake_6:mistake_step_6_2+mistake_step_6_3;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checking for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Adding 1 to the power of e then dividing by the new power</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have added 1 to the power of \(e\) then divided by the new power.</p>
+<p>Recall, \(\displaystyle \int_{a}^b e^x dx =\left[ e^x \right]_a^b=e^b- e^a\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>Subtracting the higher limit from the lower limit</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have subtracted the higher limit from the lower limit.</p>
+<p>Recall,\(\displaystyle \int_{a}^b e^x dx =\left[ e^x \right]_a^b=e^b- e^a\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>Omitting the lower limit during evaluation</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_5</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-5-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have omitted the lower limit during evaluation.</p>
+<p>Recall,\(\displaystyle \int_{a}^b e^x dx =\left[ e^x \right]_a^b=e^b- e^a\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>5</falsenextnode>
+        <falseanswernote>prt1-5-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>5</name>
+        <description>Adding the values after replacing the limits of integration</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_6</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-6-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have added the values after evaluating the integral with the limits of integration.</p>
+<p>Recall,\(\displaystyle \int_{a}^b e^x dx =\left[ e^x \right]_a^b=e^b- e^a\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-6-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1038351367</deployedseed>
+    <deployedseed>1522583023</deployedseed>
+    <deployedseed>115007582</deployedseed>
+    <deployedseed>1354430273</deployedseed>
+    <deployedseed>344746336</deployedseed>
+    <deployedseed>146987616</deployedseed>
+    <deployedseed>1225777097</deployedseed>
+    <deployedseed>1673785605</deployedseed>
+    <deployedseed>1179507415</deployedseed>
+    <deployedseed>1657841852</deployedseed>
+    <deployedseed>1261156102</deployedseed>
+    <deployedseed>1274038124</deployedseed>
+    <deployedseed>569325998</deployedseed>
+    <deployedseed>322522281</deployedseed>
+    <deployedseed>1019825157</deployedseed>
+    <deployedseed>303162177</deployedseed>
+    <deployedseed>1673644900</deployedseed>
+    <deployedseed>1837026905</deployedseed>
+    <deployedseed>520136602</deployedseed>
+    <deployedseed>1972811082</deployedseed>
+    <deployedseed>1699190432</deployedseed>
+    <deployedseed>311689812</deployedseed>
+    <deployedseed>820154257</deployedseed>
+    <deployedseed>1161098004</deployedseed>
+    <deployedseed>1431552046</deployedseed>
+    <deployedseed>1699723780</deployedseed>
+    <deployedseed>1150061512</deployedseed>
+    <deployedseed>1527167377</deployedseed>
+    <deployedseed>1760987338</deployedseed>
+    <deployedseed>298362410</deployedseed>
+    <deployedseed>404615733</deployedseed>
+    <deployedseed>558523598</deployedseed>
+    <deployedseed>1498501955</deployedseed>
+    <deployedseed>206928758</deployedseed>
+    <deployedseed>2069765711</deployedseed>
+    <deployedseed>258822992</deployedseed>
+    <deployedseed>1517289983</deployedseed>
+    <deployedseed>544580286</deployedseed>
+    <deployedseed>1430336664</deployedseed>
+    <deployedseed>1427834878</deployedseed>
+    <deployedseed>1279120606</deployedseed>
+    <deployedseed>1101491422</deployedseed>
+    <deployedseed>875123770</deployedseed>
+    <deployedseed>1288687585</deployedseed>
+    <deployedseed>679022651</deployedseed>
+    <deployedseed>1650747596</deployedseed>
+    <deployedseed>59876550</deployedseed>
+    <deployedseed>642587651</deployedseed>
+    <deployedseed>393064414</deployedseed>
+    <deployedseed>1304885015</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_1</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

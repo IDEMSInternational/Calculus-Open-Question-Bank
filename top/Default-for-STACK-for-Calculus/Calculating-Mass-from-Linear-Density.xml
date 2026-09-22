@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Calculating Mass from Linear Density</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Consider a thin rod  oriented on the \(x\)-axis  over the interval  \(\displaystyle  \left[{@a@}, {@b@}\right]\).</p>
+<p>If the density of the road is given by \(\rho(x)={@rho_x@}\), what is the mass of the rod?</p><p>\(m =\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]] </p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To find the mass of the thin rod oriented on the \(x\)-axis over the interval  \(\displaystyle  \left[{@a@}, {@b@}\right]\) with a density function \(\rho(x) = {@rho_x@}\), you can use the following integral:</p>
+
+<p>\(\displaystyle m = \int_{a}^{b} \rho(x) \, dx\)</p>
+
+<p>In this case, \(\displaystyle \rho(x) = {@rho_x@}\), and the interval is \(\displaystyle  \left[{@a@}, {@b@}\right]\) , so the mass of the rod is:</p>
+
+<p>\[\displaystyle 
+\begin{align*}
+m &= \int_{{@a@}}^{{@b@}} {@rho_x@} \, dx \\
+    &=\big[ {@int(rho_x,x)@} \big]_{{@a@}}^{{@b@}}  \\
+    &= {@mass@} \\
+\end{align*}\]</p>
+<p>So, the mass of the thin rod over the interval \(\displaystyle  \left[{@a@}, {@b@}\right]\) with a density function \(\rho(x) = {@rho_x@}\) is {@mass@} unit of mass.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/* Define the function */  
+trig:rand([sin,cos]); 
+rho_x: trig(x); 
+even_numbers: makelist(2 * i, i, 1, 16);
+num:rand_with_step(2,16,2);
+den:rand(even_numbers);  
+a : (%pi*den)/num; 
+b:rand([a+%pi, a+%pi/2, a+%pi*(3/2), a+%pi*(1/4), a+%pi*(3/4), a+%pi*(2/3), a+%pi*(1/3)]);
+mass : int(rho_x, x, a, b); 
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Interval  \(\displaystyle  \left[{@a@}, {@b@}\right]\).</p>
+<p>Density \(\rho(x)={@rho_x@}\), what is the mass of the rod?</p><p>\(m ={@mass@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author"> Godfrey Wabwire </p>
+<p id="concept"> N/A </p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">[2]</p>
+<p id="description">The question considers a thin rod oriented on the 𝑥-axis over the interval  \(\displaystyle  \left[{@a@}, {@b@}\right]\). when the density of the rod is given by a defined function, the student is required to find the mass of the rod</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>mass</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mass</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1152304804</deployedseed>
+    <deployedseed>1877938302</deployedseed>
+    <deployedseed>1528172615</deployedseed>
+    <deployedseed>301158507</deployedseed>
+    <deployedseed>1477416508</deployedseed>
+    <deployedseed>1374009143</deployedseed>
+    <deployedseed>1116447947</deployedseed>
+    <deployedseed>355418889</deployedseed>
+    <deployedseed>2095510439</deployedseed>
+    <deployedseed>1964126349</deployedseed>
+    <deployedseed>1697115120</deployedseed>
+    <deployedseed>645521776</deployedseed>
+    <deployedseed>553640003</deployedseed>
+    <deployedseed>987740509</deployedseed>
+    <deployedseed>1678057126</deployedseed>
+    <deployedseed>2138810340</deployedseed>
+    <deployedseed>1522717752</deployedseed>
+    <deployedseed>669509644</deployedseed>
+    <deployedseed>639077104</deployedseed>
+    <deployedseed>768860087</deployedseed>
+    <deployedseed>282800264</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>mass</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

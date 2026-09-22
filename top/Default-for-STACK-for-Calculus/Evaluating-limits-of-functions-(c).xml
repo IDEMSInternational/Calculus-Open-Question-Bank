@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluating limits of functions (c)</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Evaluate the value of the following limit:</p>
+
+<p>\(\displaystyle \lim_{x\rightarrow {@var_limit@}}{@eqn@} =\)[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+[[ if test='var_limit = 0' ]]
+  <p>To evaluate the limit \(\displaystyle \lim_{x\rightarrow {@var_limit@}}{@eqn@} ,\)we can use the small-angle approximation for sine, which states that \(\sin(x) \approx {@var_limit@}\)  when \(x\) is near \({@var_limit@}\).</p>
+<p>Applying this approximation:</p>
+<p> \(\sin({@var_1*x@}) ={@var_1*x@}\)</p>
+<p>Therefore, the limit transforms to:</p>
+<p>\(\displaystyle \lim_{x\rightarrow {@var_limit@}}{@eqn@} \approx  \lim_{x\rightarrow {@var_limit@}} \frac{\sin({@var_1*x@})}{x}=\lim_{x\rightarrow {@var_limit@}}{@var_1@}={@ta@}\) </p>
+<p>We can also show this through a table:</p>
+<br>
+
+<p hidden>{@stackfltfmt:"~,2f";@}</p>
+<table style="margin-left: 30px">
+<tr>
+  <td style="text-align: center; border: 1px solid gray; width:60px;">\(x\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(-0.25\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(-0.1\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(-0.01\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(0.01\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(0.1\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(0.25\)</th>
+</tr>
+<tr style="height:40px">
+  <td style="text-align: center; border: 1px solid gray; ">\(f(x)\)</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta2@}</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta3@}</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta4@}</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta5@}</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta6@}</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta7@}</td>
+</tr>
+</table>
+<p>From the table, we can guess that the \(\displaystyle \lim_{x\rightarrow {@var_limit@}}{@eqn@}= {@ta@}\)  </p>
+[[ else ]]
+   <p>To evaluate the limit \(\displaystyle \lim_{x\rightarrow {@var_limit@}}{@eqn@} ,\) we can directly substitute \(x={@var_limit@}\)</p>
+<p> \(\displaystyle \lim_{x\rightarrow {@var_limit@}}{@eqn@} =\ \frac{\sin({@var_limit@} \cdot {@var_1@})}{{@var_limit@}} ={@ta@}\) </p>
+<p>We can also show this through a table:</p>
+<br>
+
+<p hidden>{@stackfltfmt:"~,2f";@}</p>
+<table style="margin-left: 30px">
+<tr>
+  <td style="text-align: center; border: 1px solid gray; width:60px;">\(x\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(-0.25\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(-0.1\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(-0.01\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(0.01\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(0.1\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(0.25\)</th>
+</tr>
+<tr style="height:40px">
+  <td style="text-align: center; border: 1px solid gray; ">\(f(x)\)</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta2@}</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta3@}</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta4@}</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta5@}</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta6@}</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta7@}</td>
+</tr>
+</table>
+<p>From the table, we can guess that the \(\displaystyle \lim_{x\rightarrow {@var_limit@}}{@eqn@}= {@ta@}\)  </p>
+[[/ if]]]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>var_1:rand(10)+1;/*constant in the numerator*/
+var_limit:rand([0,1]);
+eqn:(sin(x*var_1))/(x) ;
+ta:limit(eqn, x, var_limit);
+ta2:decimalplaces(ev(eqn, x = -0.25),2);
+ta3:decimalplaces(ev(eqn, x = -0.1),2);
+ta4:decimalplaces(ev(eqn, x = -0.01),2);
+ta5:decimalplaces(ev(eqn, x = 0.01),2);
+ta6:decimalplaces(ev(eqn, x = 0.1),2);
+ta7:decimalplaces(ev(eqn, x = 0.25),2);
+
+
+
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle \lim_{x\rightarrow {@var_limit@}}{@eqn@} = {@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept">https://docs.google.com/document/d/1iWHYSZIwx9SW_6nJsyzWwdMU1g0uqRrcF44y5MjZYBY/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer"></p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">This question requires students to explores the behavior of the functions as they approach specific points and determine the values of the limits or identify if they exist</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1434819900</deployedseed>
+    <deployedseed>288900256</deployedseed>
+    <deployedseed>840334860</deployedseed>
+    <deployedseed>1115504099</deployedseed>
+    <deployedseed>1213968782</deployedseed>
+    <deployedseed>2082374001</deployedseed>
+    <deployedseed>572142121</deployedseed>
+    <deployedseed>1630881190</deployedseed>
+    <deployedseed>1935686480</deployedseed>
+    <deployedseed>1904396655</deployedseed>
+    <deployedseed>128933527</deployedseed>
+    <deployedseed>177737704</deployedseed>
+    <deployedseed>397918832</deployedseed>
+    <deployedseed>211416568</deployedseed>
+    <deployedseed>1132438657</deployedseed>
+    <deployedseed>382271984</deployedseed>
+    <deployedseed>1847231148</deployedseed>
+    <deployedseed>2040898589</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

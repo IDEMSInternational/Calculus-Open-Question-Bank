@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Derivatives of exponential</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Find the derivative of the following function.</p>
+<p>\(f(x)= \displaystyle {@f_ction@}\)</p>
+<p>\(f^{\prime}(x)=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]] </p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><h3>Worked solution</h3></p>
+<p>\(f(x)= \displaystyle {@f_ction@}\)</p>
+<p>The function \(f\) is in the form \(\displaystyle v{@%e^u@} \), whose derivative is given by the formula</p>
+<p>\( \displaystyle v'{@%e^u@}+v{({@%e^u@}})' \). But \( \displaystyle {({@%e^u@}})'= \displaystyle u' {@%e^u@}\)</p>
+<p> Here, \(v={@v_x@}\) and \(u={@u_x@}\). The derivatives of \(u\) and \(v\) with respect to \(x\) are therefore;</p>
+<p> \( v'= \displaystyle {@diff(v_x,x)@}\) and  \( u'= \displaystyle {@diff(u_x,x)@}\). Since \(f'(x)= \displaystyle v' \cdot {@%e^u@}+v \cdot u' \cdot {@%e^u@}\), we have </p>
+<p>\(f'(x)= \displaystyle {@ta@}\) </p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining randomised function*/
+v_x: rand_with_prohib(-5,5,[0])*x+rand_with_step(-5,5,1);
+u_x: rand(3)*x^2+rand_with_prohib(-5,5,[0])*x+rand_with_step(-5,5,1);
+f_ction: v_x*%e^(u_x);
+
+/*Worked solution*/
+ta: factor(diff(f_ction,x));</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(f(x)= \displaystyle {@f_ction@}\)</p>
+\(f'(x)={@ta@}\)]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo </p>
+<p id="concept">N/A</p>
+<p id="reviewer"> Godfrey Wabwire</p>
+<p id="reviewer">Juma Zevick</p>
+<p id="description">Deffirentaiting an exponential</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Check the correct answer*/
+/*Node 2: Use antiderivative*/
+mistake: integrate(f_ction,x);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text>You did the antiderivative, instead to do the derivative of the function with respect to \(x\).</text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>2048142219</deployedseed>
+    <deployedseed>96333118</deployedseed>
+    <deployedseed>144955148</deployedseed>
+    <deployedseed>721434143</deployedseed>
+    <deployedseed>812107731</deployedseed>
+    <deployedseed>2136805779</deployedseed>
+    <deployedseed>87525218</deployedseed>
+    <deployedseed>1521132593</deployedseed>
+    <deployedseed>1682827303</deployedseed>
+    <deployedseed>431129007</deployedseed>
+    <deployedseed>886915148</deployedseed>
+    <deployedseed>971055598</deployedseed>
+    <deployedseed>1802104108</deployedseed>
+    <deployedseed>86655903</deployedseed>
+    <deployedseed>1170246834</deployedseed>
+    <deployedseed>611414160</deployedseed>
+    <deployedseed>317019538</deployedseed>
+    <deployedseed>213676616</deployedseed>
+    <deployedseed>648269024</deployedseed>
+    <deployedseed>62233390</deployedseed>
+    <deployedseed>1390261671</deployedseed>
+    <deployedseed>1954486514</deployedseed>
+    <deployedseed>1799491380</deployedseed>
+    <deployedseed>2122662690</deployedseed>
+    <deployedseed>1698072712</deployedseed>
+    <deployedseed>1389997977</deployedseed>
+    <deployedseed>1272811565</deployedseed>
+    <deployedseed>564963050</deployedseed>
+    <deployedseed>1444066073</deployedseed>
+    <deployedseed>290336267</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

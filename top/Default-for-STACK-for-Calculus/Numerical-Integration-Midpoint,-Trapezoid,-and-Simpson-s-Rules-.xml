@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Numerical Integration: Midpoint, Trapezoid, and Simpson's Rules.</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Use \(n={@n@}\) to approximate the value of \( \displaystyle \int_{@a@}^{@b@} {@f(x)@}\,dx \) to 2 decimal places;</p>
+<p>Give your answer in 4 decimal places.</p>
+<p>What is the approximate area by:</p>
+<p> Midpoint rule \(M_{@n@}=\)[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+<p>What is the error in approximating the value using midpoint rule \(=\)[[input:ans2]] [[validation:ans2]] [[feedback:prt2]] </p>
+<p>Trapezoid  rule\(T_{@n@}=\)[[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</p>
+<p>What is the error in approximating the value using Trapezoid rule \(=\)[[input:ans4]] [[validation:ans4]] [[feedback:prt4]] </p></p>
+<p>Simpson's  rule \(S_{@n@}=\)[[input:ans5]] [[validation:ans5]][[feedback:prt5]]</p>
+<p>What is the error in approximating the value using Simpson's rule \(=\)[[input:ans6]] [[validation:ans6]] [[feedback:prt6]] </p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><b>Worked solution</b></p>
+<p>Here is a sketch of the graph corresponding to \(f(x)={@f(x)@}\).</p>
+<p>[[jsxgraph]]
+  var board = JXG.JSXGraph.initBoard(divid, { 
+            boundingbox: [-2, 7, 9, -7],
+            keepaspectratio: false,
+            showCopyright: false,
+            axis: true,
+            showNavigation: false,
+   
+});
+         var graph1 = board.create('functiongraph', ['{#f(x)#}', {#-10#}, {#10#}],{name:'{#f(x)#}', 
+            withLabel:true}); 
+
+[[/jsxgraph]]</p>
+
+<p>Now, approximating the definite integral using:</p>
+<p>a) Midpoint rule</p>
+<p>We need to divide the interval \([{@a@},{@b@}]\) into \({@n@}\) subintervals each with width \(\Delta x\)</p>
+<p>\(\Delta x= \frac{{@b@}-{@a@}}{@n@}={@delta_x@}\)</p>
+<p>The values of the midpoints for each of the subintervals are then,
+</p>
+<p>\({@all_midpoints@}\)</p>
+<p>Using the midpoint rule to approximate the value of the integral all we need to do is plug into the formula
+</p>
+<p>\(\Delta x=\frac{b-a}{n}\) if [a,b]is divided into \(n\) subintervals, each length of \(\Delta x\) and \(m_{i}\) is the midpoint of the \(i^{th}\) interval.</p>
+<p>\( \displaystyle \int_{@a@}^{@b@} {@f(x)@}\,dx \approx M_{n}=\sum_{i=1}^{n}f(m_{i})\Delta x\)</p>
+<p>Therefore,</p>
+<p>
+    \(
+    \begin{align}
+    \displaystyle \int_{@a@}^{@b@} {@f(x)@}\,dx &amp; \approx {@ta_1@}\\
+    \end{align}
+    \)</p>
+<p>To find the error in approximating the value of the Integral using Midpoint rule, we substract the approximation from the actual value of the Integral</p>
+<p>\({@ta@}-{@ta_1@}={@m_error@}\)</p>
+<hr>
+
+
+<p>b) Trapezoid Rule</p>
+<p>We know that the width of each subinterval is \( \Delta x={@delta_x@}\)
+</p>
+<p>\(\Delta x=\frac{b-a}{n}\) if \([a,b]\) is divided into \(n\) subintervals of each of length \(\Delta x\),with endpoints \(x_{0}\) to \(x_{n}\)</p>
+<p>Therefore, the endpoints are:</p>
+<p>\( {@all_endpoints@} \)</p>
+<p>Using trapezoid rule to approximate the value of the integral,
+</p>
+<p>\(T_{n}=\frac{\Delta x}{2}(f(x_{0})+2f(x_{1})+2f(x_2)+ \cdots 2f(x_{n-1})+f(x_n))\)</p>
+<p>Therefore,</p>
+<p>
+    \(
+    \begin{align}
+    \displaystyle \int_{@a@}^{@b@} {@f(x)@}\,dx &amp; \approx {@ta_2@}\\
+    \end{align}
+    \)
+</p>
+<p>To find the error in approximating the value of the Integral using Trapezoid rule, we subtract the approximation from the actual value of the Integral</p>
+<p>\({@ta@}-{@ta_2@}={@t_error@}\)</p>
+
+<hr>
+
+<p>c) Simpson's rule</p>
+<p>We know that the width of each subinterval is \( \Delta x = {@delta_x@} \)
+    and for reference purposes the sketch of the graph along with the endpoints of each subinterval marked by the dots is shown above.</p>
+<p>The endpoints are:</p>
+<p>\( {@all_endpoints@} \)</p>
+<p>Applying simpson’s rule,</p>
+<p>\(S_n=\frac{\Delta x}{2}(f(x_{0})+4f(x_1)+2f(x_2)+4f(x_3)+2f(x_{4})+ \cdots + 2f(x_{n-2})+4f(x_n-1)+f(x_{n}))\)</p>
+<p>Therefore,</p>
+<p>
+    \(
+    \begin{align}
+
+    \displaystyle \int_{@a@}^{@b@} {@f(x)@}\,dx &amp; \approx {@ta_3@}\\
+    \end{align}
+    \)
+</p>
+<p>To find the error in approximating the value of the Integral using Simpson's  rule, we subtract the approximation from the actual value of the Integral</p>
+<p>\({@ta@}-{@ta_3@}={@s_error@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining the question wrt to its limits a (lower limit) and b (upper limit)*/
+a: rand([1,2]);
+b: rand([7,8]);
+n: rand([4,6,8]);
+delta_x: (b-a)/n;
+x(i):=a+i*delta_x;
+f(x):=rand([1/(x^3+1), 3/(x^4-5)]);
+/*Formula for midpoint*/
+m(i):=(x(i-1)+x(i))/2;
+sum_mid: sum(f(m(i)),i,1,n);
+Mid_n: sum_mid*delta_x;
+
+/*Find list of midpoints and endpoints*/
+all_midpoints: makelist(m(i),i,n);
+all_endpoints: makelist(x(i),i,0,n);
+
+/*Formula for trapezoidal rule*/
+sum_trap: sum(f(x(i)),i,1,n-1);
+Trap_n: (delta_x/2)*(f(a)+2*sum_trap+f(b));
+
+/*Formula for Simpson'rule*/
+z:(n/2);
+delta_z: (b-a)/z;
+x(j):=a+j*delta_z;
+m(j):=(x(j-1)+x(j))/2;
+sum_mid_z: sum(f(m(j)),j,1,z);
+Mid_z: sum_mid_z*delta_z;
+sum_trap_z: sum(f(x(j)),j,1,z-1);
+Trap_z: (delta_z/2)*(f(a)+2*sum_trap_z+f(b));
+Simp_n: (2/3)*Mid_z+(1/3)*Trap_z;
+
+/*Model answers*/
+ta:decimalplaces(float(int(f(x),x,a,b)),4);
+ta_1: decimalplaces(float(Mid_n),4);
+ta_2: decimalplaces(float(Trap_n),4);
+ta_3: decimalplaces(float(Simp_n),4);
+m_error:decimalplaces(ta-ta_1,4);
+t_error:decimalplaces(ta-ta_2,4);
+s_error:decimalplaces(ta-ta_3,4);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\( \displaystyle \int_{@a@}^{@b@} {@f(x)@}\,dx \) </p>
+<p>\(M_{@n@}={@ta_1@}\)</p>
+<p>\(T_{@n@}={@ta_2@}\)</p>
+<p>\(S_{@n@}={@ta_3@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Juma Zevick</p>
+<p id="description">The question focuses on Approximating definite integral by use of Riemann sum formulae,that is midpoint rule, Trapezoid and Simpson's rule</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>m_error</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta_2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>t_error</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>ta_3</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>s_error</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:Checks for correct answers*/
+/*node 2:Integrating directly and not applying the midpoint rule*/
+mistake_1:int(f(x));</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have integrated directly and not followed the steps of midpoint rule
+Hint:looked at the worked solution
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>m_error</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the absolute value</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans2</sans>
+        <tans>m_error</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:Checks for correct answers*/
+/*node 2:Integrating directly and not applying the Trapezoid  rule*/
+mistake_2:int(f(x));</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have integrated directly and not followed the steps of Trapezoid  rule
+Hint:looked at the worked solution
+
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the absolute value</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans3</sans>
+        <tans>ta_2</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>t_error</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the absolute value</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans4</sans>
+        <tans>t_error</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:Checks for correct answers*/
+/*node 2:Integrating directly and not applying the Simpson's rule*/
+mistake_3:int(f(x));</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>ta_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description> checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have integrated directly and not followed the steps of Simpson rule
+Hint:looked at the worked solution
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt5-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the absolute value</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans5</sans>
+        <tans>ta_3</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>s_error</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt6-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans6</sans>
+        <tans>s_error</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>665519782</deployedseed>
+    <deployedseed>2134044735</deployedseed>
+    <deployedseed>1586613309</deployedseed>
+    <deployedseed>836101376</deployedseed>
+    <deployedseed>2103041420</deployedseed>
+    <deployedseed>922179261</deployedseed>
+    <deployedseed>1076732058</deployedseed>
+    <deployedseed>2131551032</deployedseed>
+    <deployedseed>385347791</deployedseed>
+    <deployedseed>208680221</deployedseed>
+    <deployedseed>777889843</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>m_error</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta_2</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>t_error</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>ta_3</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>s_error</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt6</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt6-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

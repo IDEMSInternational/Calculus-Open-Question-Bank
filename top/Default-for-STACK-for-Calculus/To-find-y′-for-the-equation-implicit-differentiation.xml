@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>To find y′ for the equation  implicit differentiation</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find \(y'\) for \(\displaystyle {@eq@}\)</p>
+<p>\(y'=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To find \(y'\) for the equation \(\displaystyle {@eq@}\), we can use implicit differentiation.</p>
+
+<p>Differentiate both sides of the equation with respect to \(x\):</p>
+
+<p>\(\displaystyle \frac{d}{dx}\left({@fx@}\right) + \frac{d}{dx}\left({@fy@}\right) = \frac{d}{dx}\left({@const@}\right)\)</p>
+ 
+<p>Now, apply the chain rule to the \(\displaystyle{@fy@}\) term:</p>
+
+<p>\(\displaystyle
+{@dfx@} + {@dfy@}  \frac{dy}{dx} = {@dfc@} 
+\)</p>
+
+<p>Now, solve for \(\displaystyle\frac{dy}{dx}:\)</p>
+
+<p>\(\displaystyle
+{@dfy@}  \frac{dy}{dx} = -{@dfx@} 
+\)</p>
+
+<p>Divide both sides by \(\displaystyle{@dfy@}\):</p>
+
+<p>\(\displaystyle
+\frac{dy}{dx} = -\frac{{@dfx@}}{{@dfy@}}= {@ta@}
+\)</p>
+
+<p>So, the derivative of \(y\) with respect to \(x\) is \( \displaystyle \frac{dy}{dx} = {@ta@}\), that is, \( \displaystyle y' = {@ta@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text> /* Define the equation */
+power1:rand([rand_with_step(2,10,2),(rand(10)+1)/(rand(10)+2)]);
+power2:power1*2;
+c1:rand(10)+1;
+c2:rand(10)+1;
+fx:c1*x^power1;
+fy:c2*y^power2;
+const:rand(100)+10;
+eq: fx + fy = const; 
+/* Differentiate both sides with respect to x */ 
+dfx: diff(fx, x);
+dfy: diff(fy, y);
+dfc: diff(const, x);
+func:dfy*(dz)=-dfx;
+ta:rhs(solve(func,dz)[1]);
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Find \(y'\) for \(\displaystyle {@eq@}\) \(\displaystyle y'={@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">To find y′ for the equation using implicit differentiation.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1991585360</deployedseed>
+    <deployedseed>325059643</deployedseed>
+    <deployedseed>521936080</deployedseed>
+    <deployedseed>840425124</deployedseed>
+    <deployedseed>658560788</deployedseed>
+    <deployedseed>2137269172</deployedseed>
+    <deployedseed>1927007912</deployedseed>
+    <deployedseed>1636174564</deployedseed>
+    <deployedseed>1178879449</deployedseed>
+    <deployedseed>399415773</deployedseed>
+    <deployedseed>395045875</deployedseed>
+    <deployedseed>1818477406</deployedseed>
+    <deployedseed>641297725</deployedseed>
+    <deployedseed>839459631</deployedseed>
+    <deployedseed>1583700850</deployedseed>
+    <deployedseed>117017047</deployedseed>
+    <deployedseed>237287920</deployedseed>
+    <deployedseed>1938971324</deployedseed>
+    <deployedseed>380863023</deployedseed>
+    <deployedseed>1268177671</deployedseed>
+    <deployedseed>299230562</deployedseed>
+    <deployedseed>1635669607</deployedseed>
+    <deployedseed>868911563</deployedseed>
+    <deployedseed>298736080</deployedseed>
+    <deployedseed>942302514</deployedseed>
+    <deployedseed>335290158</deployedseed>
+    <deployedseed>1653159944</deployedseed>
+    <deployedseed>2144944128</deployedseed>
+    <deployedseed>2046105004</deployedseed>
+    <deployedseed>1935459085</deployedseed>
+    <deployedseed>810962666</deployedseed>
+    <deployedseed>1895224569</deployedseed>
+    <deployedseed>783057436</deployedseed>
+    <deployedseed>219060498</deployedseed>
+    <deployedseed>1849392192</deployedseed>
+    <deployedseed>195622204</deployedseed>
+    <deployedseed>657760908</deployedseed>
+    <deployedseed>587707247</deployedseed>
+    <deployedseed>901740174</deployedseed>
+    <deployedseed>904425321</deployedseed>
+    <deployedseed>1044431524</deployedseed>
+    <deployedseed>1164262091</deployedseed>
+    <deployedseed>1520425332</deployedseed>
+    <deployedseed>733453143</deployedseed>
+    <deployedseed>281864214</deployedseed>
+    <deployedseed>750049225</deployedseed>
+    <deployedseed>1571472728</deployedseed>
+    <deployedseed>1700611487</deployedseed>
+    <deployedseed>305438548</deployedseed>
+    <deployedseed>203601479</deployedseed>
+    <deployedseed>1124078162</deployedseed>
+    <deployedseed>123557393</deployedseed>
+    <deployedseed>211943366</deployedseed>
+    <deployedseed>1919345267</deployedseed>
+    <deployedseed>2043471336</deployedseed>
+    <deployedseed>91494173</deployedseed>
+    <deployedseed>784415479</deployedseed>
+    <deployedseed>1158989804</deployedseed>
+    <deployedseed>1930373706</deployedseed>
+    <deployedseed>1483517970</deployedseed>
+    <deployedseed>1183044593</deployedseed>
+    <deployedseed>636021858</deployedseed>
+    <deployedseed>392558951</deployedseed>
+    <deployedseed>1094508875</deployedseed>
+    <deployedseed>1468019457</deployedseed>
+    <deployedseed>114728840</deployedseed>
+    <deployedseed>210525679</deployedseed>
+    <deployedseed>1868346483</deployedseed>
+    <deployedseed>1094629431</deployedseed>
+    <deployedseed>1974320902</deployedseed>
+    <deployedseed>1752841923</deployedseed>
+    <deployedseed>1359582375</deployedseed>
+    <deployedseed>119533556</deployedseed>
+    <deployedseed>2104531298</deployedseed>
+    <deployedseed>78867245</deployedseed>
+    <deployedseed>268812050</deployedseed>
+    <deployedseed>1730327056</deployedseed>
+    <deployedseed>133041316</deployedseed>
+    <deployedseed>79393427</deployedseed>
+    <deployedseed>978492193</deployedseed>
+    <deployedseed>61956185</deployedseed>
+    <deployedseed>1260329630</deployedseed>
+    <deployedseed>2022469829</deployedseed>
+    <deployedseed>999938492</deployedseed>
+    <deployedseed>9069024</deployedseed>
+    <deployedseed>1085320468</deployedseed>
+    <deployedseed>906545846</deployedseed>
+    <deployedseed>656243697</deployedseed>
+    <deployedseed>1678670896</deployedseed>
+    <deployedseed>519592328</deployedseed>
+    <deployedseed>22340377</deployedseed>
+    <deployedseed>1108896024</deployedseed>
+    <deployedseed>1712157596</deployedseed>
+    <deployedseed>905133492</deployedseed>
+    <deployedseed>971660307</deployedseed>
+    <deployedseed>1657474244</deployedseed>
+    <deployedseed>1300141301</deployedseed>
+    <deployedseed>702440801</deployedseed>
+    <deployedseed>1103034201</deployedseed>
+    <deployedseed>1194701849</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

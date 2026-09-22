@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Double Integral in Polar Coordinates</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Evaluate \( \displaystyle \int \int _D {@quest_expr@} \,dA\)</p>
+<p>where \(D\) is the \(3^{\text{rd}}\) quadrant in between \({@eq_circle_1@}\) and \({@eq_circle_2@}\)</p>
+
+<br>
+[[jsxgraph]]
+
+    // creating the board
+    JXG.Options.text.useMathJax=true;
+    var board = JXG.JSXGraph.initBoard(divid, {
+      boundingbox: [-4, 4, 4, -4],
+      axis: true, 
+      showCopyright: false,
+      showNavigation: false,
+      keepaspectratio: true
+    });
+    
+    // setting display styles for objects
+    var circleStyle = {
+      fixed: true,
+      highlight: false,
+      strokeWidth:2,
+    };
+
+    var fillStyle = {
+      fixed: true,
+      highlight: false,
+      color:'lime',
+      opacity:0.4,
+      layer:1
+    };
+
+    var textStyle = {
+      parse:false,
+      useMathJax:true
+    };
+
+    // creating the two circular functions
+    circleStyle.strokeColor = 'red';
+    var function1 = board.create('circle', [[0,0], 1], circleStyle);
+    circleStyle.strokeColor = 'blue';
+    var function2 = board.create('circle', [[0,0], 3], circleStyle);
+
+    // labels for the curves and region
+    textStyle.strokeColor = 'red';
+    var label1 = board.create('text', [0.9,0.9,"\\(x^2 + y^2 = 1\\)"], textStyle);
+    textStyle.strokeColor = 'blue';
+    var label2 = board.create('text', [2.4,2.4,"\\(x^2 + y^2 = 3\\)"], textStyle);
+    textStyle.strokeColor = 'black';
+    textStyle.fontSize = 20;
+    var label3 = board.create('text', [-1.8,-1.2,"\\(D\\)"], textStyle);
+
+    // filling the region in the 3rd quadrant between the circles
+    var quadrant = board.create('polygon', [[0,0],[0,-3],[-3,-3],[-3,0]], {visible:false});
+    var annulus = board.create('curvedifference', [function2, function1], {visible:false});
+    var shading = board.create('curveintersection', [quadrant, annulus], fillStyle);
+
+[[/jsxgraph]]
+<br>
+<p>We can follow this approach:</p>
+<br>
+<p>Since \(D\) is a portion of a ring, we can determine the integral using polar coordinates.</p>
+<br>
+<p><b>Step 1:</b> We need to set up the limits of integration from the sketch above (the limits are to be between \(0\)  and \(2\pi\)).</p>
+<p>The limits of the angle are [[input:ans1]] [[validation:ans1]] \( \leq \theta \leq \) [[input:ans2]] [[validation:ans2]]
+<br>[[feedback:prt1]] [[feedback:prt2]]</p>
+<p>The limits of the radius are [[input:ans3]] [[validation:ans3]] \(\leq r \leq\) [[input:ans4]] [[validation:ans4]]
+<br>[[feedback:prt3]] [[feedback:prt4]]</p>
+<br>
+<p><b>Step 2:</b> The next thing is to convert the function into polar form.</p>
+<p>Recall that, \(y={@y@}\)   and \(x={@x@}\)  and \(\,dA= r \cdot  \,dr \,d\theta\) </p>
+<p>Therefore, in polar coordinates, \({@quest_expr@} =\) [[input:ans5]] \(\quad (\text{eqn}1)\)
+<br>[[validation:ans5]][[feedback:prt5]]</p>
+<br>
+<p><b>Step 3:</b> Compute the area of the bounded region as follows (give your answer correct to two decimal places).</p>
+<p>\(\displaystyle \int \int _D {@quest_expr@} \,dA = \int_ {\theta_1}^ {\theta_2} \int_{r_1}^{r_2} (\text{eqn}1)r \,dr \,d\theta\) </p>
+<p>Therefore \( \displaystyle \int \int _D {@quest_expr@} \,dA =\) [[input:ans6]] [[validation:ans6]][[feedback:prt6]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><h3>Worked solution</h3></p>
+<p>Suppose we want to evaluate \( \displaystyle \int \int _D {@quest_expr@} \,dA\)</p>
+<p>where \(D\) is the \(3^{\text{rd}}\) quadrant in between \({@eq_circle_1@}\) and \({@eq_circle_2@}\)</p>
+<p>We can follow this approach</p>
+<br>
+<p>Since \(D\) is a portion of a ring, we can determine the integral using polar coordinates.</p>
+<br>
+<p><b>Step 1:</b> We need to set up the limits of integration from the sketch above.</p>
+<p>The limits of the angle are \(\pi \leq \theta \leq \frac{3}{2}\pi\)</p>
+<p>The limits of the radius are \(1 \leq r \leq 3\)</p>
+<br>
+<p><b>Step 2:</b> The next thing is to convert the function into polar form.</p>
+<p>Recall that, \(y={@y@}\)   and \(x={@x@}\)  and \(\,dA= r \cdot \,dr \,d\theta\) </p>
+<p>Therefore, in polar coordinates, \({@quest_expr@} = {@ta5@} \quad (\text{eqn}1)\)</p>
+<br>
+<p><b>Step 3:</b> Compute the area of the bounded region as follows.</p>
+\(
+\begin{align*}
+
+\displaystyle \int \int _D {@quest_expr@} \,dA
+
+&= \int_ {\theta_1}^ {\theta_2} \int_{r_1}^{r_2} (r^2 \sin^2(\theta) + {@coeff_3@} r \cos(\theta)) r \,dr \,d\theta \\
+
+&= \int_ {\pi}^ {\frac{3}{2}\pi} \int_{1}^{3} r^3 \sin^2(\theta) + {@coeff_3@} r^2 \cos(\theta) \,dr \,d\theta \\
+
+&= \int_ {\pi}^ {\frac{3}{2}\pi} \left[ \frac{r^4}{4} \sin^2(\theta) + {@coeff_3/3@} r^3 \cos(\theta) \right]^{r=3} _{r=1} \,d\theta \\
+
+&= \int_ {\pi}^ {\frac{3}{2}\pi} 20 \sin^2(\theta) + {@coeff_3*26/3@} \cos(\theta) \,d\theta \\
+
+&= \int_ {\pi}^ {\frac{3}{2}\pi} 10 - 10 \cos(2\theta) + {@coeff_3*26/3@} \cos(\theta) \,d\theta \quad \text{since} \quad \sin^2(\theta) = \frac{1}{2} (1 - \cos(2\theta)) \\
+
+&= \left[ 10\theta - 5 \sin(2\theta) + {@coeff_3*26/3@} \sin(\theta) \right]^{\frac{3}{2}\pi} _{\pi} \\
+
+&= 5\pi - {@coeff_3*26/3@} \\
+
+&= {@theta_integration@} \quad \text{(2dp)}
+
+\end{align*}
+\)
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>coeff_3:rand(3)+3;
+quest_expr:y^2+coeff_3*x;
+eq_circle_1:x^2+y^2=1;
+eq_circle_2:x^2+y^2=9;
+y:r*sin(theta);
+x:r*cos(theta);
+dA:r;
+/*worked solution variables*/
+eqn1:(((y)^2)+coeff_3*(x)); /*writing in polar cordinates*/
+eqn2:(eqn1)*r;
+eqn3:expand(eqn2);
+/*r integration*/
+r_limit1:1;
+r_limit2:3;
+integration_1:int(eqn3,r);
+soln1:1/2*(1-cos(2*theta));/*substitution for sin(theta)^2*/
+soln2:subst(soln1,sin(theta)^2,integration_1);
+r_integration:int(eqn3,r,r_limit1,r_limit2);
+
+/*theta integration*/
+theta1:%pi; 
+theta2:(3/2)*%pi ;
+integrating_2:int(r_integration,theta);
+theta_integration:decimalplaces(int(r_integration,theta,theta1,theta2),2);
+
+/*model answers*/
+ta1:%pi;
+ta2:(3/2)*%pi;
+ta3:1;
+ta4:3;
+ta5:eqn1;
+ta6:theta_integration;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Evaluate \( \displaystyle \int _D \int {@quest_expr@}\) where \(D\) is the \(3^rd\) quadrant in between \({@eq_circle_1@}\), and \({@eq_circle_2@}\)</p>
+<p> \( \displaystyle \int \int _D {@quest_expr@} \,dA ={@theta_integration@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept">NA</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer"></p>
+<p id="description">This STACK question involves evaluating a double integral in polar coordinates over a bounded region between two circles in the third quadrant. The student is required to determine the limits of integration, convert the function to polar form, and compute the resulting integral..</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>eqn1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>theta_integration</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>hint:\({@ta2@}\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for correct answers*/
+/*node 2:Giving the original expression*/
+mistake5:quest_expr;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>eqn1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>mistake5</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The question requires you to find the polar coordinate form of the expression.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for correct answers*/
+/*node 2:Differentiating instead of integrating*/
+mistake6:decimalplaces(diff(r_integration,θ),2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>theta_integration</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt6-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>mistake6</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The question requires you to find integrate the expression, not to differentiate.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>64905833</deployedseed>
+    <deployedseed>505231642</deployedseed>
+    <deployedseed>2133245375</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta3</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>ta4</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>eqn1</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>theta_integration</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt6</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt6-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluate the Integral</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Evaluate the integral \[ \int {@p@} d{@v@}. \] [[input:ans1]] [[validation:ans1]][[feedback:ans1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>For this question we will have to use the identity \[\displaystyle \sin(A)\cos(B) = \frac{1}{2} \left[ \sin(A+B) + \sin(A-B) \right] \] to simplify the expression as follows: </p>
+
+<p> 
+\[\begin{array}{rcl}\displaystyle {@p@} &\displaystyle = &\displaystyle {@rdm3@} \left( \frac{1}{2} \sin({@rdm1*v@} + {@rdm2*v@}) + \sin({@rdm1*v@} - {@rdm2*v@}) \right ) \\ 
+
+&\displaystyle =&\displaystyle {@rdm3@}\left( {@q@}\right) \\ 
+&\displaystyle =&\displaystyle {@rdm3*q@} \end{array}\] 
+</p>
+<p>
+So, \[\begin{array}{rcl}\displaystyle \int {@p@} d{@v@} &\displaystyle =&\displaystyle \int {@rdm3*q@} d{@v@} \\ 
+&\displaystyle =&\displaystyle {@int(rdm3*q,v)+c@} \end{array}\]</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:t;
+rdm1:2+rand(69);
+rdm2:1+rand(49);
+rdm3:2+2*rand(13);
+pp:sin(rdm1*v)*cos(rdm2*v);
+p:rdm3*pp;
+q:(sin(rdm1*v+rdm2*v) + sin(rdm1*v-rdm2*v))/2;
+ta: int(p,v)+c;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\[\int {@p@} d{@v@} = {@int(p,v)@}+c\]</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept"></p>
+<p id="reviewer"></p>
+<p id="reviewer">Juma Zevick</p>
+<p id="description">The question focuses on evaluating the an Integral that involves sin and cosine.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>ans1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>ans1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>ans1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>305779277</deployedseed>
+    <deployedseed>1956054121</deployedseed>
+    <deployedseed>129620170</deployedseed>
+    <deployedseed>802985116</deployedseed>
+    <deployedseed>792104664</deployedseed>
+    <deployedseed>1682203986</deployedseed>
+    <deployedseed>1234420411</deployedseed>
+    <deployedseed>1468349013</deployedseed>
+    <deployedseed>1286458996</deployedseed>
+    <deployedseed>1429818615</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>int(p,v)+c</value>
+      </testinput>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>int(p,v)</value>
+      </testinput>
+    </qtest>
+  </question>
+</quiz>

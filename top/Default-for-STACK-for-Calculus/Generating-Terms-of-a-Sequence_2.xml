@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Generating Terms of a Sequence</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>List the first \(5\) terms of the following sequence.</p> 
+<p>\( \qquad \qquad \displaystyle \text{S}_n=  \begin{Bmatrix} {@w[n]@} \end{Bmatrix}_{{@q[1]@}}^{\infty }\)</p>
+<p>\( \quad\quad \quad \quad \quad = \) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+<p>Note: The terms should be written as a list inside <b>[ ]</b>. brackets as shown above. </p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<p><b>Worked solution</b></p>
+<p>Starting at \({@q[1]@}\) , plug in the first five values of \(n\) into the formula for the sequence terms.
+</p> 
+<p>\( \qquad \qquad \displaystyle \text{S}_n=  \begin{Bmatrix} {@w[n]@} \end{Bmatrix}_{{@q[1]@}}^{\infty }\)</p>
+<p>\( \displaystyle n={@q[1]@}: \, S_{@q[1]@}=\frac{({@aa@})^{({@q[1]@}+1)}}{({@bb@}^{{@q[1]@}}+({@cc@}) \cdot {@q[1]@})}={@w[q[1]]@}\)</p>
+<p>\(\displaystyle n= {@q[2]@}: \, S_{@q[2]@}=\frac{({@aa@})^{({@q[2]@}+1)}}{({@bb@}^{{@q[2]@}}+({@cc@}) \cdot {@q[2]@})}={@w[q[2]]@}\)</p>
+<p>\(\displaystyle n= {@q[3]@}: \, S_{@q[3]@}=\frac{({@aa@})^{({@q[3]@}+1)}}{({@bb@}^{{@q[3]@}}+({@cc@}) \cdot {@q[3]@})}={@w[q[3]]@}\)</p>
+<p>\(\displaystyle n={@q[4]@}: \, S_{@q[4]@}=\frac{({@aa@})^{({@q[4]@}+1)}}{({@bb@}^{{@q[4]@}}+({@cc@}) \cdot {@q[4]@})}={@w[q[4]]@}\)</p>
+<p>\(\displaystyle n= {@q[5]@}: \, S_{@q[5]@}=\frac{({@aa@})^{({@q[5]@}+1)}}{({@bb@}^{{@q[5]@}}+({@cc@}) \cdot {@q[5]@})}={@w[q[5]]@}\)</p>
+<p>So, the first five terms of the sequence are,</p>
+<p>\(\qquad \qquad \begin{Bmatrix} {@ta1@}, {@ta2@}, {@ta3@}, {@ta4@}, {@ta5@} \end{Bmatrix}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2022071300</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*randomizing the coefficients of in the sequence*/
+aa:-1*(rand(3)+1);
+bb:rand(3)+2;
+cc:rand(3)+3;
+
+/*randomizing the nth term entries*/
+x:[-1,0,1,2,3];
+y:[1,2,3,4,5];
+z:[3,4,5,6,7];
+q:rand([x,y,z]);
+
+w[n]:=((aa)^(n+1))/(bb*n+(cc)^n); /*The sequence*/
+w[0];
+w[1];
+ta1:w[q[1]]; /*the first 5 terms of the sequence*/
+ta2:w[q[2]];
+ta3:w[q[3]];
+ta4:w[q[4]];
+ta5:w[q[5]];
+w[inf];
+ta:[ta1,ta2,ta3,ta4,ta5];
+
+/*Worked soln*/
+expr1:((aa)^(q[1]+1))/(bb*q[1]+(cc)^q[1]); 
+expr2:((aa)^(q[2]+1))/(bb*q[2]+(cc)^q[2]); 
+expr3:((aa)^(q[3]+1))/(bb*q[3]+(cc)^q[3]); 
+expr4:((aa)^(q[4]+1))/(bb*q[4]+(cc)^q[4]); 
+expr5:((aa)^(q[5]+1))/(bb*q[5]+(cc)^q[5]);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p><p>\( \qquad \qquad \displaystyle \text{S}_n=  \begin{Bmatrix} {@w[n]@} \end{Bmatrix}_{{@q[1]@}}^{\infty }\)</p></p>
+<p>\( {@q[1]@}={@w[q[1]]@}\)</p>
+<p>\( {@q[2]@}={@w[q[2]]@}\)</p>
+<p>\( {@q[3]@}={@w[q[3]]@}\)</p>
+<p>\( {@q[4]@}={@w[q[4]]@}\)</p>
+<p>\( {@q[5]@}={@w[q[5]]@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint>[ 1st, 2nd, 3rd, 4th, 5th ]</syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1 checks for correct answer*/
+/*Node 2 mistake: Starting with 1 as the first term.*/
+w[n]:=((aa)^(n+1))/(bb*n+(cc)^n); /*The sequence*/
+a1:w[1]; /*the first 5 terms of the sequence*/
+a2:w[2];
+a3:w[3];
+a4:w[4];
+a5:w[5];
+mistake_2:[a1,a2,a3,a4,a5];</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have started with \(1\) from the sequence the initial value. Take a look at the worked solution.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1416362093</deployedseed>
+    <deployedseed>1695810054</deployedseed>
+    <deployedseed>987391044</deployedseed>
+    <deployedseed>356369707</deployedseed>
+    <deployedseed>842726125</deployedseed>
+    <deployedseed>1457223670</deployedseed>
+    <deployedseed>539302284</deployedseed>
+    <deployedseed>748685539</deployedseed>
+    <deployedseed>208693360</deployedseed>
+    <deployedseed>1125359076</deployedseed>
+    <deployedseed>869855533</deployedseed>
+    <deployedseed>1161338791</deployedseed>
+    <deployedseed>701543196</deployedseed>
+    <deployedseed>2118116280</deployedseed>
+    <deployedseed>1354997869</deployedseed>
+    <deployedseed>761258900</deployedseed>
+    <deployedseed>1425995874</deployedseed>
+    <deployedseed>1947726359</deployedseed>
+    <deployedseed>1257472555</deployedseed>
+    <deployedseed>576324954</deployedseed>
+    <deployedseed>690328349</deployedseed>
+    <deployedseed>94129762</deployedseed>
+    <deployedseed>37470728</deployedseed>
+    <deployedseed>454885900</deployedseed>
+    <deployedseed>800087005</deployedseed>
+  </question>
+</quiz>

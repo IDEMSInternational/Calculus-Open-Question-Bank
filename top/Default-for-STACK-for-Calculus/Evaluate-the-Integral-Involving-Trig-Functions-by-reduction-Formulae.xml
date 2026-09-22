@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluate the Integral Involving Trig Functions by reduction Formulae</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Evaluate \( \displaystyle \int {@func_z@}d{@zz@}\)</p>
+<p>\( \displaystyle \int {@func_z@}d{@zz@}=\)  [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Since the power on the cosine is odd, the integral can be rewritten as, </p>
+<p>\( \displaystyle \int {@func_z@}d{@zz@} = {@coef_func@} \int \sin^{8}({@coef_z*zz@})\cos^{4}({@coef_z*zz@})\cos({@coef_z*zz@})d{@zz@}= \displaystyle {@coef_func@} \int \sin^{8}({@coef_z*zz@})[\cos^{2}({@coef_z*zz@})]^{2}\cos({@coef_z*zz@})d{@zz@} \) </p>
+<p>Since \( \cos^{2}({@theta@})=1-\sin^{2}({@theta@})\) and here \({@theta@}={@coef_z*zz@}\), Then </p>
+<p>\[ \displaystyle {@coef_func@} \int \sin^{8}({@coef_z*zz@})[\cos^{2}({@coef_z*zz@})]^{2}\cos({@coef_z*zz@})d{@zz@}= {@coef_func@} \int \sin^{8}({@coef_z*zz@})[1-\sin^{2}({@coef_z*zz@})]^{2}\cos({@coef_z*zz@})d{@zz@}\]</p>
+
+<p>We can now use substitution method to evaluate the integral.</p>
+<p>Let \(u=\sin({@coef_z*zz@}):\) \( \displaystyle \qquad du={@diff(sin(coef_z*zz))/del(zz)@} \cdot d{@zz@} \implies d{@zz@}=\frac{du}{{@diff(sin(coef_z*zz))/del(zz)@}} \).</p>
+<p>\( \displaystyle {@coef_func@} \int \sin^{8}({@coef_z*zz@})[1-\sin^{2}({@coef_z*zz@})]^{2}\cos({@coef_z*zz@})d{@zz@} = \displaystyle \frac{ {@coef_func@}}{{@coef_z@}} \int u^{8}[1-u^{2}]^{2}du= \displaystyle \frac{ {@coef_func@}}{{@coef_z@}} \int \left( u^{8}-2u^{10}+u^{12} \right) du\).</p><p>But,</p>
+<p>\[ \displaystyle \frac{ {@coef_func@}}{{@coef_z@}} \int \left( u^{8}-2u^{10}+u^{12} \right) du = {@coef_func/coef_z@} \left( \frac{1}{9}u^{9}-\frac{2}{11}u^{11}+\frac{1}{13}u^{13}\right) +c\]</p>
+<p>We substitute back \(\displaystyle u=\sin({@coef_z*zz@})\) and get;</p>
+<p>\[ &nbsp;\displaystyle \int {@func_z@}d{@zz@}&nbsp; = \displaystyle {@coef_func/coef_z@} \left( \frac{1}{9}\sin^{9}({@coef_z*zz@})-\frac{2}{11}\sin^{11}({@coef_z*zz@})+\frac{1}{13}\sin^{13}({@coef_z*zz@})\right) +c \]</p><p>\[ \iff &nbsp;\displaystyle \int {@func_z@}d{@zz@}&nbsp;={@(coef_func/coef_z)*(1/9)@}\sin^{9}({@coef_z*zz@})-{@(coef_func/coef_z)*(2/11)@}\sin^{11}({@coef_z*zz@})+{@(coef_func/coef_z)*(1/13)@}\sin^{13}({@coef_z*zz@}) +c\]</p>
+<p><span style="font-size: 0.9375rem;">Therefore;</span><br></p>
+<p>\[ \displaystyle \int {@func_z@}d{@zz@} = {@ta@} \]</p>
+<p>Where \(c\) is the constant of integration.</p>
+<p></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining the question*/
+zz:rand([x,y,z,p,q,r,s,t]);/*the variable*/
+coef_z:rand(5)+1;/*coefficient of z*/
+coef_func:rand(5)+1;/*coefficient of function*/
+func_z:coef_func*((sin(coef_z*zz))^8*(cos(coef_z*zz))^5);/*the function*/
+
+ta:int(func_z,zz)+c; /*model answer*/</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\( \displaystyle \int {@func_z@}dz={@ta@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">The question focuses on evaluating a integral Trig Functions by reduction Formulae</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>25</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1 checks for correct answer*/
+
+/*Node 2: mistake: Failing to add the constant of integration*/
+mistake_2:int(func_z,zz);
+
+/*Node 3: mistake: differentiating instead of integrating*/
+mistake_3:diff(func_z)/del(zz);
+
+/*Node 4: mistake: Failing to substitute back u in the original integral*/
+mistake_4:(coef_func/coef_z)*((1/9)*u^9-(2/11)*u^11+(1/13)*u^13)+c;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>zz</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have to calculated the integral correctly but forgot to add the constant of integration.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Checks for second mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have to differentiated the function instead of integrating</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>checks for the third mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have forgotten to substitute back the value of \(u\)  in the original integral
+which should not be the case.
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>402653124</deployedseed>
+    <deployedseed>268664172</deployedseed>
+    <deployedseed>1678498712</deployedseed>
+    <deployedseed>1941160446</deployedseed>
+    <deployedseed>913034709</deployedseed>
+    <deployedseed>1594115034</deployedseed>
+    <deployedseed>717488199</deployedseed>
+    <deployedseed>661576684</deployedseed>
+    <deployedseed>55165197</deployedseed>
+    <deployedseed>541072082</deployedseed>
+    <deployedseed>405265196</deployedseed>
+    <deployedseed>419699432</deployedseed>
+    <deployedseed>1957372854</deployedseed>
+    <deployedseed>1805949413</deployedseed>
+    <deployedseed>805446802</deployedseed>
+    <deployedseed>1373159886</deployedseed>
+    <deployedseed>2066074367</deployedseed>
+    <deployedseed>1566498525</deployedseed>
+    <deployedseed>1279321482</deployedseed>
+    <deployedseed>1142322606</deployedseed>
+    <deployedseed>1039524919</deployedseed>
+    <deployedseed>1664508566</deployedseed>
+    <deployedseed>1370327161</deployedseed>
+    <deployedseed>432729676</deployedseed>
+    <deployedseed>1684368136</deployedseed>
+    <deployedseed>416974621</deployedseed>
+    <deployedseed>1213656400</deployedseed>
+    <deployedseed>1450862641</deployedseed>
+    <deployedseed>2132632941</deployedseed>
+    <deployedseed>39067712</deployedseed>
+    <deployedseed>1776428212</deployedseed>
+    <deployedseed>1109759227</deployedseed>
+    <deployedseed>1622804892</deployedseed>
+    <deployedseed>715294268</deployedseed>
+    <deployedseed>819164123</deployedseed>
+    <deployedseed>993262161</deployedseed>
+    <deployedseed>899037570</deployedseed>
+    <deployedseed>611596277</deployedseed>
+    <deployedseed>1452107645</deployedseed>
+    <deployedseed>934615798</deployedseed>
+    <deployedseed>470920138</deployedseed>
+    <deployedseed>776136006</deployedseed>
+    <deployedseed>380127283</deployedseed>
+    <deployedseed>425864510</deployedseed>
+    <deployedseed>1460571192</deployedseed>
+    <deployedseed>844981796</deployedseed>
+    <deployedseed>993207014</deployedseed>
+    <deployedseed>2003123281</deployedseed>
+    <deployedseed>1972526055</deployedseed>
+    <deployedseed>1891459695</deployedseed>
+    <deployedseed>473479384</deployedseed>
+    <deployedseed>266061948</deployedseed>
+    <deployedseed>67714129</deployedseed>
+    <deployedseed>1719147032</deployedseed>
+    <deployedseed>1923062491</deployedseed>
+    <deployedseed>1883706260</deployedseed>
+    <deployedseed>614426350</deployedseed>
+    <deployedseed>851725951</deployedseed>
+    <deployedseed>339048535</deployedseed>
+    <deployedseed>1030418994</deployedseed>
+    <deployedseed>900751980</deployedseed>
+    <deployedseed>1964102765</deployedseed>
+    <deployedseed>508180676</deployedseed>
+    <deployedseed>1697140108</deployedseed>
+    <deployedseed>999690512</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

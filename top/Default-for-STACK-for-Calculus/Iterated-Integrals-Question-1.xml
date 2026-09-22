@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Iterated Integrals-Question 1</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Compute the following double integral over the indicated rectangle \((a)\) by integrating with respect to \(x\) first and \((b)\) by integrating with respect to \(y\) first
+</p>
+<p>\(\displaystyle\iint _R {@func_xy@}\,dA \quad R=[{@lower_lim_x@},{@upper_lim_x@}]\times [{@lower_lim_y@},{@upper_lim_y@}]\)</p>
+<p>a) Evaluate by integrating with respect to \(x\) first.
+</p>
+<p>First we get the integral set up with the proper order of integration
+</p>
+<p>\(\displaystyle\iint _R {@func_xy@}\,dA=\int_{{@lower_lim_y@}}^{{@upper_lim_y@}} \int_{{@lower_lim_x@}}^{{@upper_lim_x@}}{@func_xy@}\,dxdy\)</p>
+<p>Recall that the first integration is always the inner integral and the second integration is always the outer integral.When integrating with respect to \(x\) we treat all \(y\prime s\) as if they were a constant.</p>
+<p>Therefore taking the integral with respect to \(x\) first,</p>
+<p>\(\displaystyle \int_{{@lower_lim_y@}}^{{@upper_lim_y@}}\int_{{@lower_lim_x@}}^{{@upper_lim_x@}}{@func_xy@}\,dxdy=\int_{{@lower_lim_y@}}^{{@upper_lim_y@}} \)[[input:ans1]] [[feedback:prt1]] \(\,dy\)[[validation:ans1]]</p>
+<p>Then with respect to \(y\)</p>
+<p>\(\displaystyle \iint _R {@func_xy@}\,dA= \)[[input:ans2]][[validation:ans2]] [[feedback:prt2]]</p>
+<p> b) Evaluate by integrating with respect to \(y\) first
+</p>
+<p>First we get the integral set up with the proper order of integration</p>
+<p>\(\displaystyle \iint _R {@func_xy@}\,dA=\int_{{@lower_lim_x@}}^{{@upper_lim_x@}} \int_{{@lower_lim_y@}}^{{@upper_lim_y@}}{@func_xy@}\,dydx\)</p>
+<p>When integrating with respect to \(y\) we treat all \(x \prime s\) as if they were a constant.</p>
+<p>Therefore taking the integral with respect to \(y\) first,</p>
+<p>\(\displaystyle\iint _R {@func_xy@}\,dA=\int_{{@lower_lim_x@}}^{{@upper_lim_x@}} \int_{{@lower_lim_y@}}^{{@upper_lim_y@}}{@func_xy@}\,dydx=\int_{{@lower_lim_x@}}^{{@upper_lim_x@}}\)[[input:ans3]] [[feedback:prt3]] \(\,dx\)[[validation:ans3]]</p>
+<p>Then with respect to \(y\)</p>
+<p>\(\displaystyle \iint _R {@func_xy@}\,dA=\)[[input:ans4]][[validation:ans4]] [[feedback:prt4]]</p>
+<p>Hence in conclusion, evaluating by integrating with respect to \(x\) first and evaluating by integrating with \(y\) first gives [[input:ans5]] [[feedback:prt5]] solution. [[validation:ans5]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<p><b>Worked Solution</b></p>
+<p>a) Evaluate by integrating with respect to \(x\) first.
+</p>
+<p>First we get the integral set up with the proper order of integration
+</p>
+<p>\(\displaystyle \iint _R {@func_xy@}\,dA=\int_{{@lower_lim_y@}}^{{@upper_lim_y@}} \int_{{@lower_lim_x@}}^{{@upper_lim_x@}}{@func_xy@}\,dxdy\)</p>
+<p>Recall that the first integration is always the inner integral and the second integration is always the outer integral.When integrating with respect to \(x\) we treat all \(y\prime s\) as if they were a constant.</p>
+<p>Therefore taking the integral with respect to \(x\) first,</p>
+<p>\(\displaystyle \int_{{@lower_lim_y@}}^{{@upper_lim_y@}}\int_{{@lower_lim_x@}}^{{@upper_lim_x@}}{@func_xy@}\,dxdy=\int_{{@lower_lim_y@}}^{{@upper_lim_y@}}({@ta1_0@})\biggr|_{@lower_lim_x@}^{@upper_lim_x@} \,dy=\int_{{@lower_lim_y@}}^{{@upper_lim_y@}}{@ta1_1@}\,dy\)</p>
+<p>Then with respect to \(y\)</p>
+<p>\(\displaystyle\iint _R {@func_xy@}\,dA=\int_{{@lower_lim_y@}}^{{@upper_lim_y@}}{@ta1_1@}\,dy=({@ta01@})\biggr|_{@lower_lim_y@}^{@upper_lim_y@}  ={@ta1@}\)</p>
+<p> b) Evaluate by integrating with respect to \(y\) first
+</p>
+<p>First we get the integral set up with the proper order of integration</p>
+<p>\(\displaystyle\iint _R {@func_xy@}\,dA=\int_{{@lower_lim_x@}}^{{@upper_lim_x@}} \int_{{@lower_lim_y@}}^{{@upper_lim_y@}}{@func_xy@}\,dydx\)</p>
+<p>When integrating with respect to \(y\) we treat all \(x \prime s\) as if they were a constant.</p>
+<p>Therefore taking the integral with respect to \(y\) first,</p>
+<p>\(\displaystyle\iint _R {@func_xy@}\,dA=\int_{{@lower_lim_x@}}^{{@upper_lim_x@}} \int_{{@lower_lim_y@}}^{{@upper_lim_y@}}{@func_xy@}\,dydx=\int_{{@lower_lim_x@}}^{{@upper_lim_x@}} \int_{{@lower_lim_y@}}^{{@upper_lim_y@}}{@func_xy@}\,dydx=\int_{{@lower_lim_x@}}^{{@upper_lim_x@}}({@ta2_0@})\biggr|_{@lower_lim_y@}^{@upper_lim_y@}=\int_{{@lower_lim_x@}}^{{@upper_lim_x@}}{@ta2_1@}\,dx\)</p>
+<p>Then with respect to \(y\)</p>
+<p>\(\displaystyle\iint _R {@func_xy@}\,dA=\int_{{@lower_lim_x@}}^{{@upper_lim_x@}}{@ta2_1@}\,dx=({@ta02@})\biggr|_{@lower_lim_x@}^{@upper_lim_x@}={@ta2@}\)</p>
+<p>Hence in conclusion, evaluating by integrating with respect to \(x\) first and evaluating by integrating with \(y\) first gives <b>the same</b> solution.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[coeff_x:rand_with_prohib(-10, 10, [0]);
+coeff_y:rand_with_prohib(-10, 10, [0]);
+lower_lim_x:rand_with_step(-2, 2,1);
+upper_lim_x:lower_lim_x+5;
+lower_lim_y:rand_with_step(-2,2,1);
+upper_lim_y:lower_lim_y+1;
+power_x:rand(2)+1;
+power_y:rand(2)+1;
+func_xy:coeff_x*x^power_x+coeff_y*y^power_y;
+ta1_0:integrate(func_xy,x);
+ta1_1:integrate(func_xy,x,lower_lim_x,upper_lim_x);
+ta01:integrate(ta1_1,y);
+ta1:integrate(ta1_1,y,lower_lim_y,upper_lim_y);
+ta2_0:integrate(func_xy,y);
+ta2_1:integrate(func_xy,y,lower_lim_y,upper_lim_y);
+ta02:integrate(ta2_1,x);
+ta2:integrate(ta2_1,x,lower_lim_x,upper_lim_x);
+ta5:random_permutation([["the same", true],[" different", false]]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>function \(xy\) is \({@func_xy@}\) and the limits of \(x\) are \([{@lower_lim_x@},{@upper_lim_x@}]\) and the limits of \(y\) are  \([{@lower_lim_y@},{@upper_lim_y@}]\) </p>
+<p>Model answers are;</p>
+<p>Integral with respect to \(x\) first \({@ta1_1@}\) then with respect to \(y\) {@ta1@}
+and integral with respect to y first {@ta2_1@} then with respect to \(x\) {@ta2@}]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1_1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta2_1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>dropdown</type>
+      <tans>ta5</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Possible Mistakes Prt 2*/
+/*node1:checks for the correct answer*/
+/*node2:Fails to integrate with respect to y after integrating with respect to x*/
+mistake2:ta1_1;
+/*node3:substituting for the limits without the second integration */
+mistake3:subst(upper_lim_y,y,ta1_1)-subst(lower_lim_y,y,ta1_1);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have failed to integrate with respect to \(y\) after integrating with respect to \(x\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have substituted for the limits without the second integration</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta2_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Possible Mistakes Prt 4*/
+/*node1:checks for the correct answer*/
+/*node2:Fails to integrate with respect to x after integrating with respect to y*/
+mistake2:ta2_1;
+/*node3:substituting for the limits without the second integration */
+mistake3:subst(upper_lim_x,x,ta2_1)-subst(lower_lim_x,x,ta2_1);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have failed to  integrate with respect to \(x\) after integrating with respect to \(y\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have substituted for the limits without the second integration</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>mcq_correct(ta5)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>641046338</deployedseed>
+    <deployedseed>322228480</deployedseed>
+    <deployedseed>1327032091</deployedseed>
+    <deployedseed>1105591754</deployedseed>
+    <deployedseed>448067620</deployedseed>
+    <deployedseed>309478426</deployedseed>
+    <deployedseed>929846657</deployedseed>
+    <deployedseed>210315312</deployedseed>
+    <deployedseed>896562644</deployedseed>
+    <deployedseed>1052395455</deployedseed>
+    <deployedseed>621633627</deployedseed>
+    <deployedseed>1078680648</deployedseed>
+    <deployedseed>1982713139</deployedseed>
+    <deployedseed>1314821297</deployedseed>
+    <deployedseed>1382745755</deployedseed>
+    <deployedseed>1388883375</deployedseed>
+    <deployedseed>1835940272</deployedseed>
+    <deployedseed>2101253992</deployedseed>
+    <deployedseed>1794228529</deployedseed>
+    <deployedseed>699421770</deployedseed>
+    <deployedseed>1483312381</deployedseed>
+    <deployedseed>504866017</deployedseed>
+    <deployedseed>850857068</deployedseed>
+    <deployedseed>1319904998</deployedseed>
+    <deployedseed>2120588702</deployedseed>
+    <deployedseed>23512297</deployedseed>
+    <deployedseed>66919117</deployedseed>
+    <deployedseed>360198126</deployedseed>
+    <deployedseed>1135497644</deployedseed>
+    <deployedseed>712819139</deployedseed>
+    <deployedseed>206196184</deployedseed>
+    <deployedseed>116605018</deployedseed>
+    <deployedseed>31292721</deployedseed>
+    <deployedseed>237370565</deployedseed>
+    <deployedseed>1091086557</deployedseed>
+    <deployedseed>723298181</deployedseed>
+    <deployedseed>2011100985</deployedseed>
+    <deployedseed>1270236278</deployedseed>
+    <deployedseed>294216949</deployedseed>
+    <deployedseed>561494785</deployedseed>
+    <deployedseed>1602316299</deployedseed>
+    <deployedseed>1356669214</deployedseed>
+    <deployedseed>51215054</deployedseed>
+    <deployedseed>827791376</deployedseed>
+    <deployedseed>1550113025</deployedseed>
+    <deployedseed>859032840</deployedseed>
+    <deployedseed>637485259</deployedseed>
+    <deployedseed>2051592472</deployedseed>
+    <deployedseed>674505703</deployedseed>
+    <deployedseed>633352381</deployedseed>
+    <deployedseed>643596061</deployedseed>
+    <deployedseed>1244970547</deployedseed>
+    <deployedseed>2083237164</deployedseed>
+    <deployedseed>1660994770</deployedseed>
+    <deployedseed>1718989555</deployedseed>
+    <deployedseed>1350986782</deployedseed>
+    <deployedseed>955856228</deployedseed>
+    <deployedseed>534719511</deployedseed>
+    <deployedseed>1527653942</deployedseed>
+    <deployedseed>424329532</deployedseed>
+    <deployedseed>1995580775</deployedseed>
+    <deployedseed>198837633</deployedseed>
+    <deployedseed>918539225</deployedseed>
+    <deployedseed>1230439477</deployedseed>
+    <deployedseed>1171145910</deployedseed>
+    <deployedseed>439551833</deployedseed>
+    <deployedseed>388149067</deployedseed>
+    <deployedseed>2105119035</deployedseed>
+    <deployedseed>1922100692</deployedseed>
+    <deployedseed>324809556</deployedseed>
+    <deployedseed>1137176495</deployedseed>
+    <deployedseed>1115996012</deployedseed>
+    <deployedseed>751019981</deployedseed>
+    <deployedseed>1349079033</deployedseed>
+    <deployedseed>466345811</deployedseed>
+    <deployedseed>1688073345</deployedseed>
+    <deployedseed>1328002153</deployedseed>
+    <deployedseed>819332604</deployedseed>
+    <deployedseed>430255903</deployedseed>
+    <deployedseed>1346300422</deployedseed>
+    <deployedseed>982843127</deployedseed>
+    <deployedseed>738666281</deployedseed>
+    <deployedseed>827769962</deployedseed>
+    <deployedseed>215098777</deployedseed>
+    <deployedseed>1362180590</deployedseed>
+    <deployedseed>1731952210</deployedseed>
+    <deployedseed>801968425</deployedseed>
+    <deployedseed>1558965490</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1_1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta2_1</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

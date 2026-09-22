@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Integration by parts involving natural log</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Evaluate  \( \displaystyle \int {@pp@} d{@v@}. \)<p>
+
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]<p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>This problem can be solved using integration by parts.</p>
+
+<p>Let \(\displaystyle u ={@pp2@}\) and \(\displaystyle dv = {@pp1@}d{@v@}\).</p>
+<p>Then,</p>
+
+<p>\(du =\displaystyle {@diff(pp2,v)@}d{@v@}\) and \(v = \displaystyle{@int(pp1,v)@}\).</p>
+<p>So,</p>
+<p>\[\begin{array}{rcl}\displaystyle 
+ \int {@pp@}d{@v@} &\displaystyle =&\displaystyle uv-  \int vdu \\
+   &\displaystyle =&\displaystyle  {@pp2@}{@int(pp1,v)@} - \int {@int(pp1,v)@}{@diff(pp2,v)@}d{@v@} \\
+   &\displaystyle =&\displaystyle  {@pp2*int(pp1,v)@} - \int {@int(pp1,v)*diff(pp2,v)@}d{@v@} \\
+   &\displaystyle =&\displaystyle  {@pp2*int(pp1,v)@} - {@int(int(pp1,v)*diff(pp2,v),v)+c@}
+ \end{array}\]</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:t;
+rdm:2+rand(5);
+pp1:v^rdm;
+pp2:log(v);
+pp:pp1*pp2;
+ta:int(pp,v)+c;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\(\displaystyle \int {@pp@} d{@v@} = {@int(p,v)@}+c\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">[Godfrey Wabwire]</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">The question focuses on evaluating the integral by parts involving natural logs</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>13</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>t</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1883091979</deployedseed>
+    <deployedseed>262544435</deployedseed>
+    <deployedseed>233314754</deployedseed>
+    <deployedseed>362605045</deployedseed>
+    <deployedseed>1813058648</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ev(int(p,v)+c,simp)</value>
+      </testinput>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ev(int(p,v),simp)</value>
+      </testinput>
+    </qtest>
+  </question>
+</quiz>

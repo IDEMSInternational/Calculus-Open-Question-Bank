@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>GQ - Evaluating the Convergence and Value of an exponential Improper Integral</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Evaluate the integral \(\displaystyle \int_{{@lower_limit@}}^{{@upper_limit@}}{@fx@}\,dx\) and determine if it converges or diverges. 
+<p> First this is improper integral because  [[input:ans1a]] [[validation:ans1a]][[feedback:prt1a]]</p>
+<p> So we express the integral as a limit. That is  \(\displaystyle\lim_{t\to\infty} \int_{{@lower_limit@}}^{t}{@fx@}\,dx\). Now the integrand is the function [[input:ans1b]] and its antiderivative is given by [[input:ans1c]] [[validation:ans1b]][[validation:ans1c]]</p>
+<p> Evaluating the antiderivative at the limits of integration gives</p>
+<p> \(\displaystyle \int_{{@lower_limit@}}^{t}{@fx@}\,dx=\)[[input:ans1d]] [[validation:ans1d]][[feedback:prt1b]]</p> 
+<p> Finally evaluating the limit as \(t\longrightarrow \infty\) of your answer above gives the value of the integral. (Note: \( \infty\) is entered as <b>inf</b> and \( -\infty\) is entered as <b>minf</b>). </p>
+<p>\(\displaystyle \int_{{@lower_limit@}}^{{@upper_limit@}}{@fx@}\,dx=\lim_{t\to\infty} \int_{{@lower_limit@}}^{t}{@fx@}\,dx=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+<p>Therefore, the integral is [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3> 
+<p> First this is improper integral because the limits of integration include infinity.</p>
+<p> So we express the integral as a limit. That is  \(\displaystyle\lim_{t\to\infty} \int_{{@lower_limit@}}^{t}{@fx@}\,dx\). Now the integrand is the function \({@ta_1b@}\) and its antiderivative is given by \({@ta_1c@}\) </p>
+<p> Evaluating the antiderivative at the limits of integration gives \[\displaystyle \int_{{@lower_limit@}}^{t}{@fx@}\,dx={@ta_1d@}\]</p> 
+<p> Finally evaluating the limit as \(t\longrightarrow \infty\) of your answer above gives the value of the integral. (Note: \( \infty\) is entered as <b>inf</b> and \( -\infty\) is entered as <b>minf</b>). 
+\[\displaystyle \int_{{@lower_limit@}}^{{@upper_limit@}}{@fx@}\,dx=\lim_{t\to\infty} \int_{{@lower_limit@}}^{t}{@fx@}\,dx={@ta_1@}\]</p>
+ <p>Therefore, the  improper integral is \({@mcq_correct(ta_4)[1]@}\).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* Define the constants and variables */
+num: rand(5)+2; /* Coefficient of e^-x/4 */
+power: 1; /* The function e^-x/4 does not depend on x^power */
+den: rand(10)+4; /* Denominator from the exponent in e^-x/4 */
+fx : num * exp(-x^power/den); /* Define the function */
+
+/*worked solution*/
+int_fx: int(fx,x);
+upper_limit:inf;
+upper_lmt:t;
+lower_limit:rand(5)+2;
+
+upper:at(int_fx,x=t);
+lower:at(int_fx,x=lower_limit);
+indef_val: upper-lower;
+
+/*Model answers*/
+ta_1a:random_permutation([["The limits of integration include infinity", true],["The limits of integration contain a point of discontinuity", false],["The integrand is not continuous at a point in the interval of integration", false],["The integrand is not defined a point in the interval of integration", false]]);
+ta_1b: fx;
+ta_1c: int_fx;
+ta_1d: indef_val;
+
+ta_1: limit(indef_val, t, inf);
+ta_2:if ta_1=inf then "Divergent" elseif ta_1=minf then "Divergent" else"Convergent";
+ta_3:if ta_2="Divergent" then "Convergent" else "Divergent";
+ta_4:random_permutation([[ta_2, true],[ta_3, false],["Divergent and convergent", false]]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle\int_{{@lower_limit@}}^{{@upper_limit@}}{@fx@}\,dx={@ta_1@}\)</p>
+<p>Therefore, the integral is {@mcq_correct(ta_4)@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/A</p>
+<p id="reviewer">1</p>
+<p id="reviewer">2</p>
+<p id="description">The question focuses on evaluating an Improper Integral</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans1a</name>
+      <type>checkbox</type>
+      <tans>ta_1a</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans1b</name>
+      <type>algebraic</type>
+      <tans>ta_1b</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans1c</name>
+      <type>algebraic</type>
+      <tans>ta_1c</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans1d</name>
+      <type>algebraic</type>
+      <tans>ta_1d</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>dropdown</type>
+      <tans>ta_4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for correct answers*/
+
+/*node 2:Calculating the integral as F(a)-F(b) instead of F(b)-F(a)*/
+mistake_1:int(fx,upper_lm, lower_lm) ;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You calculated the value of the integral in a wrong format \(F(a)-F(b)\),instead of \(F(b)-F(a)\)</p>
+<p>Hint: Check the worked out solution</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt1a</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct choices</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1a</sans>
+        <tans>mcq_correct(ta_1a)</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1a-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1a-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt1b</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct integrand</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1b</sans>
+        <tans>ta_1b</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.2</truescore>
+        <truepenalty/>
+        <truenextnode>1</truenextnode>
+        <trueanswernote>prt1b-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1b-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>Yor integrand is incorrect. Note that the integrand is the function being integrated!</text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks the antiderivative of the integrand</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1c</sans>
+        <tans>ta_1c</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.4</truescore>
+        <truepenalty/>
+        <truenextnode>2</truenextnode>
+        <trueanswernote>prt1b-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1b-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Checks the evaluation of limits of integration</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1d</sans>
+        <tans>ta_1d</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.4</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1b-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1b-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mcq_correct(ta_4)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1485135548</deployedseed>
+    <deployedseed>469900350</deployedseed>
+    <deployedseed>403840166</deployedseed>
+    <deployedseed>671643018</deployedseed>
+    <deployedseed>1923060838</deployedseed>
+    <deployedseed>1433365102</deployedseed>
+    <deployedseed>2069750315</deployedseed>
+    <deployedseed>725301087</deployedseed>
+    <deployedseed>1888079340</deployedseed>
+    <deployedseed>2002634990</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>first(mcq_correct(ta_4))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

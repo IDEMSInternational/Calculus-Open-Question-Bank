@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Identify and classify the critical points of the function</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Let&nbsp;\(\displaystyle f(x) = {@fx@}\).&nbsp;</p><p>i. Identify and classify the critical points of the function. Enter your answers as points in the relevant boxes and if there are none simply type in the word "none".</p><p>Maximum: \( \big( \) [[input:ans1]],&nbsp;[[input:ans2]] \( \big) \)<br></p><p>[[validation:ans1]]&nbsp;[[validation:ans2]]&nbsp;[[feedback:prt1]]&nbsp;[[feedback:prt2]]<br></p><p>Minimum: \( \big( \) [[input:ans3]],&nbsp;[[input:ans4]] \( \big) \)</p><p>[[validation:ans3]]&nbsp;[[validation:ans4]]&nbsp;[[feedback:prt3]]&nbsp;[[feedback:prt4]]</p><p>Stationary point of inflection: \( \big( \) [[input:ans5]],&nbsp;[[input:ans6]] \( \big) \)</p><p>[[validation:ans5]]&nbsp;[[validation:ans6]]&nbsp;[[feedback:prt5]]&nbsp;[[feedback:prt6]]</p><p>ii. Determine the intervals when the function is increasing and decreasing. Give your answers as intervals written as inequalities.</p><p></p><p>Increasing: [[input:ans7]] [[validation:ans7]] [[feedback:prt7]]</p><p>Decreasing: [[input:ans8]] [[validation:ans8]] [[feedback:prt8]]</p><p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>(i) To find stationary points we need to find the values of \(x\) for which \(f'(x) = 0\).</p><p>\(f'(x) = {@dfx@} = 0\)</p><p>\({@3*(x-aa)*(x-bb)@} = 0\)</p><p>\(x={@x1@}\) or \(x={@x2@}\).</p><p>We now need to classify these points. To do so we use the following table:</p>
+<table>
+<caption></caption>
+<thead>
+<tr>
+<th scope="col" style="text-align: center;border: 1px solid black; ">\(x=\)</th>
+<th scope="col" style="text-align: center;border: 1px solid black; ">before {@x1@}</th>
+<th scope="col" style="text-align: center;border: 1px solid black; ">{@x1@}</th>
+<th scope="col" style="text-align: center;border: 1px solid black; ">after {@x1@}</th>
+<th scope="col" style="text-align: center;border: 1px solid black; ">before {@x2@}<br></th>
+<th scope="col" style="text-align: center;border: 1px solid black; ">{@x2@}<br></th>
+<th scope="col" style="text-align: center;border: 1px solid black; ">after {@x2@}<br></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;border: 1px solid black; ">\(f'(x)=\)</td>
+<td style="text-align: center;border: 1px solid black; ">{@dispdp(bx1,2)@}</td>
+<td style="text-align: center;border: 1px solid black; ">0</td>
+<td style="text-align: center;border: 1px solid black; ">{@dispdp(ax1,2)@}<br></td>
+<td style="text-align: center;border: 1px solid black; ">{@dispdp(bx2,2)@}<br></td>
+<td style="text-align: center;border: 1px solid black; ">0</td>
+<td style="text-align: center;border: 1px solid black; ">{@dispdp(ax2,2)@}<br></td>
+</tr>
+<tr>
+<td style="text-align: center;border: 1px solid black; "><br></td>
+<td style="text-align: center;border: 1px solid black; ">{@behbx1@}</td>
+<td style="text-align: center;border: 1px solid black; ">stationary</td>
+<td style="text-align: center;border: 1px solid black; ">{@behax1@}</td>
+<td style="text-align: center;border: 1px solid black; ">{@behbx2@}</td>
+<td style="text-align: center;border: 1px solid black; ">stationary</td>
+<td style="text-align: center;border: 1px solid black; ">{@behax2@}</td>
+</tr>
+</tbody>
+</table>
+<p>Since before \(x= {@x1@}\) the function is {@behbx1@} and after is {@behax1@}, there is a {@classx1@} at \(x={@x1@}\). Similarly, since before \(x= {@x2@}\) the function is {@behbx2@} and after is {@behax2@}, there is a {@classx2@} at \(x={@x2@}\).</p>All that is left to do is find the \(y-\)coordinates of each point as follows:</p>
+<p>Since \(f({@x1@})={@ev(at(fx,[x=x1]),simp)@}\) and \(f({@x2@})={@ev(at(fx,[x=x2]),simp)@}\), thus </p>
+<p>Maximum:\(\left ({@tamaxx@},{@tamaxy@}\right )\)</p>
+<p>Minimum: \(\left ({@taminx@},{@taminy@}\right )\)</p>
+<hr>
+<p>Stationary point of inflection:</p>
+<p>\(\displaystyle f''(x)={@dfxs@}\) and \({@dfxs=0@} \Leftrightarrow x = {@sol_dfxs@}\)</p>
+<p>\({@dfxs=0@}\) is negative up to \(x={@sol_dfxs@} \),  positive from there onwards.</p> <p>The stationary point of infection is thus \( ({@sol_dfxs@},{@ev(at(fx,[x=sol_dfxs]),simp)@}) \)</p>
+<hr>
+<p>(ii) The increasing and decreasing intervals can be obtained directly from the table above.</p>
+<p> Increasing intervals: \({@tainc@}\)
+<p> Decreasing intervals: \({@tadec@}\)]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[pm1:rand_with_prohib(-1,1,[0]);
+aa:pm1*(rand(3)+1);
+bb:rand(3)+1;
+dfx:expand(3*(x-aa)*(x-bb));
+dfxs: diff(dfx,x);
+sol_dfxs: rhs(solve(dfxs)[1]);
+pt1:aa;
+pt2:bb;
+x1:if pt1<pt2 then pt1 else pt2;
+x2:if pt1>pt2 then pt1 else pt2;
+dfx_x11:subst(x1,x,dfx);
+dfx_x22:subst(x2,x,dfx);
+
+bx1:ev(dfx,x=x1-0.1);
+behbx1:if bx1<0 then "decreasing" else "increasing";
+ax1:ev(dfx,x=x1+0.1);
+behax1:if ax1<0 then "decreasing" else "increasing";
+bx2:ev(dfx,x=x2-0.1);
+behbx2:if bx2<0 then "decreasing" else "increasing"
+ax2:ev(dfx,x=x2+0.1);
+behax2:if ax2<0 then "decreasing" else "increasing"; 
+classx1: if bx1<0 and ax1>0 then "minimum" elseif bx1<0 and ax1<0 then "inflection" elseif bx1>0 and ax1>0 then "inflection" else "maximum";
+classx2: if bx2<0 and ax2>0 then "minimum" elseif bx2<0 and ax2<0 then "inflection" elseif bx2>0 and ax2>0 then "inflection" else "maximum";
+pm3:rand_with_prohib(-1,1,[0]);
+cc:pm3*(rand([1,3,5,7,9,11]));
+fx:integrate(dfx,x)+cc;
+tamaxx:if classx1 = "maximum" then x1 elseif classx2 = "maximum" then x2 else none;
+tamaxy:if tamaxx = none then none else ev(fx,x=tamaxx);
+taminx:if classx1 = "minimum" then x1 elseif classx2 = "minimum" then x2 else none;
+taminy:if taminx = none then none else ev(fx,x=taminx);
+tainfx: sol_dfxs;
+tainfy: ev(fx,x=sol_dfxs);
+tainc:if taminx=none then x<x1 or x>x1 else x<x1 or x>x2;
+tadec:if taminx=none then none else x>x1 and x<x2;
+
+
+simp:false;
+dfx_x1:subst(x1,x,dfx);
+dfx_x2:subst(x2,x,dfx);
+]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle f(x) = {@fx@}\)</p>
+<p>Maximum:\(\left ({@tamaxx@},{@tamaxy@}\right )\)</p>
+<p>Minimum: \(\left ({@taminx@},{@taminy@}\right )\)</p>
+<p>Stationary point of inflection: \(\left ( {@tainfx@},{@tainfy@}\right )\)</p>
+]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">Identify and classify the critical points of the function and Determine the intervals when the function is increasing and decreasing. </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>tamaxx</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>tamaxy</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>taminx</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>taminy</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>tainfx</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>tainfy</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7</name>
+      <type>algebraic</type>
+      <tans>tainc</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans8</name>
+      <type>algebraic</type>
+      <tans>tadec</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>tamaxx</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>tamaxy</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>taminx</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>taminy</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>tainfx</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>tainfy</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt7</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans7</sans>
+        <tans>tainc</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt7-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt7-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt8</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans8</sans>
+        <tans>tadec</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt8-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt8-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>997479771</deployedseed>
+    <deployedseed>1036265313</deployedseed>
+    <deployedseed>2060052934</deployedseed>
+    <deployedseed>1835056555</deployedseed>
+    <deployedseed>1779164098</deployedseed>
+    <deployedseed>897564544</deployedseed>
+    <deployedseed>442267697</deployedseed>
+    <deployedseed>2127620249</deployedseed>
+    <deployedseed>277409457</deployedseed>
+    <deployedseed>609538714</deployedseed>
+    <deployedseed>1439966846</deployedseed>
+    <deployedseed>1000019752</deployedseed>
+    <deployedseed>1868998605</deployedseed>
+    <deployedseed>217765972</deployedseed>
+    <deployedseed>1142344695</deployedseed>
+    <deployedseed>1946448867</deployedseed>
+    <deployedseed>96254906</deployedseed>
+    <deployedseed>1123544141</deployedseed>
+    <deployedseed>866097536</deployedseed>
+    <deployedseed>207253759</deployedseed>
+    <deployedseed>35262053</deployedseed>
+    <deployedseed>603826084</deployedseed>
+    <deployedseed>1679640169</deployedseed>
+    <deployedseed>1123231238</deployedseed>
+    <deployedseed>677470988</deployedseed>
+    <deployedseed>699102457</deployedseed>
+    <deployedseed>9482654</deployedseed>
+    <deployedseed>38950847</deployedseed>
+    <deployedseed>465209913</deployedseed>
+    <deployedseed>821674406</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>tamaxx</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>tamaxy</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>taminx</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>taminy</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>tainfx</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>tainfy</value>
+      </testinput>
+      <testinput>
+        <name>ans7</name>
+        <value>tainc</value>
+      </testinput>
+      <testinput>
+        <name>ans8</name>
+        <value>tadec</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt6</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt6-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt7</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt7-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt8</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt8-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Interpreting the derivative</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Which of the following functions represents an exponential growth?</p>
+<p>[[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>\(\displaystyle {@y=func_coeff^x@}\) is an exponential growth function with a base (\({@func_coeff@}\)) greater than \(1\).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[func_coeff: rand(60)+3;
+func_power: rand(5)+2;
+ff:x;
+
+func: func_coeff*x^func_power;
+lim_point: rand(4)+2;
+
+/*corr_ans: [1, true, sconcat("\\(\\displaystyle y= \\frac{", func_coeff, "}{x} \\)")];*/
+corr_ans: [1, true, sconcat("\\(\\displaystyle y= ", func_coeff, "^{x} \\)")];
+/*corr_ans: [1, true, sconcat("\\(\\displaystyle y= ", func_coeff, " x \\)")];*/
+/*corr_ans: [1, true, sconcat("\\(\\displaystyle y= ", ff, "^{ ", func_coeff, "} \\)")];*/
+
+incorr_ans: rand_selection([
+
+[2, false, sconcat("\\(\\displaystyle y= ", ff, "^{ ", func_coeff, "} \\)")],
+
+[3, false, sconcat("\\(\\displaystyle y= ", func_coeff, " x \\)")],
+
+[4, false, sconcat("\\(\\displaystyle y= \\frac{", func_coeff, "}{x+3} \\)")],
+
+[5, false, sconcat("\\(\\displaystyle y= \\frac{", func_coeff+2, "}{x-4} \\)")],
+
+[6, false, sconcat("\\(\\displaystyle y= \\frac{", func_coeff, "}{x} \\)")]
+
+], 3);
+
+ma: random_permutation(append([corr_ans], incorr_ans));
+
+]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle {@y=func_coeff^x@}\) is an exponential growth function with a base (\({@func_coeff@}\)) greater than \(1\).</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ma</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>25610733</deployedseed>
+    <deployedseed>1636168159</deployedseed>
+    <deployedseed>1446789663</deployedseed>
+    <deployedseed>435813145</deployedseed>
+    <deployedseed>1165235720</deployedseed>
+    <deployedseed>286480389</deployedseed>
+    <deployedseed>2086476402</deployedseed>
+    <deployedseed>1893727788</deployedseed>
+    <deployedseed>539168834</deployedseed>
+    <deployedseed>29584629</deployedseed>
+    <deployedseed>2088106022</deployedseed>
+    <deployedseed>821592477</deployedseed>
+    <deployedseed>1945193222</deployedseed>
+    <deployedseed>2053559622</deployedseed>
+    <deployedseed>2074820752</deployedseed>
+    <deployedseed>1980147956</deployedseed>
+    <deployedseed>866240425</deployedseed>
+    <deployedseed>730268558</deployedseed>
+    <deployedseed>779701139</deployedseed>
+    <deployedseed>1626820831</deployedseed>
+    <deployedseed>1379307193</deployedseed>
+    <deployedseed>1519818096</deployedseed>
+    <deployedseed>993404787</deployedseed>
+    <deployedseed>993981197</deployedseed>
+    <deployedseed>1270240511</deployedseed>
+    <deployedseed>2016087384</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>first(mcq_correct(ma))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

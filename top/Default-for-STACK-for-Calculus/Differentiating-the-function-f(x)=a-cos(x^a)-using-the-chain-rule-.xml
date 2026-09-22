@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Differentiating the function f(x)=a cos(x^a) using the chain rule.</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the \(1^{\textbf{st}}, 2^{\textbf{nd}}, 3^{\textbf{rd}},\) and \(4^{\textbf{th}}\) derivatives of the following function:</p>
+<ol>
+    <p>\(  \displaystyle f(x) = {@fx@} \)</p>
+  <li>
+    <p>\(  f'(x) = \) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+  </li>
+  <li>
+    <p>\(  f''(x) = \) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>
+  </li>
+  <li>
+    <p>\( f'''(x) = \) [[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</p>
+  </li>
+  <li>
+    <p>\(  f''''(x) = \) [[input:ans4]] [[validation:ans4]] [[feedback:prt4]]</p>
+  </li>
+</ol>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Let's find the \(1^{\textbf{st}}, 2^{\textbf{nd}}, 3^{\textbf{rd}},\) and \(4^{\textbf{th}}\) derivatives of the given function.</p>
+
+<p>To differentiate the function \( \displaystyle f(x) = {@fx@}\) with respect to \(x\), we can use the chain rule.</p> 
+<p>The chain rule states that if you have a function \(g(u)\) and a function \(f(x)\) where \(u\) is a function of \(x\), then the derivative of their composition is given by:</p>
+
+<p>\(\displaystyle
+(f(g(x)))' = f'(g(x)) \cdot g'(x)
+\)</p>
+<p><strong> 1st Derivative </strong>  of \( \displaystyle f(x) = {@fx@}\) let's apply chain rule</p>
+<p>In our case, \(\displaystyle g(x) = {@u@}\)</p><p> and \(\displaystyle f(u) ={@cf2@} \cos(u)\), where \( \displaystyle u =  {@u@}\).</p>
+
+<p>Let's find the derivatives step by step:</p>
+
+<ol>
+<li>Find the derivative of \(u\) with respect to \(x\):
+ <p>  \( \displaystyle
+   u =  {@u@} \implies \frac{du}{dx} =  {@diff_u@}
+   \)
+</p></li>
+
+<li>Find the derivative of \(f(u) ={@cf2@}  \cos(u)\) with respect to \(u\):
+ <p>  \( \displaystyle
+     f(u) ={@cf2@}  \cos(u) \implies   \frac{df}{du} = -{@cf2@} \sin(u)
+   \)<p></li>
+
+<li>Now, apply the chain rule to find the derivative of \(  \displaystyle f(x) ={@fx@}\) with respect to \(x\):
+<p>   \( \displaystyle
+   \begin{align*}
+   \frac{df}{dx} &= \frac{df}{du} \cdot \frac{du}{dx} \\
+   &= -{@cf2@} \sin(u) \cdot {@diff_u@} \\
+   &= {@ta1@}
+   \end{align*}
+   \)</p></li>
+</ol>
+
+<p>So, the derivative of \( \displaystyle f(x) ={@fx@}\) with respect to \(x\) is:</p>
+<p>\(\displaystyle 
+f'(x) = {@ta1@}
+\)<p>
+
+<p>We will still apply chain rule to the rest of the derivatives:</p>
+<p><strong>2nd Derivative:</strong></p>
+<p>To find the 2nd derivative, differentiate \(f'(x)\):</p>
+<p>\(  \displaystyle f''(x) = \frac{d}{dx}\left({@ta1@}\right)\)</p>
+<p>Evaluating to get:</p>
+<p>\(  \displaystyle f''(x) = {@ta2@}\)</p>
+
+<p> <strong>3rd Derivative:</strong></p>
+<p>To find the 3rd derivative, differentiate \(f''(x)\):</p>
+<p>\(  \displaystyle f'''(x) = \frac{d}{dx}\left({@ta2@}\right)\)</p>
+<p>Evaluating to get:</p>
+<p>\(  \displaystyle f'''(x) = {@ta3@}\)</p>
+
+<p><strong>4th Derivative:</strong></p>
+<p>To find the 4th derivative, differentiate \(f'''(x)\):</p>
+<p>\(  \displaystyle f''''(x) = \frac{d}{dx}\left({@ta3@}\right)\)</p>
+<p>Evaluating to get:</p>
+<p>\(  \displaystyle f''''(x) = {@ta4@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/* Define the function */ 
+cfx:(rand([rand(5)+3/(rand(5)+1),(rand(5)+1)/(rand(5)+4)]));
+power:rand(3)+2;
+cf2:(rand([rand(5)+3,(rand(5)+1)/(rand(5)+4)]));
+u:cfx*x^power; diff_u:diff(u,x);
+fx:cf2*cos(u); diff_f:-sin(u);
+/* Differentiate the function with respect to x */ 
+dfx : diff(fx, x);  
+/* Model Answers */ 
+ta1:simplify(dfx); 
+ta2:diff(ta1,x);
+ta3:diff(ta2,x);
+ta4:diff(ta3,x);
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[    
+    <p>\( \qquad \displaystyle f(x) = {@fx@} \)</p>
+ 
+    <p>\(  f'(x) = {@ta1@}\) </p>
+ 
+    <p>\( f''(x) = {@ta2@}\) </p>
+  
+    <p>\( f'''(x) ={@ta3@} \) </p>
+  
+    <p>\(  f''''(x) = {@ta4@}\) </p>
+  
+]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">Differentiating the function \(f(x)=a cos(x^a)\) using the chain rule.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>18</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>24</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta4</tans>
+      <boxsize>30</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>Diff</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions>x</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>Diff</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions>x</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>Diff</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions>x</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1675988545</deployedseed>
+    <deployedseed>1127459948</deployedseed>
+    <deployedseed>1156208031</deployedseed>
+    <deployedseed>1742324769</deployedseed>
+    <deployedseed>1124720042</deployedseed>
+    <deployedseed>1400177218</deployedseed>
+    <deployedseed>887607031</deployedseed>
+    <deployedseed>805933231</deployedseed>
+    <deployedseed>897681599</deployedseed>
+    <deployedseed>516470630</deployedseed>
+    <deployedseed>50047776</deployedseed>
+    <deployedseed>1566030055</deployedseed>
+    <deployedseed>1735890837</deployedseed>
+    <deployedseed>929788240</deployedseed>
+    <deployedseed>178665006</deployedseed>
+    <deployedseed>702216649</deployedseed>
+    <deployedseed>660244375</deployedseed>
+    <deployedseed>1090886321</deployedseed>
+    <deployedseed>1490040510</deployedseed>
+    <deployedseed>325718433</deployedseed>
+    <deployedseed>1728140528</deployedseed>
+    <deployedseed>1782304642</deployedseed>
+    <deployedseed>333303151</deployedseed>
+    <deployedseed>83213174</deployedseed>
+    <deployedseed>629423516</deployedseed>
+    <deployedseed>1600080934</deployedseed>
+    <deployedseed>2117198288</deployedseed>
+    <deployedseed>926336109</deployedseed>
+    <deployedseed>1870680877</deployedseed>
+    <deployedseed>1904605632</deployedseed>
+    <deployedseed>1460823638</deployedseed>
+    <deployedseed>1767403747</deployedseed>
+    <deployedseed>1422644628</deployedseed>
+    <deployedseed>859993679</deployedseed>
+    <deployedseed>1803851768</deployedseed>
+    <deployedseed>1860844910</deployedseed>
+    <deployedseed>574820203</deployedseed>
+    <deployedseed>1045930338</deployedseed>
+    <deployedseed>2142746376</deployedseed>
+    <deployedseed>303281948</deployedseed>
+    <deployedseed>1887387633</deployedseed>
+    <deployedseed>459541412</deployedseed>
+    <deployedseed>2103629536</deployedseed>
+    <deployedseed>535153285</deployedseed>
+    <deployedseed>841929145</deployedseed>
+    <deployedseed>914082863</deployedseed>
+    <deployedseed>1647050196</deployedseed>
+    <deployedseed>941991168</deployedseed>
+    <deployedseed>104467947</deployedseed>
+    <deployedseed>1800956785</deployedseed>
+    <deployedseed>392898121</deployedseed>
+    <deployedseed>1067622107</deployedseed>
+    <deployedseed>1984653804</deployedseed>
+    <deployedseed>1797731489</deployedseed>
+    <deployedseed>1603032091</deployedseed>
+    <deployedseed>596692750</deployedseed>
+    <deployedseed>804114532</deployedseed>
+    <deployedseed>1871571727</deployedseed>
+    <deployedseed>490835762</deployedseed>
+    <deployedseed>434771281</deployedseed>
+    <deployedseed>1436185965</deployedseed>
+    <deployedseed>1931876338</deployedseed>
+    <deployedseed>1201385401</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta3</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>ta4</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Writing equations of graphs resulting from given transformations</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Starting with the graph of \(f(x)=e^{{@coeff_x@}x}\), sketch the graph by dragging the sliders of the graph that results from,</p>
+<p>a) Reflecting about the x-axis,</p>
+[[jsxgraph input-ref-ansa='ansaRef' input-ref-ansb='ansbRef']]
+  JXG.Options.text.useMathJax = true;
+    var board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-8, 8, 8, -8], axis:true,  showCopyright:false, showNavigation:true });
+    var a = board.create('slider',[[-4,-2],[3,-2],[-5,1,5]],{name:'a', snapWidth:1});
+    var b = board.create('slider',[[-4,-3],[3,-3],[-5,{#coeff_x+1#},5]],{name:'b', snapWidth:1});
+    var graph2 = board.create('functiongraph', [function(t) {return a.Value() * JXG.Math.pow(Math.E, t * b.Value());}],{strokeColor:'#ff0000'});
+    var text = board.create('text',[-5,5,
+      function() { 
+        return '\\[f(x) = ' + a.Value() + 'e^{' + b.Value() + 'x}\\]';
+      }]);
+stack_jxg.bind_slider(ansaRef, a);
+stack_jxg.bind_slider(ansbRef, b);
+board.update();
+[[/jsxgraph]]
+<p style="display:none;"> [[input:ansa]] [[validation:ansa]][[feedback:prta]]</p>
+<p style="display:none;">[[input:ansb]] [[validation:ansb]][[feedback:prtb]]</p>
+<p>b) Shifting {@shift@} units downwards,</p>
+[[jsxgraph input-ref-ansc='anscRef'  input-ref-ansd='ansdRef']]
+ JXG.Options.text.useMathJax = true;
+    var board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-8, 8, 8, -8], axis:true,  showCopyright:false, showNavigation:true });
+ var a = board.create('slider',[[-7.5,-4],[-4,-4],[-5,{#coeff_x+1#},5]],{name:'n', snapWidth:1});
+ var c = board.create('slider', [[-7.5, -5], [-4,-5], [-5, {#shift+1#}, 4]], {name:'c',snapWidth: 1});
+ var graph2 = board.create('functiongraph', [function(t) {return JXG.Math.pow(Math.E,t*a.Value())+ c.Value();}],{strokeColor:'#ff0000'});
+        var text = board.create('text', [-6, 6, function() {
+            var aVal = a.Value().toFixed(2);
+            var cVal = c.Value().toFixed(2);
+            if (cVal < 0) {
+              return '\\[f(x) = e^{' + aVal +'x} ' + cVal + '\\]';
+            } else {
+             return '\\[f(x) = e^{' + aVal +'x} + ' + cVal + '\\]';
+            }
+        }]);
+stack_jxg.bind_slider(anscRef, a);
+stack_jxg.bind_slider(ansdRef, c);
+board.update();
+[[/jsxgraph]]
+<p style="display:none;">[[input:ansc]] [[validation:ansc]][[feedback:prtc]]</p>
+<p style="display:none;">[[input:ansd]] [[validation:ansd]][[feedback:prtd]]</p>
+<p>c) Reflecting about the x-axis and then about the y-axis</p>
+[[jsxgraph input-ref-ans3='ans3Ref'  input-ref-ans4='ans4Ref']]
+ JXG.Options.text.useMathJax = true;
+    var board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-8, 8, 8, -8], axis:true,  showCopyright:false, showNavigation:true });
+    var a = board.create('slider',[[-4,-2],[3,-2],[-5,1,5]],{name:'a', snapWidth:1});
+    var b = board.create('slider',[[-4,-3],[3,-3],[-5,1,5]],{name:'b', snapWidth:1});
+    var graph2 = board.create('functiongraph', [function(t) {return a.Value() * JXG.Math.pow(Math.E, t * b.Value());}],{strokeColor:'#ff0000'});
+    var text = board.create('text',[-5,5,
+      function() { 
+        return '\\[f(x) = ' + a.Value() + 'e^{' + b.Value() + 'x}\\]';
+      }]);
+stack_jxg.bind_slider(ans3Ref, a);
+stack_jxg.bind_slider(ans4Ref, b);
+board.update();
+[[/jsxgraph]]
+<p style="display:none;">[[input:ans3]] [[validation:ans3]][[feedback:prt3]]</p>
+<p style="display:none;">[[input:ans4]] [[validation:ans4]][[feedback:prt4]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>a) Reflecting about the x-axis,</p>
+[[jsxgraph]]
+  JXG.Options.text.useMathJax = true;
+    var board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-8, 8, 8, -8], axis:true,  showCopyright:false, showNavigation:true });
+var a = board.create('slider', [[-4, -2], [3, -2], [-5, {#ta_a#}, 5]], {
+    name: 'a',
+    snapWidth: 1,
+    visible: false,
+    fixed: true
+});
+
+var b = board.create('slider', [[-4, -3], [3, -3], [-5, {#ta_b#}, 5]], {
+    name: 'b',
+    snapWidth: 1,
+    visible: false,
+    fixed: true
+});
+    var graph2 = board.create('functiongraph', [function(t) {return a.Value() * JXG.Math.pow(Math.E, t * b.Value());}],{strokeColor:'#ff0000'});
+    var text = board.create('text',[-5,5,
+      function() { 
+        return '\\[f(x) = ' + a.Value() + 'e^{' + b.Value() + 'x}\\]';
+      }]);
+[[/jsxgraph]]
+<p>b) Shifting {@shift@} units downwards,</p>
+[[jsxgraph]]
+ JXG.Options.text.useMathJax = true;
+    var board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-8, 8, 8, -8], axis:true,  showCopyright:false, showNavigation:true });
+ var a = board.create('slider',[[-7.5,-4],[-4,-4],[-5,{#ta_c#},5]],{name:'n', snapWidth: 1,
+    visible: false,
+    fixed: true
+});
+ var c = board.create('slider', [[-7.5, -5], [-4,-5], [-5, {#ta_d#}, 4]], {name:'c',snapWidth: 1,
+    visible: false,
+    fixed: true
+});
+ var graph2 = board.create('functiongraph', [function(t) {return JXG.Math.pow(Math.E,t*a.Value())+ c.Value();}],{strokeColor:'#ff0000'});
+        var text = board.create('text', [-6, 6, function() {
+            var aVal = a.Value().toFixed(2);
+            var cVal = c.Value().toFixed(2);
+            if (cVal < 0) {
+              return '\\[f(x) = e^{' + aVal +'x} ' + cVal + '\\]';
+            } else {
+             return '\\[f(x) = e^{' + aVal +'x} + ' + cVal + '\\]';
+            }
+        }]);
+[[/jsxgraph]]
+<p>c) Reflecting about the x-axis and then about the y-axis</p>
+[[jsxgraph]]
+ JXG.Options.text.useMathJax = true;
+    var board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-8, 8, 8, -8], axis:true,  showCopyright:false, showNavigation:true });
+    var a = board.create('slider',[[-4,-2],[3,-2],[-5,{#ta3#},5]],{name:'a', snapWidth: 1,
+    visible: false,
+    fixed: true
+});
+    var b = board.create('slider',[[-4,-3],[3,-3],[-5,{#ta4#},5]],{name:'b', snapWidth: 1,
+    visible: false,
+    fixed: true
+});
+    var graph2 = board.create('functiongraph', [function(t) {return a.Value() * JXG.Math.pow(Math.E, t * b.Value());}],{strokeColor:'#ff0000'});
+    var text = board.create('text',[-5,5,
+      function() { 
+        return '\\[f(x) = ' + a.Value() + 'e^{' + b.Value() + 'x}\\]';
+      }]);
+[[/jsxgraph]]]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>coeff_x:rand_with_step(1,4,1);
+shift:rand_with_step(2,4,1);
+ta_a:-1;
+ta_b:coeff_x;
+ta_c:coeff_x;
+ta_d:-shift;
+ta3:-1;
+ta4:-coeff_x;
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(f(x)=e^{{@coeff_x@}x}\)</p>
+<p>a) Reflecting about the x-axis,</p>
+<p>\(f(x)=-e^{{@coeff_x@}x}\)</p>
+<p>b) Shifting {@shift@} units downwards,</p>
+<p>\(f(x)=e^{{@coeff_x@}x}-{@shift@}\)</p>
+<p>c) Reflecting about the x-axis and then about the y-axis</p>
+<p>\(f(x)=-e^{-{@coeff_x@}x}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">https://docs.google.com/document/d/1aXtsfsE6iNPQn6zADedGod5MxkWe-uy_Ps9iMU9aCg4/edit</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">Given graph of  \(y=e^x\), students are required to write equations of graphs starting with the given graph and resulting from the given transformations.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ansa</name>
+      <type>algebraic</type>
+      <tans>ta_a</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ansb</name>
+      <type>algebraic</type>
+      <tans>ta_b</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ansc</name>
+      <type>algebraic</type>
+      <tans>ta_c</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ansd</name>
+      <type>algebraic</type>
+      <tans>ta_d</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prta</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ansa</sans>
+        <tans>ta_a</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prta-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prta-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prtb</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ansb</sans>
+        <tans>ta_b</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtb-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtb-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prtc</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ansc</sans>
+        <tans>ta_c</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtc-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtc-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prtd</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ansd</sans>
+        <tans>ta_d</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtd-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtd-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>2013590773</deployedseed>
+    <deployedseed>1019821597</deployedseed>
+    <deployedseed>2071049283</deployedseed>
+    <deployedseed>1124871606</deployedseed>
+    <deployedseed>1326634848</deployedseed>
+    <deployedseed>1988078841</deployedseed>
+    <deployedseed>1153771590</deployedseed>
+    <deployedseed>2063445212</deployedseed>
+    <deployedseed>765732554</deployedseed>
+    <deployedseed>1903005813</deployedseed>
+    <deployedseed>1996364295</deployedseed>
+    <deployedseed>638276096</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans3</name>
+        <value>ta3</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>ta4</value>
+      </testinput>
+      <testinput>
+        <name>ansa</name>
+        <value>ta_a</value>
+      </testinput>
+      <testinput>
+        <name>ansb</name>
+        <value>ta_b</value>
+      </testinput>
+      <testinput>
+        <name>ansc</name>
+        <value>ta_c</value>
+      </testinput>
+      <testinput>
+        <name>ansd</name>
+        <value>ta_d</value>
+      </testinput>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prta</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prta-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prtb</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prtb-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prtc</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prtc-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prtd</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prtd-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

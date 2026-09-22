@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Finding exponetial functions of given points</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the exponentail function of the form \( f(x)=Ca^x\) whose graph passes through the points \(({@x1@},{@y1@})\) and \(({@x2@},{@y2@})\) as shown below</p>
+<p>
+[[jsxgraph]]
+            var board = JXG.JSXGraph.initBoard(divid, { 
+            boundingbox: [-10, {#y2*1.1#}, 10, -5],
+            keepaspectratio: false,
+            showCopyright: false,
+            axis: true,
+            showNavigation:false
+        });
+
+        // Define points
+        var point1 = board.create('point', [{#x1#}, {#y1#}], { name: '\\(({#x1#}, {#y1#})\\)', color: 'red', size: 4, fixed: true });
+        var point2 = board.create('point', [{#x2#}, {#y2#}], { name: '\\(({#x2#}, {#y2#})\\)', color: 'red', size: 4, fixed: true });
+
+        // Define function
+        function f(x) {
+            return {#cor_c1#} * Math.pow({#cor_a1#}, x);
+        }
+        // 3*2^x is C*a^x where C=3 and a=2 
+        // Plot function curve
+        var curve = board.create('functiongraph', [f, -10, 4], { strokeColor: 'blue', strokeWidth: 2, fixed: true });
+[[/jsxgraph]]
+</p>
+<p>\(f(x)=\) [[input:ans1]] and \(f(x)=\) [[input:ans2]] [[validation:ans1]] [[validation:ans2]] </p>
+<p>[[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+
+<p>\(f(x)=Ca^{x}\)</p>
+<p>At \(({@x1@},{@y1@})\) we get \({@eq1@} \implies  \displaystyle a={@fx11@}\)  </p>
+<p>At \(({@x2@},{@y2@})\) we get \({@eq2@}\) </p>
+<p>Substitute \(\displaystyle a={@fx11@} \) into \(\displaystyle {@eq2@}\)  and Solve for \(C\)</p>
+<p>
+\(\displaystyle
+\begin{aligned}
+{@y2@} &= C \left( {@fx11@} \right)^3 \\
+{@y2@}  &= C \left( {@fx11^3@} \right) \\
+{@y2@} &= {@C*fx11^3@}\\
+{@y2@} C^2 &= {@num(fx11^3)@} \\
+C^2 &= \frac{{@num(fx11^3)@}}{{@y2@} } \\
+C^2 &= {@num(fx11^3)/y2@}  \\
+C &= {@cor_c1@} \quad \text{or} \quad C = {@cor_c2@} 
+\end{aligned}
+\)
+</p>
+
+<p>Solve for \(a\) Using \(\displaystyle C = {@cor_c1@}\) and \(\displaystyle C = {@cor_c2@}\)</p>
+<p>
+\(\displaystyle
+\begin{aligned}
+\text{For } C = {@cor_c1@}: &\quad {@at(eq1,[C=cor_c1])@} \implies a = {@cor_a1@} \\
+\text{For } C = {@cor_c2@}: &\quad {@at(eq1,[C=cor_c2])@} \implies a = {@cor_a2@} \, (\text{Not defined})
+\end{aligned}
+\)
+</p>
+
+<p>Thus we define the Exponential Functions</p>
+<p>
+\(\displaystyle
+\begin{aligned}
+\text{Function 1:} &\quad f(x) = {@ta1@} \\
+\text{Function 2:} &\quad f(x) = {@ta2@} 
+\end{aligned}
+\)
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/* Define the known points */
+x1: 1;
+x2: 3;
+sq_aa:(rand(4)+2)^2;
+y1: rand(5)+2;
+y2: y1*sq_aa;
+eq1: y1 = C*a^x1;
+eq2: y2 = C*a^x2;
+fx11:rhs(solve(eq1,a)[1]);
+sol_c:solve(at(eq2,[a=fx11]));
+cor_c1:rhs(sol_c[2]);
+cor_c2:rhs(sol_c[1]);
+cor_a1:rhs(solve(at(eq1,[C=cor_c1]))[1]);
+cor_a2:rhs(solve(at(eq1,[C=cor_c2]))[1]);
+/* Define the exponential function */
+cor_fx : cor_c1 * cor_a1^x;
+alt_fx: cor_c2 * cor_a1^x;
+
+ta1:cor_fx;
+ta2:alt_fx;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Points \(({@x1@},{@y1@})\) and \(({@x2@},{@y2@})\)<br> Exponential graph \(f(x)={@ta1@}\) and \(f(x)={@ta2@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p><p>
+</p><p id="concept">https://docs.google.com/document/d/1yHCV9wW4TqpZGDIUAUrgGsNVtSA02ZH4z3bXEttT7Wc/edit</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">[2]</p>
+<p id="description">Given the points of a graph, students are required to find the exponetial function of the form \(f(x)=Ca^x\) </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text><![CDATA[setta:{ta1,ta2};
+setans:{ans1,ans2};
+incansset:setdifference(setans,setta);
+numans:cardinality(incansset);
+incans:if numans=1 then listify(incansset)[1] else "";]]></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct exponential function</description>
+        <answertest>Sets</answertest>
+        <sans>setans</sans>
+        <tans>setta</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the value of fx entered twice</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ans2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You entered the same answer twice. This expontial equations are distinct</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks if one value of fx is incorrect</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>numans</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer \(f(x)={@listify(intersect(setta,setans))[1]@}\) is correct.
+<br>However, \(f(x)={@incans@}\) is not a solution to the two points given.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1818951058</deployedseed>
+    <deployedseed>1934792795</deployedseed>
+    <deployedseed>1383395428</deployedseed>
+    <deployedseed>4884853</deployedseed>
+    <deployedseed>689644520</deployedseed>
+    <deployedseed>1409558471</deployedseed>
+    <deployedseed>1088874660</deployedseed>
+    <deployedseed>1199422693</deployedseed>
+    <deployedseed>1017783640</deployedseed>
+    <deployedseed>1379834423</deployedseed>
+    <deployedseed>671686309</deployedseed>
+    <deployedseed>1513320807</deployedseed>
+    <deployedseed>516234341</deployedseed>
+    <deployedseed>457045362</deployedseed>
+    <deployedseed>1394223686</deployedseed>
+    <deployedseed>1169192989</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

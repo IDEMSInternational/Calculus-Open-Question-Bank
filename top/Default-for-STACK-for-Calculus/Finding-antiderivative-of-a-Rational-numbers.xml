@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Finding antiderivative of a Rational numbers</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Find the antiderivatives of the function {@f_a@}.<br></p><p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3><b>Worked solution</b></h3>
+<p>Suppose we have a function of the form \( f({@variable@})={@g_a@}\) (\(a \in \mathbb{R}\)), its antiderivative can be computed as,
+<p> \(\displaystyle\int {@g_a@} d{@variable@} = {@tas@}\) where \(c\) is the constant of integration. 
+<p>Therefore, the antiderivative of {@f_a@} will be,</p>\( \int {@f_a@} d{@variable@}\) = {@ta@}<br></p>
+<p></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*randomizing the static question variables*/
+variable:rand([y,z,p,r,t]); /*variable for the function*/
+numerator:rand(14)+2; /*coefficient or numerator*/
+f_a:numerator*variable^(-1);/*Function*/
+
+g_a:a*variable^(-1);/*Introduce a recall*/
+tas:int(g_a,variable)+c;
+
+ta:int(f_a,variable)+c;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\(\displaystyle\int{@f_a@} d{@variable@}={@ta@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">NA</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">This question requires the student to find the antiderivative of an indefinite Integral evaluate</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checking for the correct answer*/
+
+/*node 2: mistake: Failing to add the constant after intergration*/
+mistake_2:int(f_a,variable);
+
+/*node 3: Adding one to the power of s then dividing by the new power*/
+mistake_3:inf;
+/*node 4: Adding one to the power of s then dividing by the new power*/
+mistake_4:infinity;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answers</description>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>variable</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake of failing to add a constant</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have failed to add the constant after integration which should not be the case.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for mistake 3</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have added one to the power of s then divided by the new power of s which should not be the case.Here is a hint 7s-1 ds=7㏑(s)+C, where C is the constant of integration</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>checks for mistake 4</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have added one to the power of s then divided by the new power of s which should not be the case.Here is a hint 7s-1 ds=7㏑(s)+C, where C is the constant of integration</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>2094788296</deployedseed>
+    <deployedseed>435884387</deployedseed>
+    <deployedseed>444132932</deployedseed>
+    <deployedseed>500393156</deployedseed>
+    <deployedseed>1678936689</deployedseed>
+    <deployedseed>1255147734</deployedseed>
+    <deployedseed>1824914287</deployedseed>
+    <deployedseed>226782388</deployedseed>
+    <deployedseed>529077763</deployedseed>
+    <deployedseed>218409716</deployedseed>
+    <deployedseed>1544995903</deployedseed>
+    <deployedseed>1583330070</deployedseed>
+    <deployedseed>1157632496</deployedseed>
+    <deployedseed>146707428</deployedseed>
+    <deployedseed>1753839597</deployedseed>
+    <deployedseed>150678117</deployedseed>
+    <deployedseed>1677683007</deployedseed>
+    <deployedseed>377116216</deployedseed>
+    <deployedseed>1821275722</deployedseed>
+    <deployedseed>751828755</deployedseed>
+    <deployedseed>1817408796</deployedseed>
+    <deployedseed>1347681182</deployedseed>
+    <deployedseed>929408673</deployedseed>
+    <deployedseed>395963701</deployedseed>
+    <deployedseed>1787487511</deployedseed>
+    <deployedseed>872895048</deployedseed>
+    <deployedseed>1988479823</deployedseed>
+    <deployedseed>1619183077</deployedseed>
+    <deployedseed>1215787706</deployedseed>
+    <deployedseed>1191296311</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

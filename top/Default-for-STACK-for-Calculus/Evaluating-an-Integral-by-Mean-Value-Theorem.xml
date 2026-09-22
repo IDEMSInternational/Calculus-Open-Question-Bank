@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluating an Integral by Mean Value Theorem</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the average value of the function \(f(x)={@quest_expr@}\) over the interval \([0,4]\) and find \(c\) such that \(f(c)\) equals the average value of the function over \([0,4]\).</p>
+<p>\(c=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>\(f(c)=\displaystyle \frac{1}{b-a}\int_a^b f(x)dx\)</p>
+<p>Applying this formula to \(f(x)={@quest_expr@}\)</p>
+<p>we have,</p>
+<p>\( \begin{align}
+ f(c) & = \frac{1}{4-0}\displaystyle \int _{@a@}^{@b@} {@quest_expr@}\,dx \\
+&=\frac{1}{{@b-a@}} \times \left [  {@solution1@} \right ]_{@a@}^{@b@}\\
+&={@sol2@}\\
+\end{align} \)
+</p>
+<p>Find  \(c\) by Substituting \(c\) in the question expression</p>
+<p>\(f(c)={@sol2@}={@sol3@}\)</p>
+<p>Therefore \(c={@ta@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*mean value theorem*/
+constant:rand(5)+5;
+coeff_2:rand(4)+2;
+quest_expr:constant-coeff_2*x;
+a:0;
+b:4;
+/*worked solution*/
+solution1:int(quest_expr,x);
+sol1:int(quest_expr,x,a,b);
+sol2:(1/6)*sol1;
+sol3:subst(c,x,quest_expr);
+sol4:solve(sol2=sol3);
+ta:(sol4,2)</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\(f(x)={@quest_expr@}\) 
+\(c={@ta@}\)</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept"></p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Juma Zevick</p>
+<p id="description">Findingthe average value of the function \(f(x)={@quest_expr@}\) over the interval \([0,4]\) and find \(c\) such that \(f(c)\) equals the average value of the function over \([0,4]\).</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the  value of c</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>2110282285</deployedseed>
+    <deployedseed>1473940864</deployedseed>
+    <deployedseed>1642242965</deployedseed>
+    <deployedseed>554738734</deployedseed>
+    <deployedseed>799142408</deployedseed>
+    <deployedseed>722093573</deployedseed>
+    <deployedseed>157717927</deployedseed>
+    <deployedseed>1371754897</deployedseed>
+    <deployedseed>284750814</deployedseed>
+    <deployedseed>552078089</deployedseed>
+    <deployedseed>1624852362</deployedseed>
+    <deployedseed>673834349</deployedseed>
+    <deployedseed>543381488</deployedseed>
+    <deployedseed>1415505286</deployedseed>
+    <deployedseed>1090307945</deployedseed>
+    <deployedseed>571657051</deployedseed>
+    <deployedseed>981914185</deployedseed>
+    <deployedseed>1945896676</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Optimization with Lagrange Multipliers: Finding Maximum and Minimum Values</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the maximum and the minimum values of \(f(x,y)={@a@}x^2+{@c@}y^2+{@e@}\) subject to the constraint \(g(x,y)={@b@}x^2+{@c@}y^2={@d@}\) using the <a href="https://tutorial.math.lamar.edu/Classes/CalcIII/LagrangeMultipliers.aspx">Method of Lagrange Multipliers</a>.
+<p>The absolute maximum is  [[input:ans1]][[validation:ans1]][[feedback:prt1]]</p>
+<p>The absolute minimum is [[input:ans2]][[validation:ans2]][[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<p><b>Worked Solution</b></p>
+<p>Here the constraint is a sum of two terms that are squared, hence the largest possible range of \(x\) is \(-{@lar_xr@}\le {@lar_xr@}\) (the largest values occur if \(y=0.\)</p>
+<p>Likewise,the largest possible range of \(y\) is \(-{@lar_yr@}\le {@lar_yr@}\)  (with the largest values occurring if \(x=0\)).</p>
+<p>Therefore, the constraint region is bounded. It is also closed, therefore it is <b>compact</b>. Now, by the Extreme Value Theorem, we can conclude that the function <b>has absolute extrema</b> in the constraint region</p>
+<p>The next step is to write down the system of Lagrange Multiplier equations:</p>
+<p>\({@f_x@}\) \((f_x=\lambda g_x)...\) equation \(1\)</p>
+<p>\({@f_y@}\) \((f_y=\lambda g_y)...\) equation \(2\) </p>
+<p>\({@g_xy@}\) (Constraint equation) \(…\) equation \(3\) </p>
+<p>From the second equation</p>
+<p>\({@d3@}\lambda-{@d4@}={@d4@}(\lambda-1)\)</p>
+<p>\(\rightarrow y=0\) (<b>case </b>\(1\)) or \(\lambda=1\)(<b>case </b>\(2\))</p>
+<p><b>Case </b>\(1:\)  when \(y=0\) </p>
+<p>\({@b@}x^2={@d@} \rightarrow x=\pm {@ta8@}\)</p>
+<p>Hence two potential absolute extrema points are
+</p>
+<p>\((-{@lar_xr@},0)\) and \(({@lar_xr@},0)\)</p>
+<p><b>Case </b>\(2:\) when \(\lambda =1\)</p>
+<p>\({@d1@}={@d2@} \rightarrow x={@ta11@}\)</p>
+<p>Plugging in \(x=0\) into the constraint equation</p>
+<p>\({@c@}y^2={@d@} \rightarrow 
+y=\pm {@ta12@}\)</p>
+<p>This part gives us two more points that are potential absolute extrema,</p>
+<p>\((0,-{@ta12@})\) and \((0,{@ta12@})\)</p>
+<p>To find the absolute extrema we evaluate the function at each of these points</p>
+<p>\(f(-{@lar_xr@},0)={@val_x1y@}\)  \(f({@lar_xr@},0)={@val_x2y@}\)  \(f(0,-{@ta12@})={@val_y1x@}\)  \(f(0,{@ta12@})={@val_y2x@}\)</p>
+<p>The absolute maximum is then \({@ta15@}\)</p>
+<p>The absolute minimum is \({@ta16@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*Defining question Variables*/
+a:(rand(8)+1)^2;
+b:(rand_with_prohib(1, 3, [a]))^2;
+c:rand(5)+1;
+p_sq:(rand(6)+1)^2;
+d:p_sq*b;
+e:rand(20)+1;
+f_xy:a*x^2+c*y^2+e;
+g_xy:b*x^2+c*y^2=d;
+g_xy_di:b*x^2+c*y^2;
+lar_xl:-sqrt(d/b);
+lar_xr:sqrt(d/b)
+lar_yl:-sqrt(d/c);
+lar_yr:sqrt(d/c);
+d1:diff(f_xy,x);
+d2:diff(g_xy_di,x);
+d3:diff(f_xy,y);
+d4:diff(g_xy_di,y);
+f_x:diff(f_xy,x)=diff(g_xy_di,x)*lambda;
+f_y:diff(f_xy,y)=diff(g_xy_di,y)*lambda;
+f_const:g_xy;
+val_x1:subst(lar_xl,x,f_xy);
+val_x1y:subst(0,y,val_x1);
+val_x2:subst(lar_xr,x,f_xy);
+val_x2y:subst(0,y,val_x2);
+val_y1:subst(lar_yl,y,f_xy);
+val_y1x:subst(0,x,val_y1);
+val_y2:subst(lar_yr,y,f_xy);
+val_y2x:subst(0,x,val_y2);
+
+/*Model answers*/
+ta1:random_permutation([["compact", true],["not compact", false],["finite", false],["open", false]]);
+ta2:random_permutation([[" has absolute extrema ", true],[" does not have absolute extrema ", false],["does not have local extrema", false]]);
+ta3:f_x;
+ta4:f_y;
+ta5:f_const;
+ta6:0;
+ta7:1;
+ta8:lar_xr;
+ta9:matrix([lar_xl],[0]);
+ta10:matrix([lar_xr],[0]);
+ta11:0;
+ta12:lar_yr;
+ta13:matrix([0],[lar_yl]);
+ta14:matrix([0],[lar_yr]);
+ta15:max(val_x1y,val_x2y,val_y1x,val_y2x);
+ta16:min(val_x1y,val_x2y,val_y1x,val_y2x);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>{@f_xy@}
+{@g_xy@}</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta15</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta16</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Possible mistakes prt15*/
+/*node1:checks for the correct answer*/
+/*node2:Giving the the absolute minimum instead of absolute maximum*/
+mistake2:ta16;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta15</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have given the absolute minimum instead of absolute maximum which should not be the case
+Try again
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Possible mistakes prt16*/
+/*node1:checks for the correct answer*/
+/*node2:Giving the the absolute maximum instead of absolute minimum*/
+mistake2:ta15;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta16</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have given the Lagrange Multiplier equation of \(y\)
+maximum instead of absolute minimum which should not be the case 
+Try again
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1929007714</deployedseed>
+    <deployedseed>1939604975</deployedseed>
+    <deployedseed>1817309636</deployedseed>
+    <deployedseed>317548957</deployedseed>
+    <deployedseed>1183548814</deployedseed>
+    <deployedseed>932112198</deployedseed>
+    <deployedseed>161948036</deployedseed>
+    <deployedseed>897497968</deployedseed>
+    <deployedseed>1062687257</deployedseed>
+    <deployedseed>2082103363</deployedseed>
+    <deployedseed>29585405</deployedseed>
+    <deployedseed>1480857604</deployedseed>
+    <deployedseed>1743044634</deployedseed>
+    <deployedseed>1447648958</deployedseed>
+    <deployedseed>277229026</deployedseed>
+    <deployedseed>1738408360</deployedseed>
+    <deployedseed>358535621</deployedseed>
+    <deployedseed>1071676681</deployedseed>
+    <deployedseed>1744566592</deployedseed>
+    <deployedseed>1866361685</deployedseed>
+    <deployedseed>974490692</deployedseed>
+    <deployedseed>1296071153</deployedseed>
+    <deployedseed>1619146024</deployedseed>
+    <deployedseed>32541564</deployedseed>
+    <deployedseed>279921845</deployedseed>
+    <deployedseed>110503152</deployedseed>
+    <deployedseed>139710873</deployedseed>
+    <deployedseed>2045999225</deployedseed>
+    <deployedseed>1050260578</deployedseed>
+    <deployedseed>1245240375</deployedseed>
+    <deployedseed>2063797058</deployedseed>
+    <deployedseed>231349192</deployedseed>
+    <deployedseed>1745274184</deployedseed>
+    <deployedseed>390566681</deployedseed>
+    <deployedseed>1625620092</deployedseed>
+    <deployedseed>1416904210</deployedseed>
+    <deployedseed>1422900015</deployedseed>
+    <deployedseed>1583758028</deployedseed>
+    <deployedseed>1953521147</deployedseed>
+    <deployedseed>2037031223</deployedseed>
+    <deployedseed>1120030566</deployedseed>
+    <deployedseed>1153527513</deployedseed>
+    <deployedseed>1958675241</deployedseed>
+    <deployedseed>2004758230</deployedseed>
+    <deployedseed>1007666857</deployedseed>
+    <deployedseed>234960083</deployedseed>
+    <deployedseed>12138708</deployedseed>
+    <deployedseed>2038435044</deployedseed>
+    <deployedseed>924892437</deployedseed>
+    <deployedseed>2092061203</deployedseed>
+    <deployedseed>616005898</deployedseed>
+    <deployedseed>1324186282</deployedseed>
+    <deployedseed>1615334495</deployedseed>
+    <deployedseed>433483384</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta15</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta16</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

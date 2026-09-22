@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>T2_Int FTC2 _ pow lim_IJ</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[Differentiate the following function with respect to x
+\(F(x)=\displaystyle\int_{{@lb@}}^{{@ub@}}{@f@} dt\) <br><br>
+
+<table>
+<tr>
+<td>The function can be differentiated using [[input:ans1]][[validation:ans1]]</td>
+</tr>
+<tr>
+<td>with condition [[input:ans2]] [[validation:ans2]]</td>
+</tr>
+</table>
+
+<table>
+<tr>
+ <td>we use the [[input:ans3]] since one limit of integration is [[input:ans4]] <td>
+ [[validation:ans3]][[validation:ans4]]</td>
+</tr>
+</table>
+
+<table>
+<tr>
+ <td>Let [[input:ans5]]  \(\implies\) [[input:ans6]]<br>
+[[validation:ans5]][[validation:ans6]]</td>
+ </tr>
+ </table><br>
+ 
+ Using the above theorems the derivative is given by
+ <table>
+ <tr>
+ <td>\(\displaystyle\frac{d}{dx}\left(\int_{{@lb@}}^{{@ub@}}{@f@} dt\right)=\) [[input:ans7]]  \(\times\) [[input:ans8]]<br>
+ [[validation:ans7]][[validation:ans8]]</td>
+ </tr>
+ </table><br>
+substituting the value for \(u\),
+ <table>
+ <tr>
+<td>\(\displaystyle\frac{d}{dx}\left(\int_{{@lb@}}^{{@ub@}}{@f@} dt\right)=\) [[input:ans9]] [[validation:ans9]]</td>
+</tr>
+</table>
+[[feedback:prt1]]]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<i style="color:green"><b>FUNDAMENTAL THEOREM OF CALCULUS: </b>
+<br>If \(f\) is a continuous function on \([a,b]\)   then the function  \(F\)  defined by  \(F(x) =\displaystyle \int_{a}^{x}f(t)dt\) is differentiable on \((a,b)\) and its derivative is given by  \(F'(x)=f(x)\).
+
+<b>CHAIN RULE </b><br>
+The derivative of a composite function \(y=f(u)\) and \(u=g(x)\) is given by 
+\[\frac{dy}{dx}=\frac{dy}{du}\times\frac{du}{dx}\]
+ </i>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2018080600</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* random parameters */
+pars:[1+rand(9),1+rand(6)]
+lb:rand_with_prohib(1,9,[pars[1]])
+n:rand_with_prohib(2,9,[lb])
+ub:x^n
+
+/* Randomize function */
+f:rand([sqrt(pars[1]+t^pars[2]),sqrt(t^pars[2] + pars[1]*t),exp(-t^pars[2]),ln(pars[1]+t^pars[2]),t^pars[1]/(1+t^pars[2]),cos(t^3)*t^n,sin(t^2)*exp(-t^pars[2])])
+
+ta1:[[1,true,"Fundamental Theorem of Calculus"],[2,false,"Fundamental assumption of Calculus"],[3,false,"The Mean Value Theorem for Integrals"],[4,false, "Chain rule of Calculus"],[5,false, "The boundedness theorem"]] 
+ta1:random_permutation(ta1)
+
+ ta2:[[1,true,"Continuous and bounded"],[2,false,"Continuous and unbounded"],[3,false,"Discontinuous and unbounded"],[4,false,"Discontinuous and bounded"]] 
+ta2:random_permutation(ta2)
+
+/* Chain rule method for composite function */
+ta3:"Chain rule"
+ta31:[[1,true,"pars[1] function"], [2,false,"unknown"], [3,false,"not given"], [4,false,"not pars[1] value"]]
+ta31:random_permutation(ta31)
+
+/* assumed function of u */
+assf:u=x^n
+
+/* Differential */
+dif:du=n*x^(n-1)*dx
+du1:n*x^(n-1)
+usubf:ev(f,t=u)
+simpf:ev(usubf,u=rhs(assf))
+
+/* changing variable t to x*/
+fa:simpf*du1]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\({@[f,ub,lb]@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span><b style="color:#996515"> Well done</b>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i>  </span><b style="color:#996515"> Partially correct</b>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span><b style="color:#996515"> Incorrect</b>]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>dropdown</type>
+      <tans>ta1</tans>
+      <boxsize>4</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>dropdown</type>
+      <tans>ta2</tans>
+      <boxsize>4</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>string</type>
+      <tans>ta3</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>dropdown</type>
+      <tans>ta31</tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>assf</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint>u = </syntaxhint>
+      <syntaxattribute>1</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>2</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>dif</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint>du =</syntaxhint>
+      <syntaxattribute>1</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>2</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7</name>
+      <type>algebraic</type>
+      <tans>usubf</tans>
+      <boxsize>12</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint>g(u)</syntaxhint>
+      <syntaxattribute>1</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>2</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans8</name>
+      <type>algebraic</type>
+      <tans>du1</tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>2</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans9</name>
+      <type>algebraic</type>
+      <tans>fa</tans>
+      <boxsize>20</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>2</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.1000000</truescore>
+        <truepenalty/>
+        <truenextnode>1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<i style="color:blue"> Theorem of calculus</i> <span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<i style="color:red"> Second Fundamental Theorem of Calculus</i> <span style="font-size: 1.5em; color:red;"><i class="fa fa-close"></i></span>]]></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.1000000</truescore>
+        <truepenalty/>
+        <truenextnode>2</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<i style="color:blue"> Boundness of function</i> <span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<i style="color:red"> Continuous and bounded on [a,b]</i> <span style="font-size: 1.5em; color:red;"><i class="fa fa-close"></i></span>]]></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>10</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>is(ans9=fa/du1)</sans>
+        <tans>true</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.0000000</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-7-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<i style="color:red">Look! you didn't apply chain rule <br> \(\displaystyle\int_{{@lb@}}^{{@ub@}}{@f@} dt\) =  {@fa@} \(\ne\)   {@ans9@} </i> <span style="font-size: 1.5em; color:red;"><i class="fa fa-close"></i></span>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-7-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>StringSloppy</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.1000000</truescore>
+        <truepenalty/>
+        <truenextnode>3</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<i style="color:blue"> Derivative Rules</i> <span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<i style="color:red"> Derivative Rule is Chain rule</i> <span style="font-size: 1.5em; color:red;"><i class="fa fa-close"></i></span>]]></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.1000000</truescore>
+        <truepenalty/>
+        <truenextnode>4</truenextnode>
+        <trueanswernote>prt1-11-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<i style="color:blue"> Reasoning</i> <span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt1-11-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<i style="color:red">Reasoning</i> <span style="font-size: 1.5em; color:red;"><i class="fa fa-close"></i></span>]]></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>assf</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.1000000</truescore>
+        <truepenalty/>
+        <truenextnode>5</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<i style="color:blue"> \(u=f(x)\)</i> <span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<i style="color:red"> failed the assumption which is {@assf@}</i> <span style="font-size: 1.5em; color:red;"><i class="fa fa-close"></i></span>]]></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>5</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>dif</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.2000000</truescore>
+        <truepenalty/>
+        <truenextnode>7</truenextnode>
+        <trueanswernote>prt1-5-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<i style="color:blue"> \(derivative~du\)</i> <span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty/>
+        <falsenextnode>6</falsenextnode>
+        <falseanswernote>prt1-5-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>6</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>is(rhs(dif)/ans6=dx)</sans>
+        <tans>true</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.1000000</truescore>
+        <truepenalty/>
+        <truenextnode>7</truenextnode>
+        <trueanswernote>prt1-8-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<i style="color:red">You forgot \( dx\) \({@dif@} \ne {@ans6@} \)</i> <span style="font-size: 1.5em; color:red;"><i class="fa fa-close"></i></span>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-8-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>7</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans7</sans>
+        <tans>usubf</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.1000000</truescore>
+        <truepenalty/>
+        <truenextnode>8</truenextnode>
+        <trueanswernote>prt1-9-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty/>
+        <falsenextnode>8</falsenextnode>
+        <falseanswernote>prt1-9-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>8</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans8</sans>
+        <tans>du1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.1000000</truescore>
+        <truepenalty/>
+        <truenextnode>9</truenextnode>
+        <trueanswernote>prt1-10-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty/>
+        <falsenextnode>9</falsenextnode>
+        <falseanswernote>prt1-10-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>9</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans9</sans>
+        <tans>fa</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.1000000</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-6-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<i style="color:blue"> \(F'(x)=f(x)\)</i> <span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty/>
+        <falsenextnode>10</falsenextnode>
+        <falseanswernote>prt1-6-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>561574203</deployedseed>
+    <deployedseed>1550630052</deployedseed>
+    <deployedseed>346387421</deployedseed>
+    <deployedseed>1584923965</deployedseed>
+    <deployedseed>1783090139</deployedseed>
+    <deployedseed>1039843466</deployedseed>
+    <deployedseed>805452023</deployedseed>
+    <deployedseed>1917574183</deployedseed>
+    <deployedseed>1795544190</deployedseed>
+    <deployedseed>179654214</deployedseed>
+    <deployedseed>67880730</deployedseed>
+    <deployedseed>1397205762</deployedseed>
+    <deployedseed>963538343</deployedseed>
+    <deployedseed>1219662796</deployedseed>
+    <deployedseed>1127044848</deployedseed>
+    <deployedseed>511037584</deployedseed>
+    <deployedseed>291109948</deployedseed>
+    <deployedseed>527947838</deployedseed>
+    <deployedseed>1393165158</deployedseed>
+    <deployedseed>1645926985</deployedseed>
+    <deployedseed>271238512</deployedseed>
+    <deployedseed>1452017473</deployedseed>
+    <deployedseed>1200132774</deployedseed>
+    <deployedseed>886003938</deployedseed>
+    <deployedseed>981604818</deployedseed>
+    <deployedseed>934545997</deployedseed>
+    <deployedseed>2090962224</deployedseed>
+    <deployedseed>137625920</deployedseed>
+    <deployedseed>1925941202</deployedseed>
+    <deployedseed>746424606</deployedseed>
+  </question>
+</quiz>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Integration by U substitution-q1</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Evaluate.</p>
+<p>\( \displaystyle \int{@f_x@} dx\)</p>
+<p>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><b>Worked solution</b></p>
+<p>To compute the definite integral for this integral, we can use the substitution method as follows:</p>
+<p>Let \( \displaystyle u = {@bb@}\), \( \displaystyle \frac{du}{dx}={@diff_fx@}\), then \( \displaystyle dx={@du/diff_fx@}\)</p>
+<p>Substituting the above expressions \(u\) and \(dx\) in the original integral we have:</p>
+<p>
+\(\begin{align} 
+\displaystyle \int{@f_x@}dx &= \displaystyle \int {@x^aa@}.u.{@du/diff_fx@}\\
+& = \displaystyle \int {@var_xx@}du\\
+&= {@var_x1@} \\
+\end{align}\)
+</p>
+<p>But \(u={@bb@}\), therefore, we need to replace it back in \(\left( {@var_x1@} \right)\) to find the final answer as shown:</p>
+<p> \( \displaystyle \int{@f_x@}dx={@ta_1@} \)</p>
+<p>where \(c\) is a constant of integration.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*create random variables for the question*/
+power_x:rand(4)+2;/*random value of the power*/
+coeff_const:rand(9)+1 ;/*random value for the constant*/
+aa:power_x-1;
+bb:(x^power_x+coeff_const);
+f_x:(x^(aa))*bb;  /*integral function*/
+
+/*Model answers*/
+ta_1:int(f_x,x)+c;
+
+/*Worked out solution codes*/
+diff_fx: diff(bb,x); 
+var_xx:u*((x^aa))/diff_fx;
+var_x1:int(var_xx,u)+c;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\(\int{@f_x@} dx={@ta_1@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Juma Zevick</p>
+<p id="description">The question focuses on evaluating a indefinite Integral by u substitution .</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checking for the correct answer*/
+
+/*node 2:mistake: differentiating instead of integrating*/
+mistake_2:x*(x^power_x-1+coeff_const);
+
+/*node 3:mistake: missing the constant of integration*/
+mistake_3:int(f_x,x);
+
+/*node 4:mistake:not replacing the value of u  back*/
+var_x1:int(var_xx,u)+c;
+mistake_4:var_x1;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions>x</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have differentiated the function instead of integrating. Recall,\( \int{(x^n)dx} = \frac{x^(n+1)}{n+1} +c \).</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the second mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You have missed the constant of integration. This is an indefinite integral.</p><p>Recall, \( \int{(x^n)dx} = \frac{x^(n+1)}{n+1} +c \) , where c is the constant of integration.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>checks for the third mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You provided your answer in terms of u. Note that u was just a temporal value.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>894239646</deployedseed>
+    <deployedseed>913943780</deployedseed>
+    <deployedseed>1757117418</deployedseed>
+    <deployedseed>1174582080</deployedseed>
+    <deployedseed>1926239086</deployedseed>
+    <deployedseed>36285040</deployedseed>
+    <deployedseed>448430972</deployedseed>
+    <deployedseed>343272401</deployedseed>
+    <deployedseed>230001540</deployedseed>
+    <deployedseed>917919913</deployedseed>
+    <deployedseed>189487492</deployedseed>
+    <deployedseed>405709178</deployedseed>
+    <deployedseed>1165170</deployedseed>
+    <deployedseed>879246691</deployedseed>
+    <deployedseed>1333839584</deployedseed>
+    <deployedseed>81210092</deployedseed>
+    <deployedseed>1403965738</deployedseed>
+    <deployedseed>611114954</deployedseed>
+    <deployedseed>1669777391</deployedseed>
+    <deployedseed>933484412</deployedseed>
+    <deployedseed>2083758238</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_1</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

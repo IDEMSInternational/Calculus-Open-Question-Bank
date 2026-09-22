@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="description">
+    <name>
+      <text>Examples</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p style="color: red;">Example \(1\)</p>
+<p>Evaluate the indefinite integral \(\displaystyle \int 5\,dx\)</p>
+<p style="color: red;">Solution</p>
+<p>Applying the Constant Rule: \(\displaystyle \int k\,dx=kx+C\)</p>
+<p>we have,</p>
+<p>\[\displaystyle \int 5\,dx=5x+C\]</p>
+<br>
+<p style="color: red;">Example \(2\)</p>
+<p>Evaluate the indefinite integral \(\displaystyle \int 4x\,dx\)</p>
+<p style="color: red;">Solution</p>
+<p>Apply the power rule of antidifferentiation i.e Power Rule</p>
+<p>where \(n\neq -1: \displaystyle \int X^n\,dx=\displaystyle \frac{1}{n+1}X^{n+1}+C\)</p>
+<p>We have</p>
+<p>\(
+\begin{align}
+\displaystyle \int 4x\,dx&=4\int x\,dx\\
+&=4 \times \displaystyle \frac{1}{1+1}X^{1+1}+C\\
+&=4\times \displaystyle \frac{1}{2}x^2+C\\
+&=2x^2+C
+\end{align}
+\)</p>
+<p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>0</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+  </question>
+</quiz>

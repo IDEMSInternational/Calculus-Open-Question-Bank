@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluating Limits of Functions</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Evaluate the following limit</p>
+<p>\( \quad \quad \displaystyle  f'(x) = \lim_{{h \to 0}} {@difference_quotient@} \)</p>
+<p>\(\quad \quad  f^{\prime}(x) =\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Evaluate the following limit</p>
+<p>\(  \displaystyle  f'(x) = \lim_{{h \to 0}} {@difference_quotient@} \)</p>
+<p>\(    f'(h)  \) is not defined as \(h \to 0\)</p>
+
+<p>\( \begin{align} \displaystyle  f'(x) &= \lim_{{h \to 0}} {@difference_quotient@} &&\text{Expand the numerator and simplify}\\
+&= \lim_{{h \to 0}} \frac{{@difference_quotient_expand@}}{h} &&\text{Factor out h in the numerator}\\
+&= \lim_{{h \to 0}} \frac{{@difference_quotient_factor@}}{h} &&\text{Cancel the h terms}\\
+&= \lim_{{h \to 0}} \left( {@expand(simplified_quotient)@} \right) &&\text{Take the limit as h approaches} \, 0\\
+&= {@ta@} \end{align}  \)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Define the function*/
+coef:rand(100)+1;
+power:rand(5)+2;
+f(x):=coef*x^power; 
+
+/*Worked Solution code*/
+difference_quotient: (f(x + h) - f(x)) / h;
+difference_quotient_expand:expand(num(difference_quotient));
+difference_quotient_factor:factor(difference_quotient_expand);
+simplified_quotient:difference_quotient_factor/h;
+derivative_from_diff_quotient: limit(simplified_quotient, h, 0); 
+
+/*Model answer*/
+ta:diff(f(x),x);
+
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<br>\(f(x)={@f(x)@}\)
+<br>\(f'(x)={@ta@}\)]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">https://docs.google.com/document/d/1CF3tJ2dDEuSOmudgsssUVtdY1DxnKTEAtCADGW8n_fs/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">2</p>
+<p id="description">The question requires students to evaluate the limit of the given function.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct derivative by definition</description>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>x</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1251670415</deployedseed>
+    <deployedseed>714999275</deployedseed>
+    <deployedseed>334463641</deployedseed>
+    <deployedseed>89369454</deployedseed>
+    <deployedseed>1906125301</deployedseed>
+    <deployedseed>157124424</deployedseed>
+    <deployedseed>268400376</deployedseed>
+    <deployedseed>983805843</deployedseed>
+    <deployedseed>1105987598</deployedseed>
+    <deployedseed>1531929632</deployedseed>
+    <deployedseed>1068231675</deployedseed>
+    <deployedseed>349666922</deployedseed>
+    <deployedseed>1269290541</deployedseed>
+    <deployedseed>480159792</deployedseed>
+    <deployedseed>153527552</deployedseed>
+    <deployedseed>1758564839</deployedseed>
+    <deployedseed>1758683709</deployedseed>
+    <deployedseed>916915359</deployedseed>
+    <deployedseed>1958748927</deployedseed>
+    <deployedseed>1726159272</deployedseed>
+    <deployedseed>1701164218</deployedseed>
+    <deployedseed>838445706</deployedseed>
+    <deployedseed>1057138706</deployedseed>
+    <deployedseed>1449058574</deployedseed>
+    <deployedseed>1818375779</deployedseed>
+    <deployedseed>908943009</deployedseed>
+    <deployedseed>1483013500</deployedseed>
+    <deployedseed>26754251</deployedseed>
+    <deployedseed>2025438898</deployedseed>
+    <deployedseed>387808803</deployedseed>
+    <deployedseed>1810267351</deployedseed>
+    <deployedseed>845213432</deployedseed>
+    <deployedseed>1195347159</deployedseed>
+    <deployedseed>1508017143</deployedseed>
+    <deployedseed>266972750</deployedseed>
+    <deployedseed>698163830</deployedseed>
+    <deployedseed>871409897</deployedseed>
+    <deployedseed>1134555340</deployedseed>
+    <deployedseed>495119462</deployedseed>
+    <deployedseed>1900499955</deployedseed>
+    <deployedseed>1246427022</deployedseed>
+    <deployedseed>2095613735</deployedseed>
+    <deployedseed>1652963145</deployedseed>
+    <deployedseed>1353601799</deployedseed>
+    <deployedseed>670336839</deployedseed>
+    <deployedseed>1527537599</deployedseed>
+    <deployedseed>189175633</deployedseed>
+    <deployedseed>720487088</deployedseed>
+    <deployedseed>1357002515</deployedseed>
+    <deployedseed>1686483791</deployedseed>
+    <deployedseed>1336571222</deployedseed>
+    <deployedseed>1744589797</deployedseed>
+    <deployedseed>507891593</deployedseed>
+    <deployedseed>128105069</deployedseed>
+    <deployedseed>1609953840</deployedseed>
+    <deployedseed>595937634</deployedseed>
+    <deployedseed>596437443</deployedseed>
+    <deployedseed>1546967360</deployedseed>
+    <deployedseed>5498611</deployedseed>
+    <deployedseed>2030501572</deployedseed>
+    <deployedseed>1802764969</deployedseed>
+    <deployedseed>1136641621</deployedseed>
+    <deployedseed>1163219309</deployedseed>
+    <deployedseed>1674341128</deployedseed>
+    <deployedseed>1755825792</deployedseed>
+    <deployedseed>1609820797</deployedseed>
+    <deployedseed>1833413517</deployedseed>
+    <deployedseed>1253815510</deployedseed>
+    <deployedseed>1045653281</deployedseed>
+    <deployedseed>1805726505</deployedseed>
+    <deployedseed>248170933</deployedseed>
+    <deployedseed>1338267108</deployedseed>
+    <deployedseed>312541460</deployedseed>
+    <deployedseed>427626107</deployedseed>
+    <deployedseed>1062603582</deployedseed>
+    <deployedseed>1733282098</deployedseed>
+    <deployedseed>567026059</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

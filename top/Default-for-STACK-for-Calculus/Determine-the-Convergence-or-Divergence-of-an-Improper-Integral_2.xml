@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Determine the Convergence or Divergence of an Improper Integral</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Evaluate the Integral below and determine if it converges or diverges.</p>
+<p>Note: \( \infty\) is entered as <b>inf</b> and \( -\infty\) is entered as <b>minf</b>.</p>
+<p>\( \displaystyle \int_{{@lower_limit@}}^{{@upper_limit@}}  \frac{{@num@}}{{@den1@}{@den2@}} \, dx =\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+<p>Therefore, the integral is [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>
+To evaluate the integral 
+\( \displaystyle \int_{{@lower_limit@}}^{{@upper_limit@}}  \frac{{@num@}}{{@den1@}{@den2@}} \, dx\),
+we first check for Convergence or Divergence of the integral.
+</p>
+
+<p>
+Since \(x = {@lower_limit@}\) is the lower bound of the integral, \(  \displaystyle \frac{{@num@}}{{@den1@}{@den2@}}\) is undefined at \(x = {@lower_limit@}\).
+</p>
+<p>Therefore, we’ll need to replace \({@lower_limit@}\) with a parameter \(t\) as follows,
+</p>
+
+<p>Rewrite the integral as an improper integral: </p>
+<p> \( \qquad  \displaystyle  \int_{{@lower_limit@}}^{{@upper_limit@}}  \frac{{@num@}}{{@den1@}{@den2@}} \, dx = \lim_{t \to {@lower_limit@}^{+}} \int_{t}^{{@upper_limit@}}  \frac{{@num@}}{{@den1@}{@den2@}}\, dx\).
+</p>
+
+<p>
+Now, we integrate \( \displaystyle \frac{{@num@}}{{@den1@}{@den2@}}\) with respect to \(x\):</p>
+<p> \( \qquad \displaystyle  \begin{align} \int \frac{{@num@}}{{@den1@}{@den2@}}\, dx &= {@num@} \cdot \frac{x^{{@-power@} + 1}}{{@-power@} + 1}  \\
+                                                  & = {@num@} \cdot \frac{x^{{@-power+1@}}}{ \displaystyle {@-power+1@}} \\
+                                                  &= {@new_indef@}
+   \end{align} \)</p>
+
+<p>
+Thus,
+\(\displaystyle  \displaystyle  \int_{{@lower_limit@}}^{{@upper_limit@}}  \frac{{@num@}}{{@den1@}{@den2@}} \, dx = \lim_{t \to {@lower_limit@}^{+}} \left[ {@new_indef@} \right]_{t}^{{@upper_limit@}}\)
+</p>
+
+<p>
+Substitute the limits:
+\(\displaystyle  \lim_{t \to {@lower_limit@}^{+}} \left( \displaystyle {@ta@} \right) \to {@ta_1@}\). 
+<p>\( \implies \displaystyle \int_{{@lower_limit@}}^{{@upper_limit@}}  \frac{{@num@}}{{@den1@}{@den2@}} \, dx \to {@ta_1@}\).
+</p>
+
+<p>Therefore, the integral is \(\displaystyle  \text{@ta_2@}\) </p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* Step 1: Define the integrand */
+lower_limit: 0;
+upper_limit: rand(10)+3;
+num: upper_limit+rand(3)+1;
+den1:x^(rand(3)+1)
+den2:sqrt(x);
+den: den1*den2;
+fx: num / den;  /* The function */
+func: fx;
+
+/* Step 2: Set up the improper integral using a limit as t -> 0+ */
+new_indef: int(fx, x);   /* Use 'integrate' for the indefinite integral */
+upper: at(new_indef, x = upper_limit);
+lower: at(new_indef, x = t);
+ta: upper - lower;
+
+/* Model answer */
+ta_1: limit(ta, t, lower_limit, plus);   /* Evaluate the limit as t approaches 0+ */
+ta_2: if ta_1 = inf then "Divergent" elseif ta_1 = minf then "Divergent" else "Convergent";
+ta_3: if ta_2 = "Divergent" then "Convergent" else "Divergent";
+ta_4: random_permutation([[ta_2, true], [ta_3, false], ["Divergent and Convergent", false]]);
+
+/*Worked Solution*/
+/* Define the expression */
+expr: den;
+
+/* Extract the exponent */
+power: part(expr, 2);
+
+]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Determine if the following integral converges or diverges. If the integral converges, determine its value.</p>
+<p>\( \displaystyle \int_{{@lower_limit@}}^{{@upper_limit@}}{@fx@}dx={@ta_1@}\)</p>
+<p>Therefore, the integral is {@mcq_correct(ta_4)[1]@}</p>
+]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept"></p>
+<p id="reviewer">Mary Sayuni</p>
+<p id="reviewer">[2]</p>
+<p id="description">The questions focues on evaluating a definite Integral from a given  negative infinity to zero and determining if the Integral converges or diverges</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>dropdown</type>
+      <tans>ta_4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*possible mistakes*/
+/*node 1 checks for correct answer*/
+/*node 2 mistake:integrating the indefinite integral without the limits */
+mistake_2:int(func,x);
+/*node 3 mistake: interchanging the limits of integration*/
+mistake_3:int(func,x,upper_limit,lower_limit);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>integrating the indefinite integral without the limits</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have integrated the function correctly but did not input the limits. Take a look at the worked solution below.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>interchanging the limits of integration</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your computation looks okay for the definite integral, however it looks like you have interchanged the limits of integration.
+Take a look at the worked solution below.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer */</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mcq_correct(ta_4)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>566503339</deployedseed>
+    <deployedseed>1507958139</deployedseed>
+    <deployedseed>1713978932</deployedseed>
+    <deployedseed>787912405</deployedseed>
+    <deployedseed>1498544628</deployedseed>
+    <deployedseed>244054474</deployedseed>
+    <deployedseed>726234485</deployedseed>
+    <deployedseed>7653638</deployedseed>
+    <deployedseed>572596270</deployedseed>
+    <deployedseed>601302433</deployedseed>
+    <deployedseed>156838970</deployedseed>
+    <deployedseed>1672668398</deployedseed>
+    <deployedseed>1800883950</deployedseed>
+    <deployedseed>1108504072</deployedseed>
+    <deployedseed>1288146408</deployedseed>
+    <deployedseed>637335649</deployedseed>
+    <deployedseed>519404573</deployedseed>
+    <deployedseed>2064914324</deployedseed>
+    <deployedseed>500777335</deployedseed>
+    <deployedseed>1228408843</deployedseed>
+    <deployedseed>489474659</deployedseed>
+    <deployedseed>2079071328</deployedseed>
+    <deployedseed>918592150</deployedseed>
+    <deployedseed>1036789478</deployedseed>
+    <deployedseed>120191830</deployedseed>
+    <deployedseed>406527539</deployedseed>
+    <deployedseed>1108561987</deployedseed>
+    <deployedseed>865664244</deployedseed>
+    <deployedseed>925589797</deployedseed>
+    <deployedseed>82235940</deployedseed>
+    <deployedseed>1413094679</deployedseed>
+    <deployedseed>970566808</deployedseed>
+    <deployedseed>436775959</deployedseed>
+    <deployedseed>708577869</deployedseed>
+    <deployedseed>982428126</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>first(mcq_correct(ta_4))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

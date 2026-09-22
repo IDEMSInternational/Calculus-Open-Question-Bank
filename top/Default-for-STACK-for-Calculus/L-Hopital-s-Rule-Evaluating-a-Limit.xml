@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>L'Hopital's Rule: Evaluating a Limit</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p></p><p>Use L'Hopital's Rule to evaluate \(\displaystyle \lim_{x\rightarrow {@aa@}} {@fx@}.\)</p><p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><h3><b>Worked Solution</b></h3></p>
+<p>The given function is: \(\displaystyle f(x) =  {@fx@}\).</p>
+<p>And we are asked to find: \(\displaystyle \lim_{{x\to {@aa@}}} f(x)\)</p>
+<p><b>Step 1:</b> Substitute \(x={@aa@}\) into \(f(x)\):</p>
+<p> Evaluating \( {@top@} \) at \( x={@aa@} \)  yields to  \(0\).</p>
+<p> Evaluating \( {@bot@}  \) at \(x={@aa@} \) yields to \(0\).</p>
+<p>We can observe that both the numerator and the denominator have resulted to \(\displaystyle f({@aa@}) = \frac{0}{0}\). This indicates that the limit is of the form \(\frac{0}{0}\).</p>
+<p><b>Step 2:</b> Apply L'Hôpital's Rule:</p>
+<p>To use L'Hôpital's Rule, we take the derivative of both the numerator and denominator with respect to \(x\) and then evaluate the limit again. That is,
+<p>\( \begin{align}
+ \displaystyle \lim_{{x\to {@aa@}}} f(x) =  \displaystyle \lim_{{x\to {@aa@}}} \frac{({@top@})'}{({@bot@})'}
+\end{align}
+\)</p>
+<p>Let's find the derivatives;</p>
+<p>The derivative of the numerator \({@top@}\) is: </p>
+<p>\( \begin{align}
+({@top@})' & = \displaystyle \frac{d}{dx} \left[{@top@}\right] \\
+& ={@dtop@} 
+\end{align}
+\)</p>
+<p>The derivative of the denominator \({@bot@}\) is:</p>
+<p>\( \begin{align}
+({@bot@})' & = \displaystyle \frac{d}{dx} \left[{@bot@}\right] \\
+& ={@dbot@} 
+\end{align}
+\)</p>
+<p><b>Step 3:</b> Evaluate the derivatives at \(x={@aa@}\):</p>
+<p>\( \begin{align}
+ \displaystyle \lim_{{x\to {@aa@}}} f(x) & =  \displaystyle \lim_{{x\to {@aa@}}} \frac{@dtop@}{@dbot@}\\
+& = \frac{@valtop@}{@valbot@}
+\end{align}
+\)</p>
+<p>Therefore, \(  \displaystyle \lim_{{x\to {@aa@}}} f(x) = {@ta@} \)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>aa:rand(6)+1;
+bb:rand_with_prohib(-5,5,[aa]);
+cc:rand_with_prohib(-5,5,[aa,abs(bb)]);
+dd:rand_with_prohib(-5,5,[aa,abs(bb),abs(cc)]);
+top:expand((x-aa)*(x-bb));
+bot:expand((x-aa)*(x-cc)*(x-dd));
+dtop:diff(top,x);
+dbot:diff(bot,x);
+valtop:ev(dtop,x=aa);
+valbot:ev(dbot,x=aa);
+fx:top/bot;
+ta:valtop/valbot;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Function: \(\displaystyle \lim_{x\rightarrow {@aa@}} {@fx@}.\)</p>
+<p>Solution: \({@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Emmaculate Odhiambo </p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">This question involves applying L'Hopital's Rule to find the limit of a given function as \(x\) approaches a specific value. You need to use the rule to simplify the expression and determine the value of the limit.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct evaluation of the limit*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct evaluation of the limit</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1177459925</deployedseed>
+    <deployedseed>2024679947</deployedseed>
+    <deployedseed>1995068040</deployedseed>
+    <deployedseed>1064014803</deployedseed>
+    <deployedseed>1865789095</deployedseed>
+    <deployedseed>1084437721</deployedseed>
+    <deployedseed>678045705</deployedseed>
+    <deployedseed>1443661984</deployedseed>
+    <deployedseed>1170764487</deployedseed>
+    <deployedseed>821123684</deployedseed>
+    <deployedseed>2011919307</deployedseed>
+    <deployedseed>830466710</deployedseed>
+    <deployedseed>1270782469</deployedseed>
+    <deployedseed>201091373</deployedseed>
+    <deployedseed>562220770</deployedseed>
+    <deployedseed>1848489079</deployedseed>
+    <deployedseed>767930140</deployedseed>
+    <deployedseed>459586202</deployedseed>
+    <deployedseed>1715500221</deployedseed>
+    <deployedseed>796896688</deployedseed>
+    <deployedseed>642040339</deployedseed>
+    <deployedseed>1360341906</deployedseed>
+    <deployedseed>365436483</deployedseed>
+    <deployedseed>1792956302</deployedseed>
+    <deployedseed>231103901</deployedseed>
+    <deployedseed>560477202</deployedseed>
+    <deployedseed>1539432658</deployedseed>
+    <deployedseed>54661339</deployedseed>
+    <deployedseed>1003113328</deployedseed>
+    <deployedseed>286689770</deployedseed>
+    <deployedseed>1732611669</deployedseed>
+    <deployedseed>683370234</deployedseed>
+    <deployedseed>2032353005</deployedseed>
+    <deployedseed>1512855653</deployedseed>
+    <deployedseed>613957805</deployedseed>
+    <deployedseed>739729408</deployedseed>
+    <deployedseed>1901234901</deployedseed>
+    <deployedseed>1699709059</deployedseed>
+    <deployedseed>613870177</deployedseed>
+    <deployedseed>2049716885</deployedseed>
+    <deployedseed>137040921</deployedseed>
+    <deployedseed>330373832</deployedseed>
+    <deployedseed>1087671284</deployedseed>
+    <deployedseed>258336177</deployedseed>
+    <deployedseed>2102631831</deployedseed>
+    <deployedseed>221560047</deployedseed>
+    <deployedseed>747720824</deployedseed>
+    <deployedseed>748540051</deployedseed>
+    <deployedseed>844899001</deployedseed>
+    <deployedseed>1674191223</deployedseed>
+    <deployedseed>1124157664</deployedseed>
+    <deployedseed>802900702</deployedseed>
+    <deployedseed>192537349</deployedseed>
+    <deployedseed>835483959</deployedseed>
+    <deployedseed>1932127692</deployedseed>
+    <deployedseed>417180921</deployedseed>
+    <deployedseed>1736778</deployedseed>
+    <deployedseed>1401697765</deployedseed>
+    <deployedseed>1373120573</deployedseed>
+    <deployedseed>819231270</deployedseed>
+    <deployedseed>1406707199</deployedseed>
+    <deployedseed>1318468365</deployedseed>
+    <deployedseed>1248380616</deployedseed>
+    <deployedseed>1127766274</deployedseed>
+    <deployedseed>1796175602</deployedseed>
+    <deployedseed>13260564</deployedseed>
+    <deployedseed>526636535</deployedseed>
+    <deployedseed>382789242</deployedseed>
+    <deployedseed>1509746190</deployedseed>
+    <deployedseed>2012356554</deployedseed>
+    <deployedseed>345853378</deployedseed>
+    <deployedseed>131460768</deployedseed>
+    <deployedseed>851622940</deployedseed>
+    <deployedseed>1878389175</deployedseed>
+    <deployedseed>1109603402</deployedseed>
+    <deployedseed>2086899642</deployedseed>
+    <deployedseed>907050461</deployedseed>
+    <deployedseed>146069728</deployedseed>
+    <deployedseed>42793691</deployedseed>
+    <deployedseed>461904207</deployedseed>
+    <deployedseed>79445544</deployedseed>
+    <deployedseed>243028887</deployedseed>
+    <deployedseed>583415705</deployedseed>
+    <deployedseed>1693377394</deployedseed>
+    <deployedseed>1499406757</deployedseed>
+    <deployedseed>1102449670</deployedseed>
+    <deployedseed>967267610</deployedseed>
+    <deployedseed>2011505166</deployedseed>
+    <deployedseed>1147337436</deployedseed>
+    <deployedseed>159442241</deployedseed>
+    <deployedseed>1559195779</deployedseed>
+    <deployedseed>1375566167</deployedseed>
+    <deployedseed>1666883650</deployedseed>
+    <deployedseed>2064116390</deployedseed>
+    <deployedseed>1766636116</deployedseed>
+    <deployedseed>762830038</deployedseed>
+    <deployedseed>1304716386</deployedseed>
+    <deployedseed>463861693</deployedseed>
+    <deployedseed>1924214542</deployedseed>
+    <deployedseed>2072421199</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

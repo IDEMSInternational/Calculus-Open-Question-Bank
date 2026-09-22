@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Comparing population growth of forest A and B</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>For each \(t\), the population of a forest is represented by the function \( \displaystyle A(t)={@initial_A@}({@baseA@})^{t}\). In a neighboring forest, the population of the same type of trees is represented by the function \(\displaystyle B(t) = {@initial_B@}({@baseB@})^t\).</p>
+
+	<ol type ="a">
+    	<li>
+        	<p>Which forest's population is growing at a faster rate?</p>
+                <p>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+    	</li>
+
+    	<li>
+        	<p>Which forest had a greater number of trees initially? By how many? Take \(t=0\)</p>
+                <p>[[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>
+    	</li>
+
+    	<li>
+        	<p>Assuming the population growth models continue to represent the growth of the forests, which forest will have a greater number of trees after {@years@} years? By how many?</p>
+<p><strong>Note:</strong> Give your answer rounded to the nearest whole number where necessary</p>
+        	            <p>Evaluate \(A(t)\) and \(B(t)\) at \(t = {@years@}\):</p>
+            <ol type="i">
+                <li>
+                    <p>For forest \(A\):</p>
+                    <p>\( A({@years@}) =\)  [[input:ans3a]] \(\text{trees}\) [[validation:ans3a]] [[feedback:prt3a]]</p>
+                </li>
+                <li>
+                    <p>For forest \(B\):</p>
+                    <p>\( B({@years@}) =\)  [[input:ans3b]] \(\text{trees}\) [[validation:ans3b]] [[feedback:prt3b]]</p>
+                </li>
+                <li>
+                    <p>The difference is:  [[input:ans3c]] \(\text{trees}\) [[validation:ans3c]] [[feedback:prt3c]]</p>
+                </li>
+                <li>
+                    <p>Which forest will have a greater number of trees after {@years@} years?</p>
+                    <p>[[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</p>
+                </li>
+            </ol>
+    	</li>
+	</ol>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Forest A:  \( \displaystyle A(t)={@initial_A@}({@baseA@})^{t}\)</p>
+<p>Forest B:  \( \displaystyle B(t)={@initial_B@}({@baseB@})^{t}\)</p>
+
+	<ol type ="a">
+    	<li>
+        	<p>Which forest's population is growing at a faster rate?</p>
+ <p>To compare the growth rates of the populations in the two forests, we consider the bases of the exponential functions:</p>
+            <p>For forest \(A\), the growth rate is determined by the base \({@baseA@}\), raised to the power \(t\).</p>
+            <p>For forest \(B\), the growth rate is given directly by the base \({@baseB@}\).</p>
+            <p>Comparing the growth rates \({@baseA@}\) (for forest \(A\)) and \({@baseB@}\) (for forest \(B\)),</p>
+                <p>We see that, <strong> {@effective_growth@}</strong></p>
+    	</li>
+
+    	<li>
+        	<p>Which forest had a greater number of trees initially? By how many? Take \(t=0\)</p>
+ <p>The initial number of trees can be found by evaluating \(A(t)\) and \(B(t)\) at \(t = 0\):</p>
+            <p>For forest \(A\):</p>
+            <p>\( A(0) =   \displaystyle {@initial_A@}({@baseA@})^{0} = {@initial_A@} \cdot 1 = {@initial_A@} \)</p>
+            <p>For forest \(B\):</p>
+            <p>\( B(0) =   \displaystyle {@initial_B@}({@baseB@})^{0} = {@initial_B@} \cdot 1 = {@initial_B@} \)</p>
+            <p>So, initially, forest \(A\) had {@initial_A@} trees, and forest \(B\) had {@initial_B@} trees. The difference is: \(  {@initial_difference@} \)</p>
+                <p><strong>{@initial_trees@}</strong></p>
+    	</li>
+
+    	<li>
+        	<p>Assuming the population growth models continue to represent the growth of the forests, which forest will have a greater number of trees after {@years@} years? By how many?</p>
+<p><strong>Note:</strong> Give your answer rounded to the nearest whole number where necessary</p>
+        	            <p>Evaluate \(A(t)\) and \(B(t)\) at \(t = {@years@}\):</p>
+            <ol type="i">
+                <li>
+                    <p>For forest \(A\):</p>
+            <p>\( A({@years@}) = {@initial_A@}({@baseA@})^{{@years@}}  ={@population_A_y@}\)  </p>
+                </li>
+                <li>
+                    <p>For forest \(B\):</p>
+            <p>\( B({@years@}) = {@initial_B@}({@baseB@})^{{@years@}}  ={@population_B_y@}\)  </p>
+                </li>
+                <li>
+                    <p>The difference is: {@difference_y@}</p>
+                </li>
+                <li>
+                    <p>Which forest will have a greater number of trees after {@years@} years?</p>
+                <p><strong>{@years_growth@}</strong></p>
+                </li>
+            </ol>
+    	</li>
+	</ol>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* Part (a) */
+powera:rand(0.10)+2;
+powerb:rand_with_prohib(0.1,0.5,[powera]);
+basea: rand_with_step(1001, 2005, 1) / 1000;
+baseb:  rand_with_step(2006, 3001, 1) / 1000;
+baseA: decimalplaces(basea^powera,3);
+baseB: decimalplaces(baseb^powerb,3);
+effective_growth: if baseA > baseB then "\\(\\text{Forest A is growing at a faster rate}\\)"
+else "\\(\\text{Forest B is growing at a faster rate}\\)";
+effective_growth_rate: if effective_growth="\\(\\text{Forest A is growing at a faster rate}\\)" then "\\(\\text{Forest B is growing at a faster rate}\\)" else "\\(\\text{Forest A is growing at a faster rate}\\)";
+
+correct_answer:[[1, true, effective_growth]];
+incorrect_answers:[[2, false, effective_growth_rate],
+[3, false, "\\(\\text{None of the Forest  is growing at a faster rate}\\)"]];
+ta1:random_permutation(append(correct_answer,incorrect_answers));
+ta_index: sort(makelist(x[1], x, ta1));
+
+
+/* Part (b) */
+initial_A: rand_with_step(50,200,5);
+initial_A_t:initial_A*baseA^0;
+initial_B: rand_with_prohib(50,200,[initial_A]);
+initial_B_t:initial_B*baseB^0;
+initial_difference: abs(initial_A - initial_B);
+initial_difference1:initial_difference+1;
+initial_difference2:initial_difference+3;
+initial_trees: if initial_A_t > initial_B_t then  sconcat("\\( \\text{Forest A had}\\, ",initial_difference," \\, \\text{more trees initially than Forest B} \\)")
+else
+sconcat("\\( \\text{Forest B had}\\, ",initial_difference,"  \\, \\text{more trees initially than Forest A} \\)");
+
+/* correct answer */
+corr_ans:[[1, true, initial_trees]];
+/* wrong answers */
+incorr_ans:[
+[2, false, sconcat("\\( \\text{Forest A had}\\, ",initial_difference1," \\,  \\text{more trees initially than Forest B} \\)")],
+[3, false, sconcat("\\( \\text{Forest B had} \\, ",initial_difference2," \\, \\text{more trees initially than Forest A} \\)")]];
+ta2: random_permutation(append(corr_ans, incorr_ans));
+/*Worked Soln*/
+ta_index2: sort(makelist(x[1], x, ta2));
+
+
+
+/* Part (c) */
+years: rand(5)+2;
+population_A_y: round(initial_A * (baseA^(years)));
+population_B_y: round(initial_B * (baseB^(years)));
+difference_y: abs(population_A_y - population_B_y);
+years_growth: if population_A_y > population_B_y then "\\(\\text{Forest A}\\)" else "\\(\\text{Forest B}\\)";
+years_growth_rate:if years_growth="\\(\\text{Forest A}\\)" then "\\(\\text{Forest B}\\)" else "\\(\\text{Forest A}\\)";
+
+
+/* correct answer */
+corr_sol:[[1, true, years_growth]];
+/* wrong answers */
+incorr_sol:[[2, false, years_growth_rate],
+[3, false, "\\(\\text{None of the Forest}\\)"]];
+ta3: random_permutation(append(corr_sol, incorr_sol));
+/*Worked Soln*/
+ta_index3: sort(makelist(x[1], x, ta3));]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Forest A:  \( \displaystyle A(t)={@initial_A@}({@baseA@})^{t}\)</p>
+	<p>Forest B:  \( \displaystyle B(t)={@initial_B@}({@baseB@})^{t}\)</p>
+<br>{@(ta_index)@}
+                <p> <strong> {@effective_growth@}</strong></p>
+<br>{@(ta_index2)@}
+                <p><strong>{@initial_trees@}</strong></p>
+<br>{@(population_A_y)@}
+<br>{@(population_B_y)@}
+<br>{@(difference_y)@}
+                <p><strong>{@years_growth@}</strong></p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">https://docs.google.com/document/d/1Wg-ohsdJXaxhHBNoWv_RNd1vBQL9sOofEyUZEHc8db4/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">2</p>
+<p id="description">In this question, students are required to compare the population of two different forests given their functions.  </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>radio</type>
+      <tans>ta2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>radio</type>
+      <tans>ta3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <input>
+      <name>ans3a</name>
+      <type>algebraic</type>
+      <tans>population_A_y</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3b</name>
+      <type>algebraic</type>
+      <tans>population_B_y</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3c</name>
+      <type>algebraic</type>
+      <tans>difference_y</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mcq_correct(ta1)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mcq_correct(ta2)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mcq_correct(ta3)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3a</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>cheks for correct answer of A(t)</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans3a</sans>
+        <tans>population_A_y</tans>
+        <testoptions>1</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3a-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3a-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3b</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct evaluation for B(t)</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans3b</sans>
+        <tans>population_B_y</tans>
+        <testoptions>1</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3b-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3b-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3c</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>chceks for correct difference</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans3c</sans>
+        <tans>difference_y</tans>
+        <testoptions>1</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3c-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3c-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1837154441</deployedseed>
+    <deployedseed>288935593</deployedseed>
+    <deployedseed>1985527204</deployedseed>
+    <deployedseed>322705838</deployedseed>
+    <deployedseed>2106497832</deployedseed>
+    <deployedseed>1683067931</deployedseed>
+    <deployedseed>826777560</deployedseed>
+    <deployedseed>174603296</deployedseed>
+    <deployedseed>107693914</deployedseed>
+    <deployedseed>528888840</deployedseed>
+    <deployedseed>313618737</deployedseed>
+    <deployedseed>69350941</deployedseed>
+    <deployedseed>1431235351</deployedseed>
+    <deployedseed>1424452367</deployedseed>
+    <deployedseed>1151961730</deployedseed>
+    <deployedseed>150346485</deployedseed>
+    <deployedseed>908446656</deployedseed>
+    <deployedseed>1882949407</deployedseed>
+    <deployedseed>219406734</deployedseed>
+    <deployedseed>1233417379</deployedseed>
+    <deployedseed>1655351991</deployedseed>
+    <deployedseed>1223063182</deployedseed>
+    <deployedseed>1863578909</deployedseed>
+    <deployedseed>1333139710</deployedseed>
+    <deployedseed>71946567</deployedseed>
+    <deployedseed>1708514173</deployedseed>
+    <deployedseed>1222894606</deployedseed>
+    <deployedseed>1906562853</deployedseed>
+    <deployedseed>1671558533</deployedseed>
+    <deployedseed>2023415542</deployedseed>
+    <deployedseed>1849123109</deployedseed>
+    <deployedseed>541909865</deployedseed>
+    <deployedseed>86818017</deployedseed>
+    <deployedseed>1949663206</deployedseed>
+    <deployedseed>1374806382</deployedseed>
+    <deployedseed>643744390</deployedseed>
+    <deployedseed>1490790275</deployedseed>
+    <deployedseed>233733925</deployedseed>
+    <deployedseed>1117643898</deployedseed>
+    <deployedseed>602243104</deployedseed>
+    <deployedseed>1783567531</deployedseed>
+    <deployedseed>1973884940</deployedseed>
+    <deployedseed>1737776307</deployedseed>
+    <deployedseed>313463017</deployedseed>
+    <deployedseed>589056092</deployedseed>
+    <deployedseed>1648124339</deployedseed>
+    <deployedseed>765636035</deployedseed>
+    <deployedseed>1292304005</deployedseed>
+    <deployedseed>496172657</deployedseed>
+    <deployedseed>115904063</deployedseed>
+    <deployedseed>737203920</deployedseed>
+    <deployedseed>703735870</deployedseed>
+    <deployedseed>853432124</deployedseed>
+    <deployedseed>2068442568</deployedseed>
+    <deployedseed>497166985</deployedseed>
+    <deployedseed>1394296068</deployedseed>
+    <deployedseed>793915293</deployedseed>
+    <deployedseed>1021493999</deployedseed>
+    <deployedseed>1107798306</deployedseed>
+    <deployedseed>1146718756</deployedseed>
+    <deployedseed>1344608165</deployedseed>
+    <deployedseed>1820338525</deployedseed>
+    <deployedseed>903705312</deployedseed>
+    <deployedseed>85824175</deployedseed>
+    <deployedseed>1047200407</deployedseed>
+    <deployedseed>1520127932</deployedseed>
+    <deployedseed>470658371</deployedseed>
+    <deployedseed>546468880</deployedseed>
+    <deployedseed>493031705</deployedseed>
+    <deployedseed>96841523</deployedseed>
+    <deployedseed>1132547197</deployedseed>
+    <deployedseed>595766990</deployedseed>
+    <deployedseed>204646114</deployedseed>
+    <deployedseed>1441734622</deployedseed>
+    <deployedseed>95436988</deployedseed>
+    <deployedseed>1587429090</deployedseed>
+    <deployedseed>227154364</deployedseed>
+    <deployedseed>445502681</deployedseed>
+    <deployedseed>706781606</deployedseed>
+    <deployedseed>278305365</deployedseed>
+    <deployedseed>506575109</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>first(mcq_correct(ta1))</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>first(mcq_correct(ta2))</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>first(mcq_correct(ta3))</value>
+      </testinput>
+      <testinput>
+        <name>ans3a</name>
+        <value>population_A_y</value>
+      </testinput>
+      <testinput>
+        <name>ans3b</name>
+        <value>population_B_y</value>
+      </testinput>
+      <testinput>
+        <name>ans3c</name>
+        <value>difference_y</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3a</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3a-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3b</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3b-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3c</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3c-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

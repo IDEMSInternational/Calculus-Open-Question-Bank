@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Differentiating an exponential and natural logarithm functions.</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Differentiate the following function.</p>
+<p>\( \qquad \displaystyle R (w) = {@rw@}\)</p>
+<p><b>Note:</b>
+<ul>
+  <li>\({@a@} {@log(b)@}\) can be typed as <code>a*log(b)</code></li>
+  <li>Give your answer correctly to \(2\) decimal places where applicable</li>
+</ul>
+</p>
+<p>\( \qquad \displaystyle R' (w) = \) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+<p>\( \qquad \displaystyle R'\left({@w_val@}\right) = \) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To differentiate the function \( \displaystyle R(w) = {@rw@}\), you'll need to use the rules of differentiation.</p>
+
+<p><strong>1. Differentiate the first term \( \displaystyle {@rw1@}\):</strong></p>
+<p>The derivative of \(  \displaystyle {@rw1@}\) with respect to \(w\) can be found using the chain rule. The chain rule states that if you have a function of the form \(a^u\), where \(a\) is a constant and \(u\) is a function of \(w\), then the derivative is \( \displaystyle \ln(a) \cdot a^u \cdot \frac{du}{dw}\). In this case, \(a = {@aa@}\) and \(u = w\).</p>
+
+<p>\( \displaystyle \frac{d}{dw}\left({@rw1@}\right) = {@diff_term1@} \cdot \frac{dw}{dw} = {@diff_term1@}\)</p>
+
+<p><strong>2. Differentiate the second term \( \displaystyle {@rw2@}\):</strong></p>
+<p>To differentiate \(  \displaystyle {@rw2@}\), we can use the chain rule and the fact that \( \displaystyle \frac{d}{dx}\left(\log_a(x)\right) = \frac{1}{x\ln(a)}\). So, we have:</p>
+<p>\(\displaystyle \frac{d}{dw}\left({@rw2@}\right) = {@diff_term2@} \cdot \frac{d}{dw}(w) =  {@diff_term2@} \)</p>
+
+<p>Now, we can combine the derivatives of both terms to find the derivative of the entire function \(R(w)\):</p>
+
+<p>\(\displaystyle R'(w) = \frac{d}{dw}\left({@rw1@}\right)+ \frac{d}{dw}\left({@rw2@}\right)\)</p>
+<p>\(\displaystyle R'(w) = {@ta1@} \)</p>
+
+<p>So, the derivative of the function \(R(w) = {@rw@} \) is:</p>
+
+<p>\(\displaystyle R'(w) = {@ta1@}  \)</p>
+
+<p>To find \(\displaystyle R'\left({@w_val@}\right)\), plug in \(\displaystyle w = {@w_val@}\) into the derivative expression:</p>
+<p>\( \displaystyle R'\left({@w_val@}\right) = {@ta2@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/* Define the function */
+aa:rand(500);
+pwr:rand_with_prohib(-100,5,[-1,0,1]);
+bb:rand(500)+2;
+nn:rand(3)+2;
+dd:rand_with_prohib(1,6,[nn]);
+w_val:nn/dd;
+rw1:aa^w; 
+diff_term1: diff(rw1, w);
+rw2:pwr*log(w)/log(bb); 
+diff_term2: diff(rw2, w);
+rw : rw1+rw2 ;    
+/* Combine the derivatives of the terms */
+rw_diff:diff(rw, w); 
+ta1:(rw_diff); 
+sol:at(ta1,[w=w_val]);
+ta2: decimalplaces(sol,2);
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\( \qquad \displaystyle R (w) = {@rw@}\)</p>
+<p>\( \qquad \displaystyle R' (w) = {@ta1@}\)</p>
+<p>\( \qquad \displaystyle R'\left({@w_val@}\right) = {@ta2@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="Concept doc">N/A</p>
+<p id="reviewer">Mary Sayuni</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">Differentiating an exponential and natural logarithm functions and evaluating the value.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions>w</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Correct rounding</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p style="color:blue">Well done for giving your answer correctly to \(2\) decimal places with an error margin of \(\pm 0.01\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1432254501</deployedseed>
+    <deployedseed>422601522</deployedseed>
+    <deployedseed>2081328737</deployedseed>
+    <deployedseed>980223792</deployedseed>
+    <deployedseed>1105973536</deployedseed>
+    <deployedseed>2058575246</deployedseed>
+    <deployedseed>1891623338</deployedseed>
+    <deployedseed>1036870040</deployedseed>
+    <deployedseed>1092635289</deployedseed>
+    <deployedseed>351519341</deployedseed>
+    <deployedseed>728031353</deployedseed>
+    <deployedseed>106159296</deployedseed>
+    <deployedseed>543173867</deployedseed>
+    <deployedseed>249112690</deployedseed>
+    <deployedseed>276793003</deployedseed>
+    <deployedseed>1255632580</deployedseed>
+    <deployedseed>855020266</deployedseed>
+    <deployedseed>1531273649</deployedseed>
+    <deployedseed>174395726</deployedseed>
+    <deployedseed>868894204</deployedseed>
+    <deployedseed>1120258170</deployedseed>
+    <deployedseed>1111415224</deployedseed>
+    <deployedseed>1545491348</deployedseed>
+    <deployedseed>1356010142</deployedseed>
+    <deployedseed>891841196</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

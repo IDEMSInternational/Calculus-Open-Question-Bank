@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluating limits of functions (f)</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Evaluate the value of the following limit:</p>
+
+<p>\(\displaystyle \lim_{x\rightarrow {@var_limit^var_sign_1@}}{@eqn@} =\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+
+[[ if test='var_sign = "plus"' ]]
+  <p>If  \(x\) is close to \({@var_limit@}\) but larger than \({@var_limit@}\) then the denominator \({@(x-var_limit)@}\) is a small positive number and  {@(x * var_1)@} is close to {@(var_limit * var_1)@} . So the quotient \( \displaystyle {@eqn@}\) is a large positive number. Thus,  
+\(\displaystyle \lim_{x\rightarrow {@var_limit^var_sign_1@}}{@eqn@} ={@ta@}\)</p>
+[[ else ]]
+    <p>If  \(x\) is close to \({@var_limit@}\) but smaller than \({@var_limit@}\) then the denominator \({@(x-var_limit)@}\) is a small negative number and  {@(x * var_1)@} is close to {@(var_limit * var_1)@} . So the quotient \( \displaystyle {@eqn@}\) is a numerically large negative number. Thus,  
+\(\displaystyle \lim_{x\rightarrow {@var_limit^var_sign_1@}}{@eqn@} ={@ta@}\)</p>
+[[/ if]]]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* Generate random constant in the numerator */
+var_1: rand(10) + 2;
+
+/* Generate random limit */
+var_limit: rand(5) + 2;
+
+/* Generate random sign */
+var_sign: if rand(2) = 0 then "plus" else "minus";
+
+/* Assign the appropriate sign for display */
+var_sign_1: if var_sign = "plus" then "+" else "-";
+
+
+/* Define the equation */
+eqn: (x * var_1) / (x - var_limit);
+ta_1:inf; ta_2: -inf;
+ta:if var_sign ="plus" then ta_1 else ta_2;
+
+]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle \lim_{x\rightarrow {@var_limit^var_sign_1@}}{@eqn@} = {@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept">https://docs.google.com/document/d/1iWHYSZIwx9SW_6nJsyzWwdMU1g0uqRrcF44y5MjZYBY/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">This question requires students to explores the behavior of the functions as they approach specific points and determine the values of the limits or identify if they exist</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1021758692</deployedseed>
+    <deployedseed>920238503</deployedseed>
+    <deployedseed>516563444</deployedseed>
+    <deployedseed>1539384617</deployedseed>
+    <deployedseed>1354736328</deployedseed>
+    <deployedseed>408216982</deployedseed>
+    <deployedseed>1032672895</deployedseed>
+    <deployedseed>1067113426</deployedseed>
+    <deployedseed>913345724</deployedseed>
+    <deployedseed>1776290944</deployedseed>
+    <deployedseed>1445388700</deployedseed>
+    <deployedseed>1532640961</deployedseed>
+    <deployedseed>2024856454</deployedseed>
+    <deployedseed>716475865</deployedseed>
+    <deployedseed>1020407991</deployedseed>
+    <deployedseed>567831715</deployedseed>
+    <deployedseed>596951211</deployedseed>
+    <deployedseed>82826116</deployedseed>
+    <deployedseed>1620512435</deployedseed>
+    <deployedseed>2065090932</deployedseed>
+    <deployedseed>337542948</deployedseed>
+    <deployedseed>1737117001</deployedseed>
+    <deployedseed>387924276</deployedseed>
+    <deployedseed>457739341</deployedseed>
+    <deployedseed>1679526886</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

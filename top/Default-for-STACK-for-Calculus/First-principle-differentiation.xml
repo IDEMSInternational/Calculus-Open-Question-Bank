@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>First principle differentiation</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Differentiate \({@func@}\)</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>\(\frac{d}{dx}({@func@})={@ta@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>power_x:rand(8)+2;
+coeff_x:rand_with_step(1,5,2);
+const:rand_with_prohib(-10,10,[0]);
+func:x^power_x+coeff_x*x+const;
+ta:diff(func,x);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\frac{d}{dx}({@func@})={@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">[Author Name]</p>
+<p id="concept">[URL of Concept Doc]</p>
+<p id="reviewer">[Reviewer 1 Name]</p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">[Actual question description]</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ansa</name>
+      <type>algebraic</type>
+      <tans/>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1: Checking the correct answer*/
+/*node 2: mistake: integrating instead of differentiating*/
+mistake_2:int(func,x)+c;
+</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checking the correct differentiation answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>mistake: integrating instead of differentiating</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You integrated instead of differentiating. Kindly check the worked Solution below</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1893501753</deployedseed>
+    <deployedseed>288654882</deployedseed>
+    <deployedseed>850538519</deployedseed>
+    <deployedseed>1352899658</deployedseed>
+    <deployedseed>1114493135</deployedseed>
+    <deployedseed>2133958875</deployedseed>
+    <deployedseed>1002694049</deployedseed>
+    <deployedseed>1227089257</deployedseed>
+    <deployedseed>1541079466</deployedseed>
+    <deployedseed>2111881587</deployedseed>
+    <deployedseed>530788040</deployedseed>
+    <deployedseed>2013354639</deployedseed>
+    <deployedseed>74059918</deployedseed>
+    <deployedseed>470144190</deployedseed>
+    <deployedseed>44775168</deployedseed>
+    <deployedseed>195790409</deployedseed>
+    <deployedseed>122452496</deployedseed>
+    <deployedseed>1036514445</deployedseed>
+    <deployedseed>857502901</deployedseed>
+    <deployedseed>570058856</deployedseed>
+    <deployedseed>15875750</deployedseed>
+    <deployedseed>2022990092</deployedseed>
+    <deployedseed>1201101570</deployedseed>
+    <deployedseed>454989108</deployedseed>
+    <deployedseed>314369989</deployedseed>
+    <deployedseed>1657718436</deployedseed>
+    <deployedseed>1165902165</deployedseed>
+    <deployedseed>1108294335</deployedseed>
+    <deployedseed>1539307396</deployedseed>
+    <deployedseed>1111075660</deployedseed>
+    <deployedseed>1087923271</deployedseed>
+    <deployedseed>209920743</deployedseed>
+    <deployedseed>1267582187</deployedseed>
+    <deployedseed>29312194</deployedseed>
+    <deployedseed>1270934255</deployedseed>
+    <deployedseed>1086741037</deployedseed>
+    <deployedseed>1674573858</deployedseed>
+    <deployedseed>102247213</deployedseed>
+    <deployedseed>323949524</deployedseed>
+    <deployedseed>536610427</deployedseed>
+    <deployedseed>1379685368</deployedseed>
+    <deployedseed>571003045</deployedseed>
+    <deployedseed>1080233090</deployedseed>
+    <deployedseed>1688388181</deployedseed>
+    <deployedseed>1119753925</deployedseed>
+    <deployedseed>842457032</deployedseed>
+    <deployedseed>1894156658</deployedseed>
+    <deployedseed>786165846</deployedseed>
+    <deployedseed>896586633</deployedseed>
+    <deployedseed>1006512658</deployedseed>
+    <deployedseed>1095368811</deployedseed>
+    <deployedseed>824083655</deployedseed>
+    <deployedseed>1508672839</deployedseed>
+    <deployedseed>2057426648</deployedseed>
+    <deployedseed>1142502865</deployedseed>
+    <deployedseed>1166466566</deployedseed>
+    <deployedseed>1954026160</deployedseed>
+    <deployedseed>1334103729</deployedseed>
+    <deployedseed>1548963700</deployedseed>
+    <deployedseed>587842231</deployedseed>
+    <deployedseed>526529150</deployedseed>
+    <deployedseed>2017839715</deployedseed>
+    <deployedseed>1169162989</deployedseed>
+    <deployedseed>1720635145</deployedseed>
+    <deployedseed>614231106</deployedseed>
+    <deployedseed>1208448537</deployedseed>
+    <deployedseed>1999469666</deployedseed>
+    <deployedseed>519480590</deployedseed>
+    <deployedseed>1053555697</deployedseed>
+    <deployedseed>458081908</deployedseed>
+    <deployedseed>569581515</deployedseed>
+    <deployedseed>218959811</deployedseed>
+    <deployedseed>1065533583</deployedseed>
+    <deployedseed>1343274873</deployedseed>
+    <deployedseed>489636361</deployedseed>
+    <deployedseed>1605987463</deployedseed>
+    <deployedseed>297449962</deployedseed>
+    <deployedseed>1136064938</deployedseed>
+    <deployedseed>65502526</deployedseed>
+    <deployedseed>2112146260</deployedseed>
+    <deployedseed>785611937</deployedseed>
+    <deployedseed>1732074434</deployedseed>
+    <deployedseed>1822444440</deployedseed>
+    <deployedseed>2083580276</deployedseed>
+    <deployedseed>1127222007</deployedseed>
+    <deployedseed>1517364877</deployedseed>
+    <deployedseed>1829549353</deployedseed>
+    <deployedseed>973435559</deployedseed>
+    <deployedseed>1374899832</deployedseed>
+    <deployedseed>969357885</deployedseed>
+    <deployedseed>582754928</deployedseed>
+    <deployedseed>1091463612</deployedseed>
+    <deployedseed>1703261081</deployedseed>
+    <deployedseed>1358936353</deployedseed>
+    <deployedseed>1644399273</deployedseed>
+    <deployedseed>550830953</deployedseed>
+    <deployedseed>218653590</deployedseed>
+    <deployedseed>1912892960</deployedseed>
+    <deployedseed>1425436486</deployedseed>
+    <deployedseed>1379026449</deployedseed>
+  </question>
+</quiz>

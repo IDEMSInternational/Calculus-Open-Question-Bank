@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluating the Limit of a Multivariable Function</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Determine if the limit of the function below exists or not. Fill in the missing computational steps.</p>
+<p>\( \displaystyle \lim_{(x,y) \to ({@var_x@},{@var_y@})} {@question_func@}\)</p>
+<br>
+<p>Recall, \(  \displaystyle \lim_{(x,y) \to (x,y)} \frac{ f(x,y)}{g(x,y)} = \frac{\lim_{(x,y) \to (x,y)}  f(x,y)}{\lim_{(x,y) \to (x,y)}  g(x,y)} \) where \( \lim_{(x,y) \to (x,y)}  g(x,y) \neq 0\) </p>
+<br>
+<p>First, let’s check if the limit of the function in the denominator will give us a zero. </p>
+<p>\( \displaystyle \lim_{(x,y) \to ({@var_x@},{@var_y@})} ({@func_denom@}) =\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<br>
+<p>From here, we can proceed as follows;</p>
+<p>\( \displaystyle \lim_{(x,y) \to ({@var_x@},{@var_y@})} {@question_func@} = \frac{\lim_{(x,y) \to  ({@var_x@},{@var_y@})}  ({@func_num@}))}{\lim_{(x,y) \to ({@var_x@},{@var_y@})}  ({@func_denom@})}=\)  [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>
+<br>
+<p>Therefore, we can say that the limit of this function [[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To determine if the limit of the given function \( \displaystyle \lim_{(x, y) \to ({@var_x@},{@var_y@})} {@question_func@} \) exists </p>
+<p> Recall, \(  \displaystyle \lim_{(x,y) \to (x,y)} \frac{ f(x,y)}{g(x,y)} = \frac{\lim_{(x,y) \to (x,y)}  f(x,y)}{\lim_{(x,y) \to (x,y)}  g(x,y)} \) where \(  \displaystyle  \lim_{(x,y) \to (x,y)}  g(x,y) \neq 0\) </p>
+<p>First, we need to check the limit of the denominator:</p>
+
+<p>\( \displaystyle  \lim_{(x, y) \to ({@var_x@},{@var_y@})} ({@func_denom@}) \)</p>
+
+<p>Now, evaluate this limit:</p>
+
+<p>\( \displaystyle \lim_{(x, y) \to ({@var_x@},{@var_y@})} ({@func_denom@}) = {@cc@}({@var_x@})({@var_y@}^2)+{@dd@}({@var_y@}) =  {@cc*var_x*var_y^2@}+{@dd*var_y@} = {@ta1@} \)</p>
+
+<p>Since the limit of the denominator is not zero \(({@ta1@}  \neq 0\)), we can proceed with finding the limit of the entire function using the provided formula:</p>
+
+<p>\( \displaystyle \lim_{(x,y) \to ({@var_x@},{@var_y@})} {@question_func@} = \frac{\lim_{(x,y) \to  ({@var_x@},{@var_y@})}  ({@func_num@})}{\lim_{(x,y) \to ({@var_x@},{@var_y@})}  ({@func_denom@})}\)</p>
+
+<p>Now, let's calculate these limits separately:</p>
+
+<p>For the numerator:</p>
+
+<p>\( \displaystyle \lim_{(x, y) \to ({@var_x@},{@var_y@})} ({@func_num@}) = {@aa@}({@var_x@}^2)({@var_y@})+{@bb@}({@var_x@})({@var_y@}) = {@aa*(var_x^2)*var_y@}+{@bb*var_x*var_y@} = {@aa*(var_x^2)*var_y+bb*var_x*var_y@} \)</p>
+
+<p>Now, we can find the limit of the entire function:</p>
+
+<p>\(\displaystyle \frac{\lim_{(x,y) \to  ({@var_x@},{@var_y@})}  ({@func_num@})}{\lim_{(x,y) \to ({@var_x@},{@var_y@})}  ({@func_denom@})}  = \frac{{@aa*(var_x^2)*var_y+bb*var_x*var_y@}}{{@ta1@}} = {@ta2@} \)</p>
+
+<p>So, the limit of the given function as \( \displaystyle \lim_{(x, y) \to ({@var_x@},{@var_y@})} {@question_func@} \) {@ta3a@} and is equal to \( \displaystyle {@ta2@}\).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[aa:rand(6)+1; bb:rand_with_step(-6, 6, 1); cc:rand(4)+2; dd:rand(8)+2; /*random variables for the coefficients*/
+
+func_num:(aa*x^2*y+bb*x*y);    /*numerator func*/
+func_denom:cc*x*y^2+(dd)*y;  /*denominator func*/
+question_func:func_num/func_denom;  /* question function*/
+
+var_x:rand(6)+3;  
+var_y:rand_with_prohib(1,8,[var_x]); /*limit points for x and y*/
+
+/*Worked solution variables*/
+ta_1a:limit (func_denom, x, var_x); /*subst for x with var_x*/
+ta1:limit (ta_1a, y, var_y);  /*subst for y with var_x_  input ans 1*/
+
+ta_2a:limit (question_func, x, var_x);  /*subst for x with var_x in the question_func*/
+ta2:limit(ta_2a, y,var_y);   /*subst for y with var_y_ input ans 2*/
+
+ta3a: if ta2#0 then  "exists" else "doesn't exist";
+ta3:[[ta3a, true],["Doesn't exist", false]];
+]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\( \displaystyle \lim_{(x, y) \to ({@var_x@},{@var_y@})} {@question_func@} \) {@ta3a@} and is equal to \( \displaystyle {@ta2@}\).</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">[This question asks students to determine whether a given function has a limit as the variables approach a specified point. The question provides the necessary formula and guides students through the steps to evaluate the limit. The student is required to check the limit of the function in the denominator and apply the limit laws to determine the overall limit existence.]</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>dropdown</type>
+      <tans>ta3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for corrcet answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for corrcet answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for corrcet answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mcq_correct(ta3)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>736600584</deployedseed>
+    <deployedseed>1297477993</deployedseed>
+    <deployedseed>803562047</deployedseed>
+    <deployedseed>1463643594</deployedseed>
+    <deployedseed>1749309935</deployedseed>
+    <deployedseed>1466021838</deployedseed>
+    <deployedseed>525076323</deployedseed>
+    <deployedseed>174812881</deployedseed>
+    <deployedseed>2126606346</deployedseed>
+    <deployedseed>1386213016</deployedseed>
+    <deployedseed>2074736995</deployedseed>
+    <deployedseed>704897633</deployedseed>
+    <deployedseed>1787826287</deployedseed>
+    <deployedseed>234551517</deployedseed>
+    <deployedseed>1225314748</deployedseed>
+    <deployedseed>1991917358</deployedseed>
+    <deployedseed>1548056369</deployedseed>
+    <deployedseed>785470806</deployedseed>
+    <deployedseed>830225281</deployedseed>
+    <deployedseed>1355327361</deployedseed>
+    <deployedseed>974904308</deployedseed>
+    <deployedseed>1210563641</deployedseed>
+    <deployedseed>395236782</deployedseed>
+    <deployedseed>1696185156</deployedseed>
+    <deployedseed>481992895</deployedseed>
+    <deployedseed>1349519538</deployedseed>
+    <deployedseed>1705031943</deployedseed>
+    <deployedseed>197971266</deployedseed>
+    <deployedseed>422485084</deployedseed>
+    <deployedseed>249697661</deployedseed>
+    <deployedseed>1363767167</deployedseed>
+    <deployedseed>366260547</deployedseed>
+    <deployedseed>1558114514</deployedseed>
+    <deployedseed>233399933</deployedseed>
+    <deployedseed>1322043999</deployedseed>
+    <deployedseed>713776198</deployedseed>
+    <deployedseed>639561801</deployedseed>
+    <deployedseed>323845149</deployedseed>
+    <deployedseed>2143153828</deployedseed>
+    <deployedseed>1781553294</deployedseed>
+    <deployedseed>1416780559</deployedseed>
+    <deployedseed>1036979936</deployedseed>
+    <deployedseed>598761864</deployedseed>
+    <deployedseed>1025481327</deployedseed>
+    <deployedseed>478562639</deployedseed>
+    <deployedseed>1794842219</deployedseed>
+    <deployedseed>1984488695</deployedseed>
+    <deployedseed>282021161</deployedseed>
+    <deployedseed>1772363688</deployedseed>
+    <deployedseed>1176404085</deployedseed>
+    <deployedseed>1079091253</deployedseed>
+    <deployedseed>1436712325</deployedseed>
+    <deployedseed>602723006</deployedseed>
+    <deployedseed>1421655127</deployedseed>
+    <deployedseed>1404471623</deployedseed>
+    <deployedseed>1901257859</deployedseed>
+    <deployedseed>930766069</deployedseed>
+    <deployedseed>605494402</deployedseed>
+    <deployedseed>1241118797</deployedseed>
+    <deployedseed>1379488048</deployedseed>
+    <deployedseed>437604077</deployedseed>
+    <deployedseed>145271449</deployedseed>
+    <deployedseed>177908431</deployedseed>
+    <deployedseed>1903804675</deployedseed>
+    <deployedseed>1461627414</deployedseed>
+    <deployedseed>1373117571</deployedseed>
+    <deployedseed>276163906</deployedseed>
+    <deployedseed>405427785</deployedseed>
+    <deployedseed>1173382251</deployedseed>
+    <deployedseed>1092403959</deployedseed>
+    <deployedseed>1393501602</deployedseed>
+    <deployedseed>1337074550</deployedseed>
+    <deployedseed>868438714</deployedseed>
+    <deployedseed>1187549088</deployedseed>
+    <deployedseed>456424980</deployedseed>
+    <deployedseed>1822639340</deployedseed>
+    <deployedseed>2111451424</deployedseed>
+    <deployedseed>308159506</deployedseed>
+    <deployedseed>1675855750</deployedseed>
+    <deployedseed>248621579</deployedseed>
+    <deployedseed>688683809</deployedseed>
+    <deployedseed>1061944970</deployedseed>
+    <deployedseed>195417682</deployedseed>
+    <deployedseed>255441255</deployedseed>
+    <deployedseed>215766319</deployedseed>
+    <deployedseed>1323106410</deployedseed>
+    <deployedseed>1848781694</deployedseed>
+    <deployedseed>59042718</deployedseed>
+    <deployedseed>1056343278</deployedseed>
+    <deployedseed>579908372</deployedseed>
+    <deployedseed>428055469</deployedseed>
+    <deployedseed>1685026271</deployedseed>
+    <deployedseed>1273651859</deployedseed>
+    <deployedseed>1116812853</deployedseed>
+    <deployedseed>1117757321</deployedseed>
+    <deployedseed>554058444</deployedseed>
+    <deployedseed>1843303091</deployedseed>
+    <deployedseed>1569046199</deployedseed>
+    <deployedseed>2011230890</deployedseed>
+    <deployedseed>1686265594</deployedseed>
+    <deployedseed>242885168</deployedseed>
+    <deployedseed>2095292506</deployedseed>
+    <deployedseed>593000716</deployedseed>
+    <deployedseed>1244166305</deployedseed>
+    <deployedseed>1854074576</deployedseed>
+    <deployedseed>1374738885</deployedseed>
+    <deployedseed>458377989</deployedseed>
+    <deployedseed>193083042</deployedseed>
+    <deployedseed>4660031</deployedseed>
+    <deployedseed>487354970</deployedseed>
+    <deployedseed>1298260775</deployedseed>
+    <deployedseed>590414487</deployedseed>
+    <deployedseed>92573250</deployedseed>
+    <deployedseed>65769236</deployedseed>
+    <deployedseed>1255036372</deployedseed>
+    <deployedseed>1669817498</deployedseed>
+    <deployedseed>1199522839</deployedseed>
+    <deployedseed>80907622</deployedseed>
+    <deployedseed>1750783066</deployedseed>
+    <deployedseed>2032927404</deployedseed>
+    <deployedseed>1315896190</deployedseed>
+    <deployedseed>1045617235</deployedseed>
+    <deployedseed>544292801</deployedseed>
+    <deployedseed>416662105</deployedseed>
+    <deployedseed>1429113003</deployedseed>
+    <deployedseed>77062797</deployedseed>
+    <deployedseed>1537952002</deployedseed>
+    <deployedseed>2905959</deployedseed>
+    <deployedseed>1517706625</deployedseed>
+    <deployedseed>1184645036</deployedseed>
+    <deployedseed>1833469454</deployedseed>
+    <deployedseed>1844968177</deployedseed>
+    <deployedseed>1077350490</deployedseed>
+    <deployedseed>1923918600</deployedseed>
+    <deployedseed>1948928361</deployedseed>
+    <deployedseed>740562121</deployedseed>
+    <deployedseed>1335337505</deployedseed>
+    <deployedseed>1236409779</deployedseed>
+    <deployedseed>1738449536</deployedseed>
+    <deployedseed>2102435083</deployedseed>
+    <deployedseed>265295225</deployedseed>
+    <deployedseed>1115307037</deployedseed>
+    <deployedseed>143286693</deployedseed>
+    <deployedseed>1652196410</deployedseed>
+    <deployedseed>1954562327</deployedseed>
+    <deployedseed>880204019</deployedseed>
+    <deployedseed>1019595210</deployedseed>
+    <deployedseed>1706353649</deployedseed>
+    <deployedseed>737461693</deployedseed>
+    <deployedseed>792739334</deployedseed>
+    <deployedseed>1733104770</deployedseed>
+    <deployedseed>736198744</deployedseed>
+    <deployedseed>198082129</deployedseed>
+    <deployedseed>604878038</deployedseed>
+    <deployedseed>1913195698</deployedseed>
+    <deployedseed>447410173</deployedseed>
+    <deployedseed>1535253172</deployedseed>
+    <deployedseed>787249866</deployedseed>
+    <deployedseed>168229161</deployedseed>
+    <deployedseed>226721074</deployedseed>
+    <deployedseed>1711057957</deployedseed>
+    <deployedseed>1682662482</deployedseed>
+    <deployedseed>355463476</deployedseed>
+    <deployedseed>1054344964</deployedseed>
+    <deployedseed>1179810826</deployedseed>
+    <deployedseed>1296165070</deployedseed>
+    <deployedseed>497216631</deployedseed>
+    <deployedseed>801317881</deployedseed>
+    <deployedseed>1256375627</deployedseed>
+    <deployedseed>1262897276</deployedseed>
+    <deployedseed>856371661</deployedseed>
+    <deployedseed>1222989670</deployedseed>
+    <deployedseed>2067179157</deployedseed>
+    <deployedseed>1650052785</deployedseed>
+    <deployedseed>1712531995</deployedseed>
+    <deployedseed>934333952</deployedseed>
+    <deployedseed>1180714830</deployedseed>
+    <deployedseed>1927927930</deployedseed>
+    <deployedseed>1893115347</deployedseed>
+    <deployedseed>905131388</deployedseed>
+    <deployedseed>1315317416</deployedseed>
+    <deployedseed>2063320179</deployedseed>
+    <deployedseed>1014678572</deployedseed>
+    <deployedseed>349845200</deployedseed>
+    <deployedseed>155250686</deployedseed>
+    <deployedseed>487060013</deployedseed>
+    <deployedseed>528943078</deployedseed>
+    <deployedseed>471258813</deployedseed>
+    <deployedseed>254190057</deployedseed>
+    <deployedseed>1284250232</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>first(mcq_correct(ta3))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluating Logarithmic Expressions</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Evaluate correct to 6 decimal places</p>
+<p>\(\log_{@random_num2@}{@random_num1@}=\) [[input:ans1]][[validation:ans1]][[feedback:prt1]]</p>
+<p>\(\log_{@random_num3@}{@float(random_num/10)@}=\) [[input:ans2]][[validation:ans2]][[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>(a)  \(\displaystyle \log_{@random_num2@}{@random_num1@}=x \Longleftrightarrow {@random_num2@}^x={@random_num1@} \)</p>
+<p>\( \displaystyle \Longleftrightarrow \ln {@random_num2@}^x=\ln {@random_num1@} \Longleftrightarrow x \ln {@random_num2@} =\ln {@random_num1@} \)</p>
+<p>\(\displaystyle \Longleftrightarrow x=\frac{\ln {@random_num1@}}{\ln {@random_num2@}}\)</p>
+<p>Thus, \( \displaystyle \log_{@random_num2@}{@random_num1@}=\frac{\ln{@random_num1@}}{\ln{@random_num2@}} \approx {@ta1@}...\)</p>
+<p>(b)  \(\displaystyle \log_{@random_num3@}{@float(random_num/10)@}=y \Longleftrightarrow {@random_num3@}^y={@float(random_num/10)@} \)</p>
+<p>\(\displaystyle \ln{@random_num3@}^y=\ln {@float(random_num/10)@} \Longleftrightarrow y \ln {@random_num3@} =\ln {@float(random_num/10)@} \)</p>
+<p>\(\displaystyle \Longleftrightarrow y=\frac{\ln {@float(random_num/10)@}}{\ln{@random_num3@}}\)</p>
+<p>Thus,  \(\displaystyle \log_{@random_num3@}{@float(random_num/10)@}=\frac{\ln {@float(random_num/10)@}}{\ln{@random_num3@}} \approx {@ta2@}...\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>random_num1:rand_with_step(10,90,1);
+random_num2:rand_with_prohib(2,15,[10]);
+random_num3:rand_with_prohib(2,15,[10,random_num2]);
+ta1:decimalplaces(float(log(random_num1)/log(random_num2)),6);
+random_num: rand(89) + 11; /*This generates a random number between 0 and 89 and then adds 11 to ensure the number falls between 11 and 99*/
+while (mod(random_num, 10) = 0) do
+    random_num: rand(89) + 11; /*This loop checks if the generated number is a multiple of 10. If it is, it generates a new random number until one is obtained that isn't a multiple of 10*/
+random_num;
+ta2:decimalplaces(float(log(random_num/10)/log(random_num3)),6);
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\log_{@random_num2@}{@random_num1@}={@ta1@}\)</p>
+<p>\(\log_{@random_num3@}{@float(random_num/10)@}={@ta2@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Nixson kiplagat</p>
+<p id="concept">https://docs.google.com/document/d/18pGaZ0mW0i1fjXkQFZw65jXy1pS1gpfwspo_G2vet_E/edit</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">This question involves evaluating logarithmic expressions to six decimal places. The expressions include logarithms with different bases and decimal inputs, requiring the use of logarithmic properties.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions>6</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions>6</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1272494251</deployedseed>
+    <deployedseed>2130006395</deployedseed>
+    <deployedseed>1416272382</deployedseed>
+    <deployedseed>1906886054</deployedseed>
+    <deployedseed>2020241956</deployedseed>
+    <deployedseed>1002966653</deployedseed>
+    <deployedseed>1600539746</deployedseed>
+    <deployedseed>1838596239</deployedseed>
+    <deployedseed>978943988</deployedseed>
+    <deployedseed>783687292</deployedseed>
+    <deployedseed>2041557009</deployedseed>
+    <deployedseed>1224185799</deployedseed>
+    <deployedseed>1679150255</deployedseed>
+    <deployedseed>2122071669</deployedseed>
+    <deployedseed>429976922</deployedseed>
+    <deployedseed>84791166</deployedseed>
+    <deployedseed>307375349</deployedseed>
+    <deployedseed>1465436177</deployedseed>
+    <deployedseed>1123217514</deployedseed>
+    <deployedseed>870508509</deployedseed>
+    <deployedseed>470569614</deployedseed>
+    <deployedseed>1829115628</deployedseed>
+    <deployedseed>1597513536</deployedseed>
+    <deployedseed>1187545264</deployedseed>
+    <deployedseed>1242852305</deployedseed>
+    <deployedseed>701962416</deployedseed>
+    <deployedseed>782534559</deployedseed>
+    <deployedseed>846322126</deployedseed>
+    <deployedseed>407438258</deployedseed>
+    <deployedseed>1008352169</deployedseed>
+    <deployedseed>1811440527</deployedseed>
+    <deployedseed>392396333</deployedseed>
+    <deployedseed>506280344</deployedseed>
+    <deployedseed>338752150</deployedseed>
+    <deployedseed>1637104416</deployedseed>
+    <deployedseed>1541010350</deployedseed>
+    <deployedseed>623464084</deployedseed>
+    <deployedseed>1369027114</deployedseed>
+    <deployedseed>1779629502</deployedseed>
+    <deployedseed>1625991176</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,2699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Absolute Maximum and minimum-question 1</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the absolute maximum and minimum \(f(x,y)={@expr@}\) in or on the boundary of the triangle with the vertices \(A={@A@},B={@B@},C={@C@}\)</p>
+<p><b>Step 1:</b> First, let us compute the first order derivatives \(f_x\) and \(f_y\) of the given equation.</p>
+<p>\(f_x=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>\(f_y=\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>
+
+<p><b>Step 2:</b></p>
+<p>Finding the critical points by solving the system \(f_x(x,y)=f_y(x,y)=0\)</p>
+<p>To get \(f_y=0\) one of the two must hold: \(2y=0\) (case 1) or \({@c@}+{@d@}x=0\) (case 2).</p>
+<p>Case 1: We have \(y={@casey1@}\). Substituting this into \(f_x\) we get that \({@caseconstraint1@} = 0\).</p>
+<p>Solving this, we get two critical points: </p>
+<p>For the positive solution for \(x\) we get: <br>\(p_1 = \)[[input:ans3a]] [[validation:ans3a]] [[feedback:prt3a]]</p>
+<p>\(f(p_1) = \)[[input:ans3b]] [[validation:ans3b]] [[feedback:prt3b]]<br> \(p_1\) is in the triangle: [[input:ans3c]] [[validation:ans3c]] [[feedback:prt3c]]</p>
+<p>For the negative solution for \(x\) we get: <br>\(p_2 = \) [[input:ans4a]] [[validation:ans4a]] [[feedback:prt4a]]. <br>\(f(p_2) = \)[[input:ans4b]] [[validation:ans4b]] [[feedback:prt4b]]<br> \(p_2\) is in the triangle: [[input:ans4c]] [[validation:ans4c]] [[feedback:prt4c]]</p>
+<p>Case 2: We have \(x={@casex2@}\). Substituting this into \(f_x\) we get that \({@caseconstraint2@} = 0\).</p>
+<p>Solving this, we get two critical points: </p>
+<p>For the positive solution for \(y\) we get: <br>\(p_3 = \) [[input:ans5a]] [[validation:ans5a]] [[feedback:prt5a]]. <br>\(f(p_3) = \)[[input:ans5b]] [[validation:ans5b]] [[feedback:prt5b]]<br> \(p_3\) is in the triangle: [[input:ans5c]] [[validation:ans5c]] [[feedback:prt5c]]</p>
+<p>For the negative solution for \(y\) we get: <br>\(p_4 = \) [[input:ans6a]] [[validation:ans6a]] [[feedback:prt6a]]. <br>\(f(p_4) = \)[[input:ans6b]] [[validation:ans6b]] [[feedback:prt6b]]<br> \(p_4\) is in the triangle: [[input:ans6c]] [[validation:ans6c]] [[feedback:prt6c]]</p>
+
+<p><b>Step 3:</b> Now, we know that the absolute extreme can occur on the boundary. So, let’s start off with a quick sketch of the region we’re working on.
+</p>
+<p>[[jsxgraph]]
+ var board = JXG.JSXGraph.initBoard(divid, {
+            boundingbox: [{#xmin#}, {#ymax#}, {#xmax#}, {#ymin#}],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: true,
+            showNavigation: true
+        });
+        var A = board.create('point' , [{#Ax#},{#Ay#}], {color:  'orange' , size: 4, fixed: true });
+       var B = board.create('point',   [{#Bx#},{#By#}], {color:  'orange' , size: 6, fixed: true });
+       var C = board.create('point',  [{#Cx#},{#Cy#}],  {name: 'C', color: 'orange' , size: 4, fixed: true });
+
+      var tr = board.create('polygon',  [A, C, B], {color: 'pink'});
+      
+ [[/jsxgraph]]</p>
+
+<p>Each of the sides of the triangle can then be defined as follows.</p>
+<p>Top/Bottom: {@top_equation@} with \({@Bx@} \leq x\leq {@Cx@}\)</p>
+<p>Right: {@right_equation@} with \({@Ax@} \leq x\leq {@Cx@}\)</p>
+<p>Left: {@left_equation@} with \({@Ax@} \leq x\leq {@Bx@}\)</p>
+<p>Now we need to analyze each of these sides to get potential absolute extrema for \(f(x,y)\) that might occur on the boundary.</p> 
+<p><b>Step 3.1:</b> Find the critical point for \(g\) that are potential absolute extrema for \(f(x,y)\) for {@top_equation@} with \({@Bx@} \leq x\leq {@Cx@}\) </p>
+<p>Substituting {@top_equation@}  into \(f(x,y)\) we have </p>
+<p>\(g(x)=f(x,{@top_y@})={@g_x@}\)</p>
+<p>Compute \(g'(x)\), solve \(g'(x)= 0\) and determine the set of potential extrema points \((x, y)\)</p>
+<p>\(g'(x)=\) [[input:ans6]] [[validation:ans6]] [[feedback:prt6]]  </p>
+<p>The solutions to \(g'(x)= 0\) are: \(x={@gx_1@}\) and \(x={@gx_2@}\).
+<p>Recall that, in this step, we are assuming that, \(y={@top_y@}\). So for these values of \(x\), we get the corresponding points \(p_5=\) [[input:ans7]] [[validation:ans7]] [[feedback:prt7]] and \(p_6=\) [[input:ans8]] [[validation:ans8]] [[feedback:prt8]].</p>
+<p>The corresponding function values are: 
+\(f(p_5)=\) [[input:ans11]] [[validation:ans11]] [[feedback:prt11]] \(f(p_6)=\) [[input:ans12]] [[validation:ans12]] [[feedback:prt12]]</p>
+<p>\(p_5\) is on the triangle: [[input:ans7in]] [[validation:ans7in]] [[feedback:prt7in]] </p>
+<p>\(p_6\) is on the triangle: [[input:ans8in]] [[validation:ans8in]] [[feedback:prt8in]] </p>
+
+<p><b>Step 3.2:</b> Find the critical point for \(g\) that are potential absolute extrema for \(f(x,y)\) for {@right_equation@} with \({@Ax@} \leq x\leq {@Cx@}\) </p>
+<p>Substituting {@right_equation@}  into \(f(x,y)\) we have </p>
+<p>\(g(x)=f(x,{@right_y@})={@g_x@}\)</p>
+<p>Compute \(h'(x)\), solve \(h'(x)= 0\) and determine the set of potential extrema points \((x, y)\)</p>
+<p>\(h'(x)=\) [[input:ans13]] [[validation:ans13]] [[feedback:prt13]]  </p>
+<p>The solutions to \(h'(x)= 0\) are: \(x={@hx_1@}\) and \(x={@hx_2@}\).
+<p>Recall that, in this step, we are assuming that, \(y={@right_y@}\). So for these values of \(x\), we get the corresponding points \(p_7=\) [[input:ans14]] [[validation:ans14]] [[feedback:prt14]] and \(p_8=\) [[input:ans15]] [[validation:ans15]] [[feedback:prt15]].</p>
+<p>The corresponding function values are: 
+\(f(p_7)=\) [[input:ansf14]] [[validation:ansf14]] [[feedback:prtf14]] \(f(p_8)=\) [[input:ansf15]] [[validation:ansf15]] [[feedback:prtf15]]</p>
+<p>\(p_7\) is on the triangle: [[input:ans14in]] [[validation:ans14in]] [[feedback:prt14in]] </p>
+<p>\(p_8\) is on the triangle: [[input:ans15in]] [[validation:ans15in]] [[feedback:prt15in]] </p>
+
+<p><b>Step 3.3:</b> Find the critical point for \(k\) that are potential absolute extrema for \(f(x,y)\) for {@left_equation@} with \({@Ax@} \leq x\leq {@Bx@}\) </p>
+<p>Substituting {@left_equation@}  into \(f(x,y)\) we have </p>
+<p>\(g(x)=f(x,{@left_y@})={@g_x@}\)</p>
+<p>Compute \(k'(x)\), solve \(k'(x)= 0\) and determine the set of potential extrema points \((x, y)\)</p>
+<p>\(k'(x)=\) [[input:ans16]] [[validation:ans16]] [[feedback:prt16]]  </p>
+<p>The solutions to \(k'(x)= 0\) are: \(x={@kx_1@}\) and \(x={@kx_2@}\).
+<p>Recall that, in this step, we are assuming that, \(y={@left_y@}\). So for these values of \(x\), we get the corresponding points \(p_9=\) [[input:ans17]] [[validation:ans17]] [[feedback:prt17]] and \(p_{10}=\) [[input:ans18]] [[validation:ans18]] [[feedback:prt18]].</p>
+<p>The corresponding function values are: 
+\(f(p_9)=\) [[input:ans19]] [[validation:ans19]] [[feedback:prt19]] \(f(p_{10})=\) [[input:ans20]] [[validation:ans20]] [[feedback:prt20]]</p>
+<p>\(p_9\) is on the triangle: [[input:ans17in]] [[validation:ans17in]] [[feedback:prt17in]] </p>
+<p>\(p_{10}\) is on the triangle: [[input:ans18in]] [[validation:ans18in]] [[feedback:prt18in]] </p>
+
+<p><b>Step 4:</b> Note that  \(A, B\) and \(C\) may also be extremal points, so we compute their function values:<br>
+\(f(A) = {@fp(A)@}\)
+\(f(B) = {@fp(B)@}\)
+\(f(C) = {@fp(C)@}\)</p>
+<p>To get the global extrema, we compute the function values for all of those points obtained in the previous steps that are within or on the triangle, as well as for \(A, B\) and \(C\).</p>
+The global maximum is the maximum of all those functions values, and equals: [[input:ans21]] [[validation:ans21]] [[feedback:prt21]]
+The global minimum is the minimum of all those functions values, and equals: [[input:ans22]] [[validation:ans22]] [[feedback:prt22]]]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<p>Find the absolute maximum and minimum \(f(x,y)={@expr@}\) in or on the boundary of the triangle with the vertices \(A={@A@},B={@B@},C={@C@}\)</p>
+<p><b>Step 1:</b> First, let us compute the first order derivatives \(f_x\) and \(f_y\) of the given equation.</p>
+<p>\(f_x={@ta1@}\) </p>
+<p>\(f_y={@ta2@}\)</p>
+
+<p><b>Step 2:</b></p>
+<p>Finding the critical points by solving the system \(f_x(x,y)=f_y(x,y)=0\)</p>
+<p>To get \(f_y=0\) one of the two must hold: \(2y=0\) (case 1) or \({@c@}+{@d@}x=0\) (case 2).</p>
+<p>Case 1: We have \(y={@casey1@}\). Substituting this into \(f_x\) we get that \({@caseconstraint1@} = 0\).</p>
+<p>Solving this, we get two critical points: </p>
+<p>For the positive solution for \(x\) we get: <br>\(p_1 ={@ta3a@} \)</p>
+<p>\(f(p_1) = {@ta3b@}\)<br> \(p_1\) is in the triangle: \({@ta3c@}\)</p>
+<p>For the negative solution for \(x\) we get: <br>\(p_2 ={@ta4a@} \) . <br>\(f(p_2) = {@ta4b@}\)<br> \(p_2\) is in the triangle: \({@ta4c@}\)</p>
+<p>Case 2: We have \(x={@casex2@}\). Substituting this into \(f_x\) we get that \({@caseconstraint2@} = 0\).</p>
+<p>Solving this, we get two critical points: </p>
+<p>For the positive solution for \(y\) we get: <br>\(p_3 ={@ta5a@} \) . <br>\(f(p_3) = {@ta5b@} \)<br> \(p_3\) is in the triangle: \({@ta5c@}\)</p>
+<p>For the negative solution for \(y\) we get: <br>\(p_4 ={@ta6a@} \) .<br>\(f(p_4) = {@ta6b@}\)<br> \(p_4\) is in the triangle: \({@ta6c@}\)</p>
+
+<p><b>Step 3:</b> Now, we know that the absolute extreme can occur on the boundary. So, let’s start off with a quick sketch of the region we’re working on.
+</p>
+<p>[[jsxgraph]]
+ var board = JXG.JSXGraph.initBoard(divid, {
+            boundingbox: [{#xmin#}, {#ymax#}, {#xmax#}, {#ymin#}],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: true,
+            showNavigation: true
+        });
+        var A = board.create('point' , [{#Ax#},{#Ay#}], {color:  'orange' , size: 4, fixed: true });
+       var B = board.create('point',   [{#Bx#},{#By#}], {color:  'orange' , size: 6, fixed: true });
+       var C = board.create('point',  [{#Cx#},{#Cy#}],  {name: 'C', color: 'orange' , size: 4, fixed: true });
+
+      var tr = board.create('polygon',  [A, C, B], {color: 'pink'});
+      
+ [[/jsxgraph]]</p>
+
+<p>Each of the sides of the triangle can then be defined as follows.</p>
+<p>Top/Bottom: {@top_equation@} with \({@Bx@} \leq x\leq {@Cx@}\)</p>
+<p>Right: {@right_equation@} with \({@Ax@} \leq x\leq {@Cx@}\)</p>
+<p>Left: {@left_equation@} with \({@Ax@} \leq x\leq {@Bx@}\)</p>
+<p>Now we need to analyze each of these sides to get potential absolute extrema for \(f(x,y)\) that might occur on the boundary.</p> 
+<p><b>Step 3.1:</b> Find the critical point for \(g\) that are potential absolute extrema for \(f(x,y)\) for {@top_equation@} with \({@Bx@} \leq x\leq {@Cx@}\) </p>
+<p>Substituting {@top_equation@}  into \(f(x,y)\) we have </p>
+<p>\(g(x)=f(x,{@top_y@})={@g_x@}\)</p>
+<p>Compute \(g'(x)\), solve \(g'(x)= 0\) and determine the set of potential extrema points \((x, y)\)</p>
+<p>\(g'(x)={@ta6@}\)  </p>
+<p>The solutions to \(g'(x)= 0\) are: \(x={@gx_1@}\) and \(x={@gx_2@}\).
+<p>Recall that, in this step, we are assuming that, \(y={@top_y@}\). So for these values of \(x\), we get the corresponding points \(p_5={@ta7@}\)  and \(p_6={@ta8@}\) .</p>
+<p>The corresponding function values are: 
+\(f(p_5)={@ta11@}\)  \(f(p_6)={@ta12@}\) </p>
+<p>\(p_5\) is on the triangle: \({@ta7in@}\) </p>
+<p>\(p_6\) is on the triangle: \({@ta8in@}\)</p>
+
+<p><b>Step 3.2:</b> Find the critical point for \(g\) that are potential absolute extrema for \(f(x,y)\) for {@right_equation@} with \({@Ax@} \leq x\leq {@Cx@}\) </p>
+<p>Substituting {@right_equation@}  into \(f(x,y)\) we have </p>
+<p>\(g(x)=f(x,{@right_y@})={@g_x@}\)</p>
+<p>Compute \(h'(x)\), solve \(h'(x)= 0\) and determine the set of potential extrema points \((x, y)\)</p>
+<p>\(h'(x)={@ta13@}\) </p>
+<p>The solutions to \(h'(x)= 0\) are: \(x={@hx_1@}\) and \(x={@hx_2@}\).
+<p>Recall that, in this step, we are assuming that, \(y={@right_y@}\). So for these values of \(x\), we get the corresponding points \(p_7={@ta14@}\) and \(p_8={@ta15@}\).</p>
+<p>The corresponding function values are: 
+\(f(p_7)={@taf14@}\) \(f(p_8)={@taf15@}\) </p>
+<p>\(p_7\) is on the triangle: \({@ta14in@}\)</p>
+<p>\(p_8\) is on the triangle: \({@ta15in@}\) </p>
+
+<p><b>Step 3.3:</b> Find the critical point for \(k\) that are potential absolute extrema for \(f(x,y)\) for {@left_equation@} with \({@Ax@} \leq x\leq {@Bx@}\) </p>
+<p>Substituting {@left_equation@}  into \(f(x,y)\) we have </p>
+<p>\(g(x)=f(x,{@left_y@})={@g_x@}\)</p>
+<p>Compute \(k'(x)\), solve \(k'(x)= 0\) and determine the set of potential extrema points \((x, y)\)</p>
+<p>\(k'(x)={@ta16@}\) </p>
+<p>The solutions to \(k'(x)= 0\) are: \(x={@kx_1@}\) and \(x={@kx_2@}\).
+<p>Recall that, in this step, we are assuming that, \(y={@left_y@}\). So for these values of \(x\), we get the corresponding points \(p_9={@ta17@}\)  and \(p_{10}={@ta18@}\) .</p>
+<p>The corresponding function values are: 
+\(f(p_9)={@ta19@}\)  \(f(p_{10})={@ta20@}\) </p>
+<p>\(p_9\) is on the triangle: \({@ta17in@}\)</p>
+<p>\(p_{10}\) is on the triangle: \({@ta18in@}\) </p>
+
+<p><b>Step 4:</b> Note that  \(A, B\) and \(C\) may also be extremal points, so we compute their function values:<br>
+\(f(A) = {@fp(A)@}\)
+\(f(B) = {@fp(B)@}\)
+\(f(C) = {@fp(C)@}\)</p>
+<p>To get the global extrema, we compute the function values for all of those points obtained in the previous steps that are within or on the triangle, as well as for \(A, B\) and \(C\).</p>
+The global maximum is the maximum of all those functions values, and equals: \({@ta21@}\) 
+The global minimum is the minimum of all those functions values, and equals: \({@ta22@}\)]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2022071300</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[params: rand([
+[[-6,2,-4,4],[[-3, 6],[1/3, -4],[1, -2]]],
+[[-6,2,-1,1],[[-1/7, -4/7],[0, 0],[1, -4]]],
+[[-6,2,0,-2],[[-1/2, -1/2],[0, -2],[1/4, -5/4]]],
+[[-6,2,1,1],[[-1/7, -4/7],[0, 0],[1, -4]]],
+[[-6,2,4,4],[[-1, -2],[-1/3, -4],[-1/5, -18/5]]],
+[[-4,3,-5,2],[[1/6, -4/3],[1/2, 0],[3/2, -4]]],
+[[-4,3,-1,-4],[[-1/5, -3/5],[0, 0],[1, -3]]],
+[[-4,3,-1,1],[[1/7, -3/7],[1/4, 0],[1, -3]]],
+[[-4,3,1,-4],[[-4/5, -12/5],[0, 0],[4, -12]]],
+[[-4,3,1,1],[[-1, 3],[-1/4, 0],[-1/7, 3/7]]],
+[[-3,1,-2,2],[[-3, 6],[1/3, -4],[1, -2]]],
+[[-3,1,-2,3],[[-5/3, -4],[-1/3, 0],[1, -4]]],
+[[-3,1,0,-1],[[-1/2, -1/2],[0, -2],[1/4, -5/4]]],
+[[-3,1,2,2],[[-1, -2],[-1/3, -4],[-1/5, -18/5]]],
+[[-3,1,2,3],[[-1, -4],[1/3, 0],[5/3, -4]]],
+[[-3,4,-4,2],[[2/5, -4/5],[2/3, 0],[2, -4]]],
+[[-3,4,-4,3],[[-4/3, -2],[-2/3, 0],[0, -2]]],
+[[-3,4,-1,-3],[[1/3, -1],[2/3, 0],[1, -1]]],
+[[-3,4,0,-1],[[-3/2, -1/2],[0, -5],[3/4, -11/4]]],
+[[-3,4,1,-3],[[-1, -1],[-2/3, 0],[-1/3, -1]]],
+[[-3,4,4,2],[[-2, 4],[-2/3, 0],[-2/5, 4/5]]],
+[[-3,4,4,3],[[0, -2],[2/3, 0],[4/3, -2]]],
+[[-1,3,-2,-4],[[-1, 0],[3/2, -5/2],[4, 0]]],
+[[-1,3,0,-3],[[-4, 0],[0, -4],[4, 0]]],
+[[-1,3,2,-4],[[-4, 0],[-3/2, -5/2],[1, 0]]],
+[[-1,3,2,1],[[1/7, -24/7],[1, 0],[7, -24]]],
+[[1,-3,-2,-1],[[1/7, -24/7],[1, 0],[7, -24]]],
+[[1,-3,-2,4],[[-4, 0],[-3/2, -5/2],[1, 0]]],
+[[1,-3,0,3],[[-4, 0],[0, -4],[4, 0]]],
+[[1,-3,2,4],[[-1, 0],[3/2, -5/2],[4, 0]]],
+[[3,-4,-5,-5],[[1, -3],[4, 0],[7, -3]]],
+[[3,-4,-4,-3],[[0, -2],[2/3, 0],[4/3, -2]]],
+[[3,-4,-4,-2],[[-2, 4],[-2/3, 0],[-2/5, 4/5]]],
+[[3,-4,-1,3],[[-1, -1],[-2/3, 0],[-1/3, -1]]],
+[[3,-4,0,1],[[-3/2, -1/2],[0, -5],[3/4, -11/4]]],
+[[3,-4,1,3],[[1/3, -1],[2/3, 0],[1, -1]]],
+[[3,-4,4,-3],[[-4/3, -2],[-2/3, 0],[0, -2]]],
+[[3,-4,4,-2],[[2/5, -4/5],[2/3, 0],[2, -4]]],
+[[3,-1,-2,-3],[[-1, -4],[1/3, 0],[5/3, -4]]],
+[[3,-1,-2,-2],[[-1, -2],[-1/3, -4],[-1/5, -18/5]]],
+[[3,-1,0,1],[[-1/2, -1/2],[0, -2],[1/4, -5/4]]],
+[[3,-1,2,-3],[[-5/3, -4],[-1/3, 0],[1, -4]]],
+[[3,-1,2,-2],[[-3, 6],[1/3, -4],[1, -2]]],
+[[4,-3,-5,-2],[[-7/6, -8/3],[-1/2, 0],[3/2, -8]]],
+[[4,-3,-1,-1],[[-1, 3],[-1/4, 0],[-1/7, 3/7]]],
+[[4,-3,-1,4],[[-4/5, -12/5],[0, 0],[4, -12]]],
+[[4,-3,1,-1],[[1/7, -3/7],[1/4, 0],[1, -3]]],
+[[4,-3,1,4],[[-1/5, -3/5],[0, 0],[1, -3]]],
+[[6,-2,-4,-4],[[-1, -2],[-1/3, -4],[-1/5, -18/5]]],
+[[6,-2,-1,-1],[[-1/7, -4/7],[0, 0],[1, -4]]],
+[[6,-2,0,2],[[-1/2, -1/2],[0, -2],[1/4, -5/4]]],
+[[6,-2,1,-1],[[-1/7, -4/7],[0, 0],[1, -4]]],
+[[6,-2,4,-4],[[-3, 6],[1/3, -4],[1, -2]]]
+]);
+a: params[1][1];
+b: params[1][2];
+c: params[1][3];
+d: params[1][4];
+expr: a*x^3+b*x+c*y^2+d*x*y^2;
+f(x,y) := a*x^3+b*x+c*y^2+d*x*y^2;
+fp(p) := f(p[1,1],p[2,1]);
+Alist: params[2][1];
+Blist: params[2][2];
+Clist: params[2][3];
+A: transpose(matrix(Alist));
+B: transpose(matrix(Blist));
+C: transpose(matrix(Clist));
+Ax: A[1,1];
+Ay: A[2,1];
+Bx: B[1,1];
+By: B[2,1];
+Cx: C[1,1];
+Cy: C[2,1];
+xmin: min(Ax,Bx,Cx)-0.5;
+ymin: min(Ay,By,Cy)-0.5;
+xmax: max(Ax,Bx,Cx)+0.5;
+ymax: max(Ay,By,Cy)+0.5;
+is_in_triangle(p, A, B, C) := block(
+    v1: B-A, 
+    v2: C-A, 
+    v0: A, 
+    coeff: invert(addcol(v1,v2)).(p-v0),
+    aa: coeff[1,1],
+    bb: coeff[2,1],
+    is(aa >= 0 and bb >= 0 and aa+bb <= 1)
+);
+
+/*worked solution variables*/
+ta1:fx:diff(expr,x);
+ta2:fy:diff(expr,y);
+casey1: 0;
+caseconstraint1: subst(casey1, y, fx);
+casex2: -c/d;
+caseconstraint2: subst(casex2, x, fx);
+ta3a: matrix([sqrt(-b/3*a)],[0]);
+ta3b: f(ta3a[1,1], ta3a[2,1]);
+ta3c: is(is_in_triangle(ta3a, A, B, C));
+ta4a: matrix([-sqrt(-b/3*a)],[0]);
+ta4b: f(ta4a[1,1], ta4a[2,1]);
+ta4c: is(is_in_triangle(ta4a, A, B, C));
+ta5a: matrix([-c/d],[sqrt((3*a*c*c/d/d+b)/(-d))]);
+ta5b: f(ta5a[1,1], ta5a[2,1]);
+ta5c: is(is_in_triangle(ta5a, A, B, C));
+ta6a: matrix([-c/d],[-sqrt((3*a*c*c/d/d+b)/(-d))]);
+ta6b: f(ta6a[1,1], ta6a[2,1]);
+ta6c: is(is_in_triangle(ta6a, A, B, C));
+
+my_points: [ta3a, ta4a, ta5a, ta6a];
+good_points: sublist(my_points, lambda([p], is_in_triangle(p, A, B, C)));
+
+/*step 3*/
+/*top equation*/
+Top_m:(Cy-By)/(Cx-Bx);
+top_b:By-Top_m*Bx;
+top_equation:y=Top_m*x+top_b;
+top_y:rhs(top_equation);
+/*right equation*/
+Right_m:(Cy-Ay)/(Cx-Ax);
+right_b:Cy-Right_m*Cx;
+right_equation:y=Right_m*x+right_b;
+right_y:rhs(right_equation);
+/*left equation*/
+left_m:(By-Ay)/(Bx-Ax);
+left_b:By-left_m*Bx;
+left_equation:y=left_m*x+left_b;
+left_y:rhs(left_equation);
+
+/*step 3.1*/
+g_x:f(x, top_y);
+ta6: dg_x: diff(g_x,x);
+g_x_points: solve(dg_x);
+gx_1:min(rhs(g_x_points[1]),rhs(g_x_points[2]));
+gx_2:max(rhs(g_x_points[1]),rhs(g_x_points[2]));
+gy_1:subst(gx_1,x,top_y);
+gy_2:subst(gx_2,x,top_y);
+ta7:matrix([gx_1],[gy_1]);
+ta8:matrix([gx_2],[gy_2]);
+ta7in: is(gx_1<=Cx and gx_1>=Bx);
+good_points: if ta7in then append(good_points, [ta7]) else good_points;
+ta8in: is(gx_2<=Cx and gx_2>=Bx);
+good_points: if ta8in then append(good_points, [ta8]) else good_points;
+ta11:fp(ta7);
+ta12:fp(ta8);
+
+/*step 3.2*/
+h_x:f(x, right_y);
+ta13: dh_x: diff(h_x,x);
+h_x_points: solve(dh_x);
+hx_1:min(rhs(h_x_points[1]),rhs(h_x_points[2]));
+hx_2:min(rhs(h_x_points[1]),rhs(h_x_points[2]));
+hy_1:subst(hx_1,x,right_y);
+hy_2:subst(hx_2,x,right_y);
+ta14:matrix([hx_1],[hy_1]);
+ta15:matrix([hx_2],[hy_2]);
+ta14in: is(hx_1<=Cx and hx_1>=Ax);
+ta15in: is(hx_2<=Cx and hx_2>=Ax);
+good_points: if ta14in then append(good_points, [ta14]) else good_points;
+good_points: if ta15in then append(good_points, [ta15]) else good_points;
+taf14:fp(ta7);
+taf15:fp(ta8);
+
+/*step 3.3*/
+k_x:f(x, left_y);
+ta16: dk_x: diff(k_x,x);
+k_x_points: solve(dk_x);
+kx_1:min(rhs(k_x_points[1]),rhs(k_x_points[2]));
+kx_2:min(rhs(k_x_points[1]),rhs(k_x_points[2]));
+ky_1:subst(kx_1,x,left_y);
+ky_2:subst(kx_2,x,left_y);
+ta17:matrix([kx_1],[ky_1]);
+ta18:matrix([kx_2],[ky_2]);
+ta17in: is(hx_1<=Bx and hx_1>=Ax);
+ta18in: is(hx_2<=Bx and hx_2>=Ax);
+good_points: if ta17in then append(good_points, [ta17]) else good_points;
+good_points: if ta18in then append(good_points, [ta18]) else good_points;
+ta19:fp(ta17);
+ta20:fp(ta18);
+
+/*Step 4*/
+good_points: append(good_points, [A,B,C]);
+fvals: makelist(fp(p), p , good_points);
+ta21: fmax: lmax(fvals);
+ta22: fmin: lmin(fvals);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Find the absolute maximum and minimum \(f(x,y)={@expr@}\). On the triangle with the vertices \({@Alist@},{@Blist@},{@Clist@}\).</p>
+Potential extrema: {@ta3a@},{@ta4a@},{@ta5a@},{@ta6a@},{@ta7@},{@ta8@},{@ta14@},{@ta15@},{@ta17@},{@ta18@}.
+Extrema: {@ta21@} and {@ta22@}]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans11</name>
+      <type>algebraic</type>
+      <tans>ta11</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans12</name>
+      <type>algebraic</type>
+      <tans>ta12</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans13</name>
+      <type>algebraic</type>
+      <tans>ta13</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans14</name>
+      <type>matrix</type>
+      <tans>ta14</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans14in</name>
+      <type>boolean</type>
+      <tans>ta14in</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans15</name>
+      <type>matrix</type>
+      <tans>ta15</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans15in</name>
+      <type>boolean</type>
+      <tans>ta15in</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans16</name>
+      <type>algebraic</type>
+      <tans>ta16</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans17</name>
+      <type>matrix</type>
+      <tans>ta17</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans17in</name>
+      <type>boolean</type>
+      <tans>ta17in</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans18</name>
+      <type>matrix</type>
+      <tans>ta18</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans18in</name>
+      <type>boolean</type>
+      <tans>ta18in</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans19</name>
+      <type>algebraic</type>
+      <tans>ta19</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans20</name>
+      <type>algebraic</type>
+      <tans>ta20</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans21</name>
+      <type>algebraic</type>
+      <tans>ta21</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans22</name>
+      <type>algebraic</type>
+      <tans>ta22</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3a</name>
+      <type>matrix</type>
+      <tans>ta3a</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3b</name>
+      <type>algebraic</type>
+      <tans>ta3b</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3c</name>
+      <type>boolean</type>
+      <tans>ta3c</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4a</name>
+      <type>matrix</type>
+      <tans>ta4a</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4b</name>
+      <type>algebraic</type>
+      <tans>ta4b</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4c</name>
+      <type>boolean</type>
+      <tans>ta4c</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5a</name>
+      <type>matrix</type>
+      <tans>ta5a</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5b</name>
+      <type>algebraic</type>
+      <tans>ta5b</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5c</name>
+      <type>boolean</type>
+      <tans>ta5c</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>ta6</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6a</name>
+      <type>matrix</type>
+      <tans>ta6a</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6b</name>
+      <type>algebraic</type>
+      <tans>ta6b</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6c</name>
+      <type>boolean</type>
+      <tans>ta6c</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7</name>
+      <type>matrix</type>
+      <tans>ta7</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7in</name>
+      <type>boolean</type>
+      <tans>ta7in</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans8</name>
+      <type>matrix</type>
+      <tans>ta8</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans8in</name>
+      <type>boolean</type>
+      <tans>ta8in</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ansf14</name>
+      <type>algebraic</type>
+      <tans>taf14</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ansf15</name>
+      <type>algebraic</type>
+      <tans>taf15</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p><b>Hint:</b>To compute \(f_x\), you need to the derivative of \(f(x,y)\) wrt \(x\).</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt11</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans11</sans>
+        <tans>ta11</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt11-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt11-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt12</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans12</sans>
+        <tans>ta12</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt12-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt12-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt13</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans13</sans>
+        <tans>ta13</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt13-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt13-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt14</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans14</sans>
+        <tans>ta14</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt14-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt14-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt14in</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans14in</sans>
+        <tans>ta14in</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt14in-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt14in-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt15</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans15</sans>
+        <tans>ta15</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt15-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt15-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt15in</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans15in</sans>
+        <tans>ta15in</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt15in-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt15in-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt16</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans16</sans>
+        <tans>ta16</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt16-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt16-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt17</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans17</sans>
+        <tans>ta17</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt17-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt17-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt17in</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans17in</sans>
+        <tans>ta17in</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt17in-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt17in-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt18</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans18</sans>
+        <tans>ta18</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt18-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt18-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt18in</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans18in</sans>
+        <tans>ta18in</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt18in-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt18in-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt19</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans19</sans>
+        <tans>ta19</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt19-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt19-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p><b>Hint:</b>To compute \(f_y\), you need to the derivative of \(f(x,y)\) wrt \(y\).</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt20</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans20</sans>
+        <tans>ta20</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt20-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt20-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt21</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans21</sans>
+        <tans>ta21</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt21-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt21-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt22</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans22</sans>
+        <tans>ta22</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt22-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt22-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3a</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3a</sans>
+        <tans>ta3a</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3a-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3a-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>You need to take \(f_x\) and equate it to zero. Then solve for \(x\).</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3b</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3b</sans>
+        <tans>ta3b</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3b-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3b-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>You need to substitute the correct values of \(p1\) computed above into \(f(x,y)\)</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3c</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3c</sans>
+        <tans>ta3c</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3c-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3c-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>The point does not belong anywhere in the triangle.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4a</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4a</sans>
+        <tans>ta4a</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4a-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4a-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>In this second case, check that the value of \(x\) is negative. Recall that \(sqrt(4)=+2 or -2\)  </p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4b</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4b</sans>
+        <tans>ta4b</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4b-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4b-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>You need to substitute the correct values of \(p2\) computed above into \(f(x,y)\)</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4c</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4c</sans>
+        <tans>ta4c</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4c-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4c-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>The point you have does not belong in the triangle. Check the coordinates and try to plot them on the cartesian plane.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5a</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5a</sans>
+        <tans>ta5a</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5a-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5a-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5b</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5b</sans>
+        <tans>ta5b</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5b-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5b-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5c</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5c</sans>
+        <tans>ta5c</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5c-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5c-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>ta6</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6a</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6a</sans>
+        <tans>ta6a</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6a-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6a-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6b</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6b</sans>
+        <tans>ta6b</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6b-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6b-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6c</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6c</sans>
+        <tans>ta6c</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6c-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6c-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt7</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans7</sans>
+        <tans>ta7</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt7-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt7-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt7in</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans7in</sans>
+        <tans>ta7in</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt7in-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt7in-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt8</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans8</sans>
+        <tans>ta8</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt8-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt8-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt8in</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans8in</sans>
+        <tans>ta8in</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt8in-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt8in-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prtf14</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ansf14</sans>
+        <tans>taf14</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtf14-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtf14-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prtf15</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ansf15</sans>
+        <tans>taf15</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtf15-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtf15-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1452923800</deployedseed>
+    <deployedseed>345993823</deployedseed>
+    <deployedseed>701951714</deployedseed>
+    <deployedseed>1288134507</deployedseed>
+    <deployedseed>671133933</deployedseed>
+    <deployedseed>378289535</deployedseed>
+    <deployedseed>2079654112</deployedseed>
+    <deployedseed>1007900350</deployedseed>
+    <deployedseed>2009064828</deployedseed>
+    <deployedseed>359269492</deployedseed>
+    <deployedseed>628714953</deployedseed>
+    <deployedseed>1397557346</deployedseed>
+    <deployedseed>383919284</deployedseed>
+    <deployedseed>851155903</deployedseed>
+    <deployedseed>1288393353</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans11</name>
+        <value>ta11</value>
+      </testinput>
+      <testinput>
+        <name>ans12</name>
+        <value>ta12</value>
+      </testinput>
+      <testinput>
+        <name>ans13</name>
+        <value>ta13</value>
+      </testinput>
+      <testinput>
+        <name>ans14</name>
+        <value>ta14</value>
+      </testinput>
+      <testinput>
+        <name>ans14in</name>
+        <value>ta14in</value>
+      </testinput>
+      <testinput>
+        <name>ans15</name>
+        <value>ta15</value>
+      </testinput>
+      <testinput>
+        <name>ans15in</name>
+        <value>ta15in</value>
+      </testinput>
+      <testinput>
+        <name>ans16</name>
+        <value>ta16</value>
+      </testinput>
+      <testinput>
+        <name>ans17</name>
+        <value>ta17</value>
+      </testinput>
+      <testinput>
+        <name>ans17in</name>
+        <value>ta17in</value>
+      </testinput>
+      <testinput>
+        <name>ans18</name>
+        <value>ta18</value>
+      </testinput>
+      <testinput>
+        <name>ans18in</name>
+        <value>ta18in</value>
+      </testinput>
+      <testinput>
+        <name>ans19</name>
+        <value>ta19</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans20</name>
+        <value>ta20</value>
+      </testinput>
+      <testinput>
+        <name>ans21</name>
+        <value>ta21</value>
+      </testinput>
+      <testinput>
+        <name>ans22</name>
+        <value>ta22</value>
+      </testinput>
+      <testinput>
+        <name>ans3a</name>
+        <value>ta3a</value>
+      </testinput>
+      <testinput>
+        <name>ans3b</name>
+        <value>ta3b</value>
+      </testinput>
+      <testinput>
+        <name>ans3c</name>
+        <value>ta3c</value>
+      </testinput>
+      <testinput>
+        <name>ans4a</name>
+        <value>ta4a</value>
+      </testinput>
+      <testinput>
+        <name>ans4b</name>
+        <value>ta4b</value>
+      </testinput>
+      <testinput>
+        <name>ans4c</name>
+        <value>ta4c</value>
+      </testinput>
+      <testinput>
+        <name>ans5a</name>
+        <value>ta5a</value>
+      </testinput>
+      <testinput>
+        <name>ans5b</name>
+        <value>ta5b</value>
+      </testinput>
+      <testinput>
+        <name>ans5c</name>
+        <value>ta5c</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>ta6</value>
+      </testinput>
+      <testinput>
+        <name>ans6a</name>
+        <value>ta6a</value>
+      </testinput>
+      <testinput>
+        <name>ans6b</name>
+        <value>ta6b</value>
+      </testinput>
+      <testinput>
+        <name>ans6c</name>
+        <value>ta6c</value>
+      </testinput>
+      <testinput>
+        <name>ans7</name>
+        <value>ta7</value>
+      </testinput>
+      <testinput>
+        <name>ans7in</name>
+        <value>ta7in</value>
+      </testinput>
+      <testinput>
+        <name>ans8</name>
+        <value>ta8</value>
+      </testinput>
+      <testinput>
+        <name>ans8in</name>
+        <value>ta8in</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt11</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt11-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt12</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt12-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt13</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt13-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt14</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt14-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt14in</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt14in-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt15</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt15-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt15in</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt15in-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt16</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt16-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt17</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt17-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt17in</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt17in-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt18</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt18-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt18in</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt18in-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt19</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt19-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt20</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt20-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt21</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt21-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt22</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt22-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3a</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3a-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3b</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3b-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3c</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3c-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4a</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4a-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4b</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4b-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4c</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4c-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5a</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5a-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5b</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5b-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5c</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5c-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt6</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt6-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt6a</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt6a-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt6b</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt6b-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt6c</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt6c-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt7</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt7-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt7in</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt7in-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt8</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt8-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt8in</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt8in-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

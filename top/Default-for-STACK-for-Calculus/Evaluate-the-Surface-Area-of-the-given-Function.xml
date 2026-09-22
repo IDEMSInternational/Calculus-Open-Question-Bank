@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluate the Surface Area of the given Function</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Find the surface area of the object obtained by rotating \(y={@const@}+{@coeff_x_squared@}x^2,\quad {@lower_limit@} \leq x \leq {@higher_limit@}\) about the \(y-\) axis.</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>Round off your answer correct to 2 decimalplaces</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>Let us find the arc length element ds.</p>
+<p>\(\displaystyle ds=\sqrt{1+\left (\frac{dy}{dx}\right)^2}dx\)</p>
+<p>Given that \(\displaystyle  y={@const@}+{@coeff_x_squared@}x^2\), \(\displaystyle\frac{dy}{dx}={@diff_func@}\). </p>
+<p> \(ds=\displaystyle \sqrt{1+\left({@diff_func@}\right)^2}dx = \displaystyle\sqrt{1+{@diff_func^2@}}dx\)</p>
+
+<p>The surface area \(SA\) can be found by: </p>
+<p>
+    \(
+    \begin{align}
+    SA &=\displaystyle\int_{@lower_limit@}^{@higher_limit@}2\pi x \,ds \\
+    &= \displaystyle \int_{@lower_limit@}^{@higher_limit@}2\pi x\sqrt{1+{@diff_func^2@}}dx \\
+    &=\left[{@bb@}\right]_{@lower_limit@}^{@higher_limit@}\\
+    &={@cc@}\\
+    &={@dd@}
+    \end{align}
+    \)
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining the question variables*/
+const:rand(5)+1;
+coeff_x_squared:rand(5)+1;
+lower_limit:rand(4);
+higher_limit:rand(4)+1+lower_limit;
+fn:y=const+coeff_x_squared*x^2;
+func:const+coeff_x_squared*x^2;
+diff_func:diff(func)/del(x);
+var_1:sqrt(1+diff_func^2);
+surface_area:int(2*%pi*x*var_1,x,lower_limit,higher_limit);
+
+/*Model answer*/
+ta:decimalplaces(float(surface_area),2);
+aa:2*%pi*x*sqrt(1+diff_func^2);
+bb:int(aa,x);
+cc:int(aa,x,lower_limit,higher_limit);
+dd:decimalplaces(float(cc),2);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\(y={@const@}+{@coeff_x_squared@}x^2,\quad {@lower_limit@} \leq x \leq {@higher_limit@}={@ta@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept"></p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Juma Zevick</p>
+<p id="description">The question focuses on finding the surface area of an obtained by rotating a given random function over  a given range</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1 checks for correct answer*/
+/*Node 2: mistake:Differentiating instead of integrating*/
+mistake_2:diff(2*%pi*x*var_1,x);
+/*Node 3: mistake:Adding constant of integration after evaluation*/
+surface_area:int(2*%pi*x*var_1,x,lower_limit,higher_limit);
+mistake_3:decimalplaces(float(surface_area),4)+c;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have differentiated instead of integrating</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the second mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have added a constant of integration after evaluation</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1024175333</deployedseed>
+    <deployedseed>1257161574</deployedseed>
+    <deployedseed>147142295</deployedseed>
+    <deployedseed>1487106597</deployedseed>
+    <deployedseed>786589293</deployedseed>
+    <deployedseed>2123214550</deployedseed>
+    <deployedseed>664065886</deployedseed>
+    <deployedseed>814020390</deployedseed>
+    <deployedseed>929391455</deployedseed>
+    <deployedseed>1682137278</deployedseed>
+    <deployedseed>485409060</deployedseed>
+    <deployedseed>1411331970</deployedseed>
+    <deployedseed>815626262</deployedseed>
+    <deployedseed>1183438936</deployedseed>
+    <deployedseed>2074115108</deployedseed>
+    <deployedseed>572096684</deployedseed>
+    <deployedseed>1538644566</deployedseed>
+    <deployedseed>1439070765</deployedseed>
+    <deployedseed>516300615</deployedseed>
+    <deployedseed>1350048347</deployedseed>
+    <deployedseed>445346534</deployedseed>
+    <deployedseed>2062154114</deployedseed>
+    <deployedseed>1454493278</deployedseed>
+    <deployedseed>1133676772</deployedseed>
+    <deployedseed>1579442864</deployedseed>
+    <deployedseed>2049248532</deployedseed>
+    <deployedseed>939214801</deployedseed>
+    <deployedseed>932458995</deployedseed>
+    <deployedseed>970355905</deployedseed>
+    <deployedseed>671446567</deployedseed>
+    <deployedseed>71878646</deployedseed>
+    <deployedseed>1744134235</deployedseed>
+    <deployedseed>1284714006</deployedseed>
+    <deployedseed>590343501</deployedseed>
+    <deployedseed>2140186744</deployedseed>
+    <deployedseed>1359123412</deployedseed>
+    <deployedseed>1846395531</deployedseed>
+    <deployedseed>2065678670</deployedseed>
+    <deployedseed>37299308</deployedseed>
+    <deployedseed>1270873220</deployedseed>
+    <deployedseed>354026814</deployedseed>
+    <deployedseed>1379473469</deployedseed>
+    <deployedseed>511186385</deployedseed>
+    <deployedseed>289238131</deployedseed>
+    <deployedseed>1110889861</deployedseed>
+    <deployedseed>723142656</deployedseed>
+    <deployedseed>1855069789</deployedseed>
+    <deployedseed>291163010</deployedseed>
+    <deployedseed>1320430785</deployedseed>
+    <deployedseed>604053628</deployedseed>
+    <deployedseed>1473988854</deployedseed>
+    <deployedseed>475265981</deployedseed>
+    <deployedseed>1561179309</deployedseed>
+    <deployedseed>751885375</deployedseed>
+    <deployedseed>1651189603</deployedseed>
+    <deployedseed>1483006753</deployedseed>
+    <deployedseed>1259577715</deployedseed>
+    <deployedseed>1694700755</deployedseed>
+    <deployedseed>188236977</deployedseed>
+    <deployedseed>1020601541</deployedseed>
+    <deployedseed>772002086</deployedseed>
+    <deployedseed>1015198342</deployedseed>
+    <deployedseed>2078062446</deployedseed>
+    <deployedseed>1744267948</deployedseed>
+    <deployedseed>499581236</deployedseed>
+    <deployedseed>1442895110</deployedseed>
+    <deployedseed>154318460</deployedseed>
+    <deployedseed>1300773853</deployedseed>
+    <deployedseed>1913594300</deployedseed>
+    <deployedseed>601447451</deployedseed>
+    <deployedseed>310936891</deployedseed>
+    <deployedseed>286426599</deployedseed>
+    <deployedseed>1537762632</deployedseed>
+    <deployedseed>858533301</deployedseed>
+    <deployedseed>589370500</deployedseed>
+    <deployedseed>809504726</deployedseed>
+    <deployedseed>2083766191</deployedseed>
+    <deployedseed>1305822527</deployedseed>
+    <deployedseed>912711108</deployedseed>
+    <deployedseed>1391041355</deployedseed>
+    <deployedseed>875288317</deployedseed>
+    <deployedseed>1485864731</deployedseed>
+    <deployedseed>1040491570</deployedseed>
+    <deployedseed>1154189951</deployedseed>
+    <deployedseed>1370663628</deployedseed>
+    <deployedseed>530918304</deployedseed>
+    <deployedseed>1543744898</deployedseed>
+    <deployedseed>1145901920</deployedseed>
+    <deployedseed>1415332811</deployedseed>
+    <deployedseed>1067762984</deployedseed>
+    <deployedseed>252068494</deployedseed>
+    <deployedseed>69527284</deployedseed>
+    <deployedseed>1136449555</deployedseed>
+    <deployedseed>1772998270</deployedseed>
+    <deployedseed>2112093135</deployedseed>
+    <deployedseed>1373820303</deployedseed>
+    <deployedseed>957106520</deployedseed>
+    <deployedseed>1893106297</deployedseed>
+    <deployedseed>724411450</deployedseed>
+    <deployedseed>263183567</deployedseed>
+    <deployedseed>1995080986</deployedseed>
+    <deployedseed>1119821966</deployedseed>
+    <deployedseed>1183326256</deployedseed>
+    <deployedseed>1246805350</deployedseed>
+    <deployedseed>1085922758</deployedseed>
+    <deployedseed>956090465</deployedseed>
+    <deployedseed>756494878</deployedseed>
+    <deployedseed>1469296054</deployedseed>
+    <deployedseed>175286390</deployedseed>
+    <deployedseed>1531510220</deployedseed>
+    <deployedseed>1719853086</deployedseed>
+    <deployedseed>236065823</deployedseed>
+    <deployedseed>1504552912</deployedseed>
+    <deployedseed>1861492392</deployedseed>
+    <deployedseed>1727403542</deployedseed>
+    <deployedseed>1088993082</deployedseed>
+    <deployedseed>1377778416</deployedseed>
+    <deployedseed>1925578543</deployedseed>
+    <deployedseed>1251483401</deployedseed>
+    <deployedseed>306907732</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Partial derivatives: Question 5</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find all the \(1^{st}\) order partial derivatives of the following function.</p>
+<p>\(\displaystyle f(x, z)={@fxy@}\)</p>
+<br>\(\displaystyle \frac{\partial f}{\partial x}=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]
+<br>\(\displaystyle \frac{\partial f}{\partial z}=\) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p> Let's find all the \(1^{st}\) order partial derivatives of the following function. </p>
+<p>\( f(x, z)={@fxy@} \)</p>
+<p>Since the function has two variables \(x\) and \(z\), then it is to find \(\displaystyle \frac{\partial f}{\partial x}\) and \(\displaystyle \frac{\partial f}{\partial z}\). </p>
+<p>Let's start with \(\displaystyle \frac{\partial f}{\partial x}\)</p>
+
+<p>\( \displaystyle
+\begin{align}
+\frac{\partial f}{\partial x} & = \frac{\partial }{\partial x} \left( {@(%e^(-x))*sqrt(aa*z^nn+bb*x^mm)-((cc*x+dd*z)/(ee*z+ff*x))@} \right) \\
+
+& = \frac{\partial }{\partial x} \left( {@(%e^(-x))*sqrt(aa*z^nn+bb*x^mm)@} \right) - \frac{\partial }{\partial x} \left( {@(cc*x+dd*z)/(ee*z+ff*x)@} \right) \\
+
+& = \frac{\partial }{\partial x} \left( {@(%e^(-x))@} \right) \cdot \left( {@sqrt(aa*z^nn+bb*x^mm)@} \right) +  \frac{\partial }{\partial x} \left( {@sqrt(aa*z^nn+bb*x^mm)@} \right)  \cdot \left( {@(%e^(-x))@} \right) -\left[ \frac{\frac{\partial }{\partial x} \left( {@(cc*x+dd*z)@} \right)  \cdot \left( {@(ee*z+ff*x)@} \right) - \frac{\partial }{\partial x} \left( {@(ee*z+ff*x)@} \right)  \cdot \left( {@(cc*x+dd*z)@} \right)}{\left( {@ee*z+ff*x@} \right)^{2} } \right] \\
+\displaystyle
+& = \left( {@diff(%e^(-x),x)@} \right) \cdot \left( {@sqrt(aa*z^nn+bb*x^mm)@} \right) +  \left( {@diff(sqrt(aa*z^nn+bb*x^mm),x)@} \right)  \cdot \left( {@(%e^(-x))@} \right) - \left[ \frac{\left( {@diff(cc*x+dd*z,x)@} \right)  \cdot \left( {@(ee*z+ff*x)@} \right) - \left( {@diff(ee*z+ff*x,x)@} \right)  \cdot \left( {@(cc*x+dd*z)@} \right)}{\left( {@ee*z+ff*x@} \right)^{2} } \right]  \\
+
+& = {@ta1@}
+\end{align}
+\)</p>
+<p>Then \(\displaystyle \frac{\partial f}{\partial z}\)</p>
+\( \displaystyle
+\begin{align}
+\frac{\partial f}{\partial z} & = \frac{\partial}{\partial z} \left( {@fxy@} \right) \\
+& = \frac{\partial}{\partial z} \left( {@(%e^(-x))*sqrt(aa*z^nn+bb*x^mm)@} \right) - \frac{\partial}{\partial z} \left( {@(cc*x+dd*z)/(ee*z+ff*x)@} \right) \\
+& = \frac{\partial}{\partial z} \left( {@(%e^(-x))@} \right) \cdot \left( {@sqrt(aa*z^nn+bb*x^mm)@} \right) +  \frac{\partial}{\partial z} \left( {@sqrt(aa*z^nn+bb*x^mm)@} \right)  \cdot \left( {@(%e^(-x))@} \right) 
+-\left[ \frac{\frac{\partial}{\partial z} \left( {@(cc*x+dd*z)@} \right)  \cdot \left( {@(ee*z+ff*x)@} \right) - \frac{\partial}{\partial z} \left( {@(ee*z+ff*x)@} \right)  \cdot \left( {@(cc*x+dd*z)@} \right)}{\left( {@ee*z+ff*x@} \right)^{2} } \right] \\
+& = \left( {@diff(%e^(-x),z)@} \right) \cdot \left( {@sqrt(aa*z^nn+bb*x^mm)@} \right) +  \left( {@diff(sqrt(aa*z^nn+bb*x^mm),z)@} \right)  \cdot \left( {@(%e^(-x))@} \right)
+ - \left[ \frac{\left( {@diff(cc*x+dd*z,z)@} \right)  \cdot \left( {@(ee*z+ff*x)@} \right) - \left( {@diff(ee*z+ff*x,z)@} \right)  \cdot \left( {@(cc*x+dd*z)@} \right)}{\left( {@ee*z+ff*x@} \right)^{2} } \right] \\
+& = {@ta2@}
+\end{align}
+\)]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*Defining randomised coefficients*/
+aa: rand_with_prohib(-5,5,[0]);
+bb: rand_with_prohib(-5,5,[0]);
+cc: rand_with_prohib(-5,5,[0]);
+dd: rand_with_prohib(-5,5,[0]);
+ee: rand_with_prohib(-5,5,[0]);
+ff: rand_with_prohib(-8,8,[0]);
+nn: rand(6)+1
+mm: rand(5)+1;
+/*Defining the function f(x,y) in terms of its coefficients*/
+assume(aa*z^4+bb*x^2>0);
+fxy: (%e^(-x))*sqrt(aa*z^nn+bb*x^mm)-((cc*x+dd*z)/(ee*z+ff*x));
+
+/*Model answers*/
+ta1: (diff(%e^(-x),x))*(sqrt(aa*z^nn+bb*x^mm))+(diff(sqrt(aa*z^nn+bb*x^mm),x))*((%e^(-x)))-[(expand((diff(cc*x+dd*z,x))*((ee*z+ff*x))-(diff(ee*z+ff*x,x))*((cc*x+dd*z))))/((ee*z+ff*x)^2)],simp;
+ta2: (diff(%e^(-x),z))*(sqrt(aa*z^nn+bb*x^mm))+(diff(sqrt(aa*z^nn+bb*x^mm),z))*((%e^(-x)))-[(expand((diff(cc*x+dd*z,z))*((ee*z+ff*x))-(diff(ee*z+ff*x,z))*((cc*x+dd*z))))/((ee*z+ff*x)^2)],simp;]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle \frac{\partial f}{\partial x}={@ta1@}\) </p>
+<p>\(\displaystyle \frac{\partial f}{\partial z}={@ta2@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire </p>
+<p id="reviewer">Santiago Borio</p>
+<p id="description">This question requires the student to compute the 1st order partial derivatives of a given function f(x, y), followed by evaluating the derivative with respect to x and z.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1592699081</deployedseed>
+    <deployedseed>767005818</deployedseed>
+    <deployedseed>72896738</deployedseed>
+    <deployedseed>1933331016</deployedseed>
+    <deployedseed>198213385</deployedseed>
+    <deployedseed>1532238731</deployedseed>
+    <deployedseed>1341137129</deployedseed>
+    <deployedseed>1953932146</deployedseed>
+    <deployedseed>1035779582</deployedseed>
+    <deployedseed>1335072973</deployedseed>
+    <deployedseed>1553696295</deployedseed>
+    <deployedseed>1091592778</deployedseed>
+    <deployedseed>964138801</deployedseed>
+    <deployedseed>1192933822</deployedseed>
+    <deployedseed>575080894</deployedseed>
+    <deployedseed>97434493</deployedseed>
+    <deployedseed>210326738</deployedseed>
+    <deployedseed>1290141894</deployedseed>
+    <deployedseed>1383682843</deployedseed>
+    <deployedseed>1358260262</deployedseed>
+    <deployedseed>162904289</deployedseed>
+    <deployedseed>1410378053</deployedseed>
+    <deployedseed>1541058657</deployedseed>
+    <deployedseed>1175507286</deployedseed>
+    <deployedseed>536188007</deployedseed>
+    <deployedseed>1306324507</deployedseed>
+    <deployedseed>1458359380</deployedseed>
+    <deployedseed>1990575459</deployedseed>
+    <deployedseed>1868748138</deployedseed>
+    <deployedseed>495663592</deployedseed>
+    <deployedseed>1243640914</deployedseed>
+    <deployedseed>1112943389</deployedseed>
+    <deployedseed>770950096</deployedseed>
+    <deployedseed>20000540</deployedseed>
+    <deployedseed>750866123</deployedseed>
+    <deployedseed>1452637674</deployedseed>
+    <deployedseed>163580947</deployedseed>
+    <deployedseed>291111950</deployedseed>
+    <deployedseed>720847361</deployedseed>
+    <deployedseed>598073454</deployedseed>
+    <deployedseed>1995493322</deployedseed>
+    <deployedseed>646531191</deployedseed>
+    <deployedseed>940397093</deployedseed>
+    <deployedseed>863696872</deployedseed>
+    <deployedseed>46465368</deployedseed>
+    <deployedseed>925835855</deployedseed>
+    <deployedseed>1537739132</deployedseed>
+    <deployedseed>6248280</deployedseed>
+    <deployedseed>469557466</deployedseed>
+    <deployedseed>2017156702</deployedseed>
+    <deployedseed>507860725</deployedseed>
+    <deployedseed>1622006286</deployedseed>
+    <deployedseed>1248595089</deployedseed>
+    <deployedseed>1684020214</deployedseed>
+    <deployedseed>2126751501</deployedseed>
+    <deployedseed>175766909</deployedseed>
+    <deployedseed>685031257</deployedseed>
+    <deployedseed>1175190176</deployedseed>
+    <deployedseed>1409428656</deployedseed>
+    <deployedseed>163850331</deployedseed>
+    <deployedseed>1836473588</deployedseed>
+    <deployedseed>300621577</deployedseed>
+    <deployedseed>1156599232</deployedseed>
+    <deployedseed>1950349687</deployedseed>
+    <deployedseed>1213928050</deployedseed>
+    <deployedseed>795532915</deployedseed>
+    <deployedseed>1751474165</deployedseed>
+    <deployedseed>2141445235</deployedseed>
+    <deployedseed>651457751</deployedseed>
+    <deployedseed>2100750183</deployedseed>
+    <deployedseed>899184101</deployedseed>
+    <deployedseed>1819468889</deployedseed>
+    <deployedseed>1679122855</deployedseed>
+    <deployedseed>2143469053</deployedseed>
+    <deployedseed>1903807637</deployedseed>
+    <deployedseed>656021756</deployedseed>
+    <deployedseed>447558239</deployedseed>
+    <deployedseed>712734903</deployedseed>
+    <deployedseed>1662077141</deployedseed>
+    <deployedseed>1606410990</deployedseed>
+    <deployedseed>1998653881</deployedseed>
+    <deployedseed>1623088294</deployedseed>
+    <deployedseed>1255640148</deployedseed>
+    <deployedseed>1695555853</deployedseed>
+    <deployedseed>1338348051</deployedseed>
+    <deployedseed>315254821</deployedseed>
+    <deployedseed>1701096486</deployedseed>
+    <deployedseed>1353958529</deployedseed>
+    <deployedseed>799417253</deployedseed>
+    <deployedseed>1250264391</deployedseed>
+    <deployedseed>1724519841</deployedseed>
+    <deployedseed>57325833</deployedseed>
+    <deployedseed>1053618988</deployedseed>
+    <deployedseed>1954926779</deployedseed>
+    <deployedseed>1703965513</deployedseed>
+    <deployedseed>977969550</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

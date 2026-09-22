@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluating an Indefinite Integral by Partial Fractions</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p><span style="font-size: 0.9375rem;">Evaluate the integral&nbsp; \(\displaystyle\int{@question_expression@}dx\).</span><br></p>
+<p>\(\displaystyle\int{@question_expression@}dx=\) [[input:ans4]][[validation:ans4]][[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><span><strong>Worked solution</strong></span></p><p><span><strong></strong></span></p><p>To evaluate the following integral \(\displaystyle\int{@question_expression@}dx\), we need two consecutive steps.</p><p><strong><span>First step:</span>&nbsp;The integrand has to be expressed as a sum of its partial fractions.</strong></p><p style="">To write {@question_expression@} as a sum of its partial fractions we need to follow the steps below:</p>
+<p style="">\[{@question_expression@} ={@part_frac_A@}+{@part_frac_B@}+{@part_frac_C@}\].</p>
+<p style="">Setting the numerators equal gives:</p>
+<p style="">\[{@expr@}\]</p>
+<p style="">Getting the coefficients A and B, we have</p>
+<p style="">Let \(x=0:\quad {@expr1@} \implies {@expA@}\). </p>
+<p style="">Let \(x={@-const_3@}:\quad {@expr2@} \implies {@expC@}\).</p>
+<p style="">Let \(x={@(-const_2/const_1)@}:\quad {@expr3b@} \implies {@expB@}\).</p>
+<p style="">The partial fraction of the integral is then,</p>
+<p style="">\[{@expr3@}\]</p>
+<p style=""><strong>Second step: Evaluating the integral.</strong></p><p style="">From the step 1, we have:<br></p>
+<p style="">\[ \displaystyle\int {@question_expression@}dx = \displaystyle\int{@ta_1@}\,dx +&nbsp; \displaystyle\int{@ta_2@}\,dx + \displaystyle\int{@ta_3@}\,dx \]</p>
+<p style="">\[ \iff \displaystyle\int {@question_expression@}dx = {@int_part1@}+ {@int_part2@}+ {@int_part3@}+c\]<br></p>
+<p style="">Therefore,</p>
+<p style="">\[ \displaystyle\int {@question_expression@}dx = {@ta@}\]</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining the question*/
+const_1:1+rand(5);/*The first constant coefficient*/
+const_2:1+rand(5);/*The second constant*/
+const_3: rand_with_prohib(1,4,[const_2]);/*The third constant*/
+const_4:1+rand(8);/*The fourth constant*/
+zz1:rand_with_prohib(-7,7,[0]);/* numerator_1*/
+zz2:rand_with_prohib(-7,7,[0]);/* numerator_2*/
+zz3:rand_with_prohib(-7,7,[0]);/* numerator_2*/
+part_frac_1:zz1/x;/*The first Partial fraction*/
+part_frac_2:zz2/(const_1*x+const_2);/*The second Partial fraction*/
+part_frac_3:zz3/(x+const_3);/*The third Partial fraction*/
+question_expression: factor(part_frac_1+part_frac_2+part_frac_3);
+
+/*model answer question 1*/
+ta_1:part_frac_1;
+ta_2:part_frac_2;
+ta_3:part_frac_3
+ta_4:ta_1+ta_2+ta_3;
+ta_1a: partfrac(question_expression,x);
+
+/*Worked solution codes for question 1 */
+part_frac_A:A/x;
+part_frac_B:B/(const_1*x+const_2);
+part_frac_C:C/(x+const_3);
+numerator_question_expression:num(question_expression);
+expr:A*(const_1*x+const_2)*(x+const_3)+B*x*(x+const_3)+C*x*(const_1*x+const_2)=numerator_question_expression;
+
+/*Find A, B and C*/
+expr1:ev(expr,x=0);
+expA:expr1/ev(((const_1*x+const_2)*(x+const_3)),x=0);
+expr2:ev(expr,x=-const_3);
+expC:expr2/ev((x*(const_1*x+const_2)),x=-const_3);
+coef_B:ev((-const_2/const_1),simp);
+expr3b:ev(expr,x=coef_B);
+expB:expr3b/ev(x*(x+const_3),x=(-const_2/const_1));
+
+expr3: question_expression=ta_1+ta_2+ta_3;
+
+
+
+/*model answer part b*/
+int_part1:int(ta_1,x);
+int_part2:int(ta_2,x);
+int_part3:int(ta_3,x);
+ta:int_part1+int_part2+int_part3+c;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle\int{@question_expression@}dx={@ta@}\)]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">[Godfrey Wabwire]</p>
+<p id="concept">[N/A]</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">[The question focuses on evaluating an Integral by parts and finding the value of the Integral.]</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>25</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checking for correct answers*/
+
+/*node 2:forgetting the constant of integration*/
+mistake_2:int_part1+int_part2+int_part3;
+
+/*node 3:Giving the answer in partial fraction form without completing the integral*/
+mistake_3:ta_1+ta_2+ta_3;
+/*node 4:Computing correct integral with wrong answers in part (1)*/
+question_4:ans1+ans2+ans3;
+int_question1:int(question_4,x)+c;
+mistake_4:int_question1;
+/*node 5:Computing correct integral with wrong answers in part (1) and forgetting the constant of integration*/
+int_question2:int(question_4,x);
+mistake_5:int_question2;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks  for correct answer</description>
+        <answertest>Int</answertest>
+        <sans>ans4</sans>
+        <tans>ta</tans>
+        <testoptions>x</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>forgetting the constant of integration</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p></p>You seem to have to calculated the integral correctly but failed to add the constant of integration.<p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Giving the answer in partial fraction form without completing the integral</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text>You seem to have submitted the computed partial fractions above without finding the actual integral of the partial fractions as was intended in (2).</text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt2-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>used the wrong answers in (1) and correctly computed the integral with the wrong answers</description>
+        <answertest>Int</answertest>
+        <sans>ans4</sans>
+        <tans>mistake_4</tans>
+        <testoptions>x</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p dir="ltr" style="text-align: left;">You seem to have used the wrong answers in (1) and correctly computed the integral with the wrong answers.<br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt2-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>sed the wrong answers in (1) and correctly computed the integral</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake_5</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-5-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p dir="ltr" style="text-align: left;">You seem to have used the wrong answers in (1) and correctly computed the integral with the wrong answer but failed to add the constant of integration.<br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-5-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>662082801</deployedseed>
+    <deployedseed>1346184093</deployedseed>
+    <deployedseed>435903118</deployedseed>
+    <deployedseed>2002137319</deployedseed>
+    <deployedseed>1130039361</deployedseed>
+    <deployedseed>427031026</deployedseed>
+    <deployedseed>1365273997</deployedseed>
+    <deployedseed>1768778806</deployedseed>
+    <deployedseed>175884057</deployedseed>
+    <deployedseed>1248860732</deployedseed>
+    <deployedseed>1607741241</deployedseed>
+    <deployedseed>443674508</deployedseed>
+    <deployedseed>554457403</deployedseed>
+    <deployedseed>1116806218</deployedseed>
+    <deployedseed>1088479984</deployedseed>
+    <deployedseed>599649999</deployedseed>
+    <deployedseed>1548674450</deployedseed>
+    <deployedseed>1447465301</deployedseed>
+    <deployedseed>1588126702</deployedseed>
+    <deployedseed>2124327243</deployedseed>
+    <deployedseed>1905257492</deployedseed>
+    <deployedseed>2046379358</deployedseed>
+    <deployedseed>1318446793</deployedseed>
+    <deployedseed>1425361039</deployedseed>
+    <deployedseed>1111118395</deployedseed>
+    <deployedseed>111522123</deployedseed>
+    <deployedseed>1457003707</deployedseed>
+    <deployedseed>1536789533</deployedseed>
+    <deployedseed>339351611</deployedseed>
+    <deployedseed>1972906631</deployedseed>
+    <deployedseed>953530958</deployedseed>
+    <deployedseed>1095522697</deployedseed>
+    <deployedseed>1809975976</deployedseed>
+    <deployedseed>563465212</deployedseed>
+    <deployedseed>1760116667</deployedseed>
+    <deployedseed>386002870</deployedseed>
+    <deployedseed>1660337025</deployedseed>
+    <deployedseed>867534711</deployedseed>
+    <deployedseed>1765053797</deployedseed>
+    <deployedseed>426904047</deployedseed>
+    <deployedseed>951226266</deployedseed>
+    <deployedseed>1061303436</deployedseed>
+    <deployedseed>153042990</deployedseed>
+    <deployedseed>902969587</deployedseed>
+    <deployedseed>1642156175</deployedseed>
+    <deployedseed>910563066</deployedseed>
+    <deployedseed>117978450</deployedseed>
+    <deployedseed>2088953413</deployedseed>
+    <deployedseed>1075351622</deployedseed>
+    <deployedseed>1297548912</deployedseed>
+    <deployedseed>1428762872</deployedseed>
+    <deployedseed>1187829209</deployedseed>
+    <deployedseed>2120535214</deployedseed>
+    <deployedseed>840818076</deployedseed>
+    <deployedseed>173492972</deployedseed>
+    <deployedseed>1054205068</deployedseed>
+    <deployedseed>429165428</deployedseed>
+    <deployedseed>1826971454</deployedseed>
+    <deployedseed>1584871249</deployedseed>
+    <deployedseed>972343622</deployedseed>
+    <deployedseed>476812907</deployedseed>
+    <deployedseed>761785627</deployedseed>
+    <deployedseed>690555717</deployedseed>
+    <deployedseed>1424027135</deployedseed>
+    <deployedseed>1477997331</deployedseed>
+    <deployedseed>1021484817</deployedseed>
+    <deployedseed>1047236876</deployedseed>
+    <deployedseed>1385655051</deployedseed>
+    <deployedseed>1064882636</deployedseed>
+    <deployedseed>1849890286</deployedseed>
+    <deployedseed>480596465</deployedseed>
+    <deployedseed>1471474977</deployedseed>
+    <deployedseed>302498922</deployedseed>
+    <deployedseed>1259232977</deployedseed>
+    <deployedseed>65756085</deployedseed>
+    <deployedseed>935706159</deployedseed>
+    <deployedseed>16427282</deployedseed>
+    <deployedseed>1276031376</deployedseed>
+    <deployedseed>2097657006</deployedseed>
+    <deployedseed>436751313</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans4</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

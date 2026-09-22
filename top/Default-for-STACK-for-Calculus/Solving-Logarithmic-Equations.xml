@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Solving Logarithmic Equations</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Solve the following for \(x\) </p>
+<p><b>Note:</b> Give your answers in exact form</p>
+<p>a) \(\ln ({@a1@}-{@a2*x@})=\ln(-{@a3*x@})\)</p>
+<p>\(x=\) [[input:ans1]][[validation:ans1]][[feedback:prt1]]</p>
+<p>b) \(\displaystyle \log_{@b0@} ({@b3*n@}{@if b4<0 then "+" else "-"@}{@abs(b4)@})=\log_{@b0@}({@b6@}-{@b5*n@})\)</p>
+<p>\(n=\) [[input:ans2]][[validation:ans2]][[feedback:prt2]]</p>
+<p>c) \(\ln {@c5@}+\ln({@c4@}-{@c3*x^2@})=\ln {@c6@}\)</p>
+<p>\(x=\) [[input:ans3]][[validation:ans3]][[feedback:prt3]]</p>
+<p>d) \(\displaystyle \frac{{@d1@}}{ \log_2 10}-\log(x-{@d3@})=\log {@d2@}\)</p>
+<p>\(x=\) [[input:ans4]][[validation:ans4]][[feedback:prt4]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>a) \(\ln ({@a1@}-{@a2*x@})=\ln(-{@a3*x@})\)</p>
+<p>\( \begin{align} {@a1@}-{@a2*x@}&=-{@a3*x@}\\
+ \Longleftrightarrow x &={@ta1@} \end{align}\)</p>
+<p>b) \(\displaystyle \log_{@b0@} ({@b3*n@}{@if b4<0 then "+" else "-"@}{@abs(b4)@})=\log_{@b0@}({@b6@}-{@b5*n@})\)</p>
+<p>To solve the equation \(\displaystyle \log_{@b0@} ({@b3*n@}{@if b4<0 then "+" else "-"@}{@abs(b4)@})=\log_{@b0@}({@b6@}-{@b5*n@})\), we can use the <b>one-to-one property</b> of logarithms. According to this property, if \(\displaystyle \log_ab = log_a c\), then \(b = c\). So, we can set the expressions inside the <b>logarithms equal</b> to each other</p>
+<p>\({@b3*n@}{@if b4<0 then "+" else "-"@}{@abs(b4)@}={@b6@}-{@b5*n@}\)</p>
+<p>Now, we can solve this equation for \(n\):</p>
+<p>\(n={@ta2@}\)</p>
+[[ if test='ta3>0' ]]
+<p>c) \(\ln {@c5@}+\ln({@c4@}-{@c3*x^2@})=\ln {@c6@}\)</p>
+<p>\(\begin{align} \ln({@c5@}({@c4@}-{@c3*x^2@}))&=\ln {@c6@}\\ 
+{@c5*c4@}-{@c5*c3*x^2@}&={@c6@}\\
+x^2 &={@ta3^2@}\\
+x&=\pm{@ta3@} \end{align} \)
+[[ else ]]
+<p>c) \(\ln {@c5@}+\ln({@c4@}-{@c3*x^2@})=\ln {@c6@}\)</p>
+<p>\(\begin{align} \ln({@c5@}({@c4@}-{@c3*x^2@}))&=\ln {@c6@}\\ 
+{@c5*c4@}-{@c5*c3*x^2@}&={@c6@}\\
+x&={@ta3@} \end{align} \)
+[[/ if]]
+
+<p>d) \(\displaystyle \frac{{@d1@}}{ \log_2 10}-\log(x-{@d3@})=\log {@d2@}\)</p>
+<p>\( \begin{align} \displaystyle \frac{{@d1@}}{ \log_2 10}-\log(x-{@d3@})&=\log {@d2@}\\
+ \log(x-{@d3@})&=\displaystyle \frac{{@d1@}}{ \log_2 10}-\log {@d2@} \qquad \qquad \text{(Put the unknown to one side)}\\
+\log(x-{@d3@})&=\displaystyle \frac{ {@if d1=1 then "" else d1 @}\log 2}{ \log 10}-\log {@d2@} \qquad \qquad \bigg( \log _2 (10)=\frac{\log (10)}{\log (2)} \bigg)\\
+\log(x-{@d3@})&=\displaystyle {@if d1=1 then "" else d1 @}\log 2-\log {@d2@} \\
+\log(x-{@d3@})&=\displaystyle \frac{\log 2^ {@if d1=1 then "" else d1 @}}{\log {@d2@}} \\
+x-{@d3@}&=\displaystyle \frac{{@2^d1@}}{{@d2@}} \\
+x&={@ta4@} \end{align}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>a1:rand_with_step(2,10,1);
+a2:rand_with_step(1,6,1);
+a3:a2+1;
+a4:a1-a2*x=-a3*x;
+ta1:rhs(solve(a4,x)[1]);
+
+b0:rand_with_step(2,15,1);
+b1:rand_with_step(2,10,1);
+b2:rand_with_step(1,6,1);
+b3:rand_with_prohib(1,6,[b1,b2]);
+b4:b3*b2-b1;
+b5:rand_with_step(1,7,1);
+b6:b1+b5*b2;
+ta2:b2;
+
+c1:(rand(6))^2;
+c2:rand_with_step(1,10,1);
+c3:rand(7)+1;
+c4:c3*c1+c2;
+c5:rand_with_step(2,8,1);
+c6:c5*(c4-c3*c1);
+ta3:sqrt(c1);
+
+
+
+d1:rand(4)+1;
+d2:rand_with_step(21,55,1);
+d3:rand(13)+1;
+ta4:(2^d1/d2)+d3;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p> \(\ln ({@a1@}-{@a2*x@})=\ln(-{@a3*x@})\)</p>
+<p>\(x={@ta1@}\) </p>
+<p>\(\displaystyle \log_{@b0@} ({@b3*n@}{@if b4<0 then "+" else "-"@}{@abs(b4)@})=\log_{@b0@}({@b6@}-{@b5*n@})\)</p>
+<p>\(n={@ta2@}\)</p>
+<p>\(\ln {@c5@}+\ln({@c4@}-{@c3*x^2@})=\ln {@c6@}\)</p>
+<p>\(x={@ta3@}\) </p>
+<p>\(\displaystyle \frac{{@d1@}}{ \log_2 10}-\log(x-{@d3@})=\log {@d2@}\)</p>
+<p>\(x={@ta4@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">https://docs.google.com/document/d/1TCC-7hJWSMvYANEzmq7-AaHOV36O8LX7SZz_peG2GXU/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">This question requires solving various logarithmic equations for the variable x by using properties of logarithms and algebraic manipulation. Each equation involves natural logarithms (ln) or logarithms with a specific base. The goal is to find the values of x that satisfy each equation.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta4</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/
+</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/
+</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer with the positive sign*/
+/*Node 1: Checks for the correct answer with the negative sign*/
+</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer with the positive sign</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks for the correct answer with the negative sign</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>-ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>699143765</deployedseed>
+    <deployedseed>572764974</deployedseed>
+    <deployedseed>1714391781</deployedseed>
+    <deployedseed>1067358708</deployedseed>
+    <deployedseed>1003921727</deployedseed>
+    <deployedseed>590570532</deployedseed>
+    <deployedseed>942596533</deployedseed>
+    <deployedseed>1919183325</deployedseed>
+    <deployedseed>890380575</deployedseed>
+    <deployedseed>2030151712</deployedseed>
+    <deployedseed>1554084656</deployedseed>
+    <deployedseed>83080778</deployedseed>
+    <deployedseed>993622504</deployedseed>
+    <deployedseed>1199889530</deployedseed>
+    <deployedseed>1430230738</deployedseed>
+    <deployedseed>900085460</deployedseed>
+    <deployedseed>1054543337</deployedseed>
+    <deployedseed>962121215</deployedseed>
+    <deployedseed>1251784237</deployedseed>
+    <deployedseed>89300419</deployedseed>
+    <deployedseed>1643132574</deployedseed>
+    <deployedseed>1498621055</deployedseed>
+    <deployedseed>1363548256</deployedseed>
+    <deployedseed>1524515486</deployedseed>
+    <deployedseed>1325549311</deployedseed>
+    <deployedseed>603333293</deployedseed>
+    <deployedseed>2005142729</deployedseed>
+    <deployedseed>1131738493</deployedseed>
+    <deployedseed>1605629390</deployedseed>
+    <deployedseed>917933422</deployedseed>
+    <deployedseed>736242058</deployedseed>
+    <deployedseed>972803163</deployedseed>
+    <deployedseed>236897718</deployedseed>
+    <deployedseed>1369225940</deployedseed>
+    <deployedseed>625381941</deployedseed>
+    <deployedseed>141311214</deployedseed>
+    <deployedseed>498930428</deployedseed>
+    <deployedseed>690850389</deployedseed>
+    <deployedseed>1315089369</deployedseed>
+    <deployedseed>305699120</deployedseed>
+    <deployedseed>1409718123</deployedseed>
+    <deployedseed>181848524</deployedseed>
+    <deployedseed>1483400378</deployedseed>
+    <deployedseed>1761423173</deployedseed>
+    <deployedseed>226850786</deployedseed>
+    <deployedseed>870746199</deployedseed>
+    <deployedseed>1973797342</deployedseed>
+    <deployedseed>913775969</deployedseed>
+    <deployedseed>1893651752</deployedseed>
+    <deployedseed>1125398633</deployedseed>
+    <deployedseed>24985313</deployedseed>
+    <deployedseed>316776461</deployedseed>
+    <deployedseed>1800056714</deployedseed>
+    <deployedseed>1940372097</deployedseed>
+    <deployedseed>1591262655</deployedseed>
+    <deployedseed>1187940944</deployedseed>
+    <deployedseed>729585693</deployedseed>
+    <deployedseed>1577705541</deployedseed>
+    <deployedseed>1573746972</deployedseed>
+    <deployedseed>1990491838</deployedseed>
+    <deployedseed>635860828</deployedseed>
+    <deployedseed>287331300</deployedseed>
+    <deployedseed>986199951</deployedseed>
+    <deployedseed>153241146</deployedseed>
+    <deployedseed>100764362</deployedseed>
+    <deployedseed>609871943</deployedseed>
+    <deployedseed>1707477057</deployedseed>
+    <deployedseed>1489636281</deployedseed>
+    <deployedseed>1294719696</deployedseed>
+    <deployedseed>167917889</deployedseed>
+    <deployedseed>1741443089</deployedseed>
+    <deployedseed>1751796513</deployedseed>
+    <deployedseed>1118092902</deployedseed>
+    <deployedseed>112954697</deployedseed>
+    <deployedseed>1446451182</deployedseed>
+    <deployedseed>922993909</deployedseed>
+    <deployedseed>201720354</deployedseed>
+    <deployedseed>1435092165</deployedseed>
+    <deployedseed>1002827297</deployedseed>
+    <deployedseed>944949905</deployedseed>
+    <deployedseed>48289207</deployedseed>
+    <deployedseed>44992408</deployedseed>
+    <deployedseed>334034074</deployedseed>
+    <deployedseed>50432595</deployedseed>
+    <deployedseed>64231762</deployedseed>
+    <deployedseed>373056809</deployedseed>
+    <deployedseed>434281280</deployedseed>
+    <deployedseed>37535494</deployedseed>
+    <deployedseed>1837443993</deployedseed>
+    <deployedseed>1902263746</deployedseed>
+    <deployedseed>1611904566</deployedseed>
+    <deployedseed>1704942425</deployedseed>
+    <deployedseed>843697326</deployedseed>
+    <deployedseed>1160290661</deployedseed>
+    <deployedseed>464108236</deployedseed>
+    <deployedseed>439244548</deployedseed>
+    <deployedseed>1705071915</deployedseed>
+    <deployedseed>399486892</deployedseed>
+    <deployedseed>768108136</deployedseed>
+    <deployedseed>717877284</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta3</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>ta4</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

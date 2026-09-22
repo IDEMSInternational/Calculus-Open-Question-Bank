@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Finding equations, range, domain, and the graph of exponential function</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Consider the following questions:</p>
+<p><em><b>Note:</b> To enter intervals of real line, you should write the relevant text in the table below.</em></p>
+
+<table width="250" cellspacing="1" cellpadding="0" border="1" style="margin-left: 30px">
+  <tr>
+    <th style="text-align: center;">Intervals</th>
+    <th style="text-align: center;">Input Syntax</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( [a,b] \)</td>
+    <td style="text-align: center;"><code>cc(a,b)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( (a,b) \)</td>
+    <td style="text-align: center;"><code>oo(a,b)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( [a,b) \)</td>
+    <td style="text-align: center;"><code>co(a,b)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( (a,b] \)</td>
+    <td style="text-align: center;"><code>oc(a,b)</code></td>
+  </tr>
+ <tr>
+    <td style="text-align: center;">\( (a, \infty) \)</td>
+    <td style="text-align: center;"><code>oo(a,inf)</code></td>
+  </tr>
+ <tr>
+    <td style="text-align: center;">\( (-\infty, b] \)</td>
+    <td style="text-align: center;"><code>oc(-inf,b)</code></td>
+  </tr>
+ <tr>
+    <td style="text-align: center;">\( (-\infty, \infty) \)</td>
+    <td style="text-align: center;"><code>oo(-inf,inf)</code></td>
+  </tr>
+</table>
+</p>
+
+
+<p> a) Write an equation that defines the exponential function with base \(a> 0\)</p>
+<p>[[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:prt1]]</p>
+  
+<p> b)  What is the domain of the function in \((a)\)?</p>
+<p> [[input:ans2]] [[validation:ans2]]</p>
+<p>[[feedback:prt2]]</p>
+  <p> c)  If \(a \neq 1,\) what is the range of the function in \((a)\)? 
+</p>
+<p>[[input:ans3]] [[validation:ans3]]</p>
+<p>[[feedback:prt3]]</p>
+  
+<p> d) Sketch the general shape of the graph of the exponetial function for each of the following cases by dragging the slidders \(c\) and \(d\).
+</p>
+<p>i. \(a >1\) </p>
+
+<p>
+[[jsxgraph width="500px" height="500px" input-ref-ansa='ansaRef']]  
+            var board = JXG.JSXGraph.initBoard(divid, { 
+            boundingbox: [-8, 8, 8, -8],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: true,
+            showNavigation:true
+        });
+           // Function parameters
+           var c = board.create('slider', [[-7.5, -3], [-4,-3], [-3, {#c1#}, 4]], {name:'c', snapWidth: 0.1});
+           var d = board.create('slider', [[-7.5, -5], [-4,-5], [-1, {#d1#}, 5]], {name:'d',snapWidth: 1});
+
+            // Function graph
+            var f = board.create('functiongraph', [
+                function(x) { return c.Value() ** x + d.Value(); },
+                -5, 5
+            ]);
+[[/jsxgraph]]
+</p>
+<p style="visibility:hidden">[[input:ansa]] [[validation:ansa]] [[feedback:prta]]</p>
+</p>
+<p>ii. \(a =1\) </p>
+<p>
+[[jsxgraph]]
+            var board = JXG.JSXGraph.initBoard(divid, { 
+            boundingbox: [-8, 8, 8, -8],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: true,
+            showNavigation:true
+        });
+           // Function parameters
+          var c = board.create('slider', [[-7.5, -3], [-4,-3], [-3, {#c_1#}, 4]], {name:'c', snapWidth: 0.1});
+           var d = board.create('slider', [[-7.5, -5], [-4,-5], [-1, {#d_1#}, 5]], {name:'d',snapWidth: 1});
+
+            // Function graph
+            var f = board.create('functiongraph', [
+                function(x) { return c.Value() ** x + d.Value(); },
+                -5, 5
+            ]);
+[[/jsxgraph]]
+</p>
+<p style='display:none'>[[input:ans5]] [[validation:ans5]][[feedback:prt5]]
+</p>
+<p>iii. \(0 < a <1\) </p>
+<p>
+[[jsxgraph]]
+            var board = JXG.JSXGraph.initBoard(divid, { 
+            boundingbox:[-8, 8, 8, -8],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: true,
+            showNavigation:true
+        });
+           // Function parameters
+           var c = board.create('slider', [[-7.5, -3], [-4,-3], [-3, 1, 4]], {name:'c', snapWidth: 0.1});
+           var d = board.create('slider', [[-7.5, -5], [-4,-5], [-1, 1, 5]], {name:'d',snapWidth: 1});
+// Update function and plot when sliders change
+        c.on('drag', function() {
+            curve.updateCurve();
+        });
+
+        d.on('drag', function() {
+            curve.updateCurve();
+        });
+         // Create the plot of f(x) = c * x^d with initial slider values
+        const curve = board.create('functiongraph', [
+            function(x) {
+                return f(x, c.Value(), d.Value());
+            },
+            -5, 5  // x-range for plotting
+        ]);
+
+      
+[[/jsxgraph]]
+</p>
+<p style='display:none'>[[input:ans6]] [[validation:ans6]][[feedback:prt6]]
+</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[eqn:f(x)=a^x;
+f_domain:oo(-inf,inf);
+f_range(a) :=
+    if a > 1 then
+        (oo(0,inf))
+    elseif a < 1 then
+         (oo(0,inf))
+    else
+        (" {1}");
+
+f_range(2);  
+ta_1:eqn;
+ta_2:f_domain;
+ta_3:f_range(2);
+
+
+
+/*Initial values*/
+c1: 2;
+d1: 1;
+/*Correct values of a-base any value a>1 */
+a_cor: rand_with_step(2,8,1);
+c_1: 0;
+d_1: 1;
+/*Correct values of a-base any value a=1 */
+b_cor:rand([0,1,-1,2,-2]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>1</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta_2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta_3</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>b_cor</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>ta_6</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ansa</name>
+      <type>algebraic</type>
+      <tans>a_cor</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct equation of the exponetial function</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct domain of the function</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct range of the function</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>b_true: is(ansa=1 and ansa#0);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct value of base a=1</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>b_true</sans>
+        <tans>true</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>sans</sans>
+        <tans>ta_6</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prta</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text><![CDATA[a_true: is(ansa>0 and ansa#1);]]></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description><![CDATA[checks for correct value of base a>1]]></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>a_true</sans>
+        <tans>true</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prta-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prta-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+</quiz>

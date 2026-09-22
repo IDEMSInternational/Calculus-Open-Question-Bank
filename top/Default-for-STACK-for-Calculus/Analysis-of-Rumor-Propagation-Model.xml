@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Analysis of Rumor Propagation Model</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>The function \( \displaystyle N(t)= \frac{{@a1@}}{1+{@a2@} e^{-{@a3@}t}}\) models the number of people in a town who have heard a rumor after \(t\) days.</p>
+<p><b>Note:</b> Give your answers to the nearest whole number where applicable</p>
+<p>a) How many people started the rumor?</p> 
+<p>[[input:ans1]] people started the rumor. [[validation:ans1]][[feedback:prt1]]</p>
+<p>How many people will have heard the rumor after {@a5@} {@if a4=1 then "day" else "days"@}.</p>
+<p>There will be [[input:ans2]] people who will have heard the rumor after {@a5@} {@if a4=1 then "day" else "days"@}.  [[validation:ans2]][[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>a) At \(t=0\), we have </p>
+<p>\(\displaystyle N(0)= \frac{{@a1@}}{1+{@a2@} e^0}=\frac{{@a1@}}{{@1+a2*e^0@}}={@ta1@}\)</p>
+<p>Thus, \({@ta_1b@}\) people started the rumor.</p>
+<p>b) At \(t={@a4@}\), we have </p>
+<p>\(\begin{align} \displaystyle N({@a4@})&= \frac{{@a1@}}{1+{@a2@} e^{-{@a3@}({@a4@})}} \\
+ &=\frac{{@a1@}}{1+{@a2@} e^{@decimalplaces(-a3*a4,1)@}} \\
+&=\frac{{@a1@}}{1+{@a2@}({@ e^(-a3*a4)@})} \\
+&=\frac{{@a1@}}{{@1+(a2* e^(-a3*a4))@}} \\
+  &={@ta2@} \end{align}\)</p>
+<p>Thus there will be \({@ta_2a@}\) people who will have heard the rumor after {@a5@} {@if a4=1 then "day" else "days"@}.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[a1:rand_with_step(400,1500,100);
+a2:rand_with_step(40,85,1);
+a3:float((rand_with_step(3,9,1))/10);
+a4:rand_with_step(1,10,1);
+a5:if a4=1 then "one" elseif a4=2 then "two" elseif a4=3 then "three" elseif a4=4 then "four" elseif a4=5 then "five" elseif a4=6 then "six" elseif a4=7 then "seven" elseif a4=8 then "eight" elseif a4=9 then "nine" else "ten";
+func:a1/(1+a2*e^(-a3*t));
+ta_1a:subst(t = 0,func);
+ta_1:is(integerp(ta_1a));
+ta1:if ta_1=true then ta_1a else decimalplaces(ta_1a,1);
+ta_1b:if ta_1=true then ta_1a else round(ta_1a);
+ta2:subst(t = a4,func);
+ta_2a:round(ta2);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p> \( \displaystyle N(t)= \frac{{@a1@}}{1+{@a2@} e^{-{@a3@}t}}\)</p>
+<p>a) At \(t=0 \, \, N(0)={@ta1@}= {@ta_1b@}\) people.</p>
+<p>b) At \(t={@a4@} \, \, N({@a4@})={@ta2@}={@ta_2a@}\) people.</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Nixson kiplagat</p>
+<p id="concept">https://docs.google.com/document/d/1Yr_3WSVNCXhDqNkXBpPkgf8_eq1ZaJd8MmCZb6xt4c8/edit</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">This question requires students to investigate a mathematical model \(N(t)=\frac{a}{1+be^-ct}\) representing the spread of a rumor over time in a town. Students are also suppose to determine the initial number of people who started the rumor and estimate, rounded to the nearest whole number, the total number of people who will have heard the rumor after the specified days.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1b</tans>
+      <boxsize>4</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta_2a</tans>
+      <boxsize>4</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1b</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_2a</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>2015058139</deployedseed>
+    <deployedseed>691007323</deployedseed>
+    <deployedseed>1193277846</deployedseed>
+    <deployedseed>1796699116</deployedseed>
+    <deployedseed>1404546975</deployedseed>
+    <deployedseed>53454808</deployedseed>
+    <deployedseed>1803397165</deployedseed>
+    <deployedseed>444414681</deployedseed>
+    <deployedseed>723816833</deployedseed>
+    <deployedseed>1180169865</deployedseed>
+    <deployedseed>459787012</deployedseed>
+    <deployedseed>1248365499</deployedseed>
+    <deployedseed>2007750870</deployedseed>
+    <deployedseed>1825381845</deployedseed>
+    <deployedseed>1519868299</deployedseed>
+    <deployedseed>141837535</deployedseed>
+    <deployedseed>457513097</deployedseed>
+    <deployedseed>1233219841</deployedseed>
+    <deployedseed>1048348765</deployedseed>
+    <deployedseed>317145940</deployedseed>
+    <deployedseed>1918331680</deployedseed>
+    <deployedseed>861805790</deployedseed>
+    <deployedseed>596723859</deployedseed>
+    <deployedseed>764621645</deployedseed>
+    <deployedseed>1983119422</deployedseed>
+    <deployedseed>1021917609</deployedseed>
+    <deployedseed>1659288192</deployedseed>
+    <deployedseed>1003648256</deployedseed>
+    <deployedseed>468815927</deployedseed>
+    <deployedseed>58712380</deployedseed>
+    <deployedseed>935958764</deployedseed>
+    <deployedseed>795399571</deployedseed>
+    <deployedseed>1945040635</deployedseed>
+    <deployedseed>2049878089</deployedseed>
+    <deployedseed>1427415756</deployedseed>
+    <deployedseed>608980121</deployedseed>
+    <deployedseed>1780269106</deployedseed>
+    <deployedseed>1275228248</deployedseed>
+    <deployedseed>406161224</deployedseed>
+    <deployedseed>1675556547</deployedseed>
+    <deployedseed>598836160</deployedseed>
+    <deployedseed>400920392</deployedseed>
+    <deployedseed>1345052446</deployedseed>
+    <deployedseed>639208247</deployedseed>
+    <deployedseed>65116811</deployedseed>
+    <deployedseed>888144520</deployedseed>
+    <deployedseed>498500672</deployedseed>
+    <deployedseed>911010508</deployedseed>
+    <deployedseed>1021462392</deployedseed>
+    <deployedseed>1308939925</deployedseed>
+    <deployedseed>1047474740</deployedseed>
+    <deployedseed>1239823177</deployedseed>
+    <deployedseed>1339816115</deployedseed>
+    <deployedseed>531410443</deployedseed>
+    <deployedseed>135938498</deployedseed>
+    <deployedseed>2034740551</deployedseed>
+    <deployedseed>838861603</deployedseed>
+    <deployedseed>1192579536</deployedseed>
+    <deployedseed>1962508527</deployedseed>
+    <deployedseed>48943408</deployedseed>
+    <deployedseed>415417701</deployedseed>
+    <deployedseed>1438842421</deployedseed>
+    <deployedseed>1627663329</deployedseed>
+    <deployedseed>2054488948</deployedseed>
+    <deployedseed>523958140</deployedseed>
+    <deployedseed>17430051</deployedseed>
+    <deployedseed>1312532754</deployedseed>
+    <deployedseed>973953005</deployedseed>
+    <deployedseed>786425540</deployedseed>
+    <deployedseed>1017018822</deployedseed>
+    <deployedseed>587738241</deployedseed>
+    <deployedseed>363151417</deployedseed>
+    <deployedseed>1301325663</deployedseed>
+    <deployedseed>773467870</deployedseed>
+    <deployedseed>127173613</deployedseed>
+    <deployedseed>1206105528</deployedseed>
+    <deployedseed>415253529</deployedseed>
+    <deployedseed>858388627</deployedseed>
+    <deployedseed>248542832</deployedseed>
+    <deployedseed>762782524</deployedseed>
+    <deployedseed>2105233609</deployedseed>
+    <deployedseed>971471905</deployedseed>
+    <deployedseed>615095421</deployedseed>
+    <deployedseed>2114202962</deployedseed>
+    <deployedseed>821050895</deployedseed>
+    <deployedseed>1419719593</deployedseed>
+    <deployedseed>967041176</deployedseed>
+    <deployedseed>345359259</deployedseed>
+    <deployedseed>539686219</deployedseed>
+    <deployedseed>603961146</deployedseed>
+    <deployedseed>2094364209</deployedseed>
+    <deployedseed>640588106</deployedseed>
+    <deployedseed>1459330879</deployedseed>
+    <deployedseed>833320156</deployedseed>
+    <deployedseed>955802299</deployedseed>
+    <deployedseed>1797055494</deployedseed>
+    <deployedseed>747871735</deployedseed>
+    <deployedseed>73964630</deployedseed>
+    <deployedseed>1541050914</deployedseed>
+    <deployedseed>1812731104</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_1b</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta_2a</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

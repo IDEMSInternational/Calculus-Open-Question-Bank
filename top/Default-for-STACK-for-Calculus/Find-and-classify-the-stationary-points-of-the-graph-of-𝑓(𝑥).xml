@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Find and classify the stationary points of the graph of 𝑓(𝑥)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Consider the function \(f(x) = {@fx@}\)</p>
+<p>i. Find and classify the stationary points of the graph of \(f(x)\). Enter your answers as points, in fractions where appropriate, in the relevant boxes and if there are none simply type in the word "none". Give your answer correct to 2 decimal places where appropriate.</p>
+<p>Maximum: \( \big( \) [[input:ans1]],[[input:ans2]] \( \big) \) [[validation:ans1]][[validation:ans2]][[feedback:prt1]][[feedback:prt2]]</p>
+<p>Minimum: \( \big( \) [[input:ans3]],[[input:ans4]] \( \big) \)[[validation:ans3]][[validation:ans4]][[feedback:prt3]][[feedback:prt4]]</p>
+<p>Stationary point of inflection: \( \big( \) [[input:ans5]],[[input:ans6]] \( \big) \)[[validation:ans5]][[validation:ans6]][[feedback:prt5]][[feedback:prt6]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To find stationary points we need to find the values of \(x\) for which \(f'(x) = 0\).</p><p>\(f'(x) = {@dfx@} = 0\)</p><p>\({@factor(dfx)@} = 0\)</p><p>\(x={@x1@}\) or \(x={@x2@}\) or \(x={@x3@}\).</p><p>We now need to classify these points. To do so we use the following table:</p>
+<table>
+<caption></caption>
+<thead>
+<tr><th scope="col" style="text-align: center;border: 1px solid black; ">\(x=\)</th>
+<th scope="col" style="text-align: center;border: 1px solid black; ">before {@dispdp(x1,2)@}</th>
+<th scope="col" style="text-align: center;border: 1px solid black; ">{@dispdp(x1,2)@}</th>
+<th scope="col" style="text-align: center;border: 1px solid black; ">after {@dispdp(x1,2)@}</th>
+<th scope="col" style="text-align: center;border: 1px solid black; ">before {@x2@}<br></th>
+<th scope="col" style="text-align: center;border: 1px solid black; ">{@x2@}</th>
+<th scope="col" style="text-align: center;border: 1px solid black; ">after {@x2@}</th>
+<th scope="col" style="text-align: center;border: 1px solid black; ">before {@dispdp(x3,2)@}</th>
+<th scope="col" style="text-align: center;border: 1px solid black; ">{@dispdp(x3,2)@}</th>
+<th scope="col" style="text-align: center;border: 1px solid black; ">after {@dispdp(x3,2)@}</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: center;border: 1px solid black; ">\(f'(x)=\)</td>
+<td style="text-align: center;border: 1px solid black; ">{@dispdp(bx1,2)@}</td>
+<td style="text-align: center;border: 1px solid black; ">0</td>
+<td style="text-align: center;border: 1px solid black; ">{@dispdp(ax1,2)@}</td>
+<td style="text-align: center;border: 1px solid black; ">{@dispdp(bx2,2)@}</td>
+<td style="text-align: center;border: 1px solid black; ">0</td>
+<td style="text-align: center;border: 1px solid black; ">{@dispdp(ax2,2)@}</td>
+<td style="text-align: center;border: 1px solid black; ">{@dispdp(bx3,2)@}</td>
+<td style="text-align: center;border: 1px solid black; ">0</td>
+<td style="text-align: center;border: 1px solid black; ">{@dispdp(ax3,2)@}</td>
+</tr>
+<tr>
+<td style="text-align: center;border: 1px solid black; "><br></td>
+<td style="text-align: center;border: 1px solid black; ">{@behbx1@}</td>
+<td style="text-align: center;border: 1px solid black; ">stationary</td>
+<td style="text-align: center;border: 1px solid black; ">{@behax1@}</td>
+<td style="text-align: center;border: 1px solid black; ">{@behbx2@}</td>
+<td style="text-align: center;border: 1px solid black; ">stationary</td>
+<td style="text-align: center;border: 1px solid black; ">{@behax2@}</td>
+<td style="text-align: center;border: 1px solid black; ">{@behbx3@}</td>
+<td style="text-align: center;border: 1px solid black; ">stationary</td>
+<td style="text-align: center;border: 1px solid black; ">{@behax3@}</td>
+</tr>
+</tbody></table><br><p>Since before \(x={@dispdp(x1,2)@}\) the graph is {@behbx1@} and after it is {@behax1@}, we have a minimum. Once we find the value of \(f({@dispdp(x1,2)@})\) we conclude that the local minimum point is \( ({@dispdp(taminx,2)@},{@dispdp(taminy,2)@})\).</p><p>Similarly, before \(x={@x2@}\)&nbsp;the graph is {@behbx2@} and after it is {@behax2@}, we have a stationary point of inflection. Once we find the value of \(f({@x2@})\) we conclude that the stationary point of inflection is \(({@tainfx@},{@tainfy@})\).<br></p><p>Finally, as before \(x={@dispdp(x3,2)@}\)&nbsp;the graph is {@behbx3@} and after it is {@behax3@}, we have a maximum. Once we find the value of \(f({@dispdp(x3,2)@})\) we conclude that the local maximum point is \(({@dispdp(tamaxx,2)@},{@dispdp(tamaxy,2)@})\).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[aa:rand([3,6,9,12]);
+bb:rand([5,10,15]);
+pm3:rand_with_prohib(-1,1,[0]);
+cc:pm3*(rand(15)+1);
+fx:-aa*x^5+bb*x^3+cc;
+dfx:diff(fx,x);
+x2:0;
+x3:((3*bb)/(5*aa))^0.5;
+x1:-((3*bb)/(5*aa))^0.5;
+bx1:ev(dfx,x=x1-0.1);
+ax1: ev(dfx,x=x1+0.1);
+bx2:ev(dfx,x=x2-0.1);
+ax2:ev(dfx,x=x2+0.1);
+bx3:ev(dfx,x=x3-0.1);
+ax3:ev(dfx,x=x3+0.1);
+behbx1:if bx1<0 then "decreasing" else "increasing";
+behax1:if ax1<0 then "decreasing" else "increasing";
+behbx2:if bx2<0 then "decreasing" else "increasing";
+behax2:if ax2<0 then "decreasing" else "increasing";
+behbx3:if bx3<0 then "decreasing" else "increasing"
+behax3:if ax3<0 then "decreasing" else "increasing"  
+classx1: if bx1<0 and ax1>0 then "minimum" elseif bx1<0 and ax1<0 then "inflection" elseif bx1>0 and ax1>0 then "inflection" else "maximum";
+classx2: if ev(dfx,x=x2-0.1)<0 and ev(dfx,x=x2+0.1)>0 then "minimum" elseif ev(dfx,x=x2-0.1)<0 and ev(dfx,x=x2+0.1)<0 then "inflection" elseif ev(dfx,x=x2-0.1)>0 and ev(dfx,x=x2+0.1)>0 then "inflection" else "maximum";
+classx3: if bx3<0 and ax3>0 then "minimum" elseif bx3<0 and ax3<0 then "inflection" elseif bx3>0 and ax3>0 then "inflection" else "maximum";
+tamaxx:if classx1 = "maximum" then x1 elseif classx2 = "maximum" then x2 elseif classx3 = "maximum" then x3 else none;
+tamaxy:if tamaxx = none then none else ev(fx,x=tamaxx);
+taminx:if classx1 = "minimum" then x1 elseif classx2 = "minimum" then x2 elseif classx3 = "minimum" then x3 else none;
+taminy:if taminx = none then none else ev(fx,x=taminx);
+tainfx:if classx1 = "inflection" then x1 elseif classx2 = "inflection" then x2 elseif classx3 = "inflection" then x3 else none;
+tainfy:if tainfx = none then none else ev(fx,x=tainfx);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Consider the function \(f(x) = {@fx@}\)</p>
+<p>Maximum: \( \big(  {@dispdp(tamaxx,2)@} , {@dispdp(tamaxy,2)@} \big) \)<br></p>
+<p>Minimum: \( \big( {@dispdp(taminx,2)@},{@dispdp(taminy,2)@} \big) \)</p>
+<p>Stationary point of inflection: \( \big( {@tainfx@},{@tainfy@} \big) \)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey  Wabwire</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">Find and classify the stationary points of the graph of 𝑓(𝑥)(Maximum, Minimum and Stationary point of inflection:)</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>numerical</type>
+      <tans>dispdp(tamaxx,2)</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>numerical</type>
+      <tans>dispdp(tamaxy,2)</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>numerical</type>
+      <tans>dispdp(taminx,2)</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>numerical</type>
+      <tans>dispdp(taminy,2)</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>tainfx</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>tainfy</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct decimal answer*/
+/*Node 2: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description> Checks for the correct decimal answer</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans1</sans>
+        <tans>tamaxx</tans>
+        <testoptions>2</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>+</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>tamaxx</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct decimal answer*/
+/*Node 2: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct decimal answer</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans2</sans>
+        <tans>tamaxy</tans>
+        <testoptions>2</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>+</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>hecks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>tamaxy</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct decimal answer*/
+/*Node 2: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description> Checks for the correct decimal answer</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans3</sans>
+        <tans>taminx</tans>
+        <testoptions>2</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>+</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>taminx</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct decimal answer*/
+/*Node 2: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct decimal answer</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans4</sans>
+        <tans>taminy</tans>
+        <testoptions>2</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>+</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>taminy</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>tainfx</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>tainfy</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1476481446</deployedseed>
+    <deployedseed>611658343</deployedseed>
+    <deployedseed>1367956809</deployedseed>
+    <deployedseed>1328971288</deployedseed>
+    <deployedseed>2131834178</deployedseed>
+    <deployedseed>1896953903</deployedseed>
+    <deployedseed>1216951690</deployedseed>
+    <deployedseed>953541471</deployedseed>
+    <deployedseed>938727240</deployedseed>
+    <deployedseed>223176070</deployedseed>
+    <deployedseed>1540188854</deployedseed>
+    <deployedseed>2071392012</deployedseed>
+    <deployedseed>1385539007</deployedseed>
+    <deployedseed>158357584</deployedseed>
+    <deployedseed>433224051</deployedseed>
+    <deployedseed>142929390</deployedseed>
+    <deployedseed>1963384560</deployedseed>
+    <deployedseed>149314717</deployedseed>
+    <deployedseed>2124180116</deployedseed>
+    <deployedseed>27106260</deployedseed>
+    <deployedseed>1495181993</deployedseed>
+    <deployedseed>1040528950</deployedseed>
+    <deployedseed>1900431483</deployedseed>
+    <deployedseed>1463855847</deployedseed>
+    <deployedseed>529735073</deployedseed>
+    <deployedseed>384153843</deployedseed>
+    <deployedseed>1412146866</deployedseed>
+    <deployedseed>821473636</deployedseed>
+    <deployedseed>857632732</deployedseed>
+    <deployedseed>1113310837</deployedseed>
+    <deployedseed>1521858827</deployedseed>
+    <deployedseed>1487734013</deployedseed>
+    <deployedseed>1037438499</deployedseed>
+    <deployedseed>1496053365</deployedseed>
+    <deployedseed>526844221</deployedseed>
+    <deployedseed>422057286</deployedseed>
+    <deployedseed>1044096376</deployedseed>
+    <deployedseed>605289064</deployedseed>
+    <deployedseed>1365072895</deployedseed>
+    <deployedseed>133315445</deployedseed>
+    <deployedseed>1566877637</deployedseed>
+    <deployedseed>885237005</deployedseed>
+    <deployedseed>475279893</deployedseed>
+    <deployedseed>124082008</deployedseed>
+    <deployedseed>144639849</deployedseed>
+    <deployedseed>2065779738</deployedseed>
+    <deployedseed>902871562</deployedseed>
+    <deployedseed>782970160</deployedseed>
+    <deployedseed>403749471</deployedseed>
+    <deployedseed>1992343888</deployedseed>
+    <deployedseed>980396645</deployedseed>
+    <deployedseed>32727809</deployedseed>
+    <deployedseed>1640613568</deployedseed>
+    <deployedseed>1162467580</deployedseed>
+    <deployedseed>1198068652</deployedseed>
+    <deployedseed>214530886</deployedseed>
+    <deployedseed>1410389776</deployedseed>
+    <deployedseed>550760822</deployedseed>
+    <deployedseed>205024487</deployedseed>
+    <deployedseed>1131883806</deployedseed>
+    <deployedseed>666553126</deployedseed>
+    <deployedseed>147759273</deployedseed>
+    <deployedseed>1478077788</deployedseed>
+    <deployedseed>481197637</deployedseed>
+    <deployedseed>1326642174</deployedseed>
+    <deployedseed>538756784</deployedseed>
+    <deployedseed>469782281</deployedseed>
+    <deployedseed>1752997048</deployedseed>
+    <deployedseed>32988139</deployedseed>
+    <deployedseed>1467667231</deployedseed>
+    <deployedseed>1852419269</deployedseed>
+    <deployedseed>491637607</deployedseed>
+    <deployedseed>1104808977</deployedseed>
+    <deployedseed>991245730</deployedseed>
+    <deployedseed>613967322</deployedseed>
+    <deployedseed>1130576697</deployedseed>
+    <deployedseed>1002404431</deployedseed>
+    <deployedseed>262050112</deployedseed>
+    <deployedseed>1966391299</deployedseed>
+    <deployedseed>1754540599</deployedseed>
+    <deployedseed>1796954559</deployedseed>
+    <deployedseed>1514738611</deployedseed>
+    <deployedseed>1728015460</deployedseed>
+    <deployedseed>1039541973</deployedseed>
+    <deployedseed>1031430845</deployedseed>
+    <deployedseed>1879799091</deployedseed>
+    <deployedseed>1841782824</deployedseed>
+    <deployedseed>30461858</deployedseed>
+    <deployedseed>1323498006</deployedseed>
+    <deployedseed>1275994356</deployedseed>
+    <deployedseed>332225056</deployedseed>
+    <deployedseed>222991983</deployedseed>
+    <deployedseed>1902347298</deployedseed>
+    <deployedseed>596517724</deployedseed>
+    <deployedseed>743984075</deployedseed>
+    <deployedseed>1231234899</deployedseed>
+    <deployedseed>70618840</deployedseed>
+    <deployedseed>1525331001</deployedseed>
+    <deployedseed>1052459252</deployedseed>
+    <deployedseed>476721122</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>dispdp(tamaxx,2)</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>dispdp(tamaxy,2)</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>dispdp(taminx,2)</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>dispdp(taminy,2)</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>tainfx</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>tainfy</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt6</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt6-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Understanding Logarithmic Functions with Base 1 and Graphs part b</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<ol type="a">
+<p>
+<li>How is the Logarithmic function \(y = \log_a x\) defined?</li>
+</p>
+<p>[[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:prt1]]</p>
+
+<p><li>Find the domain and range of \(y\) in <strong>\((a)\) </strong>?</li></p>
+<p>Give your answer as an interval of the real numbers.</p>
+<p><em>Note: To enter intervals of the real line, you should write the relevant text in the table below.</em></p>
+
+<table width="250" cellspacing="1" cellpadding="0" border="1" style="margin-left: 30px">
+  <tr>
+    <th style="text-align: center;">Intervals</th>
+    <th style="text-align: center;">Input Syntax</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( [a,b] \)</td>
+    <td style="text-align: center;"><code>cc(a,b)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( (a,b) \)</td>
+    <td style="text-align: center;"><code>oo(a,b)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( [a,b) \)</td>
+    <td style="text-align: center;"><code>co(a,b)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( (a,b] \)</td>
+    <td style="text-align: center;"><code>oc(a,b)</code></td>
+  </tr>
+ <tr>
+    <td style="text-align: center;">\( (a, \infty) \)</td>
+    <td style="text-align: center;"><code>oo(a,inf)</code></td>
+  </tr>
+ <tr>
+    <td style="text-align: center;">\( (-\infty, b] \)</td>
+    <td style="text-align: center;"><code>oc(-inf,b)</code></td>
+  </tr>
+ <tr>
+    <td style="text-align: center;">\( (-\infty, \infty) \)</td>
+    <td style="text-align: center;"><code>oo(-inf,inf)</code></td>
+  </tr>
+</table>
+
+<p><ol type="i">
+<li>\(\text{Dom}(y)=\) [[input:ans2a]] [[validation:ans2a]]</li></p>
+<p>[[feedback:prt2a]]</p>
+<p>
+<li>\(\text{Range}(y) =\) [[input:ans2b]] [[validation:ans2b]]</li>
+</p>
+<p>[[feedback:prt2b]]</p>
+</ol>
+
+<p>
+<li>Sketch the general shape of the graph of  \(y=\log_{a} x \) if \(,a>1\) </li>
+</p>
+<p><b>Hint:</b> To sketch the graph, use the slider '\(a\)'.</p>
+<p>
+[[jsxgraph width="500px" height="500px" input-ref-ansa='ansaRef']]  
+            var board = JXG.JSXGraph.initBoard(divid, { 
+            boundingbox: [-2, 7, 10, -7], 
+            keepaspectratio: false,
+            showCopyright: false,
+            axis: true,
+            grid: true,
+            showNavigation: false
+        });
+             
+   // Define slider for the base a
+        var slider = board.create('slider', [[1, 4], [3, 4], [1.1, {#a1#}, {#a_cor+1#}]], {
+            name: 'a',
+            snapWidth: 0.1,
+            withLabel: true,
+            fixed: false
+        });
+
+        function loga(x) {
+            var a = slider.Value();
+            return Math.log(x) / Math.log(a);
+        }
+
+        // Draw the logarithmic function y = log_a(x)
+        var logGraph = board.create('functiongraph', [loga, 0.01, 8.9], {
+            strokeColor: 'blue', 
+            strokeWidth: 2,
+            name: 'y = log_a(x) ,a>1',
+            withLabel: true,
+            label: {
+                position: 'rt',
+                offset: [-10, -10]
+            },
+            fixed: true
+        });
+
+        // Draw the vertical asymptote at x = 0
+        var asymptote = board.create('line', [[0, -6.7], [0, 6.6]], {
+            straightFirst: false,
+            straightLast: false,
+            strokeColor: 'red',
+            dash: 2,
+            fixed: true
+        });
+
+        // Highlight the point (1, 0) on the graph
+        var point = board.create('glider', [{#x_cord#}, {#y_cord#}, logGraph], {
+            name: '({#x_cord#}, {#y_cord#})',
+            size: 4,
+            face: 'o',
+            strokeColor: 'green',
+            fillColor: 'green',
+            fixed: true
+        });
+
+        // Update the graph and the point when the slider is moved
+        slider.on('drag', function() {
+            logGraph.Y = loga;
+            point.moveTo([{#x_cord#}, {#y_cord#}]);
+            board.update();
+        });
+[[/jsxgraph]]
+</p>
+<p style="visibility:hidden">[[input:ansa]] [[validation:ansa]] [[feedback:prta]]</p>
+</ol>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3>
+<ol type="a">
+    <li>
+        <p>How is the Logarithmic function \(y = \log_a x\) defined?</p>
+        <p>The logarithmic function \(y = \log_a x\) is defined as the inverse function of the exponential function \(y = a^x\), where \(a\) is the base of the logarithm.</p>
+        <p> In other words, the logarithmic function undoes what the exponential function does.</p>
+        <p>It is defined as for \(x>0 ,\,a>0\) and \(a \neq 1,\) </p>
+        <p>\(y = \log_a x \Leftrightarrow  a^y=x\)</p>
+    </li>
+    <li>
+        <p>For the logarithmic function \(y = \log_a x\):</p>
+        <ol type="i">
+            <li>\(\text{Dom}(y)\):  The domain of \(y\) in this function consists of all positive real numbers greater than \(0\), because the argument \(x\) must be a positive real number. In interval notation, it can be represented as \((0, +\infty)\).</li>
+            <li>\(\text{Range}(y) \): The range of \(y\) in this function includes all real numbers, because the result \(y\) can be any real number. In interval notation, it can be represented as \((-\infty, +\infty)\).</li>
+        </ol>
+    </li>
+    <li>
+        <p>Here is the sketch of the graph of \(y = \log_a x\) if \(a>1\)</p>
+        <p>
+        [[jsxgraph]]  
+        var board = JXG.JSXGraph.initBoard(divid, {
+        boundingbox: [-2, 7, 10, -7], 
+        keepaspectratio: false,
+        showCopyright: false,
+        axis: true,
+        grid: true,
+        showNavigation: false
+        });
+                
+        // Define slider for the base a
+        var slider = board.create('slider', [[1, 4], [3, 4], [1.1, {#a_cor#}, {#a_cor+1#}]], {
+        name: 'a',
+        snapWidth: 0.1,
+        withLabel: true,
+        fixed: false
+        });
+
+        function loga(x) {
+            var a = slider.Value();
+            return Math.log(x) / Math.log(a);
+        }
+
+        // Draw the logarithmic function y = log_a(x)
+        var logGraph = board.create('functiongraph', [loga, 0.01, 8.9], {
+            strokeColor: 'blue', 
+            strokeWidth: 2,
+            name: 'y = log_a(x),a>1 ',
+            withLabel: true,
+            label: {
+                position: 'rt',
+                offset: [-10, -10]
+            },
+            fixed: true
+        });
+
+        // Draw the vertical asymptote at x = 0
+        var asymptote = board.create('line', [[0, -6.7], [0, 6.6]], {
+            straightFirst: false,
+            straightLast: false,
+            strokeColor: 'red',
+            dash: 2,
+            fixed: true
+        });
+
+        // Highlight the point (1, 0) on the graph
+        var point = board.create('glider', [{#x_cord#}, {#y_cord#}, logGraph], {
+            name: '\\(({#x_cord#}, {#y_cord#})\\)',
+            size: 4,
+            face: 'o',
+            strokeColor: 'green',
+            fillColor: 'green',
+            fixed: true
+        });
+
+        // Update the graph and the point when the slider is moved
+        slider.on('drag', function() {
+            logGraph.Y = loga;
+            point.moveTo([{#x_cord#}, {#y_cord#}]);
+            board.update();
+        });
+        [[/jsxgraph]]
+        </p>
+    </li>
+</ol>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*part a*/
+correct_answer:[
+[1, true, "The logarithmic function is an inverse function of the exponential function"]];
+
+incorrect_answers:[
+[2, false, "The equation \\(y = \\log_a x\\) is equivalent to \\(y = x^a\\)."],
+[3, false, "The base \\(a\\) of the logarithm must be a negative real number greater than \\(1\\)."],
+[4, false, "The argument \\(x\\) of the logarithm must be a negative real number."]
+    ];
+ta:random_permutation(append(correct_answer,incorrect_answers));
+
+ta_index: sort(makelist(x[1], x, ta));
+/*part b*/
+ta2a:oo(0,inf);
+ta2b:oo(-inf,inf);
+/*part c*/
+/* Define the known points */
+x_cord: 1;
+y_cord: 0;
+
+/*Correct values of a-base any value a>0, a#1 */
+a_cor: rand_with_step(2,8,1); 
+
+/*Initial values*/
+a1: 2;]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<br>{@(ta_index)@}
+<br>{@(ta2a)@}
+<br>{@(ta2b)@} 
+<br>\(a={@(a_cor)@}\)]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p><p>
+</p><p id="concept">https://docs.google.com/document/d/1gopE2Y3AnKuL517nuCiGuIHFFTIWX4t7Je88qIPcyow/edit</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">2</p>
+<p id="description">This question delves into the peculiar nature of logarithmic functions with a base of 1, examining their definition and characteristics. It explores the domain and range of the function \( y = \log_{1}x \) and provides insights into its graph. Additionally, it sketches the general shape of the graph of logarithmic functions \( y = \log_{a}x \) when \( a > 1 \). </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <input>
+      <name>ans2a</name>
+      <type>algebraic</type>
+      <tans>ta2a</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2b</name>
+      <type>algebraic</type>
+      <tans>ta2b</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ansa</name>
+      <type>algebraic</type>
+      <tans>a_cor</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: checks for all the correct answer from the list*/
+
+/*Node 2: Checks if option 2 (incorrect) was provided and selected*/
+true_opt_2:if member(2,ta_index) then ( if member(2,ans1) then 1 else 0 ) else 0;
+
+/*Node 3: Checks if option 3 (incorrect) was provided and selected*/
+true_opt_3:if member(3,ta_index) then ( if member(3,ans1) then 1 else 0 ) else 0;
+
+/*Node 4: Checks if option 4 (incorrect) was provided and selected*/
+true_opt_4:if member(4,ta_index) then ( if member(4,ans1) then 1 else 0 ) else 0;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the corrrect answer from the list</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mcq_correct(ta)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks if option 2 (incorrect) was provided and selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>true_opt_2</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>2</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The equation \(y = \log_a x\) is equivalent to \(x = a^y\).</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Checks if option 3 (incorrect) was provided and selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>true_opt_3</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>3</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The base \(a\) of the logarithm must be a positive real number greater than \(0\) and \(a \neq 1\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>Checks if option 4 (incorrect) was provided and selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>true_opt_4</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The argument \(x\) of the logarithm must be a positive real number.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2a</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct domain</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2a</sans>
+        <tans>ta2a</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2a-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2a-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2b</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct range</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2b</sans>
+        <tans>ta2b</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2b-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2b-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prta</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text><![CDATA[is_true: is(ansa>0 and ansa#1);]]></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct sketched graph</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>is_true</sans>
+        <tans>true</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prta-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[The value of <b>\(a\)</b> you chose is <b>{@ansa@}</b>, which is correct.]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prta-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[The value of <b>\(a\)</b> you chose is <b>{@ansa@}</b>, which is wrong. The correct is {@a_cor@}.]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>930029979</deployedseed>
+    <deployedseed>2137984753</deployedseed>
+    <deployedseed>1432229719</deployedseed>
+    <deployedseed>1918860067</deployedseed>
+    <deployedseed>600863174</deployedseed>
+    <deployedseed>1658735795</deployedseed>
+    <deployedseed>292294025</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>first(mcq_correct(ta))</value>
+      </testinput>
+      <testinput>
+        <name>ans2a</name>
+        <value>ta2a</value>
+      </testinput>
+      <testinput>
+        <name>ans2b</name>
+        <value>ta2b</value>
+      </testinput>
+      <testinput>
+        <name>ansa</name>
+        <value>a_cor</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2a</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2a-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2b</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2b-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prta</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prta-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

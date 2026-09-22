@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Finding antiderivative of a polynomial using reverse chain rule</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Find the antiderivative of the function {@f_x@}</p>
+<p>[[input:ans1]][[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Suppose we have a function of the form \(f(x)=(bx+a)^n\), its antiderivative can be computed as follows:</p>
+\( \displaystyle \int{(bx + a)^n}dx= \frac{1}{n+1}(bx+a)^{(n+1)} \times  \frac{1}{b} + c\), where b is the derivative of the function inside the bracket and c is the constant of integration. 
+Therefore, the antiderivative of the function \({@f_x@}\) can be computed as follows:
+<p>\( \begin{align} 
+\displaystyle \int {@f_x@} dx & = \frac{1}{{@power@}+1}({@fx@})^{({@power@}+1)} \cdot \frac{1}{@coeff_x@} + c \\  
+   & =\frac{1}{{@power+1@}} ({@fx@})^{@(power+1)@} \cdot \frac{1}{{@coeff_x@}}+c \\
+   & =  {@ta@}  \\
+
+ \end{align} \)
+</p>
+<p>In general, you can use this method to integrate functions of the form \( f(g(x)) \), where \(g(x)\) is a linear function.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>coeff_x:1+rand(9)+1; /* random number for the coefficient of x*/
+coeff_constant:1+rand(9); /*random number for the value of the constant*/
+power:2+rand(5); /* random number for the power of the function*/
+f_x:(coeff_x*x + coeff_constant)^power; /* The function*/
+fx:(coeff_x*x + coeff_constant); /* The function*/
+ta:1/(coeff_x*(power+1))*fx^(power+1)+c;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>The antiderivative of the function \({@f_x@}\) is \({@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Mary Sayuni</p>
+<p id="reviewer">Santiago Borio</p>
+<p id="description">The question focuses on finding the antiderivative of a polynomial using reverse chain rule</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>20</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checking for the correct answer*/
+
+/*node 2: mistake: missing the constant of integration*/
+mistake_2:int(f_x,x);
+
+/*node 3: mistake: Failing to divide by the derivative of the function inside the bracket.*/
+mistake_3:(1/power+1)*(coeff_x*x + coeff_constant)^(power +1) +c;
+
+/*node 4: mistake: multiplying by n+1 instead of dividing*/
+mistake_5:(power+1)*(coeff_x*x + coeff_constant)^(power +1) *1/coeff_x +c;
+
+/*node 5: mistake: differentiating instead of integrating*/
+mistake_4:diff(f_x,x);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checking for the correct answer</description>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>x</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>missing the constant of integration</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have missed the constant of integration. 
+Recall, f(x)dx=F(x)+c , where c is the constant of integration and f is the derivative of F.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Failing to divide by the derivative of the function inside the bracket</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have integrated but you didn’t divide your answer by the derivative of the expression inside the bracket. 
+Recall the reverse chain rule for integration: f(bx + a)dx= F(bx + a)*1b+c, where f is the derivative of F.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>multiplying by n+1 instead of dividing</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have multiplied by n+1 instead of dividing.
+Recall, (x)ndx=1n+1(x)n+1 </p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>differentiating instead of integrating</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_5</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-5-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have differentiated the function instead of integrating.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-5-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>106727894</deployedseed>
+    <deployedseed>1737847719</deployedseed>
+    <deployedseed>519873948</deployedseed>
+    <deployedseed>169897678</deployedseed>
+    <deployedseed>1390580171</deployedseed>
+    <deployedseed>851078169</deployedseed>
+    <deployedseed>504485797</deployedseed>
+    <deployedseed>735719088</deployedseed>
+    <deployedseed>1332810549</deployedseed>
+    <deployedseed>1336414875</deployedseed>
+    <deployedseed>834411401</deployedseed>
+    <deployedseed>622835810</deployedseed>
+    <deployedseed>76336831</deployedseed>
+    <deployedseed>2030687487</deployedseed>
+    <deployedseed>300833204</deployedseed>
+    <deployedseed>364531221</deployedseed>
+    <deployedseed>1765076012</deployedseed>
+    <deployedseed>1694116827</deployedseed>
+    <deployedseed>1969991943</deployedseed>
+    <deployedseed>51958051</deployedseed>
+    <deployedseed>1618925762</deployedseed>
+    <deployedseed>1255153782</deployedseed>
+    <deployedseed>1498615169</deployedseed>
+    <deployedseed>81472051</deployedseed>
+    <deployedseed>2061393535</deployedseed>
+    <deployedseed>1789501094</deployedseed>
+    <deployedseed>1180021185</deployedseed>
+    <deployedseed>997350499</deployedseed>
+    <deployedseed>1877977460</deployedseed>
+    <deployedseed>1517399957</deployedseed>
+    <deployedseed>538839999</deployedseed>
+    <deployedseed>2068251028</deployedseed>
+    <deployedseed>396598625</deployedseed>
+    <deployedseed>977468866</deployedseed>
+    <deployedseed>114432819</deployedseed>
+    <deployedseed>912019857</deployedseed>
+    <deployedseed>1594133649</deployedseed>
+    <deployedseed>169467512</deployedseed>
+    <deployedseed>1204426168</deployedseed>
+    <deployedseed>555701254</deployedseed>
+    <deployedseed>1028498135</deployedseed>
+    <deployedseed>1130356386</deployedseed>
+    <deployedseed>1750649348</deployedseed>
+    <deployedseed>1157792218</deployedseed>
+    <deployedseed>388771236</deployedseed>
+    <deployedseed>1792350858</deployedseed>
+    <deployedseed>39276945</deployedseed>
+    <deployedseed>754332494</deployedseed>
+    <deployedseed>366613392</deployedseed>
+    <deployedseed>2076507620</deployedseed>
+    <deployedseed>1683353752</deployedseed>
+    <deployedseed>1903910900</deployedseed>
+    <deployedseed>1298079024</deployedseed>
+    <deployedseed>852138750</deployedseed>
+    <deployedseed>978613455</deployedseed>
+    <deployedseed>1691105405</deployedseed>
+    <deployedseed>1565734347</deployedseed>
+    <deployedseed>804680652</deployedseed>
+    <deployedseed>430062950</deployedseed>
+    <deployedseed>500293749</deployedseed>
+    <deployedseed>1338006149</deployedseed>
+    <deployedseed>1290483636</deployedseed>
+    <deployedseed>177703447</deployedseed>
+    <deployedseed>2013206355</deployedseed>
+    <deployedseed>1995838163</deployedseed>
+    <deployedseed>228225607</deployedseed>
+    <deployedseed>256579716</deployedseed>
+    <deployedseed>22750150</deployedseed>
+    <deployedseed>943680807</deployedseed>
+    <deployedseed>697615465</deployedseed>
+    <deployedseed>400030987</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

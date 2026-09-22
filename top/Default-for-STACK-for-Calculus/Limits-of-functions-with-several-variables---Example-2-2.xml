@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Limits of functions with several variables - Example 2.2</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Determine if the limit of the function below exists or not. Fill in the missing computational steps.</p>
+<p>\(\displaystyle \lim_{(x,y) \to ({@var_x@},{@var_y@})} {@question_func@}\)</p>
+<br>
+<p>Recall, \(\displaystyle \lim_{(x,y) \to (x,y)} \displaystyle\frac{ f(x,y)}{g(x,y)} = \displaystyle \frac{\lim_{(x,y) \to (x,y)}  f(x,y)}{ \displaystyle \lim_{(x,y) \to (x,y)}  g(x,y)} \) where \( \lim_{(x,y) \to (x,y)}  g(x,y) \neq 0\) </p>
+<br>
+<p>First, let’s check if the limit of the function in the denominator will give us a zero. </p>
+<p>\(\displaystyle \lim_{(x,y) \to ({@var_x@},{@var_y@})} ({@func_denom@}) =\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<br>
+<p>From here, we can proceed as follows;</p>
+<p>\(\displaystyle \lim_{(x,y) \to ({@var_x@},{@var_y@})} {@question_func@} = \displaystyle \frac{\lim_{(x,y) \to  ({@var_x@},{@var_y@})}  ({@func_num@}))}{\lim_{(x,y) \to ({@var_x@},{@var_y@})}  ({@func_denom@})}=\)  [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>
+<br>
+<p>Therefore, we can say that the limit of this function [[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Determine if the limit of the function below exists or not. Fill in the missing computational steps.</p>
+<p>\(\displaystyle \lim_{(x,y) \to ({@var_x@},{@var_y@})} {@question_func@}\)</p>
+<br>
+<p>Recall, \(\displaystyle \lim_{(x,y) \to (x,y)} \displaystyle\frac{ f(x,y)}{g(x,y)} = \displaystyle \frac{\lim_{(x,y) \to (x,y)}  f(x,y)}{ \displaystyle \lim_{(x,y) \to (x,y)}  g(x,y)} \) where \( \lim_{(x,y) \to (x,y)}  g(x,y) \neq 0\) </p>
+<br>
+<p>First, let’s check if the limit of the function in the denominator will give us a zero. </p>
+<p>\(\begin{align}
+\displaystyle \lim_{(x,y) \to ({@var_x@},{@var_y@})} ({@func_denom@})&= ({@cc@}*{@var_x@}*{@var_y@}^2+{@cc+bb@}*{@var_y@})\\
+&={@ta1@}\\
+\end{align}\)</p>
+
+<br>
+<p>From here, we can proceed as follows;</p>
+<p>\(\displaystyle \lim_{(x,y) \to ({@var_x@},{@var_y@})} {@question_func@} = \displaystyle \frac{\lim_{(x,y) \to  ({@var_x@},{@var_y@})}  ({@func_num@}))}{\lim_{(x,y) \to ({@var_x@},{@var_y@})}  ({@func_denom@})}={@ta2@}\) </p>
+<br>
+<p>Therefore, we can say that the limit of this function exists</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[aa:rand(3)+1; bb:rand(3)+1; cc:rand_with_step(1,5,1); /*random variables for the coefficients*/
+bb:rand(3);
+func_num:(aa*x^2*y+bb*x*y);    /*numerator func*/
+func_denom:cc*x*y^2+(cc+rand(3))*y;  /*denominator func*/
+question_func:func_num/func_denom;  /* question function*/
+
+var_x:rand_with_step(1,3,1);  var_y:rand_with_step(1,3,1)+1; /*limit points for x and y*/
+
+/*Worked solution variables*/
+ta_1a:limit (func_denom, x, var_x); /*subst for x with var_x*/
+ta1:limit (ta_1a, y, var_y);  /*subst for y with var_x_  input ans 1*/
+
+ta_2a:limit (question_func, x, var_x);  /*subst for x with var_x in the question_func*/
+ta2:limit(ta_2a, y,var_y);   /*subst for y with var_y_ input ans 2*/
+
+ta3a: if ta2>0 then  "Exists" else "Doesn't exist";
+ta3:[[ta3a, true],["Doesn't exist", false]];]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle \lim_{(x,y) \to ({@var_x@},{@var_y@})} ({@func_denom@}) ={@ta1@}\)</p>
+<p>\(\displaystyle \lim_{(x,y) \to ({@var_x@},{@var_y@})} {@question_func@} = \displaystyle \frac{\lim_{(x,y) \to  ({@var_x@},{@var_y@})}  ({@func_num@}))}{\lim_{(x,y) \to ({@var_x@},{@var_y@})}  ({@func_denom@})}={@ta2@}\) </p>
+<p>Therefore, we can say that the limit of this function exists</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni<p>
+<p id="concept">https://docs.google.com/document/d/1yKMASRNBrxv56EctlLkgvdHRMASolQhCBNM67lq8h9M/edit</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer"></p>
+<p id="description">The question focuses on outlining the major concerns of a demographer</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>dropdown</type>
+      <tans>ta3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for ta1</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for ta2</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct option in ta3</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mcq_correct(ta3)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>2010081078</deployedseed>
+    <deployedseed>617069330</deployedseed>
+    <deployedseed>323052529</deployedseed>
+    <deployedseed>305228412</deployedseed>
+    <deployedseed>1655456976</deployedseed>
+    <deployedseed>1465297493</deployedseed>
+    <deployedseed>1407076975</deployedseed>
+    <deployedseed>237866690</deployedseed>
+    <deployedseed>2142417163</deployedseed>
+    <deployedseed>1007184079</deployedseed>
+    <deployedseed>1189893327</deployedseed>
+    <deployedseed>1715255628</deployedseed>
+    <deployedseed>716977409</deployedseed>
+    <deployedseed>896037866</deployedseed>
+    <deployedseed>1413169816</deployedseed>
+    <deployedseed>2047172082</deployedseed>
+    <deployedseed>1909838764</deployedseed>
+    <deployedseed>832720670</deployedseed>
+    <deployedseed>1128581069</deployedseed>
+    <deployedseed>695741878</deployedseed>
+    <deployedseed>1325638052</deployedseed>
+    <deployedseed>1597107135</deployedseed>
+    <deployedseed>1161864004</deployedseed>
+    <deployedseed>620685298</deployedseed>
+    <deployedseed>1515558454</deployedseed>
+    <deployedseed>91486380</deployedseed>
+    <deployedseed>507146530</deployedseed>
+    <deployedseed>1853669429</deployedseed>
+    <deployedseed>1184393325</deployedseed>
+    <deployedseed>1218082365</deployedseed>
+    <deployedseed>1227685600</deployedseed>
+    <deployedseed>856533154</deployedseed>
+    <deployedseed>2067093964</deployedseed>
+    <deployedseed>1674553908</deployedseed>
+    <deployedseed>860879478</deployedseed>
+    <deployedseed>2146455133</deployedseed>
+    <deployedseed>1994676282</deployedseed>
+    <deployedseed>1254710841</deployedseed>
+    <deployedseed>945927692</deployedseed>
+    <deployedseed>1103832207</deployedseed>
+    <deployedseed>1367068300</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>first(mcq_correct(ta3))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

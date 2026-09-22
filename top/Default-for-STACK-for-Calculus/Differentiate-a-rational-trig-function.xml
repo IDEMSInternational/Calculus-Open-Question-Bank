@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Differentiate a rational trig function</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the derivative of the following function:</p>
+<p>\(\quad \displaystyle P(t)={@pt@}\)</p>
+<p>\(\quad \displaystyle P'(t)=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To differentiate the given function \(\displaystyle P(t) = {@pt@}\), we can use the quotient rule for differentiation.</p>
+<p> The quotient rule states that if you have a function of the form \( \displaystyle \frac{u(t)}{v(t)}\), then its derivative is given by:</p>
+<p>\( \displaystyle \frac{d}{dt}\left(\frac{u(t)}{v(t)}\right) = \frac{u'(t)v(t) - u(t)v'(t)}{\big[v(t)\big]^2}\)</p>
+<p>In this case, \(\displaystyle u(t) ={@ut@}\) and \(\displaystyle v(t) = {@vt@}\). We need to find the derivatives of both \(u(t)\) and \(v(t)\) with respect to \(t\)</p>
+<p> \(\displaystyle u(t) ={@ut@}\,  \implies  \, u'(t)={@du@}\) and </p>
+<p> \(\displaystyle v(t) ={@vt@}\,  \implies  \, v'(t)={@dv@}\)</p>
+<p>Now, we apply the quotient rule:</p>
+<p>\(\displaystyle \frac{dP}{dt} = {@duv@}\)</p>
+<p>Simplify the expression:</p>
+<p>\(\displaystyle \frac{dP}{dt} = {@dsimolified@}\)</p>
+<p>Using the trigonometric identity \( \displaystyle \sin^2(t) + \cos^2(t) = 1\), we can simplify further:</p>
+<p>\(\displaystyle \frac{dP}{dt} = {@ta@}\)</p>
+<p>So, the derivative of the function \(\displaystyle P(t) = {@pt@}\) is:</p>
+<p>\(\displaystyle P'(t)={@ta@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>aa:rand([1,2]);
+trig1:if aa=1 then cos else sin;
+trig2:if trig1=cos then sin else cos;
+coeff:rand_with_prohib(-4,4,[-1,0]);
+c1:rand(3);
+c2:rand_with_prohib(-3,3,[0]);
+
+ut:trig1(coeff*t); 
+du:diff(ut,t);
+
+vt:c1 - c2*trig2(coeff*t);
+dv:diff(vt,t);
+duv:(du*vt-ut*dv)/vt^2;
+dsimolified:simplify(du*vt-ut*dv)/vt^2;
+pt: ut/vt; 
+dpt : diff(pt, t); 
+ta : trigsimp(dpt); </text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Find the derivative of the following function:</p>
+<p>\(\quad \displaystyle P(t)={@pt@}\)</p>
+<p>\(\quad \displaystyle P'(t)={@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/A</p>
+<p id="reviewer">[Mary]</p>
+<p id="reviewer">Wastalas</p>
+<p id="description">Differentiate a rational trig function of the form sin(t)/cos(t)</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>t</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1406087492</deployedseed>
+    <deployedseed>401970055</deployedseed>
+    <deployedseed>1054011176</deployedseed>
+    <deployedseed>1199467428</deployedseed>
+    <deployedseed>1504614205</deployedseed>
+    <deployedseed>312209715</deployedseed>
+    <deployedseed>432823424</deployedseed>
+    <deployedseed>404945218</deployedseed>
+    <deployedseed>1515284115</deployedseed>
+    <deployedseed>265335704</deployedseed>
+    <deployedseed>1344740721</deployedseed>
+    <deployedseed>1156027989</deployedseed>
+    <deployedseed>1583019413</deployedseed>
+    <deployedseed>821502035</deployedseed>
+    <deployedseed>937989259</deployedseed>
+    <deployedseed>441304005</deployedseed>
+    <deployedseed>1310433744</deployedseed>
+    <deployedseed>1528877155</deployedseed>
+    <deployedseed>230717758</deployedseed>
+    <deployedseed>606948545</deployedseed>
+    <deployedseed>722800013</deployedseed>
+    <deployedseed>460710997</deployedseed>
+    <deployedseed>330176349</deployedseed>
+    <deployedseed>1454749699</deployedseed>
+    <deployedseed>200931764</deployedseed>
+    <deployedseed>827210294</deployedseed>
+    <deployedseed>1795502460</deployedseed>
+    <deployedseed>2143925226</deployedseed>
+    <deployedseed>391728863</deployedseed>
+    <deployedseed>118242614</deployedseed>
+    <deployedseed>711925346</deployedseed>
+    <deployedseed>1501715405</deployedseed>
+    <deployedseed>901862134</deployedseed>
+    <deployedseed>324054296</deployedseed>
+    <deployedseed>2096037343</deployedseed>
+    <deployedseed>1901727280</deployedseed>
+    <deployedseed>206249455</deployedseed>
+    <deployedseed>1733971565</deployedseed>
+    <deployedseed>1564076705</deployedseed>
+    <deployedseed>876209587</deployedseed>
+    <deployedseed>1472088309</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

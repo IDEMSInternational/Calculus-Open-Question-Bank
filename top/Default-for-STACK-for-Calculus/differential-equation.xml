@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>differential equation</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the function \(f(x)\) given that \(\displaystyle \frac{dy}{dx}={@constant@}\)</p><p><p>\(\displaystyle f(x)=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3><p>Given that \(\displaystyle \frac{dy}{dx} = {@constant@}\), we need to find the function \(f(x)\), where \(y = f(x)\).</p>
+
+<p>The differential equation \(\displaystyle \frac{dy}{dx} = {@constant@}\) indicates that the derivative of \(y\) with respect to \(x\) is a constant, specifically \({@constant@}\). To find \(y\), we need to integrate this derivative.</p>
+
+<p>\(\displaystyle \frac{dy}{dx} = {@constant@}\)</p>
+
+<p>Integrating both sides with respect to \(x\) gives:</p>
+
+<p>\(\displaystyle y = \int {@constant@} \, dx\)</p>
+
+<p>The integral of \({@constant@}\) with respect to \(x\) is:</p>
+
+<p>\(y = {@ta@}\)<p>
+
+<p>where \(c\) is the constant of integration.</p>
+
+<p>Therefore, the function \(f(x)\) is:</p>
+
+<p>\(\displaystyle f(x) = {@ta@}\)</p>
+
+<p>This represents the general solution to the given differential equation. The constant \(C\) can take any real value, depending on the initial conditions or additional information provided about the problem.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>diff_operator : dy/dx;
+constant:rand(100)+1;
+ta: int(constant,x)+c;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle f(x) = {@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>chechs for correct answer</description>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>x</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1873609745</deployedseed>
+    <deployedseed>1581558497</deployedseed>
+    <deployedseed>434994976</deployedseed>
+    <deployedseed>1141181078</deployedseed>
+    <deployedseed>1281587654</deployedseed>
+    <deployedseed>1704256675</deployedseed>
+    <deployedseed>1269958516</deployedseed>
+    <deployedseed>1175761025</deployedseed>
+    <deployedseed>1284320923</deployedseed>
+    <deployedseed>382463870</deployedseed>
+    <deployedseed>458491797</deployedseed>
+    <deployedseed>2064077479</deployedseed>
+    <deployedseed>902817266</deployedseed>
+    <deployedseed>1764964183</deployedseed>
+    <deployedseed>1869062384</deployedseed>
+    <deployedseed>1885264903</deployedseed>
+    <deployedseed>1839189208</deployedseed>
+    <deployedseed>166434223</deployedseed>
+    <deployedseed>1869368444</deployedseed>
+    <deployedseed>1792069796</deployedseed>
+    <deployedseed>988232467</deployedseed>
+    <deployedseed>1228132891</deployedseed>
+    <deployedseed>514339408</deployedseed>
+    <deployedseed>751817910</deployedseed>
+    <deployedseed>529910901</deployedseed>
+    <deployedseed>15571985</deployedseed>
+    <deployedseed>1875653315</deployedseed>
+    <deployedseed>1149127393</deployedseed>
+    <deployedseed>836458158</deployedseed>
+    <deployedseed>1708794852</deployedseed>
+    <deployedseed>414910824</deployedseed>
+    <deployedseed>1180978979</deployedseed>
+    <deployedseed>1759149166</deployedseed>
+    <deployedseed>1740888324</deployedseed>
+    <deployedseed>366898536</deployedseed>
+    <deployedseed>978139309</deployedseed>
+    <deployedseed>365481640</deployedseed>
+    <deployedseed>498688876</deployedseed>
+    <deployedseed>1369394727</deployedseed>
+    <deployedseed>1024004719</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

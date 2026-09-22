@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluate the definite Improper Integral</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Evaluate the Integral below and determine if it converges or diverges.</p>
+<p>Note: \( \infty\) is entered as <b>inf</b> and \( -\infty\) is entered as <b>minf</b>.</p>
+<p>\( &nbsp;\displaystyle \int_{@var_z@}^{@upper_limit@}{@func@}\,dz\)</p>
+[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]<p></p>
+<p>Therefore,the integral  [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3><b>Worked solution</b></h3>
+<p>Since there is a discontinuity in the integrand at \(z={@var_z@}\),we can eliminate it as follows,</p>
+<p>\( \displaystyle \int_{@var_z@}^{@upper_limit@}{@func@}\,dz= \displaystyle \lim_{t \to \ {@var_z@}^{+} }\int_{t}^{@upper_limit@}{@func@}\,dz\)</p>
+<p>Using substitution</p>
+ <p>let  \(\quad u={@den_const+coeff_z*z@}.\) Then  \(\frac{du}{dz} ={@den_diff@}.\) So \(dz={@1/den_diff@}du\)</p>
+<p>\(z \rightarrow {@upper_limit@}: \quad u \rightarrow {@den_const+coeff_z*upper_limit@}\)</p>
+<p>\(z \rightarrow t: \quad u \rightarrow {@den_const+coeff_z*t@}\)</p>
+<p>Hence,</p>
+<p>
+\(
+\begin{align}
+    \displaystyle \int_{t}^{{@upper_limit@}}{@func@} \,dz &amp;={@1/den_diff@}\int_{{@den_const+coeff_z*t@}}^{{@den_const+coeff_z*upper_limit@}} \frac{{@num@}}{u}du\\   
+ &amp;={@num/den_diff@} \ln ({@den_const+coeff_z*upper_limit@})-{@num/den_diff@} \ln |{@den_const+coeff_z*t@}| 
+    \end{align}
+\)
+</p>  
+<p>We recall \(\displaystyle\lim_{X \to \ {0}^{+} }{\ln (X)}=- \infty \) </p>
+<p>Therefore,</p>
+<p>
+\[
+\begin{align}
+\displaystyle\int_{@var_z@}^{@upper_limit@}{@func@}\,dz &amp;=\lim_{t \to \ {@var_z@}^{+} }({@ta_d@})\\
+&amp;={@ta_1@}
+\end{align}
+\]
+</p>
+<p>Therefore,the integral is {@mcq_correct(ta_4)[1]@}</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*Question variable*/
+lower_limit:rand(5)-7;
+upper_limit:rand(5)-1;
+num:rand(3)+1;
+den_const:rand(10)+2;
+coeff_z:rand(5)+1;
+den:den_const+coeff_z*z;
+den_diff:diff(den,z);
+func:num/(den);
+
+/*Worked solution*/
+var_z:-(den_const)/coeff_z;
+
+
+
+
+/*Model answer*/
+ta_a:int(func,z);
+ta_b:subst(z=t,ta_a);
+ta_c:subst(z=upper_limit,ta_a);
+ta_d:ta_c-ta_b;
+ta_e:limit(ta_b,t,lower_limit,plus);
+ta_1:limit(ta_d,t,var_z,plus);
+ta_2:if ta_1=minf then "Divergent" elseif ta_1=inf then "Divergent" else"Convergent";
+ta_3:if ta_2="Divergent" then "Convergent" else "Divergent";
+ta_4:random_permutation([[ta_2, true],[ta_3, false],["Divergent and convergent", false]]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Determine if the following integral converges or diverges. If the integral converges determine its value.</p>
+<p>Note: \( \infty\) is entered as <b>inf</b> and \( -\infty\) is entered as <b>minf</b>.</p>
+<p>\( \displaystyle \int_{@lower_limit@}^{@upper_limit@}{@func@} dz={@ta_1@}\)</p>
+</p>
+<p>Therefore,the integral \(={@ta_4@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">[Juma Zevick]</p>
+<p id="description">The questions focues on evaluating a definite Integral from a given  negative value as the lower limit and to a negative maximum negative value   and determining if the Integral converges or diverges</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>dropdown</type>
+      <tans>ta_4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mcq_correct(ta_4)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>577380941</deployedseed>
+    <deployedseed>806088251</deployedseed>
+    <deployedseed>1371697381</deployedseed>
+    <deployedseed>1607476405</deployedseed>
+    <deployedseed>91620364</deployedseed>
+    <deployedseed>874858436</deployedseed>
+    <deployedseed>19375891</deployedseed>
+    <deployedseed>1296660530</deployedseed>
+    <deployedseed>1513787203</deployedseed>
+    <deployedseed>2035240885</deployedseed>
+    <deployedseed>210789508</deployedseed>
+    <deployedseed>1079224406</deployedseed>
+    <deployedseed>709473145</deployedseed>
+    <deployedseed>500463149</deployedseed>
+    <deployedseed>511899980</deployedseed>
+    <deployedseed>149583408</deployedseed>
+    <deployedseed>863162562</deployedseed>
+    <deployedseed>1523329970</deployedseed>
+    <deployedseed>483236210</deployedseed>
+    <deployedseed>544744317</deployedseed>
+    <deployedseed>1192368530</deployedseed>
+    <deployedseed>152704287</deployedseed>
+    <deployedseed>45319850</deployedseed>
+    <deployedseed>274689599</deployedseed>
+    <deployedseed>1283697771</deployedseed>
+    <deployedseed>1255928512</deployedseed>
+    <deployedseed>599632575</deployedseed>
+    <deployedseed>666306463</deployedseed>
+    <deployedseed>691710203</deployedseed>
+    <deployedseed>987374281</deployedseed>
+    <deployedseed>424244231</deployedseed>
+    <deployedseed>84467708</deployedseed>
+    <deployedseed>1071275560</deployedseed>
+    <deployedseed>936952914</deployedseed>
+    <deployedseed>14376866</deployedseed>
+    <deployedseed>644061268</deployedseed>
+    <deployedseed>1438529658</deployedseed>
+    <deployedseed>1623699673</deployedseed>
+    <deployedseed>1636102847</deployedseed>
+    <deployedseed>1604392869</deployedseed>
+    <deployedseed>661175943</deployedseed>
+    <deployedseed>1094356856</deployedseed>
+    <deployedseed>134000732</deployedseed>
+    <deployedseed>1435587348</deployedseed>
+    <deployedseed>1148326709</deployedseed>
+    <deployedseed>627547785</deployedseed>
+    <deployedseed>200346550</deployedseed>
+    <deployedseed>1132112974</deployedseed>
+    <deployedseed>1410213096</deployedseed>
+    <deployedseed>250405215</deployedseed>
+    <deployedseed>1786820040</deployedseed>
+    <deployedseed>921761589</deployedseed>
+    <deployedseed>962833375</deployedseed>
+    <deployedseed>30959068</deployedseed>
+    <deployedseed>17572175</deployedseed>
+    <deployedseed>136614919</deployedseed>
+    <deployedseed>103324645</deployedseed>
+    <deployedseed>1898043870</deployedseed>
+    <deployedseed>416389294</deployedseed>
+    <deployedseed>1394268228</deployedseed>
+    <deployedseed>1920436401</deployedseed>
+    <deployedseed>1469708583</deployedseed>
+    <deployedseed>1940730216</deployedseed>
+    <deployedseed>346571841</deployedseed>
+    <deployedseed>1685835511</deployedseed>
+    <deployedseed>106011264</deployedseed>
+    <deployedseed>2130757321</deployedseed>
+    <deployedseed>527036256</deployedseed>
+    <deployedseed>1710957585</deployedseed>
+    <deployedseed>729893292</deployedseed>
+    <deployedseed>1051161702</deployedseed>
+    <deployedseed>853506539</deployedseed>
+    <deployedseed>556019765</deployedseed>
+    <deployedseed>414522252</deployedseed>
+    <deployedseed>566246695</deployedseed>
+    <deployedseed>86869821</deployedseed>
+    <deployedseed>680043194</deployedseed>
+    <deployedseed>5733736</deployedseed>
+    <deployedseed>535731871</deployedseed>
+    <deployedseed>213608736</deployedseed>
+    <deployedseed>1422248122</deployedseed>
+    <deployedseed>1178212514</deployedseed>
+    <deployedseed>1638819174</deployedseed>
+    <deployedseed>885993425</deployedseed>
+    <deployedseed>675511387</deployedseed>
+    <deployedseed>427773707</deployedseed>
+    <deployedseed>1134438615</deployedseed>
+    <deployedseed>130893997</deployedseed>
+    <deployedseed>168002802</deployedseed>
+    <deployedseed>145660733</deployedseed>
+    <deployedseed>645894585</deployedseed>
+    <deployedseed>27212214</deployedseed>
+    <deployedseed>444883604</deployedseed>
+    <deployedseed>862920023</deployedseed>
+    <deployedseed>1007786150</deployedseed>
+    <deployedseed>1978888946</deployedseed>
+    <deployedseed>141657836</deployedseed>
+    <deployedseed>1743921969</deployedseed>
+    <deployedseed>1240948432</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>first(mcq_correct(ta_4))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

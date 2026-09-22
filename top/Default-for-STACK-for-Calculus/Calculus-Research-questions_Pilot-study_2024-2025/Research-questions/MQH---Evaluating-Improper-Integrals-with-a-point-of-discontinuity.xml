@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>MQH - Evaluating Improper Integrals with a point of discontinuity</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Evaluate the integral below and determine if it converges or diverges. </p>
+<p>Note: \( \infty\) is entered as <code>inf</code>  \( -\infty\) is entered as <code>minf</code> and  \( \sqrt{a}\) is entered as <code>sqrt(a)</code>.</p>
+<p>\(\displaystyle \int_{{@lower_lm@}}^{{@upper_lm@}} {@fx@} \,dx=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+<p>Therefore, the integral is [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3> 
+
+<p>To determine whether the integral</p>
+
+<p>\(\displaystyle \int_{{@lower_lm@}}^{{@upper_lm@}} {@fx@} \,dx\) </p>
+<p>is improper, we need to examine the integrand \( \displaystyle {@fx@}\).</p>
+
+<p><strong>Step \(1\): Check for Impropriety</strong></p>
+
+<p>The function \( \displaystyle {@fx@}\) is defined as long as \({@uu@} > 0\), which means \(x < {@point_disc@}\). At \(x = {@point_disc@}\), the integrand becomes undefined because it leads to division by zero. Therefore, the upper limit of the integral is a point of discontinuity.</p>
+
+<p>Since the integral has an endpoint where the integrand is undefined, it is an improper integral.</p>
+
+<p><strong>Step \(2\): Determine Convergence or Divergence of the integral</strong></p>
+
+<p>To analyze the convergence  or divergence of the integral, we can express it as a limit.</p>
+<p>Therefore, we’ll need to replace the point of discontinuity which is the upper limit \(({@point_disc@})\) with a parameter \(t\) as follows,</p>
+
+<p>\( \displaystyle \int_{{@lower_lm@}}^{{@upper_lm@}} {@fx@} \, dx = \lim_{t \to {@point_disc@}^-} \int_{@lower_lm@}^t {@fx@}\, dx\)</p>
+
+<p><strong>Step \(3\): Evaluate the Integral</strong></p>
+
+<p>Now we will evaluate the integral \(\displaystyle \int_{@lower_lm@}^t {@fx@}\, dx\).</p>
+
+<p>To do this, we can use substitution. </p>
+<p>Let:</p>
+
+<p>\( \qquad \displaystyle u = {@uu@} \implies du = {@del_dx@}\)</p>
+
+<p>\(\quad \, \, \) When \(x = {@lower_lm@}\), \(u = {@u1@}\), and when \(x = t\), \(u = {@u2@}\). Thus, we rewrite the integral:</p>
+
+<p>\(\qquad  \displaystyle \int_{@lower_lm@}^t {@fx@}\, dx = \int_{@u1@}^{@u2@}{@fu@}\, du \)</p>
+<br>
+<p>Evaluating this integral:</p>
+
+<p>\( \qquad \displaystyle \int {@fu@}  \, du = {@new_indef@}+ C\)</p>
+
+<p>So we have:</p>
+
+<p>\(\qquad \begin{align} \displaystyle\int_{@u1@}^{@u2@} {@fu@} \, du & = \Bigg[ {@new_indef@} \Bigg]_{{@u1@}}^{@u2@} \\
+                         &={@upper@} - {@lower@} \\
+                        &=  {@indef_val@} \end{align}\)</p>
+
+<p>Now we need to take the limit as \(t \to {@point_disc@}^- ,\) as \(t\) approaches \({@point_disc@}^- , \displaystyle {@den@}\) approaches \(0\):</p>
+
+<p>\( \qquad \displaystyle \lim_{t \to {@point_disc@}^-} \Bigg(  {@indef_val@} \Bigg) = {@result@}\)</p>
+
+ <p>The improper integral is {@mcq_correct(ta_4)[1]@}, and its exact value is \(\displaystyle \boxed{{@result@}} \).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* Step 1: Define the function */
+num:rand(3)+1;
+lower_lm:rand(6);
+b:2+rand(6);
+upper_lm:lower_lm+2+rand(5);
+point_disc:upper_lm;
+den:sqrt(b*point_disc - b*x);
+fx : num/den;
+/* Step 2: Check the integral */
+integral_exp: int(fx, x, lower_lm, upper_lm);
+
+
+
+
+/*Worked Solution code*/
+limit_check : limit(fx, x, point_disc);
+/* Step 3: Change of variables */
+uu : b*point_disc - b*x;
+del_x : diff(uu, x);
+del_dx : diff(uu, x)*dx;
+/* Step 4: Set up new limits */
+u1 : ev(uu, x =lower_lm); /* x =lower_lm u= ? */
+u2 : ev(uu, x = t); /*x=b, u=? upper limit */
+/* Step 5: Integrate */
+fu: num/sqrt(u)*1/(del_x);
+new_indef : int(fu, u);
+/* Compute the definite integral from a to b */
+upper: at(new_indef, u = u2);
+lower: at(new_indef, u = u1);
+indef_val: upper - lower;
+
+/* Step 6: Evaluate the limit */
+result : limit(indef_val, t, point_disc); /* limit as t approaches 4 */
+
+/*Model answers*/
+ta_1: integral_exp;
+ta_2:if ta_1=inf then "Divergent" elseif ta_1=minf then "Divergent" else"Convergent";
+ta_3:if ta_2="Divergent" then "Convergent" else "Divergent";
+ta_4:random_permutation([[ta_2, true],[ta_3, false],["Divergent and convergent", false]]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\displaystyle\int_{{@lower_lm@}}^{{@upper_lm@}}{@fx@}\,dx={@ta_1@}\)</p>
+<p>The integral is {@mcq_correct(ta_4)[1]@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/A</p>
+<p id="reviewer">1</p>
+<p id="reviewer">2</p>
+<p id="description">The question focuses on evaluating an Improper Integral with a point of discontinuity</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>dropdown</type>
+      <tans>ta_4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for correct answers*/
+
+/*node 2:Calculating the integral as F(a)-F(b) instead of F(b)-F(a)*/
+mistake_1:int(fx,upper_lm, lower_lm) ;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You calculated the value of the integral in a wrong format \(F(a)-F(b)\),instead of \(F(b)-F(a)\)</p>
+<p>Hint: Check the worked out solution</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mcq_correct(ta_4)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1235040843</deployedseed>
+    <deployedseed>243130919</deployedseed>
+    <deployedseed>1887376776</deployedseed>
+    <deployedseed>21771249</deployedseed>
+    <deployedseed>874990568</deployedseed>
+    <deployedseed>379266198</deployedseed>
+    <deployedseed>1164109910</deployedseed>
+    <deployedseed>951047656</deployedseed>
+    <deployedseed>995073021</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>first(mcq_correct(ta_4))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <hint format="html">
+      <text><![CDATA[<p>Start by looking at the integrand \( \displaystyle {@fx@}  \). </p>
+<p>Notice that the denominator involves a square root. For the integrand to be well-defined, the expression under the square root, \( {@b*point_disc - b*x@} \), must be positive.</p>
+<p> If it equals zero, the function becomes undefined. So, check for values of \(x\) that could cause this to happen, and focus on the limits of the integral.</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p>Since the square root function has a potential issue when \( {@b*point_disc - b*x@} = 0 \) (i.e., \(x = {@upper_lm@}\)), we need to carefully evaluate the integral near this point. </p>
+<p>This suggests that the integral might be improper. <br>To handle this, we rewrite the integral as a limit where we approach \( x = {@upper_lm@} \) from the left. This will help us analyze whether the integral converges or diverges by taking the limit as \(x\) approaches \({@upper_lm@}\).</p>]]></text>
+    </hint>
+  </question>
+</quiz>

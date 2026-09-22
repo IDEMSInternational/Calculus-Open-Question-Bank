@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluating an Integral involving quadratic functions</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Evaluate the Integral to result to Trig Function </p>
+<p>\(\displaystyle \int {@quest_expr@}=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p> First you want to complete the square of \({@denom@}\) to get  \({@denom1@}\) </p>
+<p> Next we make a change of variable with \(u={@bb*tan(x+a)@}\) so that \(du={@bb*sec(x+a)^2@}\) and evaluate the integral.</p>
+
+<p>Alternatively, we apply the formula \(\displaystyle \int \frac{du}{a^2+u^2}=\frac{1}{a}tan^{-1}(\frac{u}{a})+c\)   to solve the Integral where \(u={@x+aa@}\)</p>
+<p>Given \(\displaystyle \int {@quest_expr@}dx= \int {@quest_expr2@}dx\), we solve it by first identifying the values of \(u^2\) and \(a^2\)</p>
+<p>let </p>
+<p>\(u^2={@(x+aa)^2@}\)</p>
+<p>\(u={@u@}\)</p>
+<p>\(a^2={@a_squared@}\)</p>
+<p>\(a={@a_value@}\)</p>
+<p>Now, we substitute into \(\displaystyle \int \frac{du}{a^2+u^2}=\frac{1}{a}\,tan^{-1}(\frac{u}{a})+c\)  the values of \(u^2\) and \(a^2\) and \(u\) and \(a\) as identified above in the formula</p>
+<p>To have,  \(\displaystyle {@constant@}\int \frac{du}{{{@a_squared@}+{@u_squared@}}}=\frac{{@constant@}}{{@a_value@}}\,tan^{-1}(\frac{{@u@}}{{@a_value@}})+c\)  </p>
+<p>Therefore, \(\displaystyle \int {@quest_expr@}=\frac{{@constant@}}{{@a_value@}}\,tan^{-1}(\frac{{@u@}}{{@a_value@}})+c\)</p>
+<p></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*quadratic Functions*/
+constant:rand(6)+3;
+aa:rand_with_step(-5,5,1);
+bb:1+rand(6);
+denom:expand((aa+x)^2+bb^2);
+quest_expr:constant/denom;
+/* worked solution variables*/
+u_squared:(x+aa)^2;
+u:x+aa;
+denom1:(aa+x)^2+bb^2;
+quest_expr2:constant/denom1;
+a_squared:bb^2;
+a_value:bb;
+/*model answer*/
+ta:1/b*atan((x+aa)/bb)+c;
+ta1:int(quest_expr,x);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Evaluate \(\displaystyle \int {@quest_expr@}={@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer"></p>
+<p id="reviewer"></p>
+<p id="description">The question focuses on evaluating an Integral  into Inverse Trigonometric function by substitution by a defined formula</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>x</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1619830725</deployedseed>
+    <deployedseed>1868118722</deployedseed>
+    <deployedseed>782360809</deployedseed>
+    <deployedseed>177605611</deployedseed>
+    <deployedseed>213606474</deployedseed>
+    <deployedseed>919494046</deployedseed>
+    <deployedseed>1671917285</deployedseed>
+    <deployedseed>1777997445</deployedseed>
+    <deployedseed>1814878398</deployedseed>
+    <deployedseed>1936966917</deployedseed>
+    <deployedseed>2078003163</deployedseed>
+    <deployedseed>1393283290</deployedseed>
+    <deployedseed>1274242806</deployedseed>
+    <deployedseed>1111779984</deployedseed>
+    <deployedseed>138950803</deployedseed>
+    <deployedseed>1966606179</deployedseed>
+    <deployedseed>908248875</deployedseed>
+    <deployedseed>1405146668</deployedseed>
+    <deployedseed>1967891391</deployedseed>
+    <deployedseed>1270659919</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

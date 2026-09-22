@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>MQH - Evaluate the Improper Integral and determine if it converges or diverges</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Evaluate  the following integral and determine if it converges or diverges.</p>
+<p>\(\displaystyle\int_{@lower_limit@}^{@w_pt@}\frac{{@coef_w*w@}}{\sqrt[3]{{@coef_w*w@}^{2}-{@const1@}}}\,dw=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+<p>Therefore, the integral is [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><h3>worked solution</h3></p>
+<p>Since there is a discontinuity in the integrand at \(w ={@w_pt@}\), we can eliminate it by introducing a parameter as follows;</p>
+<p>\[\displaystyle\int_{@lower_limit@}^ {@w_pt@}\frac{{@coef_w*w@}}{\sqrt[3]{{@coef_w*w@}^{2}-{@const1@}}}\,dw=\lim_{t \to {@w_pt@}^{-}} \displaystyle\int_{@lower_limit@}^t\frac{{@coef_w*w@}}{\sqrt[3]{{@coef_w*w@}^{2}-{@const1@}}}\,dw\]
+<p> because the interval of integration is [{@lower_limit@},{@w_pt@}].
+ </p>
+<p>Now we need to compute the integral \(\displaystyle\int_{@lower_limit@}^t\frac{{@coef_w*w@}}{\sqrt[3]{{@coef_w*w@}^{2}-{@const1@}}}\,dw\).</p>
+<p>We can use \(u\)-substitution</p>
+<p>Let \(\displaystyle u={@coef_w@}w^{2}-{@const1@}\). Then \( \displaystyle du={@diff((coef_w*w^2)-const1)@}\), so  \(\displaystyle dw =\frac{du}{{@2*coef_w*w@}}\)</p>
+<p> Recall that any time we make a \(u\)-substitution, the limits of integration change accordingly. For out case, we will have</p>
+<p>\(w\) \(\rightarrow\) \(t\) :\(\quad\) \(u= \displaystyle {@expr_2@}\)</p>
+<p>\(w\) \(\rightarrow\) {@lower_limit@} :\(\quad\)  \(u={@expr_3@}\)</p>
+<p>SO that our integral becomes</p>
+<p> \[    \begin{align}
+ \displaystyle \int_{@lower_limit@}^t\frac{{@coef_w*w@}}{\sqrt[3]{{@coef_w@} w^{2}-{@const1@}}}\,dw&amp;=\displaystyle\int_{@expr_3@}^{@expr_2@} {@func_2@} \,du \\
+      &amp;= \left[ {@func_3@}\right]_{@expr_3@}^{@expr_2@}\\
+    &amp;= {@func_5@}
+    \end{align}
+    \]</p>
+<p>Therefore,</p>
+<p>
+\[    \begin{align}
+  \displaystyle \int_{@lower_limit@}^{@w_pt@}\frac{{@coef_w*w@}}{\sqrt[3]{{@coef_w@}w^{2}-{@const1@}}}\,dw &amp;=\lim_{t \to {@w_pt@}^{-}} \displaystyle\int_{@lower_limit@}^t\frac{{@coef_w*w@}}{\sqrt[3]{{@coef_w@}w^{2}-{@const1@}}}\,dw\\
+    &amp;=\lim_{t \to{@w_pt@}^{-}} {@func_5@} \\
+      &amp;={@ta_2@} \\
+   \end{align}
+\]</p>
+<p>The integral is convergent if the associated limit exists and is a finite number and divergent if the associated limit either doesn't exist or is (plus or minus) infinity.</p>
+<p>So in this case, the limit is {@mcq_correct(ta_3)[1]@}</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*Defining the question variables*/ 
+coef_w:1; /*coefficient of w*/
+const1: rand([4,25,16,36,49,64,81,9,100]); /*constant in the function*/
+func:(coef_w*w)/(const1-(coef_w*w^2))^(1/3);
+aa:(((coef_w*w)/(2*coef_w*w))*u^(-1/3));
+bb:int(aa,u);
+cc:bb/u^(2/3);
+w_pt: sqrt(const1/coef_w);
+lower_limit: rand(2);
+
+
+
+/*Model answer*/
+expr_1:coef_w*w^(2)-const1;
+diff_u: diff(expr_1,w);
+func_1: func*(1/diff_u);
+func_2: subst(u,expr_1,func_1);
+expr_2:subst(t,w,expr_1);
+expr_3:ev(expr_2,t=lower_limit);
+func_3: int(func_2,u);
+
+lower_limit_u: ev(expr_1,w=lower_limit);
+upper_limit_u: ev(expr_1,w=t);
+
+func_4: ev(func_3,u=upper_limit_u)-ev(func_3,u=lower_limit_u);
+func_5: ratsimp(func_4);
+expr_t:cc*(coef_w*w^(2)-const1)^(2/3);
+expr_t1:subst(t,w,expr_t);
+expr_t2:subst(1,w,expr_t);
+model_expr:-cc*(expr_3)^(2/3);
+model1_expr:ev(model_expr);
+ta_2:  limit(func_5,t,w_pt); /*model ans part (a)*/
+ta_2_a: limit(model_expr,t,w_pt);
+ta_2_b: ratsimp(ta_2_a);
+ta_3: random_permutation([["convergent", true],["divergent", false],["convergent and divergent", false]]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\( \displaystyle \int_{@lower_limit@}^{@w_pt@}{@func@}dx ={@ta_2@}\)</p>
+<p>Therefore, the integral is {@mcq_correct(ta_3)[1]@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">The question tests on evaluating an improper integral on [-a,b] and checking for convergence or divergence</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>dropdown</type>
+      <tans>ta_3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for correct answers*/
+
+/*node 2:Integrating the indefinite integral without the limits.*/
+mistake_2:int(func,w);
+/*node 3:Interchanging the limits of integration, however, with the correct definite integral*/
+mistake_3:int(func,w);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answers</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Integrating the indefinite integral without the limits.</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have integrated the function correctly but did not input the limits. Take a look at the worked solution below</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Interchanging the limits of integration, however, with the correct definite integral</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your computation looks okay for the definite integral, however it looks like you have interchanged the limits of integration.
+Take a look at the worked solution below.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mcq_correct(ta_3)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>778631037</deployedseed>
+    <deployedseed>1455494884</deployedseed>
+    <deployedseed>415119051</deployedseed>
+    <deployedseed>1705269498</deployedseed>
+    <deployedseed>803502291</deployedseed>
+    <deployedseed>2058748969</deployedseed>
+    <deployedseed>2063580398</deployedseed>
+    <deployedseed>1666734151</deployedseed>
+    <deployedseed>1725594151</deployedseed>
+    <deployedseed>960371213</deployedseed>
+    <deployedseed>1606507076</deployedseed>
+    <deployedseed>1055885808</deployedseed>
+    <deployedseed>1308760207</deployedseed>
+    <deployedseed>1480200207</deployedseed>
+    <deployedseed>835658373</deployedseed>
+    <deployedseed>501948499</deployedseed>
+    <deployedseed>1002301450</deployedseed>
+    <deployedseed>1400617237</deployedseed>
+    <deployedseed>693245490</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta_2</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>first(mcq_correct(ta_3))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <hint format="html">
+      <text><![CDATA[<p>Look at the integrand \(\displaystyle \frac{{@coef_w*w@}}{\sqrt[3]{{@coef_w*w@}^{2}-{@const1@}}}\) </p>
+<p>Notice that the denominator involves \( {@coef_w*w@}^{2}-{@const1@}\), which becomes zero when \( w = {@w_pt@} \). </p>
+<p>This suggests that the integrand might behave strangely (having a point of discontinuity) near \( w = {@w_pt@} \). </p>
+<p>Since there is a discontinuity in the integrand at \(w ={@w_pt@}\), we can eliminate it by introducing a parameter as follows;</p>
+<p>\[\displaystyle\int_{@lower_limit@}^ {@w_pt@}\frac{{@coef_w*w@}}{\sqrt[3]{{@coef_w*w@}^{2}-{@const1@}}}\,dw=\lim_{t \to {@w_pt@}^{-}} \displaystyle\int_{@lower_limit@}^t\frac{{@coef_w*w@}}{\sqrt[3]{{@coef_w*w@}^{2}-{@const1@}}}\,dw\]]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p>As \( w \to {@w_pt@} \), the expression \( {@coef_w*w@}^{2}-{@const1@} \) approaches zero, which suggests that the cube root \( \sqrt[3]{{@coef_w*w@}^{2}-{@const1@}} \), may approach zero as well. </p>
+<p>To understand the behavior of the integrand near \( w = {@w_pt@} \), perform a substitution that transforms the integrand near this singularity into a simpler form. </p>
+<p>For example, using \( u = {@coef_w*w@}^{2}-{@const1@}\), analyze how the integrand behaves for small \( u \). </p>
+<p>This will help you determine whether the function blows up too quickly to make the integral converge or if it is manageable.</p>
+<p> Specifically, look for any terms that could cause the integrand to behave like \( \displaystyle \frac{1}{u^{{@1/3@}}} \), and check if the resulting integral converges or diverges at that point.</p>]]></text>
+    </hint>
+  </question>
+</quiz>

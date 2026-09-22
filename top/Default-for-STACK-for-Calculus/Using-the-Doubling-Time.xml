@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Using the Doubling Time</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Assume the population of fish grows exponentially. A pond is stocked initially with \({@initial_no@} \,\,\textbf{fish}\). After \({@period_months@}  \,\,\textbf{months}\), there are \({@dobled_no@}\,\, \textbf{fish}\) in the pond. The owner will allow his friends and neighbors to fish on his pond after the fish population reaches \({@dobled_no_results@}\). When will the owners friends be allowed to fish?</p>
+<br>
+<p>Give your answer correct to \(1dp\)</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]] \(\textbf{months}\)</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>We know it takes the population of fish \({@period_months@}\) months to double in size. So, if \(𝑡\) represents time in months, by the doubling-time formula, we have \({@period_months@}={(\displaystyle\frac{\ln{2}}{k})}\). Then, \(𝑘={(\displaystyle\frac{\ln{2}}{{@period_months@}})}\) </p>
+<p>Thus, the population is given by \(y={@initial_no@} \cdot e^{(\displaystyle\frac{\ln{2}}{{@period_months@}})t}\)</p>
+<p>To figure out when the population reaches \({@dobled_no_results@}\) we solve the equation \(y={@initial_no@}\cdot e^{(\displaystyle\frac{\ln{2}}{{@period_months@}})t}\)</p>
+<p>Where \(y\) is the final population of fish \(y={@dobled_no_results@}\)</p>
+<p>\(y={@initial_no@}\cdot e^{(\displaystyle\frac{\ln{2}}{{@period_months@}})t}\)</p>
+<p>\({@dobled_no_results@}=\displaystyle {@initial_no@}\cdot e^{\displaystyle (\frac{\ln{2}}{{@period_months@}})t}\)</p>
+<p>\(\displaystyle{@(dobled_no_results/initial_no)@}=\displaystyle e^{\displaystyle (\frac{\ln{2}}{{@period_months@}})t}\)</p>
+<p>\(\displaystyle{@log(dobled_no_results/initial_no)@}={@((log(2)/period_months)*t)@}\)</p>
+<p>\(\displaystyle{@t=period_months*(log(dobled_no_results/initial_no)/log(2))@}\)</p>
+<p>\(t={@decimalplaces(ta,2)@}\,\,\textbf{months}\)</p>
+<p>Therefore, the period required to fish is \({@decimalplaces(ta,2)@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*doubling time in growth*/
+initial_no:(rand(20)+10)*10;
+period_months:rand(4)+4;
+dobled_no:initial_no*2;
+dobled_no_results:rand_with_step(5000,10000,100);
+/*solution variables*/
+sol1:dobled_no_results=initial_no*(%e^((log(2)/period_months)*t));
+sol2:(dobled_no_results/initial_no)=(%e^((log(2)/period_months)*t));
+sol3:log(dobled_no_results/initial_no)=(log(2)/period_months)*t;
+sol4:t=period_months*(log(dobled_no_results/initial_no)/log(2));
+sol5:period_months*(log((dobled_no_results/initial_no))/log(2));
+sol6:float(sol5);
+ta:decimalplaces(sol6,1)
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Assume the population of fish grows exponentially. A pond is stocked initially with \({@initial_no@}\) fish. After \({@period_months@}\), there are \({@dobled_no@}\) fish in the pond. The owner will allow his friends and neighbors to fish on his pond after the fish population reaches \({@dobled_no_results@}\). When will the owners friends be allowed to fish?</p>
+<br>
+<p>Where \(y\) is the final population of fish \(y={@dobled_no_results@}\)</p>
+<p>\(y={@initial_no@}\cdot e^{(\displaystyle\frac{ln(2)}{{@period_months@}})t}\)</p>
+<p>\({@dobled_no_results@}=\displaystyle {@initial_no@}\cdot e^{(\displaystyle\frac{ln(2)}{{@period_months@}})t}\)</p>
+<p>\(\displaystyle{@(dobled_no_results/initial_no)@}={@(%e^((log(2)/period_months)*t))@}\)</p>
+<p>\(\displaystyle{@log(dobled_no_results/initial_no)@}={@((log(2)/period_months)*t)@}\)</p>
+<p>\(\displaystyle{@t=period_months*(log(dobled_no_results/initial_no)/log(2))@}\)</p>
+<p>\(t={@decimalplaces(ta,2)@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni<p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Wastalas</p>
+<p id="description">The question considers the growth and doubling period of fish in a pond, with a given initial number of fish and resulting number over a given period of the student is required to find the time of maturity when the same process is conducted at a near farm</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>1</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>537248642</deployedseed>
+    <deployedseed>2059453790</deployedseed>
+    <deployedseed>1798619286</deployedseed>
+    <deployedseed>1534037256</deployedseed>
+    <deployedseed>2143665168</deployedseed>
+    <deployedseed>1808376914</deployedseed>
+    <deployedseed>658968272</deployedseed>
+    <deployedseed>401065272</deployedseed>
+    <deployedseed>1147037304</deployedseed>
+    <deployedseed>1027311837</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>sol5</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluation and Limit of a Function (copy)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>We define the function \(f(x) = {@fx@}\), where \(\sin(\theta)\) applies to \(\theta\) given in radians.</p>
+
+<p>(a) Which of the following best describes the value of \(f(0)\)?</p>
+<p style="margin-left: 30px">[[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:prt1]]</p>
+
+<br>
+
+<p>(b) Fill in the following table of values to approximate \( \lim_{x\rightarrow 0} f(x) \).</p>
+<p><em>Note: Give your answers correct to 2 decimal places.</em></p>
+
+<br>
+
+<table style="margin-left: 30px">
+<tr>
+  <td style="text-align: center; border: 1px solid black; width:60px;">\(x\)</th>
+  <td style="text-align: center; border: 1px solid black; width:150px;">\(-0.25\)</th>
+  <td style="text-align: center; border: 1px solid black; width:150px;">\(-0.1\)</th>
+  <td style="text-align: center; border: 1px solid black; width:150px;">\(-0.01\)</th>
+  <td style="text-align: center; border: 1px solid black; width:150px;">\(0.01\)</th>
+  <td style="text-align: center; border: 1px solid black; width:150px;">\(0.1\)</th>
+  <td style="text-align: center; border: 1px solid black; width:150px;">\(0.25\)</th>
+</tr>
+<tr style="height:40px">
+  <td style="text-align: center; border: 1px solid black; ">\(f(x)\)</td>
+  <td style="text-align: center; border: 1px solid black; ">[[input:ans2]] [[validation:ans2]]</td>
+  <td style="text-align: center; border: 1px solid black; ">[[input:ans3]] [[validation:ans3]]</td>
+  <td style="text-align: center; border: 1px solid black; ">[[input:ans4]] [[validation:ans4]]</td>
+  <td style="text-align: center; border: 1px solid black; ">[[input:ans5]] [[validation:ans5]]</td>
+  <td style="text-align: center; border: 1px solid black; ">[[input:ans6]] [[validation:ans6]]</td>
+  <td style="text-align: center; border: 1px solid black; ">[[input:ans7]] [[validation:ans7]]</td>
+</tr>
+</table>
+<p>[[feedback:prt2]]</p>
+
+<br>
+
+<p>(c) Therefore, evaluate the limit,</p>
+<p style="margin-left: 30px">\(\lim_{x\rightarrow 0} f(x) = \) [[input:ans8]] [[validation:ans8]]</p>
+<p>[[feedback:prt3]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+
+<p>(a) When we try to evaluate \(f(0)\), both the numerator and the denominator of the fraction evaluate to \(0\). 
+<br>Therefore, \(f(0) = \frac{0}{0}\), which is <b>undefined</b>.</p>
+
+<br>
+
+<p>(b) We evaluate \(f(x) = {@fx@}\) at the relevant points to give the following results, rounded to 2 decimal places.
+
+<br>
+
+<p hidden>{@stackfltfmt:"~,2f";@}</p>
+<table style="margin-left: 30px">
+<tr>
+  <td style="text-align: center; border: 1px solid gray; width:60px;">\(x\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(-0.25\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(-0.1\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(-0.01\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(0.01\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(0.1\)</th>
+  <td style="text-align: center; border: 1px solid gray; width:100px;">\(0.25\)</th>
+</tr>
+<tr style="height:40px">
+  <td style="text-align: center; border: 1px solid gray; ">\(f(x)\)</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta2@}</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta3@}</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta4@}</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta5@}</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta6@}</td>
+  <td style="text-align: center; border: 1px solid gray; ">{@ta7@}</td>
+</tr>
+</table>
+
+<br>
+
+<p>We use the approximations determined in part (b). 
+<br>As \(x \rightarrow 0\) from both the positive and negative direction, the value of \(f(x)\) approaches \(0\).
+<br>Therefore, \(\lim_{x\rightarrow 0} f(x) = 0\)</p>
+
+<p>(c) This is particularly clear if we consider the graph of \(y = f(x)\)</p>
+<p style="margin-left: 30px">{@plot(
+    fx,
+    [x,-3*%pi/aa,3*%pi/aa],
+    [y, -aa, aa+2],
+    [box, false],
+    [plottags, false]
+)@}</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[aa:rand(5)+3;
+fx:(cos(aa*x)-1)/x;
+
+ma1:random_permutation([
+  [0, true, "\\(\\text{undefined}\\)"],
+  [1, false, "\\(0\\)"],
+  [2, false, "\\(1\\)"],
+  [3, false, "\\(\\infty\\)"],
+  [4, false, "\\(-\\infty\\)"]
+]);
+
+ta2:decimalplaces(ev(fx, x = -0.25),2);
+ta3:decimalplaces(ev(fx, x = -0.1),2);
+ta4:decimalplaces(ev(fx, x = -0.01),2);
+ta5:decimalplaces(ev(fx, x = 0.01),2);
+ta6:decimalplaces(ev(fx, x = 0.1),2);
+ta7:decimalplaces(ev(fx, x = 0.25),2);
+
+ta8:0;]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(f(x) = {@fx@}\)</p>
+<p>\(\lim_{x\rightarrow 0} f(x) = {@aa@}\)</p>
+]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">NA</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Dan Kelly</p>
+<p id="description">This question involves evaluating a given function at a specific value, filling in a table of values for the function, and finding the limit of the function as x approaches 0. The question requires providing answers correct to 3 significant figures.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ma1</tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>latex</options>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>numerical</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>numerical</type>
+      <tans>ta3</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>numerical</type>
+      <tans>ta4</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>numerical</type>
+      <tans>ta5</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>numerical</type>
+      <tans>ta6</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7</name>
+      <type>numerical</type>
+      <tans>ta7</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans8</name>
+      <type>algebraic</type>
+      <tans>ta8</tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Check correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>0</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>When we try to evaluate \(f(0)\), both the numerator and the denominator of the fraction evaluate to \(0\). 
+<br>Therefore, \(f(0) = \frac{0}{0}\), which is <b>undefined</b>.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/* Node 1 - check correct answer */
+s_ans: [ans2, ans3, ans4, ans5, ans6, ans7];
+t_ans: [ta2, ta3, ta4, ta5, ta6, ta7];
+
+/* Node 2-7 - check individual answers */</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Check all answers are correct</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>s_ans</sans>
+        <tans>t_ans</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Check ans2</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>2</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Your evaluation of \(f(-0.25)\) is not correct.
+<br>The correct value is \(f(-0.25) = {@ta2@}\)</p>]]></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Check ans3</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>3</truenextnode>
+        <trueanswernote>prt2-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt2-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Your evaluation of \(f(-0.1)\) is not correct.
+<br>The correct value is \(f(-0.1) = {@ta3@}\)</p>]]></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>Check ans4</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>4</truenextnode>
+        <trueanswernote>prt2-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt2-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Your evaluation of \(f(-0.01)\) is not correct.
+<br>The correct value is \(f(-0.01) = {@ta4@}\)</p>]]></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>Check ans5</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>ta5</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>5</truenextnode>
+        <trueanswernote>prt2-5-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>5</falsenextnode>
+        <falseanswernote>prt2-5-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Your evaluation of \(f(0.01)\) is not correct.
+<br>The correct value is \(f(0.01) = {@ta5@}\)</p>]]></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>5</name>
+        <description>Check ans6</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>ta6</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>6</truenextnode>
+        <trueanswernote>prt2-6-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>6</falsenextnode>
+        <falseanswernote>prt2-6-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Your evaluation of \(f(0.1)\) is not correct.
+<br>The correct value is \(f(0.1) = {@ta6@}\)</p>]]></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>6</name>
+        <description>Check ans7</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans7</sans>
+        <tans>ta7</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-7-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-7-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Your evaluation of \(f(0.25)\) is not correct.
+<br>The correct value is \(f(0.25) = {@ta6@}\)</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Check correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans8</sans>
+        <tans>ta8</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>We use the approximations determined in part (b). 
+<br>As \(x \rightarrow 0\) from both the positive and negative direction, the value of \(f(x)\) approaches {@aa@}.
+<br>Therefore, \(\lim_{x\rightarrow 0} f(x) = {@aa@}\)</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1313167693</deployedseed>
+    <deployedseed>1187307701</deployedseed>
+    <deployedseed>685727649</deployedseed>
+    <deployedseed>1835028593</deployedseed>
+    <deployedseed>1373401442</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>first(mcq_correct(ma1))</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>dispsf(ta2,3)</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>dispsf(ta3,3)</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>dispsf(ta4,3)</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>dispsf(ta5,3)</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>dispsf(ta6,3)</value>
+      </testinput>
+      <testinput>
+        <name>ans7</name>
+        <value>dispsf(ta7,3)</value>
+      </testinput>
+      <testinput>
+        <name>ans8</name>
+        <value>ta8</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

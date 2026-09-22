@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluate the expression Involving Inverse Function</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p> Use a trig substitution by Inverse to evaluate
+ \(\displaystyle\int{@f_w@}dw\)</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><b>Worked solution</b></p>
+<p>Let \(w=\frac{1}{\sqrt{{@coeff_w@}}} \sin{\theta}\). Then, \(w^2 = \frac{1}{{@coeff_w@}}\sin^{2}{\theta}\), and so,</p>
+
+<p>
+    \(
+    \begin{align}
+    \sqrt{1-{@coeff_w@} w^2} &amp;= \sqrt{1-\sin^2{\theta}} \\
+    &amp;= \sqrt{\cos^2{\theta}} \\
+    &amp;= |\cos{\theta}|.
+    \end{align}
+    \)
+</p>
+
+<p>As we are calculating an indefinite integral, we will take the positive square root, and so \(\sqrt{1-{@coeff_w@} w^2} = \cos{\theta}\).</p>
+
+<p>Also, \(dw = \frac{1}{\sqrt{{@coeff_w@}}} \cos{\theta} d{\theta}\).</p>
+
+<p>Therefore, substituting into the integral,</p>
+
+<p>
+    \(
+    \begin{align}
+    \int \sqrt{1-{@coeff_w@} w^2} dw &amp;= \int \cos{\theta} \cdot \frac{1}{\sqrt{{@coeff_w@}}} \cos{\theta} d\theta \\
+    &amp;= \frac{1}{\sqrt{{@coeff_w@}}} \int \cos^2{\theta} d\theta \\
+    &amp;= \frac{1}{\sqrt{{@coeff_w@}}} \int \frac{1}{2} (1+\cos{2\theta}) d\theta &amp;&amp; \text{as } \cos{2\theta} = 2\cos^2{\theta} - 1 \\
+    &amp;= \frac{1}{\sqrt{{@coeff_w@}}} \cdot \frac{1}{2} \left( \theta + \frac{1}{2} \sin{2\theta} \right) +c \\
+    &amp;= \frac{1}{2\sqrt{{@coeff_w@}}} ( \theta + \sin{\theta} \cos{\theta} ) + c &amp;&amp; \text{as } \sin{2\theta}=2\sin{\theta} \cos{\theta}.
+    \end{align} \\
+    \)
+</p>
+
+<p>Since \(w=\frac{1}{\sqrt{{@coeff_w@}}} \sin{\theta}\) and \(\cos{\theta} = \sqrt{1-{@coeff_w@} w^2}\), \(\sin{\theta} = \sqrt{{@coeff_w@}}w\) and \(\theta = \sin^{-1}(\sqrt{{@coeff_w@}}w)\).</p>
+
+<p>Substituting these back,</p>
+
+<p>
+    \(
+    \begin{align}
+    \int \sqrt{1-{@coeff_w@} w^2} dw &amp;= \frac{1}{2\sqrt{{@coeff_w@}}} (\theta + \sin{\theta} \cos{\theta} ) + c \\
+    &amp;= \frac{1}{2\sqrt{{@coeff_w@}}} \left( \sin^{-1}(\sqrt{{@coeff_w@}}w) + \sqrt{{@coeff_w@}}w \sqrt{1-{@coeff_w@} w^2} \right) +c
+    \end{align}
+    \)
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>coeff_w:rand([2,3,5,6,7,8,10,11,12,13,14]);
+f_w:sqrt(1-coeff_w*w^(2));
+
+ta:integrate(f_w,w)+c;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text> \(\displaystyle\int{@f_w@}dw={@ta@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Emmaculate</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">The question focuses on evaluating the expression involving Inverse that results to Trigonometric Function</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node1:checking correct answer*/
+
+/*node 2: missing constant of integration*/
+mistake1:integrate(f_w,w);
+
+/*node3:Differentiating instead of integrating*/
+mistake2:diff(f_w,w);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>Int</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>w</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You have missed the constant of integration. This is an indefinite integral. </p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the second mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have differentiated instead of integrating it.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>176901708</deployedseed>
+    <deployedseed>1127113362</deployedseed>
+    <deployedseed>1912689920</deployedseed>
+    <deployedseed>1957404805</deployedseed>
+    <deployedseed>624525290</deployedseed>
+    <deployedseed>663304871</deployedseed>
+    <deployedseed>4582488</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

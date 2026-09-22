@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Intervals of Continuity</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p></p><p>Find the intervals of continuity of \(f \displaystyle (x) = {@fx@}\).</p>
+<p><em>Note: To enter intervals of  of continuity, you should write the relevant text in the table below.</em></p>
+
+<table width="250" cellspacing="1" cellpadding="0" border="1" style="margin-left: 30px">
+  <tr>
+    <th style="text-align: center;">Intervals</th>
+    <th style="text-align: center;">Input Syntax</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( [a,b] \)</td>
+    <td style="text-align: center;"><code>cc(a,b)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( (a,b) \)</td>
+    <td style="text-align: center;"><code>oo(a,b)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( [a,b) \)</td>
+    <td style="text-align: center;"><code>co(a,b)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">\( (a,b] \)</td>
+    <td style="text-align: center;"><code>oc(a,b)</code></td>
+  </tr>
+ <tr>
+    <td style="text-align: center;">\( (a, \infty) \)</td>
+    <td style="text-align: center;"><code>oo(a,inf)</code></td>
+  </tr>
+ <tr>
+    <td style="text-align: center;">\( (-\infty, b] \)</td>
+    <td style="text-align: center;"><code>oc(-inf,b)</code></td>
+  </tr>
+ <tr>
+    <td style="text-align: center;">\( (-\infty, \infty) \)</td>
+    <td style="text-align: center;"><code>oo(-inf,inf)</code></td>
+  </tr>
+</table>
+</p>
+<p><em>Note: For instance, the operators <b>\( \cap \)</b> and <b>\( \cup \)</b> will be typed like <code> and</code>, <code>or</code>  respectively</em></p>
+<p> Interval of continuity: [[input:ans1]] [[validation:ans1]] [[feedback:prt1]] </p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To find the intervals of continuity for the function \( \displaystyle  f(x) = \sqrt{x^2 - {@aa@}}\), we need to consider where the function is defined and where it might have any discontinuities.</p>
+
+<p>The function \(x \mapsto \displaystyle \sqrt{x^2 - {@aa@}}\) is defined on the interval satisfying \(x^2 - {@aa@} \geq 0\).</p>
+<p>\( \displaystyle \begin{align} x^2 - {@aa@} & \geq 0 \\
+        x^2 & \geq {@aa@} \\
+       |x| & \geq {@sqrt(aa)@}  \end{align} \)
+<p>We recall that \( \displaystyle |x| \geq r \, (r  \in \mathbb{R}^+) \Leftrightarrow x \in {@oc(-inf,-r)@}  \cup {@co(r,inf)@}\). Thus, \(f\) is defined on \({@oc(-inf,-sqrt(aa))@}  \cup {@co(sqrt(aa),inf)@}\).</p>
+<p> Since \(f\) is continuous on \({@oo(-inf,-sqrt(aa))@}  \cup {@oo(sqrt(aa),inf)@}\) and \( \displaystyle  \lim_{x \rightarrow{@-sqrt(aa)@}^{-}}f(x) = f({@-sqrt(aa)@})\) and \( \displaystyle  \lim_{x \rightarrow{@sqrt(aa)@}^{+}}f(x) = f({@sqrt(aa)@})\).</p>
+<p>Therefore, the function \( \displaystyle f \) is continuous on the interval \({@oc(-inf,-sqrt(aa))@}  \cup {@co(sqrt(aa),inf)@}\).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>aa:(rand(10)+1)^2;
+ins:x^2-aa;
+fx:sqrt(ins);
+ta1:oc(-inf,-sqrt(aa)) or co(sqrt(aa),inf);
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Interval of continuity of \(f(x) = {@fx@}\) is \({@ta1@}\)</p>
+]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Emmaculate</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">This STACK question involves determining the intervals of continuity for a given function. Students are required to analyze the function's properties and identify the intervals where it is continuous.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>18</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct interval of continuity*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct interval of continuity</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Intervals of continuity of \(f(x) = {@fx@}\) is \({@ta1@}\)</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>485722875</deployedseed>
+    <deployedseed>158503788</deployedseed>
+    <deployedseed>1529837481</deployedseed>
+    <deployedseed>387186768</deployedseed>
+    <deployedseed>298057921</deployedseed>
+    <deployedseed>209329797</deployedseed>
+    <deployedseed>1821535824</deployedseed>
+    <deployedseed>1618345815</deployedseed>
+    <deployedseed>2032478730</deployedseed>
+    <deployedseed>131153226</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

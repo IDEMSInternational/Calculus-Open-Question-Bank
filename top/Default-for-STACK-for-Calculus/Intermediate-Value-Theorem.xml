@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Intermediate-Value-Theorem</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p></p><p>Consider the function \(f(x) = {@fx@}\), defined for \([{@cc@},{@dd@}]\).</p>
+<p>i. Find the value of \(f({@cc@})\).</p>
+<p>\(f({@cc@}) = \) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+<p>ii. Find the value of \(f({@dd@})\)</p>
+<p>\(f({@dd@}) = \) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>
+<p>iii. Is there a root for the equation \({@fx@} = 0\) in the interval \([{@cc@},{@dd@}]\)? Type "yes" or "no"</p>
+<p>[[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</p>
+<p>iv. What theorem can you use to justify this directly from parts i and ii? Type the name inthe box.</p>
+<p>[[input:ans4]] [[validation:ans4]] [[feedback:prt4]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><b>Worked solution</b></p>
+<p>For the first two parts we simply need to evaluate \(f(x)\) at {@cc@} and {@dd@}</p> 
+<p>Plug in \(f({@cc@})\) into the function.</p>
+<p>\(f({@cc@})={@aa@}-{@bb@}*{@cc@}-{@cc@}^3\)</p>
+<p>which gives us {@ta1@} </p>
+
+<p>Plug in \(f({@dd@})\) into the function.</p>
+<p>\(f({@dd@})={@aa@}-{@bb@}*{@dd@}-{@dd@}^3\)</p>
+<p>which gives us {@ta2@} </p>
+
+</p>Since the first is positive and the second negative, and  \(f(x)\) is continuous; by the intermediate value theorem, there has to be a root.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>aa:rand(10)+20;
+bb:rand(3)+7;
+fx:aa-bb*x-x^3;
+cc:rand([-2,-1,0]);
+dd:rand([2,3,4]);
+ta1:ev(fx,x=cc);
+ta2:ev(fx,x=dd);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(f({@cc@}) ={@ta1@} \)</p>
+<p>\(f({@dd@}) = {@ta2@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">NA</p>
+<p id="reviewer"></p>
+<p id="reviewer"></p>
+<p id="description">The task is to calculate the expression \((I_2 - A)^2\) for a given matrix \(A\). This involves subtracting the matrix \(A\) from the identity matrix \(I_2\) and then squaring the resulting matrix. </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>string</type>
+      <tans><![CDATA["yes"]]></tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>string</type>
+      <tans><![CDATA["Intermediate Value Theorem"]]></tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct value at first defined point</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct value at the defined point</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks if there is a root of the fucntion at a given point</description>
+        <answertest>StringSloppy</answertest>
+        <sans>ans3</sans>
+        <tans><![CDATA["yes"]]></tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the theorem that is applicable</description>
+        <answertest>StringSloppy</answertest>
+        <sans>ans4</sans>
+        <tans><![CDATA["Intermediate Value Theorem"]]></tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>746403362</deployedseed>
+    <deployedseed>1261769674</deployedseed>
+    <deployedseed>304217491</deployedseed>
+    <deployedseed>876478028</deployedseed>
+    <deployedseed>148106713</deployedseed>
+    <deployedseed>1009405607</deployedseed>
+    <deployedseed>941175338</deployedseed>
+    <deployedseed>850319445</deployedseed>
+    <deployedseed>828213971</deployedseed>
+    <deployedseed>725898041</deployedseed>
+    <deployedseed>2020645635</deployedseed>
+    <deployedseed>1802947286</deployedseed>
+    <deployedseed>991550682</deployedseed>
+    <deployedseed>1225667320</deployedseed>
+    <deployedseed>822928620</deployedseed>
+    <deployedseed>1350044490</deployedseed>
+    <deployedseed>1699731656</deployedseed>
+    <deployedseed>1232303612</deployedseed>
+    <deployedseed>972966676</deployedseed>
+    <deployedseed>384518871</deployedseed>
+    <deployedseed>2007508005</deployedseed>
+    <deployedseed>503139463</deployedseed>
+    <deployedseed>1771707651</deployedseed>
+    <deployedseed>1400660283</deployedseed>
+    <deployedseed>1238648519</deployedseed>
+    <deployedseed>2087379440</deployedseed>
+    <deployedseed>320314624</deployedseed>
+    <deployedseed>602837005</deployedseed>
+    <deployedseed>1827541364</deployedseed>
+    <deployedseed>254293435</deployedseed>
+    <deployedseed>1718136086</deployedseed>
+    <deployedseed>1852639260</deployedseed>
+    <deployedseed>935886679</deployedseed>
+    <deployedseed>506502830</deployedseed>
+    <deployedseed>149256920</deployedseed>
+    <deployedseed>1580825371</deployedseed>
+    <deployedseed>1704278632</deployedseed>
+    <deployedseed>1498865868</deployedseed>
+    <deployedseed>879113742</deployedseed>
+    <deployedseed>794149428</deployedseed>
+    <deployedseed>1287886664</deployedseed>
+    <deployedseed>2015299899</deployedseed>
+    <deployedseed>373469894</deployedseed>
+    <deployedseed>1163499325</deployedseed>
+    <deployedseed>1994949278</deployedseed>
+    <deployedseed>38106039</deployedseed>
+    <deployedseed>594484804</deployedseed>
+    <deployedseed>1084471881</deployedseed>
+    <deployedseed>1581756663</deployedseed>
+    <deployedseed>767975671</deployedseed>
+    <deployedseed>352881294</deployedseed>
+    <deployedseed>13637470</deployedseed>
+    <deployedseed>551123664</deployedseed>
+    <deployedseed>42508226</deployedseed>
+    <deployedseed>800495860</deployedseed>
+    <deployedseed>265791227</deployedseed>
+    <deployedseed>600653000</deployedseed>
+    <deployedseed>1419885457</deployedseed>
+    <deployedseed>2034640669</deployedseed>
+    <deployedseed>1092846078</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value><![CDATA["yes"]]></value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value><![CDATA["Intermediate Value Theorem"]]></value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

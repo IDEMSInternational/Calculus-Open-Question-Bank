@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Evaluate the Integral by any strategy of Integration</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Use a trig substitution to evaluate</p>
+<p>\(\displaystyle \int_{@lower_limit@}^{@upper_limit@}{@func@}dy=\) [[input:ans1]] [[validation:ans1]] (round off at 4 decimalplaces)&nbsp;</p><p>[[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>In this case we’ll need the following trigonometric substitution</p>
+<p>\(y={@sqrt(bb)@} \sec \theta\quad\implies dy={@sqrt(bb)@} \sec \theta \tan \theta \,d\theta \)</p>
+<p>Now we need to use substitution to eliminate the root</p>
+<p>\(\sqrt{y^2-{@bb@}}=\sqrt{{@bb@}\sec^2 \theta-{@bb@}}={@sqrt(bb)@}\sqrt{\tan^2 \theta}={@sqrt(bb)@} |\tan \theta|\)</p>
+<p>We get the limits on \(\theta\)</p>
+<p>\(y={@lower_limit@}:\quad {@lower_limit@}={@sqrt(bb)@}\sec\theta \quad \implies \sec\theta={@lower_limit/sqrt(bb)@}\quad\implies\theta=\sec^{-1}({@lower_limit/sqrt(bb)@})={@ta_1@}\)</p>
+<p>\(y={@upper_limit@}:\quad{@upper_limit@}={@sqrt(bb)@}\sec\theta \quad \implies \sec\theta={@upper_limit/sqrt(bb)@}\quad\implies\theta=sec^{-1}({@upper_limit/sqrt(bb)@})={@ta_2@}\)</p>
+<p>So, \({\theta}\)'s for this problem are in the range \({@ta_1@}\leq {\theta} \leq {@ta_2@}\) and these are in the first quadrant. In the first quadrant we know that tangent is positive. This gives,</p>
+<p>\(\sqrt{y^2-{@bb@}}={@sqrt(bb)@}\tan{\theta}\)</p>
+<p>Now, doing the actual substitution,</p>
+<p>
+\(
+\begin{align}
+  \int_{@lower_limit@}^{@upper_limit@}{@func@}\,dy &amp;=\int_{@ta_1@}^{@ta_2@}{\frac{{@aa@}}{{@sqrt(bb)@}^4\sec^4{\theta}({@sqrt(bb)@}\tan{\theta})}({@sqrt(bb)@}\sec{\theta}\tan{\theta})}\,d{\theta} \\
+  &amp;= {@aa/(sqrt(bb)^4)@}\int_{@ta_1@}^{@ta_2@}{\frac{1}{\sec^3{\theta}}}\,d{\theta}
+\end{align}
+\)
+</p>
+<p>We now evaluate the integral in terms of cosine:
+</p>
+<p>
+ \(
+\begin{align}
+  \int_{@lower_limit@}^{@upper_limit@}{@func@}\,dy  &amp;= {@aa/(sqrt(bb)^4)@}\int_{@ta_1@}^{@ta_2@}{\cos^3{\theta}}\,d{\theta}\\
+  &amp;= {@aa/(sqrt(bb)^4)@}\int_{@ta_1@}^{@ta_2@}{\cos{\theta}\cos^2{\theta}}\,d{\theta}\\
+ &amp;= {@aa/(sqrt(bb)^4)@}\int_{@ta_1@}^{@ta_2@}{(1-\sin^2{\theta})\cos{\theta}}\,d{\theta}&amp;&amp; \text{Since} \cos^2{\theta}=1-\sin^2{\theta} 
+\end{align}
+\)
+</p>
+
+Taking \(u=\sin{\theta}\quad du=\cos{\theta}\,d{\theta}\)
+<p>\(
+\begin{align}
+  \int_{@lower_limit@}^{@upper_limit@}{@func@}\,dy &amp;={@aa/ (sqrt(bb))^4@} \int_{\sin{@ta_1@}}^{\sin{@ta_2@}}(1-u^2)\,du\\
+&amp;={@aa/ (sqrt(bb))^4@}\left [ u-\frac{1}{3}u^3 \right] _{{@ta_3@}}^{\{@ta_4@}}\\
+&amp;={@ta@}
+\end{align}
+ \)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining the question variables*/
+aa:rand(5)+1;/*the constant in the numerator*/
+bb:(1+rand(2))^2;/*the perfect square in the root*/
+ lower_limit:rand(10)+2;
+ upper_limit:rand(10)+1+lower_limit;
+/* lower_limit:%pi/9;*/ /*upper_limit:rand([%pi,%pi/4,3*%pi/4,%pi/3,2*%pi/3,%pi/6,5*%pi/6,7*%pi/8,3*%pi/8,5*%pi/8]);*/
+func:aa/(y^4*sqrt(y^2-bb));
+ff:int(func,y,lower_limit,upper_limit);
+
+/*Model answer*/
+ta:decimalplaces(float(ff),4);
+
+
+/*solving secant*/
+num:lower_limit;
+den:sqrt(bb);
+tt:asec(num/den);
+ta_1:decimalplaces(float(tt),4);
+num_1:upper_limit;
+tt_1:asec(num_1/den);
+ta_2:decimalplaces(float(tt_1),4);
+dd:sin(ta_1);
+ta_3:decimalplaces(float(dd),4);
+ee:sin(ta_2);
+ta_4:decimalplaces(float(ee),4);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[\(\int_{@lower_limit@}^{@upper_limit@}{@func@}dy={@ta@}\)
+<p>\(y={@lower_limit@}:\quad {@lower_limit@}={@sqrt(bb)@}\sec\theta \quad \implies \sec\theta={@lower_limit/sqrt(bb)@}\quad\implies\theta=\sec^{-1}({@lower_limit/sqrt(bb)@})={@ta_1@}\)</p>
+<p>\(y={@upper_limit@}:\quad{@upper_limit@}={@sqrt(bb)@}\sec\theta \quad \implies \sec\theta={@upper_limit/sqrt(bb)@}\quad\implies\theta=sec^{-1}({@upper_limit/sqrt(bb)@})={@ta_2@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">The question focuses on evaluating a definite Integral by use Trig functions to find a value </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1048768689</deployedseed>
+    <deployedseed>186102902</deployedseed>
+    <deployedseed>1644676931</deployedseed>
+    <deployedseed>420538502</deployedseed>
+    <deployedseed>304478898</deployedseed>
+    <deployedseed>1471946240</deployedseed>
+    <deployedseed>1917800442</deployedseed>
+    <deployedseed>689645976</deployedseed>
+    <deployedseed>905177062</deployedseed>
+    <deployedseed>955945595</deployedseed>
+    <deployedseed>407166874</deployedseed>
+    <deployedseed>1595698094</deployedseed>
+    <deployedseed>1574225073</deployedseed>
+    <deployedseed>424057392</deployedseed>
+    <deployedseed>76960773</deployedseed>
+    <deployedseed>249875536</deployedseed>
+    <deployedseed>113226105</deployedseed>
+    <deployedseed>876124181</deployedseed>
+    <deployedseed>305789092</deployedseed>
+    <deployedseed>370307434</deployedseed>
+    <deployedseed>1472024687</deployedseed>
+    <deployedseed>670950705</deployedseed>
+    <deployedseed>2108322355</deployedseed>
+    <deployedseed>1644263071</deployedseed>
+    <deployedseed>1574471776</deployedseed>
+    <deployedseed>837418047</deployedseed>
+    <deployedseed>97691513</deployedseed>
+    <deployedseed>542670298</deployedseed>
+    <deployedseed>2059598944</deployedseed>
+    <deployedseed>1142133608</deployedseed>
+    <deployedseed>1494782345</deployedseed>
+    <deployedseed>839242371</deployedseed>
+    <deployedseed>771993509</deployedseed>
+    <deployedseed>2113869968</deployedseed>
+    <deployedseed>2088985490</deployedseed>
+    <deployedseed>265929266</deployedseed>
+    <deployedseed>1798011632</deployedseed>
+    <deployedseed>1178446897</deployedseed>
+    <deployedseed>1750570935</deployedseed>
+    <deployedseed>1758496068</deployedseed>
+    <deployedseed>1566425096</deployedseed>
+    <deployedseed>1440878434</deployedseed>
+    <deployedseed>1209424670</deployedseed>
+    <deployedseed>286310565</deployedseed>
+    <deployedseed>1085573939</deployedseed>
+    <deployedseed>1173552590</deployedseed>
+    <deployedseed>898830065</deployedseed>
+    <deployedseed>1819541834</deployedseed>
+    <deployedseed>392286518</deployedseed>
+    <deployedseed>1545538217</deployedseed>
+    <deployedseed>1173879811</deployedseed>
+    <deployedseed>821743591</deployedseed>
+    <deployedseed>1659033891</deployedseed>
+    <deployedseed>2003713795</deployedseed>
+    <deployedseed>690583046</deployedseed>
+    <deployedseed>260075211</deployedseed>
+    <deployedseed>1221363247</deployedseed>
+    <deployedseed>461330330</deployedseed>
+    <deployedseed>440080372</deployedseed>
+    <deployedseed>302055377</deployedseed>
+    <deployedseed>1086254511</deployedseed>
+    <deployedseed>1729903879</deployedseed>
+    <deployedseed>1127995690</deployedseed>
+    <deployedseed>1941104341</deployedseed>
+    <deployedseed>1771944835</deployedseed>
+    <deployedseed>1805911583</deployedseed>
+    <deployedseed>1023083230</deployedseed>
+    <deployedseed>1964573460</deployedseed>
+    <deployedseed>1157359724</deployedseed>
+    <deployedseed>219358972</deployedseed>
+    <deployedseed>603230043</deployedseed>
+    <deployedseed>1861647324</deployedseed>
+    <deployedseed>40489108</deployedseed>
+    <deployedseed>1802932059</deployedseed>
+    <deployedseed>450349965</deployedseed>
+    <deployedseed>1563541811</deployedseed>
+    <deployedseed>1507709301</deployedseed>
+    <deployedseed>104535068</deployedseed>
+    <deployedseed>1635629427</deployedseed>
+    <deployedseed>1799600557</deployedseed>
+    <deployedseed>1943204268</deployedseed>
+    <deployedseed>1743727529</deployedseed>
+    <deployedseed>2099679768</deployedseed>
+    <deployedseed>824222233</deployedseed>
+    <deployedseed>425203385</deployedseed>
+    <deployedseed>1158973314</deployedseed>
+    <deployedseed>1450574029</deployedseed>
+    <deployedseed>797430508</deployedseed>
+    <deployedseed>17014339</deployedseed>
+    <deployedseed>325368907</deployedseed>
+    <deployedseed>362298786</deployedseed>
+    <deployedseed>1705780448</deployedseed>
+    <deployedseed>119396672</deployedseed>
+    <deployedseed>1550601731</deployedseed>
+    <deployedseed>1366585992</deployedseed>
+    <deployedseed>1444718939</deployedseed>
+    <deployedseed>134024709</deployedseed>
+    <deployedseed>579031685</deployedseed>
+    <deployedseed>567639695</deployedseed>
+    <deployedseed>589275853</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>
